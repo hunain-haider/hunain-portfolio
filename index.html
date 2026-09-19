@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hunain Haider | IT Systems & Automation Specialist</title>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: #0d0e12;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Canvas */
+    #canvas-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 24px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .social-links a {
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Tabs */
+    .tabs {
+      display: flex;
+      gap: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 12px;
+      margin-bottom: 48px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 6px 12px;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+    }
+
+    .tab-btn.active {
+      color: #3b82f6;
+    }
+
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -13px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #3b82f6;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* About Section Text */
+    .intro-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .bio-text p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .highlight-link {
+      color: #60a5fa;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .highlight-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Projects Cards */
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+
+    .project-card h3 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      color: #94a3b8;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background: rgba(59, 130, 246, 0.1);
+      color: #60a5fa;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .project-links a {
+      color: #f1f5f9;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-links a:hover {
+      color: #60a5fa;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas-bg"></canvas>
+
+  <div class="container">
+    <h1>Hunain Haider</h1>
+
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://github.com" target="_blank" title="GitHub">
+        <i data-lucide="github"></i>
+      </a>
+      <a href="https://linkedin.com/in/hunain-haider-its" target="_blank" title="LinkedIn">
+        <i data-lucide="linkedin"></i>
+      </a>
+      <a href="mailto:hunain.haider69@gmail.com" title="Email">
+        <i data-lucide="mail"></i>
+      </a>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('about')">About</button>
+      <button class="tab-btn" onclick="switchTab('projects')">Projects</button>
+      <button class="tab-btn" onclick="switchTab('writing')">Writing</button>
+    </div>
+
+    <!-- About Tab -->
+    <div id="about" class="tab-content active">
+      <h2 class="intro-title">Hi! I'm Hunain.</h2>
+      <div class="bio-text">
+        <p>
+          I bridge enterprise network administration with modern automation. Over the past 5+ years, I’ve architected and managed high-availability infrastructure, secure routing, and multi-user environments.
+        </p>
+        <p>
+          I eliminate operational bottlenecks by writing custom automation engines using Python and PowerShell—turning tedious manual system audits, daily operations, and server routines into hands-off background tasks.
+        </p>
+        <p>
+          Currently focused on integrating modern AI workflows into internal operations to help teams scale without technical friction.
+        </p>
+        <p>
+          Whether you want to discuss network design, sysadmin automation, or infrastructure scalability, let's connect.
+        </p>
+        <p>
+          You can reach me at <a class="highlight-link" href="mailto:hunain.haider69@gmail.com">hunain.haider69 [at] gmail [dot] com</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Projects Tab -->
+    <div id="projects" class="tab-content">
+      <div class="project-card">
+        <h3>Enterprise Operations & Report Engine</h3>
+        <p>
+          Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting using PowerShell and Python, cutting 10+ hours of manual administrative overhead weekly.
+        </p>
+        <div class="tags">
+          <span class="tag">PowerShell</span>
+          <span class="tag">Python</span>
+          <span class="tag">SMTP Automation</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i data-lucide="github" style="width:16px;height:16px;"></i> View Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Infrastructure Monitoring & Alerting Bot</h3>
+        <p>
+          A lightweight daemon monitoring critical gateway IPs, switch ports, and server availability, delivering instant rich alerts and auto-restart triggers via Telegram/Slack webhooks.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Network Protocols</span>
+          <span class="tag">Webhooks</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i data-lucide="github" style="width:16px;height:16px;"></i> View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Writing Tab -->
+    <div id="writing" class="tab-content">
+      <div class="project-card">
+        <h3>Why Small IT Teams Should Stop Manual Server Audits</h3>
+        <p>A practical breakdown on replacing repetitive administrative tasks with simple, reliable scheduled PowerShell daemons.</p>
+        <div class="project-links">
+          <a href="https://linkedin.com/in/hunain-haider-its" target="_blank">Read on LinkedIn &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Hunain Haider. All rights reserved.
+  </footer>
+
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Constellation / Particle Network Background
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > height) this.vy = -this.vy;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
+        ctx.fill();
+      }
+    }
+
+    const particleCount = Math.min(Math.floor(window.innerWidth / 18), 70);
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
