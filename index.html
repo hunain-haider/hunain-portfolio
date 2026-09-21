@@ -22,23 +22,34 @@
       --chip-bg: rgba(47, 104, 238, 0.12);
       --chip-text: #60a5fa;
 
-      /* Exact Blue Button Palette from Screenshot */
       --btn-blue-border: #4d72b8;
       --btn-blue-text: #8eaef5;
       --btn-blue-solid: #709cf8;
       --btn-blue-dark: #0f131a;
       --menu-bg: #10131a;
 
-      /* Console Chrome Top Bar Colors */
       --chrome-bg: #1e2129;
       --chrome-border: #1c2230;
       --chrome-text: #8b8fa3;
 
-      /* Rack Sidebar Colors */
       --rack-bg: #11141c;
       --rack-border: #1d222e;
       --nav-active-bg: rgba(47, 104, 238, 0.14);
       --nav-active-border: #2f68ee;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f4f6fb;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --chrome-bg: #e2e8f0;
+      --chrome-border: #cbd5e1;
+      --chrome-text: #475569;
+      --rack-bg: #ffffff;
+      --rack-border: #e2e8f0;
     }
 
     * {
@@ -56,6 +67,7 @@
       justify-content: center;
       position: relative;
       overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     /* Left & Right Geometric Polygon Accents */
@@ -80,7 +92,6 @@
       opacity: 0.9;
     }
 
-    /* Main Container */
     .app-layout {
       position: relative;
       z-index: 1;
@@ -93,7 +104,7 @@
     }
 
     /* =========================================================
-       OPERATOR CONSOLE HEADER (EXACT 1:1 REPLICA OF ORIGINAL)
+       OPERATOR CONSOLE HEADER
     ========================================================= */
     .header.box {
       background-color: var(--card-bg);
@@ -102,10 +113,9 @@
       padding: 0;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    /* Dedicated Top Chrome Bar */
     .header__chrome {
       background-color: var(--chrome-bg);
       border-bottom: 1px solid var(--chrome-border);
@@ -135,7 +145,6 @@
       letter-spacing: 0.8px;
     }
 
-    /* Header Main Content Grid */
     .header__body {
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr;
@@ -143,7 +152,6 @@
       padding: 18px 26px 20px;
     }
 
-    /* Identity Section */
     .header-identity {
       display: flex;
       align-items: center;
@@ -174,16 +182,14 @@
     .header-identity__name {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--text-main);
       line-height: 1.2;
       margin-bottom: 4px;
     }
     .header-identity__name-surname {
       font-weight: 400;
-      color: #ffffff;
     }
     
-    /* Role Rotator */
     .header-identity__role-rotator {
       position: relative;
       height: 20px;
@@ -204,7 +210,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Signal / System Status Section */
     .header-signal {
       padding: 0 28px;
       border-left: 1px solid var(--card-border);
@@ -233,7 +238,7 @@
       color: #c8cdd8;
     }
     .header-signal__value {
-      color: #ffffff;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -246,9 +251,7 @@
       box-shadow: 0 0 6px var(--status-green);
     }
 
-    /* =========================================================
-       BLUE CV BUTTON & DROPDOWN
-    ========================================================= */
+    /* Actions / CV Button */
     .header-action {
       padding-left: 24px;
       display: flex;
@@ -280,13 +283,9 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      transition: background 0.15s ease;
     }
     .cv-btn--header svg {
       stroke: var(--btn-blue-text);
-    }
-    .cv-btn--header:hover {
-      background: rgba(112, 156, 248, 0.08);
     }
 
     .cv-trigger {
@@ -299,10 +298,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.15s ease;
-    }
-    .cv-trigger:hover {
-      background: #84aefc;
     }
     .cv-chevron {
       stroke: #0d121c;
@@ -312,7 +307,6 @@
       transform: rotate(180deg);
     }
 
-    /* Menu Popover */
     .cv-menu {
       position: absolute;
       top: calc(100% + 8px);
@@ -326,14 +320,9 @@
       padding: 10px 8px;
       z-index: 100;
       display: none;
-      animation: fadeInMenu 0.18s ease;
     }
     .cv-group--header.open .cv-menu {
       display: block;
-    }
-    @keyframes fadeInMenu {
-      from { opacity: 0; transform: translateY(-6px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     .cv-menu__item {
       display: grid;
@@ -342,7 +331,6 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s ease;
     }
     .cv-menu__item:hover {
       background: rgba(255, 255, 255, 0.04);
@@ -351,14 +339,6 @@
       color: var(--btn-blue-text);
       font-size: 0.95rem;
       font-weight: 700;
-      display: flex;
-      align-items: flex-start;
-      padding-top: 1px;
-    }
-    .cv-menu__text-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
     }
     .cv-menu__label {
       font-size: 0.85rem;
@@ -371,21 +351,16 @@
     .cv-menu__desc {
       color: #5b677a;
       font-size: 0.73rem;
-      font-weight: 400;
-    }
-    .cv-menu__item--active .cv-menu__desc {
-      color: #5879be;
     }
 
     .header-action__email {
       font-size: 0.78rem;
-      color: #94a3b8;
+      color: var(--text-muted);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .header-action__email:hover { color: #ffffff; }
     
     .header-action__social {
       display: flex;
@@ -394,16 +369,14 @@
       margin-top: 2px;
     }
     .header-action__social a {
-      color: #64748b;
-      text-decoration: none;
+      color: var(--text-dim);
       display: flex;
       align-items: center;
-      transition: color 0.2s ease;
     }
-    .header-action__social a:hover { color: #cbd5e1; }
+    .header-action__social a:hover { color: var(--text-main); }
 
     /* =========================================================
-       MAIN TWO-COLUMN LAYOUT & 1:1 RACK SIDEBAR
+       MAIN GRID & RACK SIDEBAR
     ========================================================= */
     .main-grid {
       display: grid;
@@ -412,7 +385,6 @@
       align-items: flex-start;
     }
 
-    /* RACK SIDEBAR DESKTOP */
     .sidebar.rack-desktop {
       background-color: var(--rack-bg);
       border: 1px solid var(--rack-border);
@@ -421,10 +393,9 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    /* 4 Horizontal Patch Ports */
     .patch-panel {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -441,7 +412,6 @@
     .patch-port--3 { background: #f59e0b; }
     .patch-port--4 { background: #ef4444; }
 
-    /* Navigation List */
     .nav {
       list-style: none;
       display: flex;
@@ -453,16 +423,16 @@
       align-items: center;
       padding: 7px 10px;
       border-radius: 8px;
-      color: #8c9ba8;
+      color: var(--text-muted);
       text-decoration: none;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.5px;
-      transition: all 0.2s ease;
+      cursor: pointer;
       position: relative;
     }
     .rack-nav__item:hover {
-      color: #cbd5e1;
+      color: var(--text-main);
       background: rgba(255, 255, 255, 0.03);
     }
     .nav__icon {
@@ -477,8 +447,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    /* Active Indicator LED dot */
     .nav-led {
       width: 5.5px;
       height: 5.5px;
@@ -498,7 +466,6 @@
       box-shadow: 0 0 8px #10b981;
     }
 
-    /* Perforated Dot Plate */
     .perf-plate {
       display: flex;
       flex-direction: column;
@@ -508,23 +475,10 @@
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .perf-plate__row {
-      display: flex;
-      gap: 6px;
-    }
-    .perf-plate__dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #252c3b;
-    }
+    .perf-plate__row { display: flex; gap: 6px; }
+    .perf-plate__dot { width: 4px; height: 4px; border-radius: 50%; background: #252c3b; }
 
-    /* Rack Utilities */
-    .rack-utils {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+    .rack-utils { display: flex; flex-direction: column; gap: 7px; }
     .search-trigger {
       display: flex;
       align-items: center;
@@ -534,18 +488,9 @@
       border: 1px solid #232a3a;
       border-radius: 7px;
       padding: 6px 8px;
-      color: #8c9ba8;
+      color: var(--text-muted);
       font-size: 0.68rem;
       cursor: pointer;
-    }
-    .search-trigger__icon {
-      display: flex;
-      align-items: center;
-      margin-right: 6px;
-    }
-    .search-trigger__label {
-      font-weight: 600;
-      letter-spacing: 0.4px;
     }
     .search-trigger__kbd {
       font-family: 'JetBrains Mono', monospace;
@@ -556,8 +501,6 @@
       padding: 1px 4px;
       color: #a0aec0;
     }
-
-    /* Language Segment */
     .locale-seg {
       display: flex;
       background: #131722;
@@ -577,12 +520,8 @@
       cursor: pointer;
       font-family: 'JetBrains Mono', monospace;
     }
-    .locale-seg__btn--active {
-      background: var(--accent-blue);
-      color: #ffffff;
-    }
+    .locale-seg__btn--active { background: var(--accent-blue); color: #ffffff; }
 
-    /* Theme Switcher */
     .theme-toggle {
       display: flex;
       align-items: center;
@@ -593,28 +532,41 @@
       border: 1px solid #232a3a;
       border-radius: 7px;
       padding: 6px 0;
-      color: #8c9ba8;
+      color: var(--text-muted);
       font-size: 0.68rem;
       font-weight: 600;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     /* =========================================================
-       CONTENT BOX (ABOUT ME)
+       DYNAMIC CONTENT VIEW PANELS
     ========================================================= */
     .content-box {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
       padding: 36px 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      min-height: 520px;
     }
+
+    .view-panel {
+      display: none;
+      animation: panelFade 0.2s ease;
+    }
+    .view-panel.active-panel {
+      display: block;
+    }
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .content-title {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 4px;
@@ -646,19 +598,6 @@
       margin-bottom: 18px;
     }
 
-    .portfolio-link-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #60a5fa;
-      font-size: 0.88rem;
-      font-weight: 500;
-      text-decoration: none;
-      margin: 8px 0 28px;
-    }
-    .portfolio-link-action:hover { text-decoration: underline; }
-
-    /* Segmented Control */
     .segmented-control {
       background: #0d1017;
       border: 1px solid var(--card-border);
@@ -666,7 +605,7 @@
       padding: 4px;
       display: flex;
       width: 100%;
-      margin-bottom: 36px;
+      margin: 24px 0 32px;
     }
     .segment-btn {
       flex: 1;
@@ -678,23 +617,13 @@
       border: none;
       border-radius: 7px;
       cursor: pointer;
-      letter-spacing: 0.5px;
       text-transform: uppercase;
-      transition: all 0.2s;
     }
     .segment-btn.active {
       background: var(--accent-blue);
       color: #fff;
     }
 
-    .section-headline {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-
-    /* Numbers Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -707,9 +636,7 @@
       border-radius: 10px;
       padding: 20px 12px;
       text-align: center;
-      transition: 0.2s;
     }
-    .stat-card:hover { border-color: rgba(47, 104, 238, 0.4); }
     .stat-val {
       font-size: 1.9rem;
       font-weight: 700;
@@ -721,10 +648,8 @@
       text-transform: uppercase;
       color: var(--text-dim);
       font-weight: 500;
-      letter-spacing: 0.5px;
     }
 
-    /* What I'm Doing Grid */
     .doing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -736,31 +661,6 @@
       border-radius: 12px;
       padding: 24px;
       position: relative;
-      transition: 0.2s;
-    }
-    .doing-card:hover { border-color: rgba(47, 104, 238, 0.5); }
-    .doing-card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .doing-icon-box {
-      width: 44px;
-      height: 44px;
-      background: rgba(47, 104, 238, 0.15);
-      border: 1px solid rgba(47, 104, 238, 0.3);
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #60a5fa;
-      flex-shrink: 0;
-    }
-    .doing-title-group h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #fff;
     }
     .doing-chip {
       position: absolute;
@@ -773,13 +673,125 @@
       background: var(--chip-bg);
       color: var(--chip-text);
       font-weight: 600;
-      letter-spacing: 0.5px;
+    }
+    .doing-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 12px;
     }
     .doing-card p {
       font-size: 0.86rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
+
+    /* Terminal View Specifics */
+    .terminal-window {
+      background: #090b10;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #a5b4fc;
+      min-height: 280px;
+    }
+    .terminal-line { margin-bottom: 8px; }
+    .term-prompt { color: #10b981; }
+    .term-input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      outline: none;
+      width: 70%;
+    }
+
+    /* Contact View Specifics */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    .form-input, .form-textarea {
+      background: #0d1017;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .form-submit-btn {
+      background: var(--accent-blue);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Modal Search (Ctrl+K) */
+    .search-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 15vh;
+    }
+    .search-modal.open-modal { display: flex; }
+    .search-box {
+      width: 100%;
+      max-width: 540px;
+      background: #131722;
+      border: 1px solid #232b3d;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid #202638;
+      gap: 10px;
+    }
+    .search-input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .search-results {
+      max-height: 280px;
+      overflow-y: auto;
+      padding: 8px;
+    }
+    .search-result-item {
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .search-result-item:hover { background: rgba(47, 104, 238, 0.15); color: #fff; }
 
     /* Footer */
     .bottom-bar {
@@ -794,36 +806,14 @@
       color: var(--text-dim);
     }
     .bottom-bar a { color: var(--text-dim); text-decoration: none; }
-    .bottom-bar a:hover { color: #fff; }
-    .system-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .system-badge { display: inline-flex; align-items: center; gap: 6px; }
 
     @media (max-width: 960px) {
-      .header__body {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .header-signal {
-        padding: 16px 0;
-        border-left: none;
-        border-right: none;
-        border-top: 1px solid var(--card-border);
-        border-bottom: 1px solid var(--card-border);
-      }
-      .header-action {
-        padding-left: 0;
-        align-items: flex-start;
-      }
+      .header__body { grid-template-columns: 1fr; gap: 20px; }
+      .header-signal { padding: 16px 0; border: none; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+      .header-action { padding-left: 0; align-items: flex-start; }
       .main-grid { grid-template-columns: 1fr; }
-      .sidebar.rack-desktop {
-        flex-direction: row;
-        width: 100%;
-        overflow-x: auto;
-        padding: 10px;
-      }
+      .sidebar.rack-desktop { flex-direction: row; width: 100%; overflow-x: auto; padding: 10px; }
       .nav { flex-direction: row; }
       .patch-panel, .perf-plate, .rack-utils { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -833,7 +823,6 @@
 </head>
 <body>
 
-  <!-- Geometric SVG Graphic (Left Side) -->
   <svg class="bg-poly-left" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0,0 80,40 10,120" fill="#e11d48"/>
     <polygon points="10,120 90,80 140,160 30,190" fill="#f59e0b"/>
@@ -842,7 +831,6 @@
     <polygon points="50,330 110,250 80,390" fill="#0ea5e9"/>
   </svg>
 
-  <!-- Geometric SVG Graphic (Right Side) -->
   <svg class="bg-poly-right" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="150,400 70,360 140,280" fill="#059669"/>
     <polygon points="140,280 60,320 10,240 120,210" fill="#0284c7"/>
@@ -854,7 +842,6 @@
     
     <!-- TOP OPERATOR CONSOLE HEADER -->
     <header class="header box header--collapsed">
-      <!-- 1:1 Distinct Header Chrome Bar -->
       <div class="header__chrome" aria-hidden="true">
         <div class="header__chrome-dots">
           <span class="header__chrome-dot header__chrome-dot--red"></span>
@@ -865,7 +852,6 @@
       </div>
 
       <div class="header__body">
-        <!-- Identity -->
         <div class="header-identity">
           <div class="header-identity__photo">
             <img class="header-identity__photo-img" src="Hunain.jpeg" alt="Hunain Haider" width="320" height="320">
@@ -881,7 +867,6 @@
           </div>
         </div>
 
-        <!-- System Status -->
         <div class="header-signal">
           <div class="header-signal__title">system status</div>
           <div class="header-signal__board">
@@ -900,10 +885,8 @@
           </div>
         </div>
 
-        <!-- Action / CTA with Dropdown -->
         <div class="header-action">
           <div class="cv-group cv-group--header" id="cvDropdownGroup">
-            <!-- Direct Download Trigger -->
             <a href="resume.pdf" download="Hunain_Haider_Resume.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV as PDF">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -913,7 +896,12 @@
               <span>Download CV</span>
             </a>
 
-            <!-- CV Version Popover Menu -->
+            <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="cv-chevron">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
             <ul class="cv-menu" role="listbox" aria-label="CV version">
               <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Human')">
                 <span class="cv-menu__check">✓</span>
@@ -973,11 +961,10 @@
     <!-- MAIN TWO COLUMN SECTION -->
     <div class="main-grid">
       
-      <!-- 1:1 RACK DESKTOP SIDEBAR -->
+      <!-- INTERACTIVE RACK SIDEBAR -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           
-          <!-- 4 Patch Ports in a Row -->
           <div class="patch-panel" aria-hidden="true">
             <div class="patch-port patch-port--1"></div>
             <div class="patch-port patch-port--2"></div>
@@ -985,59 +972,58 @@
             <div class="patch-port patch-port--4"></div>
           </div>
 
-          <!-- Vertical Nav Items with Row Layout & Status Dot -->
           <ul class="nav">
             <li class="nav__item">
-              <a href="#" class="rack-nav__item rack-nav__item--active" title="About">
+              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('about')">
                 <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">ABOUT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Portfolio">
+              <a class="rack-nav__item" onclick="switchView('portfolio')">
                 <span class="nav__icon"><i data-lucide="layout-grid" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">PORTFOLIO</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Resume">
+              <a class="rack-nav__item" onclick="switchView('resume')">
                 <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">RESUME</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Blog">
+              <a class="rack-nav__item" onclick="switchView('blog')">
                 <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">BLOG</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Contact">
+              <a class="rack-nav__item" onclick="switchView('contact')">
                 <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">CONTACT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Terminal">
+              <a class="rack-nav__item" onclick="switchView('terminal')">
                 <span class="nav__icon"><i data-lucide="terminal" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">TERMINAL</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Infrastructure">
+              <a class="rack-nav__item" onclick="switchView('infrastructure')">
                 <span class="nav__icon"><i data-lucide="server" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">INFRAST...</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="rack-nav__item" title="Design System">
+              <a class="rack-nav__item" onclick="switchView('design')">
                 <span class="nav__icon"><i data-lucide="palette" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">DESIGN ...</span>
                 <span class="nav-led" aria-hidden="true"></span>
@@ -1045,7 +1031,6 @@
             </li>
           </ul>
 
-          <!-- Perforated Dot Plate -->
           <div class="perf-plate" aria-hidden="true">
             <div class="perf-plate__row">
               <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
@@ -1055,9 +1040,8 @@
             </div>
           </div>
 
-          <!-- Bottom Utility Controls -->
           <div class="rack-utils">
-            <button class="search-trigger" aria-label="Search (Ctrl+K)">
+            <button class="search-trigger" id="openSearchBtn" aria-label="Search (Ctrl+K)">
               <span style="display:flex; align-items:center;">
                 <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
                 <span class="search-trigger__label">SEARCH</span>
@@ -1065,139 +1049,188 @@
               <kbd class="search-trigger__kbd">CTRL+K</kbd>
             </button>
             <div class="locale-seg" role="radiogroup" aria-label="Language">
-              <button class="locale-seg__btn locale-seg__btn--active">EN</button>
-              <button class="locale-seg__btn">ID</button>
+              <button class="locale-seg__btn locale-seg__btn--active" id="langEn">EN</button>
+              <button class="locale-seg__btn" id="langId">ID</button>
             </div>
-            <button class="theme-toggle" role="switch" aria-label="Switch theme">
-              <i data-lucide="moon" style="width:12px;height:12px;"></i>
-              <span>DARK</span>
+            <button class="theme-toggle" id="themeToggleBtn" role="switch" aria-label="Switch theme">
+              <i data-lucide="moon" id="themeIcon" style="width:12px;height:12px;"></i>
+              <span id="themeLabel">DARK</span>
             </button>
           </div>
 
         </nav>
       </aside>
 
-      <!-- CONTENT BOX -->
+      <!-- DYNAMIC CONTENT MAIN BOX -->
       <main class="content-box">
-        <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
-        <div class="color-accent-line"></div>
+        
+        <!-- 1. ABOUT VIEW -->
+        <section id="view-about" class="view-panel active-panel">
+          <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
 
-        <div class="sub-tagline">
-          <span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale
-        </div>
-
-        <div class="bio-body">
-          <p>
-            IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.
-          </p>
-          <p>
-            I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.
-          </p>
-          <p>
-            Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.
-          </p>
-        </div>
-
-        <a href="#" class="portfolio-link-action">See my Automation & Infrastructure portfolio &rarr;</a>
-
-        <!-- STATS / SCOPE SWITCH -->
-        <div class="segmented-control">
-          <button class="segment-btn active">STATS</button>
-          <button class="segment-btn">SCOPE</button>
-        </div>
-
-        <!-- BY THE NUMBERS -->
-        <h2 class="section-headline">By the Numbers</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-val">5+</div>
-            <div class="stat-label">Years Experience</div>
+          <div class="sub-tagline">
+            <span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale
           </div>
-          <div class="stat-card">
-            <div class="stat-val">10+</div>
-            <div class="stat-label">Projects Done</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val">37+</div>
-            <div class="stat-label">Technologies</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val">4</div>
-            <div class="stat-label">Certifications</div>
-          </div>
-        </div>
 
-        <!-- WHAT I'M DOING -->
-        <h2 class="section-headline">What I'm Doing</h2>
-        <div class="doing-grid">
-          
-          <div class="doing-card">
-            <span class="doing-chip">SECURITY</span>
-            <div class="doing-card-header">
-              <div class="doing-icon-box">
-                <i data-lucide="shield-check"></i>
-              </div>
-              <div class="doing-title-group">
-                <h3>Network Security</h3>
-              </div>
-            </div>
+          <div class="bio-body">
             <p>
-              Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.
+              IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.
+            </p>
+            <p>
+              I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.
+            </p>
+            <p>
+              Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.
             </p>
           </div>
 
-          <div class="doing-card">
-            <span class="doing-chip">INFRASTRUCTURE</span>
-            <div class="doing-card-header">
-              <div class="doing-icon-box">
-                <i data-lucide="server"></i>
-              </div>
-              <div class="doing-title-group">
-                <h3>Systems & Servers</h3>
-              </div>
-            </div>
-            <p>
-              Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.
-            </p>
+          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;">See my Automation & Infrastructure portfolio &rarr;</a>
+
+          <div class="segmented-control">
+            <button class="segment-btn active" id="btnStats" onclick="toggleStats('stats')">STATS</button>
+            <button class="segment-btn" id="btnScope" onclick="toggleStats('scope')">SCOPE</button>
           </div>
 
-          <div class="doing-card">
-            <span class="doing-chip">RELIABILITY</span>
-            <div class="doing-card-header">
-              <div class="doing-icon-box">
-                <i data-lucide="activity"></i>
-              </div>
-              <div class="doing-title-group">
-                <h3>Health Monitoring</h3>
-              </div>
+          <div id="statsSection">
+            <h2 style="font-size:1.25rem; font-weight:600; color:var(--text-main); margin-bottom:18px;">By the Numbers</h2>
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-val">5+</div><div class="stat-label">Years Experience</div></div>
+              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label">Projects Done</div></div>
+              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label">Technologies</div></div>
+              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label">Certifications</div></div>
             </div>
-            <p>
-              Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.
-            </p>
           </div>
 
+          <h2 style="font-size:1.25rem; font-weight:600; color:var(--text-main); margin-bottom:18px;">What I'm Doing</h2>
+          <div class="doing-grid">
+            <div class="doing-card">
+              <span class="doing-chip">SECURITY</span>
+              <h3>Network Security</h3>
+              <p>Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
+            </div>
+            <div class="doing-card">
+              <span class="doing-chip">INFRASTRUCTURE</span>
+              <h3>Systems & Servers</h3>
+              <p>Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
+            </div>
+            <div class="doing-card">
+              <span class="doing-chip">RELIABILITY</span>
+              <h3>Health Monitoring</h3>
+              <p>Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
+            </div>
+            <div class="doing-card">
+              <span class="doing-chip">AUTOMATION</span>
+              <h3>Process Automation</h3>
+              <p>Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. PORTFOLIO VIEW -->
+        <section id="view-portfolio" class="view-panel">
+          <h1 class="content-title">Portfolio Projects<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
+          <p style="color:var(--text-muted); margin-bottom:24px;">Production-ready automations, scripts, and network designs built for high uptime.</p>
+          <div class="doing-grid">
+            <div class="doing-card">
+              <span class="doing-chip">POWERSHELL / PYTHON</span>
+              <h3>Daily Report & Operations Engine</h3>
+              <p>Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting, eliminating 10+ hours of manual overhead weekly.</p>
+            </div>
+            <div class="doing-card">
+              <span class="doing-chip">MONITORING</span>
+              <h3>Network Health Daemon</h3>
+              <p>Continuous ping/SNMP telemetry bot broadcasting real-time server downtime alerts and self-healing service triggers via Slack/Telegram.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. RESUME VIEW -->
+        <section id="view-resume" class="view-panel">
+          <h1 class="content-title">Resume<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div class="doing-card">
+              <span class="doing-chip">2020 — Present</span>
+              <h3>Network Administrator — JMS Trading Co.</h3>
+              <p>Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.</p>
+            </div>
+            <div class="doing-card">
+              <span class="doing-chip">2017 — 2019</span>
+              <h3>IT Specialist — JMS Trading Co.</h3>
+              <p>Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. BLOG VIEW -->
+        <section id="view-blog" class="view-panel">
+          <h1 class="content-title">Engineering Blog<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
           <div class="doing-card">
             <span class="doing-chip">AUTOMATION</span>
-            <div class="doing-card-header">
-              <div class="doing-icon-box">
-                <i data-lucide="cpu"></i>
-              </div>
-              <div class="doing-title-group">
-                <h3>Process Automation</h3>
-              </div>
-            </div>
-            <p>
-              Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.
-            </p>
+            <h3>Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
+            <p>A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
           </div>
+        </section>
 
-        </div>
+        <!-- 5. CONTACT VIEW -->
+        <section id="view-contact" class="view-panel">
+          <h1 class="content-title">Contact.<span class="title-dot"></span></h1>
+          <div class="color-accent-line"></div>
+          <p style="color:var(--text-muted);">Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.</p>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+            <input type="text" class="form-input" placeholder="Full Name" required>
+            <input type="email" class="form-input" placeholder="Email Address" required>
+            <textarea class="form-textarea" rows="5" placeholder="Your Message..." required></textarea>
+            <button type="submit" class="form-submit-btn"><i data-lucide="send" style="width:16px;"></i> Send Message</button>
+          </form>
+        </section>
 
-        <!-- FOOTER -->
+        <!-- 6. TERMINAL VIEW -->
+        <section id="view-terminal" class="view-panel">
+          <h1 class="content-title">Terminal Console<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
+          <div class="terminal-window" onclick="document.getElementById('cliInput').focus()">
+            <div class="terminal-line">Hunain OS v2.4 (x86_64-karachi-linux)</div>
+            <div class="terminal-line">Type '<span style="color:#60a5fa;">help</span>' to see available commands.</div>
+            <div id="termHistory"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="term-prompt">hunain@infra:~$</span>
+              <input type="text" id="cliInput" class="term-input" autocomplete="off">
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. INFRASTRUCTURE VIEW -->
+        <section id="view-infrastructure" class="view-panel">
+          <h1 class="content-title">Infrastructure Topology<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
+          <div class="doing-card">
+            <span class="doing-chip">EDGE ARCHITECTURE</span>
+            <h3>DNS & Hosting Architecture</h3>
+            <p>Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
+          </div>
+        </section>
+
+        <!-- 8. DESIGN SYSTEM VIEW -->
+        <section id="view-design" class="view-panel">
+          <h1 class="content-title">Design System<span class="title-dot">.</span></h1>
+          <div class="color-accent-line"></div>
+          <p style="color:var(--text-muted); margin-bottom:20px;">Operator Console Design Tokens & Colors</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <div style="background:#14171f; border:1px solid #1e232e; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Surface: #14171f</div>
+            <div style="background:#2f68ee; color:#fff; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Accent: #2f68ee</div>
+            <div style="background:#10b981; color:#000; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Status: #10b981</div>
+          </div>
+        </section>
+
+        <!-- Footer -->
         <div class="bottom-bar">
           <span>&copy; 2026 Hunain Haider</span>
           <span>·</span>
-          <a href="#">Contact</a>
+          <a onclick="switchView('contact')" style="cursor:pointer;">Contact</a>
           <span>·</span>
           <span class="system-badge"><span class="header-signal__dot"></span> All systems operational</span>
         </div>
@@ -1208,11 +1241,112 @@
 
   </div>
 
+  <!-- SEARCH POP-UP MODAL (Ctrl+K) -->
+  <div class="search-modal" id="searchModal">
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <i data-lucide="search" style="width:18px; color:#64748b;"></i>
+        <input type="text" id="modalSearchInput" placeholder="Search portfolio, resume, tools...">
+        <kbd class="search-trigger__kbd">ESC</kbd>
+      </div>
+      <div class="search-results">
+        <div class="search-result-item" onclick="switchView('about'); closeSearch();"><span>About Me</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span>Projects & Automation</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('resume'); closeSearch();"><span>Experience & Background</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('terminal'); closeSearch();"><span>Terminal CLI</span><span style="font-size:0.7rem; color:#64748b;">Tool</span></div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Initialize Lucide icons
     lucide.createIcons();
 
-    // Role Rotator functionality
+    // 1. Interactive Sidebar Tab Switching
+    function switchView(viewName) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
+      const activeP = document.getElementById('view-' + viewName);
+      if (activeP) activeP.classList.add('active-panel');
+
+      const items = document.querySelectorAll('.rack-nav__item');
+      items.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(viewName.substring(0, 4))) {
+          btn.classList.add('rack-nav__item--active');
+        } else {
+          btn.classList.remove('rack-nav__item--active');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. Stats / Scope Toggle
+    function toggleStats(type) {
+      const statsBtn = document.getElementById('btnStats');
+      const scopeBtn = document.getElementById('btnScope');
+      const statsSection = document.getElementById('statsSection');
+      if (type === 'stats') {
+        statsBtn.classList.add('active');
+        scopeBtn.classList.remove('active');
+        statsSection.style.display = 'block';
+      } else {
+        scopeBtn.classList.add('active');
+        statsBtn.classList.remove('active');
+        statsSection.style.display = 'none';
+      }
+    }
+
+    // 3. Theme Toggle (Dark / Light)
+    const themeBtn = document.getElementById('themeToggleBtn');
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      document.getElementById('themeLabel').innerText = newTheme.toUpperCase();
+      document.getElementById('themeIcon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+      lucide.createIcons();
+    });
+
+    // 4. Ctrl+K Search Modal
+    const searchModal = document.getElementById('searchModal');
+    const searchInput = document.getElementById('modalSearchInput');
+    function openSearch() { searchModal.classList.add('open-modal'); searchInput.focus(); }
+    function closeSearch() { searchModal.classList.remove('open-modal'); searchInput.value = ''; }
+    document.getElementById('openSearchBtn').addEventListener('click', openSearch);
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchModal.classList.contains('open-modal') ? closeSearch() : openSearch();
+      }
+      if (e.key === 'Escape') closeSearch();
+    });
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) closeSearch();
+    });
+
+    // 5. Terminal CLI Handler
+    const cliInput = document.getElementById('cliInput');
+    if (cliInput) {
+      cliInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const val = cliInput.value.trim().toLowerCase();
+          const history = document.getElementById('termHistory');
+          let output = '';
+          if (val === 'help') output = 'Commands: help, about, skills, uptime, clear';
+          else if (val === 'about') output = 'Hunain Haider — Systems & Network Infrastructure Specialist';
+          else if (val === 'skills') output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
+          else if (val === 'uptime') output = 'System uptime: 99.98% operational';
+          else if (val === 'clear') { history.innerHTML = ''; cliInput.value = ''; return; }
+          else if (val !== '') output = `bash: command not found: ${val}`;
+
+          history.innerHTML += `<div class="terminal-line"><span class="term-prompt">hunain@infra:~$</span> ${cliInput.value}</div>`;
+          if (output) history.innerHTML += `<div class="terminal-line" style="color:#cbd5e1;">${output}</div>`;
+          cliInput.value = '';
+          document.querySelector('.terminal-window').scrollTop = 9999;
+        }
+      });
+    }
+
+    // Role Rotator
     const roles = document.querySelectorAll('.header-identity__role');
     let currentRoleIndex = 0;
     if (roles.length > 0) {
@@ -1223,7 +1357,16 @@
       }, 3000);
     }
 
-    // Direct Native Download trigger
+    // CV Dropdown & Download
+    const cvGroup = document.getElementById('cvDropdownGroup');
+    const cvTrigger = document.getElementById('cvTriggerBtn');
+    cvTrigger.addEventListener('click', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      cvGroup.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!cvGroup.contains(e.target)) cvGroup.classList.remove('open');
+    });
     function selectAndDownload(version) {
       const a = document.createElement('a');
       a.href = 'resume.pdf';
@@ -1231,21 +1374,7 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-
-      const items = document.querySelectorAll('.cv-menu__item');
-      items.forEach(item => {
-        const isCurrent = item.innerText.includes(version);
-        item.setAttribute('aria-selected', isCurrent);
-        if (isCurrent) {
-          item.classList.add('cv-menu__item--active');
-        } else {
-          item.classList.remove('cv-menu__item--active');
-        }
-        item.querySelector('.cv-menu__check').textContent = isCurrent ? '✓' : '';
-      });
-
-      const cvGroup = document.getElementById('cvDropdownGroup');
-      if (cvGroup) cvGroup.classList.remove('open');
+      cvGroup.classList.remove('open');
     }
   </script>
 </body>
