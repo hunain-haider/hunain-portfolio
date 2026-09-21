@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hunain Haider — Systems & Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,16 +23,19 @@
       --chip-bg: rgba(47, 104, 238, 0.12);
       --chip-text: #60a5fa;
 
+      /* Button & Menu Palette */
       --btn-blue-border: #4d72b8;
       --btn-blue-text: #8eaef5;
       --btn-blue-solid: #709cf8;
       --btn-blue-dark: #0f131a;
       --menu-bg: #10131a;
 
+      /* Console Chrome Top Bar */
       --chrome-bg: #1e2129;
       --chrome-border: #1c2230;
       --chrome-text: #8b8fa3;
 
+      /* Rack Sidebar Desktop */
       --rack-bg: #11141c;
       --rack-border: #1d222e;
       --nav-active-bg: rgba(47, 104, 238, 0.14);
@@ -50,6 +54,8 @@
       --chrome-text: #475569;
       --rack-bg: #ffffff;
       --rack-border: #e2e8f0;
+      --menu-bg: #ffffff;
+      --btn-blue-dark: #f8fafc;
     }
 
     * {
@@ -313,7 +319,7 @@
       left: 0;
       width: 215px;
       background: var(--menu-bg);
-      border: 1px solid #232938;
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
       list-style: none;
@@ -376,7 +382,7 @@
     .header-action__social a:hover { color: var(--text-main); }
 
     /* =========================================================
-       MAIN GRID & RACK SIDEBAR
+       MAIN GRID & 1:1 RACK SIDEBAR
     ========================================================= */
     .main-grid {
       display: grid;
@@ -793,9 +799,9 @@
     }
     .search-result-item:hover { background: rgba(47, 104, 238, 0.15); color: #fff; }
 
-    /* Footer */
-    .bottom-bar {
-      border-top: 1px solid rgba(255,255,255,0.05);
+    /* Footer & Status Badge */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 24px;
       margin-top: 40px;
       display: flex;
@@ -805,24 +811,91 @@
       font-size: 0.78rem;
       color: var(--text-dim);
     }
-    .bottom-bar a { color: var(--text-dim); text-decoration: none; }
-    .system-badge { display: inline-flex; align-items: center; gap: 6px; }
+    .footer a { color: var(--text-dim); text-decoration: none; }
+    .footer a:hover { color: var(--text-main); }
+    .status-badge { display: inline-flex; align-items: center; gap: 6px; }
+    .status-badge__dot {
+      width: 6px;
+      height: 6px;
+      background: var(--status-green);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--status-green);
+    }
+
+    /* Scroll To Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 50;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+    }
+    .scroll-to-top:hover {
+      opacity: 1;
+      color: var(--text-main);
+      border-color: var(--accent-blue);
+    }
+
+    /* Mobile Responsive Dock Bar */
+    .rack-mobile-dock {
+      display: none;
+    }
 
     @media (max-width: 960px) {
       .header__body { grid-template-columns: 1fr; gap: 20px; }
       .header-signal { padding: 16px 0; border: none; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
       .header-action { padding-left: 0; align-items: flex-start; }
       .main-grid { grid-template-columns: 1fr; }
-      .sidebar.rack-desktop { flex-direction: row; width: 100%; overflow-x: auto; padding: 10px; }
-      .nav { flex-direction: row; }
-      .patch-panel, .perf-plate, .rack-utils { display: none; }
+      .sidebar-rack-container { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .doing-grid { grid-template-columns: 1fr; }
+      
+      .rack-mobile-dock {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--card-border);
+        padding: 8px 12px;
+        z-index: 100;
+      }
+      .mobile-dock__compact {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .mobile-dock__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.65rem;
+        cursor: pointer;
+      }
+      .mobile-dock__item--active {
+        color: var(--accent-blue);
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Left & Right Geometric Polygon SVG Visuals -->
   <svg class="bg-poly-left" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0,0 80,40 10,120" fill="#e11d48"/>
     <polygon points="10,120 90,80 140,160 30,190" fill="#f59e0b"/>
@@ -1226,19 +1299,35 @@
           </div>
         </section>
 
-        <!-- Footer -->
-        <div class="bottom-bar">
-          <span>&copy; 2026 Hunain Haider</span>
-          <span>·</span>
-          <a onclick="switchView('contact')" style="cursor:pointer;">Contact</a>
-          <span>·</span>
-          <span class="system-badge"><span class="header-signal__dot"></span> All systems operational</span>
-        </div>
+        <!-- FOOTER -->
+        <footer class="footer">
+          <span class="footer__copyright">© 2026 Hunain Haider</span>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <a onclick="switchView('contact')" style="cursor:pointer;" class="footer__contact">Contact</a>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <span class="status-badge"><span class="status-badge__dot"></span><span class="status-badge__text">All systems operational</span></span>
+        </footer>
 
       </main>
 
     </div>
 
+  </div>
+
+  <!-- FLOATING SCROLL TO TOP -->
+  <button class="scroll-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- MOBILE RESPONSIVE DOCK BAR -->
+  <div class="rack-mobile-dock">
+    <div class="mobile-dock__compact">
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
+      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
+      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
+      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
+      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
+    </div>
   </div>
 
   <!-- SEARCH POP-UP MODAL (Ctrl+K) -->
@@ -1258,15 +1347,26 @@
     </div>
   </div>
 
+  <!-- SVG CLIPPATH DEFS FROM ORIGINAL SITE -->
+  <svg class="svg-defs" style="display:none;">
+    <clippath id="avatar-box">
+      <path d="M1.85379 38.4859C2.9221 18.6653 18.6653 2.92275 38.4858 1.85453 56.0986.905299 77.2792 0 94 0c16.721 0 37.901.905299 55.514 1.85453 19.821 1.06822 35.564 16.81077 36.632 36.63137C187.095 56.0922 188 77.267 188 94c0 16.733-.905 37.908-1.854 55.514-1.068 19.821-16.811 35.563-36.632 36.631C131.901 187.095 110.721 188 94 188c-16.7208 0-37.9014-.905-55.5142-1.855-19.8205-1.068-35.5637-16.81-36.63201-36.631C.904831 131.908 0 110.733 0 94c0-16.733.904831-37.9078 1.85379-55.5141z"></path>
+    </clippath>
+    <clippath id="avatar-hexagon">
+      <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"></path>
+    </clippath>
+  </svg>
+
   <script>
     lucide.createIcons();
 
-    // 1. Interactive Sidebar Tab Switching
+    // 1. Tab Navigation Routing
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
       if (activeP) activeP.classList.add('active-panel');
 
+      // Desktop Nav update
       const items = document.querySelectorAll('.rack-nav__item');
       items.forEach(btn => {
         if (btn.innerText.toLowerCase().includes(viewName.substring(0, 4))) {
@@ -1275,10 +1375,21 @@
           btn.classList.remove('rack-nav__item--active');
         }
       });
+
+      // Mobile Nav update
+      const mobItems = document.querySelectorAll('.mobile-dock__item');
+      mobItems.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(viewName.substring(0, 4))) {
+          btn.classList.add('mobile-dock__item--active');
+        } else {
+          btn.classList.remove('mobile-dock__item--active');
+        }
+      });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. Stats / Scope Toggle
+    // 2. Stats vs Scope Toggle
     function toggleStats(type) {
       const statsBtn = document.getElementById('btnStats');
       const scopeBtn = document.getElementById('btnScope');
@@ -1294,7 +1405,7 @@
       }
     }
 
-    // 3. Theme Toggle (Dark / Light)
+    // 3. Light / Dark Mode Toggle
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -1305,7 +1416,7 @@
       lucide.createIcons();
     });
 
-    // 4. Ctrl+K Search Modal
+    // 4. Search Modal (Ctrl+K)
     const searchModal = document.getElementById('searchModal');
     const searchInput = document.getElementById('modalSearchInput');
     function openSearch() { searchModal.classList.add('open-modal'); searchInput.focus(); }
@@ -1323,7 +1434,7 @@
       if (e.target === searchModal) closeSearch();
     });
 
-    // 5. Terminal CLI Handler
+    // 5. Interactive Terminal Console
     const cliInput = document.getElementById('cliInput');
     if (cliInput) {
       cliInput.addEventListener('keydown', (e) => {
@@ -1357,7 +1468,7 @@
       }, 3000);
     }
 
-    // CV Dropdown & Download
+    // CV Download logic
     const cvGroup = document.getElementById('cvDropdownGroup');
     const cvTrigger = document.getElementById('cvTriggerBtn');
     cvTrigger.addEventListener('click', (e) => {
