@@ -116,7 +116,7 @@
       z-index: 1;
       width: 100%;
       max-width: 1220px;
-      padding: 30px 20px 140px; /* Enhanced bottom space for clean scrolling */
+      padding: 30px 20px 140px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -538,6 +538,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-family: 'JetBrains Mono', monospace;
+      transition: all 0.2s ease;
     }
     .locale-seg__btn--active { background: var(--accent-blue); color: #ffffff; }
 
@@ -989,7 +990,7 @@
           <span class="header__chrome-dot header__chrome-dot--amber"></span>
           <span class="header__chrome-dot header__chrome-dot--green"></span>
         </div>
-        <span class="header__chrome-label">operator console</span>
+        <span class="header__chrome-label" data-i18n="console_label">operator console</span>
       </div>
 
       <div class="header__body">
@@ -1000,27 +1001,27 @@
           <div class="header-identity__info">
             <div class="header-identity__name">Hunain <span class="header-identity__name-surname">Haider</span></div>
             <div class="header-identity__role-rotator">
-              <span class="header-identity__role active">IT Systems Administrator</span>
-              <span class="header-identity__role">Infrastructure Specialist</span>
-              <span class="header-identity__role">Process Automation Engineer</span>
-              <span class="header-identity__role">Network Operations Specialist</span>
+              <span class="header-identity__role active" id="role-0">IT Systems Administrator</span>
+              <span class="header-identity__role" id="role-1">Infrastructure Specialist</span>
+              <span class="header-identity__role" id="role-2">Process Automation Engineer</span>
+              <span class="header-identity__role" id="role-3">Network Operations Specialist</span>
             </div>
           </div>
         </div>
 
         <div class="header-signal">
-          <div class="header-signal__title">system status</div>
+          <div class="header-signal__title" data-i18n="status_title">system status</div>
           <div class="header-signal__board">
             <div class="header-signal__row header-signal__row--status">
-              <span class="header-signal__key">status</span>
-              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> available</span>
+              <span class="header-signal__key" data-i18n="status_key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
             </div>
             <div class="header-signal__row">
               <span class="header-signal__key">tz</span>
               <span class="header-signal__value">GMT+5</span>
             </div>
             <div class="header-signal__row">
-              <span class="header-signal__key">response</span>
+              <span class="header-signal__key" data-i18n="response_key">response</span>
               <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
@@ -1034,7 +1035,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Download CV</span>
+              <span data-i18n="download_cv">Download CV</span>
             </a>
 
             <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
@@ -1048,14 +1049,14 @@
                 <span class="cv-menu__check">✓</span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">Human</span>
-                  <span class="cv-menu__desc">Colored, polished</span>
+                  <span class="cv-menu__desc" data-i18n="cv_human_desc">Colored, polished</span>
                 </div>
               </li>
               <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
                 <span class="cv-menu__check"></span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">ATS</span>
-                  <span class="cv-menu__desc">Plain, compatible</span>
+                  <span class="cv-menu__desc" data-i18n="cv_ats_desc">Plain, compatible</span>
                 </div>
               </li>
             </ul>
@@ -1117,56 +1118,56 @@
             <li class="nav__item">
               <a class="rack-nav__item rack-nav__item--active" onclick="switchView('about')">
                 <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">ABOUT</span>
+                <span class="nav__label" data-i18n="nav_about">ABOUT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('portfolio')">
                 <span class="nav__icon"><i data-lucide="layout-grid" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">PORTFOLIO</span>
+                <span class="nav__label" data-i18n="nav_portfolio">PORTFOLIO</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('resume')">
                 <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">RESUME</span>
+                <span class="nav__label" data-i18n="nav_resume">RESUME</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('blog')">
                 <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">BLOG</span>
+                <span class="nav__label" data-i18n="nav_blog">BLOG</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('contact')">
                 <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">CONTACT</span>
+                <span class="nav__label" data-i18n="nav_contact">CONTACT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('terminal')">
                 <span class="nav__icon"><i data-lucide="terminal" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">TERMINAL</span>
+                <span class="nav__label" data-i18n="nav_terminal">TERMINAL</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('infrastructure')">
                 <span class="nav__icon"><i data-lucide="server" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">INFRAST...</span>
+                <span class="nav__label" data-i18n="nav_infra">INFRAST...</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('design')">
                 <span class="nav__icon"><i data-lucide="palette" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">DESIGN ...</span>
+                <span class="nav__label" data-i18n="nav_design">DESIGN ...</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
@@ -1185,13 +1186,13 @@
             <button class="search-trigger" id="openSearchBtn" aria-label="Search (Ctrl+K)">
               <span style="display:flex; align-items:center;">
                 <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
-                <span class="search-trigger__label">SEARCH</span>
+                <span class="search-trigger__label" data-i18n="btn_search">SEARCH</span>
               </span>
               <kbd class="search-trigger__kbd">CTRL+K</kbd>
             </button>
             <div class="locale-seg" role="radiogroup" aria-label="Language">
-              <button class="locale-seg__btn locale-seg__btn--active" id="langEn">EN</button>
-              <button class="locale-seg__btn" id="langId">ID</button>
+              <button class="locale-seg__btn locale-seg__btn--active" id="langEn" onclick="setLanguage('en')">EN</button>
+              <button class="locale-seg__btn" id="langDe" onclick="setLanguage('de')">DE</button>
             </div>
             <button class="theme-toggle" id="themeToggleBtn" role="switch" aria-label="Switch theme">
               <i data-lucide="moon" id="themeIcon" style="width:12px;height:12px;"></i>
@@ -1207,47 +1208,47 @@
         
         <!-- 1. ABOUT VIEW -->
         <section id="view-about" class="view-panel active-panel">
-          <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="about_title">About Me</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
 
           <div class="sub-tagline">
-            <span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale
+            <span>◆</span> <span data-i18n="about_subtitle">Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</span>
           </div>
 
           <div class="bio-body">
-            <p>
+            <p data-i18n="bio_p1">
               IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.
             </p>
-            <p>
+            <p data-i18n="bio_p2">
               I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.
             </p>
-            <p>
+            <p data-i18n="bio_p3">
               Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.
             </p>
           </div>
 
-          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;">See my Automation & Infrastructure portfolio &rarr;</a>
+          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;" data-i18n="see_portfolio_link">See my Automation & Infrastructure portfolio &rarr;</a>
 
           <!-- STICKY SCROLL SPY SEGMENTED CONTROL -->
           <nav class="seg-control-nav" role="tablist">
-            <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')">STATS</button>
-            <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')">SCOPE</button>
+            <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')" data-i18n="tab_stats">STATS</button>
+            <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')" data-i18n="tab_scope">SCOPE</button>
           </nav>
 
           <!-- STATS SECTION (BY THE NUMBERS) -->
           <section id="stats" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title">By the Numbers</h2>
+            <h2 class="section-heading-title" data-i18n="stats_title">By the Numbers</h2>
             <div class="stats-grid">
-              <div class="stat-card"><div class="stat-val">5+</div><div class="stat-label">Years Experience</div></div>
-              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label">Projects Done</div></div>
-              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label">Technologies</div></div>
-              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label">Certifications</div></div>
+              <div class="stat-card"><div class="stat-val">5+</div><div class="stat-label" data-i18n="stat_exp">Years Experience</div></div>
+              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label" data-i18n="stat_proj">Projects Done</div></div>
+              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label" data-i18n="stat_tech">Technologies</div></div>
+              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label" data-i18n="stat_cert">Certifications</div></div>
             </div>
           </section>
 
           <!-- SCOPE SECTION (WHAT I'M DOING) WITH EXACT 1:1 CARDS -->
           <section id="scope" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title">What I'm Doing</h2>
+            <h2 class="section-heading-title" data-i18n="scope_title">What I'm Doing</h2>
             <div class="about-scope-grid">
               
               <!-- Card 1: Security -->
@@ -1256,9 +1257,9 @@
                   <i data-lucide="shield-check" style="width:24px;height:24px;"></i>
                 </div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">SECURITY</span>
-                  <h3 class="about-scope-card__title">Network Security</h3>
-                  <p class="about-scope-card__desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
+                  <span class="about-scope-card__type" data-i18n="scope1_badge">SECURITY</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope1_title">Network Security</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope1_desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
                 </div>
               </article>
 
@@ -1268,9 +1269,9 @@
                   <i data-lucide="server" style="width:24px;height:24px;"></i>
                 </div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">INFRASTRUCTURE</span>
-                  <h3 class="about-scope-card__title">Systems & Servers</h3>
-                  <p class="about-scope-card__desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
+                  <span class="about-scope-card__type" data-i18n="scope2_badge">INFRASTRUCTURE</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope2_title">Systems & Servers</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope2_desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
                 </div>
               </article>
 
@@ -1280,9 +1281,9 @@
                   <i data-lucide="activity" style="width:24px;height:24px;"></i>
                 </div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">RELIABILITY</span>
-                  <h3 class="about-scope-card__title">Health Monitoring</h3>
-                  <p class="about-scope-card__desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
+                  <span class="about-scope-card__type" data-i18n="scope3_badge">RELIABILITY</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope3_title">Health Monitoring</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope3_desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
                 </div>
               </article>
 
@@ -1292,9 +1293,9 @@
                   <i data-lucide="cpu" style="width:24px;height:24px;"></i>
                 </div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">AUTOMATION</span>
-                  <h3 class="about-scope-card__title">Process Automation</h3>
-                  <p class="about-scope-card__desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
+                  <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope4_title">Process Automation</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope4_desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
                 </div>
               </article>
 
@@ -1304,24 +1305,24 @@
 
         <!-- 2. PORTFOLIO VIEW -->
         <section id="view-portfolio" class="view-panel">
-          <h1 class="content-title">Portfolio Projects<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="portfolio_title">Portfolio Projects</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); margin-bottom:24px;">Production-ready automations, scripts, and network designs built for high uptime.</p>
+          <p style="color:var(--text-muted); margin-bottom:24px;" data-i18n="portfolio_desc">Production-ready automations, scripts, and network designs built for high uptime.</p>
           <div class="about-scope-grid">
             <div class="about-scope-card">
               <div class="about-scope-card__icon-wrap"><i data-lucide="code" style="width:24px;height:24px;"></i></div>
               <div class="about-scope-card__body">
                 <span class="about-scope-card__type">POWERSHELL / PYTHON</span>
-                <h3 class="about-scope-card__title">Daily Report & Operations Engine</h3>
-                <p class="about-scope-card__desc">Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting, eliminating 10+ hours of manual overhead weekly.</p>
+                <h3 class="about-scope-card__title" data-i18n="port1_title">Daily Report & Operations Engine</h3>
+                <p class="about-scope-card__desc" data-i18n="port1_desc">Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting, eliminating 10+ hours of manual overhead weekly.</p>
               </div>
             </div>
             <div class="about-scope-card">
               <div class="about-scope-card__icon-wrap"><i data-lucide="radio" style="width:24px;height:24px;"></i></div>
               <div class="about-scope-card__body">
-                <span class="about-scope-card__type">MONITORING</span>
-                <h3 class="about-scope-card__title">Network Health Daemon</h3>
-                <p class="about-scope-card__desc">Continuous ping/SNMP telemetry bot broadcasting real-time server downtime alerts and self-healing service triggers via Slack/Telegram.</p>
+                <span class="about-scope-card__type" data-i18n="port2_badge">MONITORING</span>
+                <h3 class="about-scope-card__title" data-i18n="port2_title">Network Health Daemon</h3>
+                <p class="about-scope-card__desc" data-i18n="port2_desc">Continuous ping/SNMP telemetry bot broadcasting real-time server downtime alerts and self-healing service triggers via Slack/Telegram.</p>
               </div>
             </div>
           </div>
@@ -1329,23 +1330,23 @@
 
         <!-- 3. RESUME VIEW -->
         <section id="view-resume" class="view-panel">
-          <h1 class="content-title">Resume<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
           <div style="display:flex; flex-direction:column; gap:20px;">
             <div class="about-scope-card">
               <div class="about-scope-card__icon-wrap"><i data-lucide="briefcase" style="width:24px;height:24px;"></i></div>
               <div class="about-scope-card__body">
-                <span class="about-scope-card__type">2020 — Present</span>
-                <h3 class="about-scope-card__title">Network Administrator — JMS Trading Co.</h3>
-                <p class="about-scope-card__desc">Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.</p>
+                <span class="about-scope-card__type" data-i18n="res1_badge">2020 — Present</span>
+                <h3 class="about-scope-card__title" data-i18n="res1_title">Network Administrator — JMS Trading Co.</h3>
+                <p class="about-scope-card__desc" data-i18n="res1_desc">Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.</p>
               </div>
             </div>
             <div class="about-scope-card">
               <div class="about-scope-card__icon-wrap"><i data-lucide="shield" style="width:24px;height:24px;"></i></div>
               <div class="about-scope-card__body">
                 <span class="about-scope-card__type">2017 — 2019</span>
-                <h3 class="about-scope-card__title">IT Specialist — JMS Trading Co.</h3>
-                <p class="about-scope-card__desc">Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.</p>
+                <h3 class="about-scope-card__title" data-i18n="res2_title">IT Specialist — JMS Trading Co.</h3>
+                <p class="about-scope-card__desc" data-i18n="res2_desc">Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.</p>
               </div>
             </div>
           </div>
@@ -1353,38 +1354,38 @@
 
         <!-- 4. BLOG VIEW -->
         <section id="view-blog" class="view-panel">
-          <h1 class="content-title">Engineering Blog<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="blog_title">Engineering Blog</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
           <div class="about-scope-card">
             <div class="about-scope-card__icon-wrap"><i data-lucide="terminal" style="width:24px;height:24px;"></i></div>
             <div class="about-scope-card__body">
-              <span class="about-scope-card__type">AUTOMATION</span>
-              <h3 class="about-scope-card__title">Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
-              <p class="about-scope-card__desc">A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
+              <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
+              <h3 class="about-scope-card__title" data-i18n="blog1_title">Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
+              <p class="about-scope-card__desc" data-i18n="blog1_desc">A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
             </div>
           </div>
         </section>
 
         <!-- 5. CONTACT VIEW -->
         <section id="view-contact" class="view-panel">
-          <h1 class="content-title">Contact.<span class="title-dot"></span></h1>
+          <h1 class="content-title"><span data-i18n="contact_title">Contact</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted);">Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.</p>
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
-            <input type="text" class="form-input" placeholder="Full Name" required>
-            <input type="email" class="form-input" placeholder="Email Address" required>
-            <textarea class="form-textarea" rows="5" placeholder="Your Message..." required></textarea>
-            <button type="submit" class="form-submit-btn"><i data-lucide="send" style="width:16px;"></i> Send Message</button>
+          <p style="color:var(--text-muted);" data-i18n="contact_desc">Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.</p>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert(currentLang === 'de' ? 'Nachricht erfolgreich gesendet!' : 'Message sent!');">
+            <input type="text" class="form-input" id="formName" placeholder="Full Name" required>
+            <input type="email" class="form-input" id="formEmail" placeholder="Email Address" required>
+            <textarea class="form-textarea" id="formMsg" rows="5" placeholder="Your Message..." required></textarea>
+            <button type="submit" class="form-submit-btn"><i data-lucide="send" style="width:16px;"></i> <span data-i18n="btn_send">Send Message</span></button>
           </form>
         </section>
 
         <!-- 6. TERMINAL VIEW -->
         <section id="view-terminal" class="view-panel">
-          <h1 class="content-title">Terminal Console<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="term_title">Terminal Console</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
           <div class="terminal-window" onclick="document.getElementById('cliInput').focus()">
             <div class="terminal-line">Hunain OS v2.4 (x86_64-karachi-linux)</div>
-            <div class="terminal-line">Type '<span style="color:#60a5fa;">help</span>' to see available commands.</div>
+            <div class="terminal-line"><span data-i18n="term_help_hint">Type 'help' to see available commands.</span></div>
             <div id="termHistory"></div>
             <div style="display:flex; align-items:center; gap:8px;">
               <span class="term-prompt">hunain@infra:~$</span>
@@ -1395,23 +1396,23 @@
 
         <!-- 7. INFRASTRUCTURE VIEW -->
         <section id="view-infrastructure" class="view-panel">
-          <h1 class="content-title">Infrastructure Topology<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="infra_title">Infrastructure Topology</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
           <div class="about-scope-card">
             <div class="about-scope-card__icon-wrap"><i data-lucide="globe" style="width:24px;height:24px;"></i></div>
             <div class="about-scope-card__body">
-              <span class="about-scope-card__type">EDGE ARCHITECTURE</span>
-              <h3 class="about-scope-card__title">DNS & Hosting Architecture</h3>
-              <p class="about-scope-card__desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
+              <span class="about-scope-card__type" data-i18n="infra_badge">EDGE ARCHITECTURE</span>
+              <h3 class="about-scope-card__title" data-i18n="infra_card_title">DNS & Hosting Architecture</h3>
+              <p class="about-scope-card__desc" data-i18n="infra_card_desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
             </div>
           </div>
         </section>
 
         <!-- 8. DESIGN SYSTEM VIEW -->
         <section id="view-design" class="view-panel">
-          <h1 class="content-title">Design System<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="design_title">Design System</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); margin-bottom:20px;">Operator Console Design Tokens & Colors</p>
+          <p style="color:var(--text-muted); margin-bottom:20px;" data-i18n="design_desc">Operator Console Design Tokens & Colors</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
             <div style="background:#14171f; border:1px solid #1e232e; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Surface: #14171f</div>
             <div style="background:#2f68ee; color:#fff; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Accent: #2f68ee</div>
@@ -1423,9 +1424,9 @@
         <footer class="footer">
           <span class="footer__copyright">© 2026 Hunain Haider</span>
           <span class="footer__sep" aria-hidden="true">·</span>
-          <a onclick="switchView('contact')" style="cursor:pointer;" class="footer__contact">Contact</a>
+          <a onclick="switchView('contact')" style="cursor:pointer;" class="footer__contact" data-i18n="footer_contact">Contact</a>
           <span class="footer__sep" aria-hidden="true">·</span>
-          <span class="status-badge"><span class="status-badge__dot"></span><span class="status-badge__text">All systems operational</span></span>
+          <span class="status-badge"><span class="status-badge__dot"></span><span class="status-badge__text" data-i18n="footer_status">All systems operational</span></span>
         </footer>
 
       </main>
@@ -1442,11 +1443,11 @@
   <!-- MOBILE RESPONSIVE DOCK BAR -->
   <div class="rack-mobile-dock">
     <div class="mobile-dock__compact">
-      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
-      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
-      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
-      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
-      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span data-i18n="mob_about">About</span></a>
+      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span data-i18n="mob_portfolio">Portfolio</span></a>
+      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span data-i18n="mob_resume">Resume</span></a>
+      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span data-i18n="mob_blog">Blog</span></a>
+      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span data-i18n="mob_contact">Contact</span></a>
     </div>
   </div>
 
@@ -1459,10 +1460,10 @@
         <kbd class="search-trigger__kbd">ESC</kbd>
       </div>
       <div class="search-results">
-        <div class="search-result-item" onclick="switchView('about'); closeSearch();"><span>About Me</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span>Projects & Automation</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('resume'); closeSearch();"><span>Experience & Background</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('terminal'); closeSearch();"><span>Terminal CLI</span><span style="font-size:0.7rem; color:#64748b;">Tool</span></div>
+        <div class="search-result-item" onclick="switchView('about'); closeSearch();"><span data-i18n="about_title">About Me</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span data-i18n="portfolio_title">Portfolio Projects</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('resume'); closeSearch();"><span data-i18n="resume_title">Resume</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('terminal'); closeSearch();"><span data-i18n="term_title">Terminal Console</span><span style="font-size:0.7rem; color:#64748b;">Tool</span></div>
       </div>
     </div>
   </div>
@@ -1470,26 +1471,240 @@
   <script>
     lucide.createIcons();
 
+    // =========================================================
+    // I18N DICTIONARY (ENGLISH / GERMAN)
+    // =========================================================
+    let currentLang = 'en';
+    const translations = {
+      en: {
+        console_label: "operator console",
+        status_title: "system status",
+        status_key: "status",
+        status_val: "available",
+        response_key: "response",
+        download_cv: "Download CV",
+        cv_human_desc: "Colored, polished",
+        cv_ats_desc: "Plain, compatible",
+        nav_about: "ABOUT",
+        nav_portfolio: "PORTFOLIO",
+        nav_resume: "RESUME",
+        nav_blog: "BLOG",
+        nav_contact: "CONTACT",
+        nav_terminal: "TERMINAL",
+        nav_infra: "INFRAST...",
+        nav_design: "DESIGN ...",
+        btn_search: "SEARCH",
+        about_title: "About Me",
+        about_subtitle: "Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale",
+        bio_p1: "IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.",
+        bio_p2: "I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.",
+        bio_p3: "Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.",
+        see_portfolio_link: "See my Automation & Infrastructure portfolio →",
+        tab_stats: "STATS",
+        tab_scope: "SCOPE",
+        stats_title: "By the Numbers",
+        stat_exp: "Years Experience",
+        stat_proj: "Projects Done",
+        stat_tech: "Technologies",
+        stat_cert: "Certifications",
+        scope_title: "What I'm Doing",
+        scope1_badge: "SECURITY",
+        scope1_title: "Network Security",
+        scope1_desc: "Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.",
+        scope2_badge: "INFRASTRUCTURE",
+        scope2_title: "Systems & Servers",
+        scope2_desc: "Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.",
+        scope3_badge: "RELIABILITY",
+        scope3_title: "Health Monitoring",
+        scope3_desc: "Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.",
+        scope4_badge: "AUTOMATION",
+        scope4_title: "Process Automation",
+        scope4_desc: "Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.",
+        portfolio_title: "Portfolio Projects",
+        portfolio_desc: "Production-ready automations, scripts, and network designs built for high uptime.",
+        port1_title: "Daily Report & Operations Engine",
+        port1_desc: "Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting, eliminating 10+ hours of manual overhead weekly.",
+        port2_badge: "MONITORING",
+        port2_title: "Network Health Daemon",
+        port2_desc: "Continuous ping/SNMP telemetry bot broadcasting real-time server downtime alerts and self-healing service triggers via Slack/Telegram.",
+        resume_title: "Resume",
+        res1_badge: "2020 — Present",
+        res1_title: "Network Administrator — JMS Trading Co.",
+        res1_desc: "Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.",
+        res2_title: "IT Specialist — JMS Trading Co.",
+        res2_desc: "Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.",
+        blog_title: "Engineering Blog",
+        blog1_title: "Eliminating Repetitive IT Admin Overhead with PowerShell",
+        blog1_desc: "A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.",
+        contact_title: "Contact",
+        contact_desc: "Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.",
+        btn_send: "Send Message",
+        term_title: "Terminal Console",
+        term_help_hint: "Type 'help' to see available commands.",
+        infra_title: "Infrastructure Topology",
+        infra_badge: "EDGE ARCHITECTURE",
+        infra_card_title: "DNS & Hosting Architecture",
+        infra_card_desc: "Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.",
+        design_title: "Design System",
+        design_desc: "Operator Console Design Tokens & Colors",
+        footer_contact: "Contact",
+        footer_status: "All systems operational",
+        mob_about: "About",
+        mob_portfolio: "Portfolio",
+        mob_resume: "Resume",
+        mob_blog: "Blog",
+        mob_contact: "Contact",
+        roles: ["IT Systems Administrator", "Infrastructure Specialist", "Process Automation Engineer", "Network Operations Specialist"],
+        placeholders: {
+          search: "Search portfolio, resume, tools...",
+          name: "Full Name",
+          email: "Email Address",
+          msg: "Your Message..."
+        }
+      },
+      de: {
+        console_label: "bedienkonsole",
+        status_title: "systemstatus",
+        status_key: "status",
+        status_val: "verfügbar",
+        response_key: "antwort",
+        download_cv: "Lebenslauf Herunterladen",
+        cv_human_desc: "Farbig, formatiert",
+        cv_ats_desc: "Kompakt, ATS-konform",
+        nav_about: "ÜBER MICH",
+        nav_portfolio: "PORTFOLIO",
+        nav_resume: "LEBENSLAUF",
+        nav_blog: "BLOG",
+        nav_contact: "KONTAKT",
+        nav_terminal: "TERMINAL",
+        nav_infra: "INFRAST...",
+        nav_design: "DESIGN ...",
+        btn_search: "SUCHE",
+        about_title: "Über Mich",
+        about_subtitle: "System- & Netzwerkinfrastruktur · Karachi, PK · 5+ Jahre Erfahrung",
+        bio_p1: "Spezialist für IT-Systeme und Netzwerkinfrastruktur aus Karatschi, Pakistan, mit über 5 Jahren Erfahrung im Aufbau sicherer, überwachbarer und hochautomatisierter Betriebsabläufe.",
+        bio_p2: "Ich verwalte geschäftskritische Infrastrukturen mit einer garantierten Betriebszeit von 99,9 % über mehrere Unternehmensstandorte hinweg. Statt manuelle Routinen durchzuführen, erstelle ich Automatisierungsskripte in Python und PowerShell für Server-Audits, Backups und Berichte.",
+        bio_p3: "Zertifiziert in Enterprise Networking, Sicherheit und Automatisierung. Informatik-Absolvent der University of Karachi (UBIT). Bereit für Rollen in Infrastruktur-Engineering und Remote IT-Betrieb, bei denen Ausfallsicherheit oberste Priorität hat.",
+        see_portfolio_link: "Mein Automatisierungs- & Infrastruktur-Portfolio ansehen →",
+        tab_stats: "STATISTIK",
+        tab_scope: "BEREICHE",
+        stats_title: "Auf einen Blick",
+        stat_exp: "Jahre Erfahrung",
+        stat_proj: "Projekte Umgesetzt",
+        stat_tech: "Technologien",
+        stat_cert: "Zertifizierungen",
+        scope_title: "Mein Aufgabenspektrum",
+        scope1_badge: "SICHERHEIT",
+        scope1_title: "Netzwerksicherheit",
+        scope1_desc: "Konfiguration von Enterprise-Firewalls, VLAN-Segmentierung, VPN-Tunneln und Zero-Trust-Zugriffskontrollen zum Schutz vor Perimeter-Bedrohungen.",
+        scope2_badge: "INFRASTRUKTUR",
+        scope2_title: "Systeme & Server",
+        scope2_desc: "Bereitstellung und Absicherung von Windows Server- und Linux-Distributionen, Verwaltung von Active Directory GPOs und nahtlose Standortvernetzung.",
+        scope3_badge: "ZUVERLÄSSIGKEIT",
+        scope3_title: "Systemüberwachung",
+        scope3_desc: "Gewährleistung maximaler Uptime durch automatisierte Ping/SNMP-Telemetrie, Echtzeit-Webhooks und sofortige Reaktionsprotokolle.",
+        scope4_badge: "AUTOMATISIERUNG",
+        scope4_title: "Prozessautomatisierung",
+        scope4_desc: "Entwicklung maßgeschneiderter Skripte in Python und PowerShell, die wiederkehrende Sysadmin-Aufgaben und Berichterstattungen vollständig automatisieren.",
+        portfolio_title: "Portfolio-Projekte",
+        portfolio_desc: "Produktionsreife Automatisierungen, Skripte und hochverfügbare Netzwerkarchitekturen.",
+        port1_title: "Betriebs- & Berichts-Engine",
+        port1_desc: "Automatisierte Erfassung von Abteilungsdaten, Protokoll-Audits und geplante PDF-Berichte – spart wöchentlich über 10 Stunden Aufwand.",
+        port2_badge: "MONITORING",
+        port2_title: "Netzwerk-Health Daemon",
+        port2_desc: "Kontinuierlicher Telemetrie-Bot für Ping/SNMP mit Echtzeit-Benachrichtigungen und Self-Healing-Trigger via Slack/Telegram.",
+        resume_title: "Lebenslauf",
+        res1_badge: "2020 — Heute",
+        res1_title: "Netzwerkadministrator — JMS Trading Co.",
+        res1_desc: "Leitung der LAN/WAN-Infrastruktur, Linux-Produktionsserver, Firewall-Regeln und Anbindung verteilter Standorte mit 99,9 % Verfügbarkeit.",
+        res2_title: "IT-Spezialist — JMS Trading Co.",
+        res2_desc: "Technischer IT-Support, System-Rollouts, Härtung von Client-Betriebssystemen und zentrale Videoüberwachungsinfrastruktur.",
+        blog_title: "Technik-Blog",
+        blog1_title: "Reduzierung des IT-Admin-Aufwands mit PowerShell",
+        blog1_desc: "Ein praxisorientierter Leitfaden zur Nutzung hintergrundgestützter Daemons zur Vermeidung manueller Server-Prüfungen.",
+        contact_title: "Kontakt",
+        contact_desc: "Haben Sie ein Projekt oder möchten Sie über Unternehmenssysteme und Uptime sprechen? Schreiben Sie mir gerne eine Nachricht.",
+        btn_send: "Nachricht Senden",
+        term_title: "Terminal-Konsole",
+        term_help_hint: "Geben Sie 'help' ein, um verfügbare Befehle anzuzeigen.",
+        infra_title: "Infrastruktur-Topologie",
+        infra_badge: "EDGE-ARCHITEKTUR",
+        infra_card_title: "DNS & Hosting-Architektur",
+        infra_card_desc: "Domain hunainhaider.com über Hostinger-DNS mit globalem Routing zu Vercel CDN-Servern ohne Kaltstartlatenz.",
+        design_title: "Designsystem",
+        design_desc: "Operator Console Design-Tokens & Farbpalette",
+        footer_contact: "Kontakt",
+        footer_status: "Alle Systeme betriebsbereit",
+        mob_about: "Über mich",
+        mob_portfolio: "Portfolio",
+        mob_resume: "Lebenslauf",
+        mob_blog: "Blog",
+        mob_contact: "Kontakt",
+        roles: ["IT-Systemadministrator", "Infrastruktur-Spezialist", "Prozessautomatisierungs-Ingenieur", "Netzwerkbetriebs-Spezialist"],
+        placeholders: {
+          search: "Portfolio, Lebenslauf, Tools durchsuchen...",
+          name: "Vollständiger Name",
+          email: "E-Mail-Adresse",
+          msg: "Ihre Nachricht..."
+        }
+      }
+    };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const dict = translations[lang];
+
+      // Update switcher active states
+      document.getElementById('langEn').classList.toggle('locale-seg__btn--active', lang === 'en');
+      document.getElementById('langDe').classList.toggle('locale-seg__btn--active', lang === 'de');
+
+      // Update text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerText = dict[key];
+        }
+      });
+
+      // Update form placeholders
+      const searchBox = document.getElementById('modalSearchInput');
+      const formName = document.getElementById('formName');
+      const formEmail = document.getElementById('formEmail');
+      const formMsg = document.getElementById('formMsg');
+      if (searchBox) searchBox.placeholder = dict.placeholders.search;
+      if (formName) formName.placeholder = dict.placeholders.name;
+      if (formEmail) formEmail.placeholder = dict.placeholders.email;
+      if (formMsg) formMsg.placeholder = dict.placeholders.msg;
+
+      // Update role rotator values
+      dict.roles.forEach((r, idx) => {
+        const el = document.getElementById('role-' + idx);
+        if (el) el.innerText = r;
+      });
+
+      lucide.createIcons();
+    }
+
     // 1. Tab Navigation Routing
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
       if (activeP) activeP.classList.add('active-panel');
 
-      // Desktop Nav update
       const items = document.querySelectorAll('.rack-nav__item');
-      items.forEach(btn => {
-        if (btn.innerText.toLowerCase().includes(viewName.substring(0, 4))) {
+      items.forEach((btn, idx) => {
+        const views = ['about', 'portfolio', 'resume', 'blog', 'contact', 'terminal', 'infrastructure', 'design'];
+        if (views[idx] === viewName) {
           btn.classList.add('rack-nav__item--active');
         } else {
           btn.classList.remove('rack-nav__item--active');
         }
       });
 
-      // Mobile Nav update
       const mobItems = document.querySelectorAll('.mobile-dock__item');
-      mobItems.forEach(btn => {
-        if (btn.innerText.toLowerCase().includes(viewName.substring(0, 4))) {
+      mobItems.forEach((btn, idx) => {
+        const views = ['about', 'portfolio', 'resume', 'blog', 'contact'];
+        if (views[idx] === viewName) {
           btn.classList.add('mobile-dock__item--active');
         } else {
           btn.classList.remove('mobile-dock__item--active');
@@ -1517,11 +1732,8 @@
       if (!scopeSec || !statsSec || !tabBtnStats || !tabBtnScope) return;
 
       const scopeRect = scopeSec.getBoundingClientRect();
-
-      // Check if user has scrolled near the bottom of the page
       const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
 
-      // Trigger SCOPE when near bottom OR when scope reaches within 260px from top
       if (isAtBottom || scopeRect.top <= 260) {
         tabBtnScope.classList.add('seg-btn--active');
         tabBtnStats.classList.remove('seg-btn--active');
@@ -1568,12 +1780,19 @@
           const val = cliInput.value.trim().toLowerCase();
           const history = document.getElementById('termHistory');
           let output = '';
-          if (val === 'help') output = 'Commands: help, about, skills, uptime, clear';
-          else if (val === 'about') output = 'Hunain Haider — Systems & Network Infrastructure Specialist';
-          else if (val === 'skills') output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
-          else if (val === 'uptime') output = 'System uptime: 99.98% operational';
-          else if (val === 'clear') { history.innerHTML = ''; cliInput.value = ''; return; }
-          else if (val !== '') output = `bash: command not found: ${val}`;
+          if (val === 'help') {
+            output = currentLang === 'de' ? 'Befehle: help, about, skills, uptime, clear' : 'Commands: help, about, skills, uptime, clear';
+          } else if (val === 'about') {
+            output = currentLang === 'de' ? 'Hunain Haider — Spezialist für System- und Netzwerkinfrastruktur' : 'Hunain Haider — Systems & Network Infrastructure Specialist';
+          } else if (val === 'skills') {
+            output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
+          } else if (val === 'uptime') {
+            output = currentLang === 'de' ? 'System-Betriebszeit: 99.98% einsatzbereit' : 'System uptime: 99.98% operational';
+          } else if (val === 'clear') {
+            history.innerHTML = ''; cliInput.value = ''; return;
+          } else if (val !== '') {
+            output = `bash: command not found: ${val}`;
+          }
 
           history.innerHTML += `<div class="terminal-line"><span class="term-prompt">hunain@infra:~$</span> ${cliInput.value}</div>`;
           if (output) history.innerHTML += `<div class="terminal-line" style="color:#cbd5e1;">${output}</div>`;
