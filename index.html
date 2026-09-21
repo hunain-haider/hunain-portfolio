@@ -6,7 +6,7 @@
   <title>Hunain Haider — Systems & Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -33,6 +33,12 @@
       --chrome-bg: #1e2129;
       --chrome-border: #1c2230;
       --chrome-text: #8b8fa3;
+
+      /* Rack Sidebar Colors */
+      --rack-bg: #11141c;
+      --rack-border: #1d222e;
+      --nav-active-bg: rgba(47, 104, 238, 0.14);
+      --nav-active-border: #2f68ee;
     }
 
     * {
@@ -79,7 +85,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1220px;
       padding: 30px 20px 80px;
       display: flex;
       flex-direction: column;
@@ -144,7 +150,7 @@
       gap: 16px;
       padding-right: 20px;
     }
-  .header-identity__photo {
+    .header-identity__photo {
       width: 72px;
       height: 72px;
       border-radius: 16px;
@@ -155,12 +161,15 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      overflow: hidden;
     }
     .header-identity__photo-img {
       width: 100%;
       height: 100%;
       border-radius: 12px;
       object-fit: cover;
+      object-position: center 20%;
+      display: block;
     }
     .header-identity__name {
       font-size: 1.25rem;
@@ -394,114 +403,207 @@
     .header-action__social a:hover { color: #cbd5e1; }
 
     /* =========================================================
-       MAIN TWO-COLUMN LAYOUT
+       MAIN TWO-COLUMN LAYOUT & 1:1 RACK SIDEBAR
     ========================================================= */
     .main-grid {
       display: grid;
-      grid-template-columns: 88px 1fr;
+      grid-template-columns: 148px 1fr;
       gap: 24px;
+      align-items: flex-start;
     }
 
-    /* Sidebar Dock */
-    .sidebar-dock {
-      background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 16px 8px;
+    /* RACK SIDEBAR DESKTOP */
+    .sidebar.rack-desktop {
+      background-color: var(--rack-bg);
+      border: 1px solid var(--rack-border);
+      border-radius: 18px;
+      padding: 18px 12px 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      height: fit-content;
+      gap: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    .quad-colors {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
-      width: 48px;
-      margin-bottom: 20px;
-    }
-    .q-block { height: 12px; border-radius: 3px; }
-    .q-blue { background: #3b82f6; }
-    .q-green { background: #10b981; }
-    .q-amber { background: #f59e0b; }
-    .q-red { background: #ef4444; }
 
-    .nav-list {
+    /* 4 Horizontal Patch Ports */
+    .patch-panel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .patch-port {
+      height: 22px;
+      border-radius: 6px;
+    }
+    .patch-port--1 { background: #3b82f6; }
+    .patch-port--2 { background: #10b981; }
+    .patch-port--3 { background: #f59e0b; }
+    .patch-port--4 { background: #ef4444; }
+
+    /* Navigation List */
+    .nav {
       list-style: none;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .rack-nav__item {
+      display: flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: #8c9ba8;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .rack-nav__item:hover {
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .nav__icon {
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .nav__label {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Active Indicator LED dot */
+    .nav-led {
+      width: 5.5px;
+      height: 5.5px;
+      border-radius: 50%;
+      background: #3b4658;
+      flex-shrink: 0;
+      margin-left: 6px;
+    }
+    .rack-nav__item--active {
+      background: var(--nav-active-bg);
+      border: 1px solid var(--nav-active-border);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(47, 104, 238, 0.25);
+    }
+    .rack-nav__item--active .nav-led {
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    /* Perforated Dot Plate */
+    .perf-plate {
       display: flex;
       flex-direction: column;
       gap: 6px;
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 10px 4px;
-      border-radius: 8px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.65rem;
-      font-weight: 500;
-      gap: 4px;
-      transition: all 0.2s;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .nav-item.active {
-      background: rgba(47, 104, 238, 0.15);
-      color: #fff;
-      border: 1px solid rgba(47, 104, 238, 0.4);
+    .perf-plate__row {
+      display: flex;
+      gap: 6px;
     }
-    .nav-indicator {
+    .perf-plate__dot {
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--text-dim);
-      margin-top: 2px;
-    }
-    .nav-item.active .nav-indicator {
-      background: var(--status-green);
-      box-shadow: 0 0 6px var(--status-green);
+      background: #252c3b;
     }
 
-    .patch-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 4px);
-      gap: 4px;
-      margin: 20px 0;
-    }
-    .p-hole {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--text-dim);
-    }
-
-    .sidebar-utils {
+    /* Rack Utilities */
+    .rack-utils {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
+    }
+    .search-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
-      align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 14px;
-    }
-    .util-btn {
-      background: #181d26;
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 6px;
-      border-radius: 6px;
-      font-size: 0.65rem;
-      width: 64px;
+      background: #151a24;
+      border: 1px solid #232a3a;
+      border-radius: 7px;
+      padding: 6px 8px;
+      color: #8c9ba8;
+      font-size: 0.68rem;
       cursor: pointer;
+    }
+    .search-trigger__icon {
+      display: flex;
+      align-items: center;
+      margin-right: 6px;
+    }
+    .search-trigger__label {
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+    .search-trigger__kbd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      background: #0e121a;
+      border: 1px solid #263044;
+      border-radius: 4px;
+      padding: 1px 4px;
+      color: #a0aec0;
+    }
+
+    /* Language Segment */
+    .locale-seg {
+      display: flex;
+      background: #131722;
+      border: 1px solid #232a3a;
+      border-radius: 7px;
+      padding: 2px;
+    }
+    .locale-seg__btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .locale-seg__btn--active {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    /* Theme Switcher */
+    .theme-toggle {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 6px;
+      width: 100%;
+      background: #151a24;
+      border: 1px solid #232a3a;
+      border-radius: 7px;
+      padding: 6px 0;
+      color: #8c9ba8;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    /* Content Box */
+    /* =========================================================
+       CONTENT BOX (ABOUT ME)
+    ========================================================= */
     .content-box {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -699,7 +801,7 @@
       gap: 6px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .header__body {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -716,14 +818,14 @@
         align-items: flex-start;
       }
       .main-grid { grid-template-columns: 1fr; }
-      .sidebar-dock {
+      .sidebar.rack-desktop {
         flex-direction: row;
         width: 100%;
-        justify-content: space-around;
+        overflow-x: auto;
         padding: 10px;
       }
-      .nav-list { flex-direction: row; justify-content: space-around; }
-      .quad-colors, .patch-grid, .sidebar-utils { display: none; }
+      .nav { flex-direction: row; }
+      .patch-panel, .perf-plate, .rack-utils { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .doing-grid { grid-template-columns: 1fr; }
     }
@@ -765,7 +867,7 @@
       <div class="header__body">
         <!-- Identity -->
         <div class="header-identity">
-         <div class="header-identity__photo">
+          <div class="header-identity__photo">
             <img class="header-identity__photo-img" src="Hunain.jpeg" alt="Hunain Haider" width="320" height="320">
           </div>
           <div class="header-identity__info">
@@ -810,8 +912,6 @@
               </svg>
               <span>Download CV</span>
             </a>
-            
-          
 
             <!-- CV Version Popover Menu -->
             <ul class="cv-menu" role="listbox" aria-label="CV version">
@@ -849,7 +949,6 @@
                 </svg>
               </a>
             </li>
-            
             <li>
               <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -874,87 +973,108 @@
     <!-- MAIN TWO COLUMN SECTION -->
     <div class="main-grid">
       
-      <!-- SIDEBAR DOCK -->
-      <aside class="sidebar-dock">
-        <div class="quad-colors">
-          <div class="q-block q-blue"></div>
-          <div class="q-block q-green"></div>
-          <div class="q-block q-amber"></div>
-          <div class="q-block q-red"></div>
-        </div>
-
-        <ul class="nav-list">
-          <li>
-            <a href="#" class="nav-item active">
-              <i data-lucide="user" style="width:16px;"></i>
-              <span>ABOUT</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="layout-grid" style="width:16px;"></i>
-              <span>PORTFOLIO</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="file-text" style="width:16px;"></i>
-              <span>RESUME</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="book-open" style="width:16px;"></i>
-              <span>BLOG</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="mail" style="width:16px;"></i>
-              <span>CONTACT</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="terminal" style="width:16px;"></i>
-              <span>TERMINAL</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="server" style="width:16px;"></i>
-              <span>INFRAST...</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              <i data-lucide="palette" style="width:16px;"></i>
-              <span>DESIGN ...</span>
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-        </ul>
-
-        <div class="patch-grid">
-          <div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div>
-          <div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div>
-        </div>
-
-        <div class="sidebar-utils">
-          <button class="util-btn"><i data-lucide="search" style="width:10px;"></i> SEARCH</button>
-          <div style="display:flex; gap:2px;">
-            <button class="util-btn" style="width:31px; background:#2f68ee; color:#fff;">EN</button>
-            <button class="util-btn" style="width:31px;">ID</button>
+      <!-- 1:1 RACK DESKTOP SIDEBAR -->
+      <aside class="sidebar-rack-container">
+        <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
+          
+          <!-- 4 Patch Ports in a Row -->
+          <div class="patch-panel" aria-hidden="true">
+            <div class="patch-port patch-port--1"></div>
+            <div class="patch-port patch-port--2"></div>
+            <div class="patch-port patch-port--3"></div>
+            <div class="patch-port patch-port--4"></div>
           </div>
-          <button class="util-btn"><i data-lucide="moon" style="width:10px;"></i> DARK</button>
-        </div>
+
+          <!-- Vertical Nav Items with Row Layout & Status Dot -->
+          <ul class="nav">
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item rack-nav__item--active" title="About">
+                <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">ABOUT</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Portfolio">
+                <span class="nav__icon"><i data-lucide="layout-grid" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">PORTFOLIO</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Resume">
+                <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">RESUME</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Blog">
+                <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">BLOG</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Contact">
+                <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">CONTACT</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Terminal">
+                <span class="nav__icon"><i data-lucide="terminal" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">TERMINAL</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Infrastructure">
+                <span class="nav__icon"><i data-lucide="server" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">INFRAST...</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="rack-nav__item" title="Design System">
+                <span class="nav__icon"><i data-lucide="palette" style="width:16px;height:16px;"></i></span>
+                <span class="nav__label">DESIGN ...</span>
+                <span class="nav-led" aria-hidden="true"></span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Perforated Dot Plate -->
+          <div class="perf-plate" aria-hidden="true">
+            <div class="perf-plate__row">
+              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
+            </div>
+            <div class="perf-plate__row">
+              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
+            </div>
+          </div>
+
+          <!-- Bottom Utility Controls -->
+          <div class="rack-utils">
+            <button class="search-trigger" aria-label="Search (Ctrl+K)">
+              <span style="display:flex; align-items:center;">
+                <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
+                <span class="search-trigger__label">SEARCH</span>
+              </span>
+              <kbd class="search-trigger__kbd">CTRL+K</kbd>
+            </button>
+            <div class="locale-seg" role="radiogroup" aria-label="Language">
+              <button class="locale-seg__btn locale-seg__btn--active">EN</button>
+              <button class="locale-seg__btn">ID</button>
+            </div>
+            <button class="theme-toggle" role="switch" aria-label="Switch theme">
+              <i data-lucide="moon" style="width:12px;height:12px;"></i>
+              <span>DARK</span>
+            </button>
+          </div>
+
+        </nav>
       </aside>
 
       <!-- CONTENT BOX -->
@@ -1103,26 +1223,6 @@
       }, 3000);
     }
 
-    // Interactive CV Dropdown Logic
-    const cvGroup = document.getElementById('cvDropdownGroup');
-    const cvTrigger = document.getElementById('cvTriggerBtn');
-
-    // Toggle Dropdown
-    cvTrigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const isOpen = cvGroup.classList.toggle('open');
-      cvTrigger.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!cvGroup.contains(e.target)) {
-        cvGroup.classList.remove('open');
-        cvTrigger.setAttribute('aria-expanded', 'false');
-      }
-    });
-
     // Direct Native Download trigger
     function selectAndDownload(version) {
       const a = document.createElement('a');
@@ -1144,8 +1244,8 @@
         item.querySelector('.cv-menu__check').textContent = isCurrent ? '✓' : '';
       });
 
-      cvGroup.classList.remove('open');
-      cvTrigger.setAttribute('aria-expanded', 'false');
+      const cvGroup = document.getElementById('cvDropdownGroup');
+      if (cvGroup) cvGroup.classList.remove('open');
     }
   </script>
 </body>
