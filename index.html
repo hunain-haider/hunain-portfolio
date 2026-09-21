@@ -48,9 +48,9 @@
       --bg-color: #f4f6fb;
       --card-bg: #ffffff;
       --card-border: #e2e8f0;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --text-dim: #94a3b8;
+      --text-main: #2d3748;
+      --text-muted: #4a5568;
+      --text-dim: #718096;
       --chrome-bg: #e2e8f0;
       --chrome-border: #cbd5e1;
       --chrome-text: #475569;
@@ -82,7 +82,7 @@
 
     /* Header */
     .header.box {
-      background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 0; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 0; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
     .header__chrome { background-color: var(--chrome-bg); border-bottom: 1px solid var(--chrome-border); padding: 10px 22px; display: flex; align-items: center; justify-content: space-between; }
     .header__chrome-dots { display: flex; align-items: center; gap: 7px; }
@@ -108,25 +108,25 @@
     .header-signal__title { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
     .header-signal__board { display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem; }
     .header-signal__row { display: flex; align-items: center; }
-    .header-signal__key { width: 85px; color: #c8cdd8; }
+    .header-signal__key { width: 85px; color: var(--text-muted); }
     .header-signal__value { color: var(--text-main); display: flex; align-items: center; gap: 6px; }
     .header-signal__dot { width: 6px; height: 6px; background: var(--status-green); border-radius: 50%; box-shadow: 0 0 6px var(--status-green); }
 
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
-    .cv-group--header { display: inline-flex; position: relative; border-radius: 10px; border: 1.5px solid var(--btn-blue-border); background: var(--btn-blue-dark); overflow: visible; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
-    .cv-btn--header { background: transparent; border: none; color: #ffffff; padding: 7px 16px; font-size: 0.84rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .cv-group--header { display: inline-flex; position: relative; border-radius: 10px; border: 1.5px solid var(--btn-blue-border); background: var(--btn-blue-dark); overflow: visible; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); }
+    .cv-btn--header { background: transparent; border: none; color: var(--text-main); padding: 7px 16px; font-size: 0.84rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .cv-btn--header svg { stroke: var(--btn-blue-text); }
     .cv-trigger { background: var(--btn-blue-solid); border: none; color: #0b0f19; padding: 7px 11px; border-radius: 0 7px 7px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .cv-chevron { stroke: #0d121c; transition: transform 0.2s ease; }
     .cv-group--header.open .cv-chevron { transform: rotate(180deg); }
-    .cv-menu { position: absolute; top: calc(100% + 8px); left: 0; width: 215px; background: var(--menu-bg); border: 1px solid var(--card-border); border-radius: 12px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7); list-style: none; padding: 10px 8px; z-index: 100; display: none; }
+    .cv-menu { position: absolute; top: calc(100% + 8px); left: 0; width: 215px; background: var(--menu-bg); border: 1px solid var(--card-border); border-radius: 12px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4); list-style: none; padding: 10px 8px; z-index: 100; display: none; }
     .cv-group--header.open .cv-menu { display: block; }
     .cv-menu__item { display: grid; grid-template-columns: 20px 1fr; padding: 8px 10px; border-radius: 8px; cursor: pointer; text-decoration: none; }
-    .cv-menu__item:hover { background: rgba(255, 255, 255, 0.04); }
+    .cv-menu__item:hover { background: rgba(128, 128, 128, 0.08); }
     .cv-menu__check { color: var(--btn-blue-text); font-size: 0.95rem; font-weight: 700; }
-    .cv-menu__label { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
+    .cv-menu__label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
     .cv-menu__item--active .cv-menu__label { color: var(--btn-blue-text); }
-    .cv-menu__desc { color: #5b677a; font-size: 0.73rem; }
+    .cv-menu__desc { color: var(--text-muted); font-size: 0.73rem; }
     .header-action__email { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; }
     .header-action__social { display: flex; gap: 12px; list-style: none; margin-top: 2px; }
     .header-action__social a { color: var(--text-dim); display: flex; align-items: center; }
@@ -134,8 +134,8 @@
 
     /* Rack Sidebar */
     .main-grid { display: grid; grid-template-columns: 148px 1fr; gap: 24px; align-items: flex-start; }
-    .sidebar.rack-desktop { background-color: var(--rack-bg); border: 1px solid var(--rack-border); border-radius: 18px; padding: 18px 12px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
-    .patch-panel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .sidebar.rack-desktop { background-color: var(--rack-bg); border: 1px solid var(--rack-border); border-radius: 18px; padding: 18px 12px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+    .patch-panel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--card-border); }
     .patch-port { height: 22px; border-radius: 6px; }
     .patch-port--1 { background: #3b82f6; }
     .patch-port--2 { background: #10b981; }
@@ -143,25 +143,30 @@
     .patch-port--4 { background: #ef4444; }
     .nav { list-style: none; display: flex; flex-direction: column; gap: 5px; }
     .rack-nav__item { display: flex; align-items: center; padding: 7px 10px; border-radius: 8px; color: var(--text-muted); text-decoration: none; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; position: relative; }
-    .rack-nav__item:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.03); }
+    .rack-nav__item:hover { color: var(--text-main); background: rgba(128, 128, 128, 0.06); }
     .nav__icon { display: flex; align-items: center; margin-right: 8px; flex-shrink: 0; }
     .nav__label { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .nav-led { width: 5.5px; height: 5.5px; border-radius: 50%; background: #3b4658; flex-shrink: 0; margin-left: 6px; }
-    .rack-nav__item--active { background: var(--nav-active-bg); border: 1px solid var(--nav-active-border); color: #ffffff; box-shadow: 0 0 14px rgba(47, 104, 238, 0.25); }
+    .rack-nav__item--active { background: var(--nav-active-bg); border: 1px solid var(--nav-active-border); color: var(--text-main); box-shadow: 0 0 14px rgba(47, 104, 238, 0.2); }
     .rack-nav__item--active .nav-led { background: #10b981; box-shadow: 0 0 8px #10b981; }
-    .perf-plate { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 10px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .perf-plate { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 10px 0; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
     .perf-plate__row { display: flex; gap: 6px; }
-    .perf-plate__dot { width: 4px; height: 4px; border-radius: 50%; background: #252c3b; }
+    .perf-plate__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-dim); }
     .rack-utils { display: flex; flex-direction: column; gap: 7px; }
-    .search-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; background: #151a24; border: 1px solid #232a3a; border-radius: 7px; padding: 6px 8px; color: var(--text-muted); font-size: 0.68rem; cursor: pointer; }
-    .search-trigger__kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: #0e121a; border: 1px solid #263044; border-radius: 4px; padding: 1px 4px; color: #a0aec0; }
-    .locale-seg { display: flex; background: #131722; border: 1px solid #232a3a; border-radius: 7px; padding: 2px; }
-    .locale-seg__btn { flex: 1; border: none; background: transparent; color: #64748b; font-size: 0.68rem; font-weight: 700; padding: 4px 0; border-radius: 5px; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s ease; }
-    .locale-seg__btn--active { background: var(--accent-blue); color: #ffffff; }
-    .theme-toggle { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: #151a24; border: 1px solid #232a3a; border-radius: 7px; padding: 6px 0; color: var(--text-muted); font-size: 0.68rem; font-weight: 600; cursor: pointer; text-transform: uppercase; }
+    
+    /* Exact 3rd Pic Search Button styling */
+    .search-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 7px 10px; color: var(--text-muted); font-size: 0.68rem; cursor: pointer; }
+    .search-trigger:hover { border-color: var(--accent-blue); color: var(--text-main); }
+    .search-trigger__kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 5px; padding: 2px 5px; color: var(--text-main); font-weight: 600; }
+    
+    .locale-seg { display: flex; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 7px; padding: 2px; }
+    .locale-seg__btn { flex: 1; border: none; background: transparent; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; padding: 4px 0; border-radius: 5px; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s ease; }
+    .locale-seg__btn--active { background: var(--accent-blue); color: #ffffff !important; }
+    .theme-toggle { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 7px; padding: 6px 0; color: var(--text-muted); font-size: 0.68rem; font-weight: 600; cursor: pointer; text-transform: uppercase; }
+    .theme-toggle:hover { border-color: var(--accent-blue); color: var(--text-main); }
 
     /* Content Box */
-    .content-box { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 36px 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); min-height: 520px; }
+    .content-box { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 36px 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); min-height: 520px; }
     .view-panel { display: none; animation: panelFade 0.2s ease; }
     .view-panel.active-panel { display: block; }
     @keyframes panelFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -170,24 +175,24 @@
     .color-accent-line { width: 40px; height: 3px; background: linear-gradient(90deg, #3b82f6, #f59e0b); border-radius: 2px; margin: 10px 0 18px; }
     .sub-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 22px; display: flex; align-items: center; gap: 8px; }
     .sub-tagline span { color: var(--accent-blue); }
-    .bio-body p { font-size: 0.94rem; line-height: 1.75; color: #b3c0cf; margin-bottom: 18px; }
+    .bio-body p { font-size: 0.94rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 18px; }
 
     /* About Section */
-    .seg-control-nav { background: rgba(13, 16, 23, 0.85); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
-    .seg-btn { flex: 1; padding: 9px 14px; font-size: 0.82rem; font-weight: 600; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.25s ease; }
+    .seg-control-nav { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    .seg-btn { flex: 1; padding: 9px 14px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.25s ease; }
     .seg-btn:hover { color: var(--text-main); }
-    .seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45); }
+    .seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.3); }
     .section-heading-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 18px; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
-    .stat-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 10px; padding: 20px 12px; text-align: center; transition: border-color 0.2s ease; }
+    .stat-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 20px 12px; text-align: center; transition: border-color 0.2s ease; }
     .stat-card:hover { border-color: rgba(47, 104, 238, 0.4); }
     .stat-val { font-size: 1.9rem; font-weight: 700; color: #3b82f6; margin-bottom: 4px; }
     .stat-label { font-size: 0.68rem; text-transform: uppercase; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; }
 
     .about-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .about-scope-card { background: var(--scope-card-bg); border: 1px solid var(--scope-card-border); border-radius: 14px; border-left: 3px solid #5b8def; padding: 24px; display: flex; align-items: flex-start; gap: 18px; position: relative; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); }
-    .about-scope-card:hover { border-color: var(--scope-card-hover-border); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(47, 104, 238, 0.2); }
-    .about-scope-card__icon-wrap { width: 46px; height: 46px; background: var(--scope-icon-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 14px rgba(47, 104, 238, 0.35); }
+    .about-scope-card { background: var(--scope-card-bg); border: 1px solid var(--scope-card-border); border-radius: 14px; border-left: 3px solid #5b8def; padding: 24px; display: flex; align-items: flex-start; gap: 18px; position: relative; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); }
+    .about-scope-card:hover { border-color: var(--scope-card-hover-border); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(47, 104, 238, 0.15); }
+    .about-scope-card__icon-wrap { width: 46px; height: 46px; background: var(--scope-icon-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 14px rgba(47, 104, 238, 0.3); }
     .about-scope-card__body { flex: 1; }
     .about-scope-card__type { position: absolute; top: 18px; right: 18px; font-size: 0.62rem; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; background: var(--chip-bg); color: var(--chip-text); font-weight: 700; letter-spacing: 0.6px; font-family: 'JetBrains Mono', monospace; }
     .about-scope-card__title { font-size: 1.08rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
@@ -195,20 +200,20 @@
 
     /* Portfolio Section */
     .port-filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 28px; }
-    .port-filter-btn { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: #141720; border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
-    .port-filter-btn:hover { color: var(--text-main); border-color: #3b4658; }
-    .port-filter-btn--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.4); }
-    .port-filter-pill { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; padding: 1px 6px; border-radius: 10px; background: rgba(255, 255, 255, 0.12); color: #fff; }
-    .port-filter-btn--active .port-filter-pill { background: rgba(255, 255, 255, 0.25); }
+    .port-filter-btn { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .port-filter-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+    .port-filter-btn--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.3); }
+    .port-filter-pill { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; padding: 1px 6px; border-radius: 10px; background: rgba(128, 128, 128, 0.15); color: var(--text-main); }
+    .port-filter-btn--active .port-filter-pill { background: rgba(255, 255, 255, 0.25); color: #fff; }
     .port-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .port-card { background: #10131a; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s ease; }
+    .port-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s ease; }
     .port-card:hover { transform: translateY(-4px); border-color: rgba(47, 104, 238, 0.5); }
     .port-card--cert { border: 1px solid rgba(249, 115, 22, 0.45); }
     .port-card--cert:hover { border-color: #f97316; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.15); }
     .port-card--badge-card { border: 1px solid rgba(16, 185, 129, 0.4); }
     .port-card--badge-card:hover { border-color: #10b981; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15); }
     .port-card__media { position: relative; width: 100%; height: 230px; background: #090c13; overflow: hidden; }
-    .port-card__badge { position: absolute; top: 14px; left: 14px; background: #2f68ee; color: #ffffff; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); z-index: 2; }
+    .port-card__badge { position: absolute; top: 14px; left: 14px; background: #2f68ee; color: #ffffff; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 2; }
     .port-card__badge--cert { background: #ea580c; }
     .port-card__badge--badge { background: #d97706; }
     .port-card__overlay { position: absolute; inset: 0; background: rgba(13, 16, 24, 0.88); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; opacity: 0; transition: opacity 0.25s ease; z-index: 1; }
@@ -217,154 +222,135 @@
     .port-card__actions { display: flex; align-items: center; gap: 10px; }
     .port-btn-primary { background: #2f68ee; color: #ffffff; border: none; border-radius: 20px; padding: 8px 18px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(47, 104, 238, 0.4); }
     .port-btn-secondary { background: #1e2330; color: #e2e8f0; border: 1px solid #333d52; border-radius: 20px; padding: 8px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-    .port-card__footer { padding: 16px 20px; background: #11141c; border-top: 1px solid var(--card-border); }
+    .port-card__footer { padding: 16px 20px; background: var(--card-bg); border-top: 1px solid var(--card-border); }
     .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
 
     /* Resume Section */
-    .resume-seg-nav { background: rgba(13, 16, 23, 0.85); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+    .resume-seg-nav { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
     .resume-seg-btn { flex: 1; padding: 8px 12px; font-size: 0.8rem; font-weight: 700; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.2s ease; }
-    .resume-seg-btn:hover { color: #fff; }
-    .resume-seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45); }
-    .resume-sec-title { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 36px 0 22px; display: flex; align-items: center; gap: 10px; }
+    .resume-seg-btn:hover { color: var(--text-main); }
+    .resume-seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.3); }
+    .resume-sec-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin: 36px 0 22px; display: flex; align-items: center; gap: 10px; }
     .timeline { position: relative; padding-left: 28px; display: flex; flex-direction: column; gap: 28px; }
-    .timeline::before { content: ''; position: absolute; left: 7px; top: 12px; bottom: 20px; width: 2px; background: #232b3d; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 12px; bottom: 20px; width: 2px; background: var(--card-border); }
     .timeline-node { position: relative; }
-    .timeline-node__dot { position: absolute; left: -28px; top: 24px; width: 16px; height: 16px; border-radius: 50%; background: #0d1017; border: 3px solid #2f68ee; box-shadow: 0 0 10px rgba(47, 104, 238, 0.6); display: flex; align-items: center; justify-content: center; }
+    .timeline-node__dot { position: absolute; left: -28px; top: 24px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-color); border: 3px solid #2f68ee; box-shadow: 0 0 10px rgba(47, 104, 238, 0.4); display: flex; align-items: center; justify-content: center; }
     .timeline-node__dot::after { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #fff; }
-    .resume-card { background: #11141c; border: 1px solid #1c2230; border-radius: 14px; padding: 24px 28px; transition: all 0.2s ease; }
+    .resume-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; padding: 24px 28px; transition: all 0.2s ease; }
     .resume-card:hover { border-color: rgba(47, 104, 238, 0.4); }
-    .resume-card__title { font-size: 1.18rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+    .resume-card__title { font-size: 1.18rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .resume-card__company { font-size: 0.95rem; font-weight: 600; color: #3b82f6; margin-bottom: 8px; }
-    .resume-card__meta { display: flex; align-items: center; gap: 12px; font-size: 0.78rem; color: #64748b; margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
+    .resume-card__meta { display: flex; align-items: center; gap: 12px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
     .resume-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .resume-bullets li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.65; color: #cbd5e1; }
-    .resume-bullets li::before { content: '•'; position: absolute; left: 4px; color: #64748b; font-size: 1.1rem; }
+    .resume-bullets li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.65; color: var(--text-muted); }
+    .resume-bullets li::before { content: '•'; position: absolute; left: 4px; color: var(--text-dim); font-size: 1.1rem; }
     .resume-show-more-btn { width: 100%; background: rgba(47, 104, 238, 0.05); border: 1px dashed rgba(47, 104, 238, 0.35); border-radius: 8px; padding: 10px 0; color: #60a5fa; font-size: 0.8rem; font-weight: 600; cursor: pointer; margin-bottom: 18px; }
     .resume-tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tech-pill { background: #151a24; border: 1px solid #232b3d; border-radius: 6px; padding: 3px 9px; font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+    .tech-pill { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 6px; padding: 3px 9px; font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
     .edu-filter-group { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .edu-filter-btn { background: #141720; border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; padding: 5px 14px; cursor: pointer; }
+    .edu-filter-btn { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-muted); font-size: 0.78rem; font-weight: 600; padding: 5px 14px; cursor: pointer; }
     .edu-filter-btn--active { background: #2f68ee; border-color: #2f68ee; color: #fff; }
-    .edu-card { background: #11141c; border: 1px solid #1c2230; border-radius: 12px; border-left: 3px solid #f97316; padding: 18px 22px; display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
+    .edu-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 12px; border-left: 3px solid #f97316; padding: 18px 22px; display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
     .edu-card--formal { border-left-color: #2f68ee; }
     .edu-card__icon { width: 42px; height: 42px; background: #2f68ee; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
     .edu-card__content { flex: 1; }
-    .edu-card__title { font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .edu-card__desc { font-size: 0.84rem; color: #94a3b8; margin-bottom: 6px; }
-    .edu-card__meta { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; color: #64748b; font-family: 'JetBrains Mono', monospace; }
-    .edu-card__badge { background: rgba(255, 255, 255, 0.08); padding: 2px 7px; border-radius: 4px; color: #cbd5e1; }
+    .edu-card__title { font-size: 1.02rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; }
+    .edu-card__desc { font-size: 0.84rem; color: var(--text-muted); margin-bottom: 6px; }
+    .edu-card__meta { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+    .edu-card__badge { background: rgba(128, 128, 128, 0.1); padding: 2px 7px; border-radius: 4px; color: var(--text-muted); }
 
     .core-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; }
-    .core-card { background: #11141c; border: 1px solid #1c2230; border-radius: 14px; padding: 22px; }
-    .core-card__header { font-size: 0.7rem; font-weight: 700; color: #64748b; letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+    .core-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; padding: 22px; }
+    .core-card__header { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
     .core-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .core-name { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
+    .core-name { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
     .core-rating-wrap { display: flex; align-items: center; gap: 8px; }
     .core-bars { display: flex; gap: 4px; }
     .core-bar { width: 10px; height: 3.5px; background: #3b82f6; border-radius: 2px; }
-    .core-pill { background: #172554; color: #60a5fa; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; }
+    .core-pill { background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; }
 
     .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .tools-card { background: #11141c; border: 1px solid #1c2230; border-radius: 14px; padding: 22px; }
-    .tools-card__title { font-size: 0.7rem; font-weight: 700; color: #64748b; letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
+    .tools-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; padding: 22px; }
+    .tools-card__title { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
     .tools-pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tool-badge { display: inline-flex; align-items: center; gap: 6px; background: #151a24; border: 1px solid #232b3d; border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; color: #e2e8f0; }
+    .tool-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; color: var(--text-main); }
     .tool-tag { font-size: 0.62rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
-    .tool-tag--adv { background: #1e3a8a; color: #93c5fd; }
-    .tool-tag--int { background: #1f2937; color: #9ca3af; }
+    .tool-tag--adv { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .tool-tag--int { background: rgba(128, 128, 128, 0.15); color: var(--text-muted); }
 
     /* Blog Section */
     .blog-search-bar { position: relative; margin: 20px 0 24px; width: 100%; }
-    .blog-search-bar input { width: 100%; background: #11141c; border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px 14px 44px; color: #fff; font-size: 0.88rem; outline: none; }
-    .blog-search-bar i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #64748b; }
+    .blog-search-bar input { width: 100%; background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px 14px 44px; color: var(--text-main); font-size: 0.88rem; outline: none; }
+    .blog-search-bar input:focus { border-color: #2f68ee; }
+    .blog-search-bar i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
     .blog-filters-block { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
     .blog-filter-row { display: flex; align-items: flex-start; gap: 14px; }
-    .blog-filter-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #64748b; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding-top: 6px; width: 75px; flex-shrink: 0; }
+    .blog-filter-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding-top: 6px; width: 75px; flex-shrink: 0; }
     .blog-filter-pills { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
-    .b-pill { background: #121620; border: 1px solid var(--card-border); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; color: #94a3b8; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
-    .b-pill:hover { border-color: #3b4658; color: #fff; }
+    .b-pill { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+    .b-pill:hover { border-color: var(--text-dim); color: var(--text-main); }
     .b-pill--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #fff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.35); }
-    .b-pill-count { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: rgba(255, 255, 255, 0.12); padding: 1px 5px; border-radius: 8px; }
-    .b-pill-more-btn { background: #121620; border: 1px solid #2f68ee; color: #60a5fa; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+    .b-pill-count { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: rgba(128, 128, 128, 0.15); padding: 1px 5px; border-radius: 8px; }
+    .b-pill-more-btn { background: var(--bg-color); border: 1px solid #2f68ee; color: #60a5fa; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
     .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-    .blog-card { background: #11141c; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.25s ease, border-color 0.25s ease; }
+    .blog-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.25s ease, border-color 0.25s ease; }
     .blog-card:hover { transform: translateY(-4px); border-color: rgba(47, 104, 238, 0.5); }
     .blog-card__media { position: relative; width: 100%; height: 200px; background: #090c13; overflow: hidden; }
     .blog-card__date-badge { position: absolute; top: 14px; left: 14px; background: rgba(13, 16, 24, 0.88); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 4px 8px; text-align: center; z-index: 2; backdrop-filter: blur(4px); }
     .blog-card__date-day { font-size: 1rem; font-weight: 800; color: #fff; line-height: 1; }
     .blog-card__date-mo { font-size: 0.6rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
     .blog-card__body { padding: 20px 22px; display: flex; flex-direction: column; flex: 1; }
-    .blog-card__title { font-size: 1.05rem; font-weight: 700; color: #ffffff; line-height: 1.4; margin-bottom: 10px; }
-    .blog-card__snippet { font-size: 0.84rem; line-height: 1.6; color: #94a3b8; margin-bottom: 16px; flex: 1; }
-    .blog-card__meta-bar { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; color: #64748b; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; }
-    .blog-card__lang-tag { background: #1a202c; padding: 2px 6px; border-radius: 4px; color: #a0aec0; }
-    .blog-card__tags { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 12px; }
-    .blog-tag-pill { background: #151a24; border: 1px solid #232b3d; border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+    .blog-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); line-height: 1.4; margin-bottom: 10px; }
+    .blog-card__snippet { font-size: 0.84rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px; flex: 1; }
+    .blog-card__meta-bar { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; }
+    .blog-card__lang-tag { background: rgba(128, 128, 128, 0.15); padding: 2px 6px; border-radius: 4px; color: var(--text-main); }
+    .blog-card__tags { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--card-border); padding-top: 12px; }
+    .blog-tag-pill { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
     /* PDF Modal */
     .blog-pdf-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 30px 20px; }
     .blog-pdf-modal.open-pdf { display: flex; }
-    .blog-pdf-container { width: 100%; max-width: 980px; height: 90vh; background: #11141c; border: 1px solid var(--card-border); border-radius: 14px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9); }
-    .blog-pdf-header { background: #1a1e28; border-bottom: 1px solid var(--card-border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-    .blog-pdf-title { font-size: 0.9rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .blog-pdf-container { width: 100%; max-width: 980px; height: 90vh; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5); }
+    .blog-pdf-header { background: var(--chrome-bg); border-bottom: 1px solid var(--card-border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .blog-pdf-title { font-size: 0.9rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
     .blog-pdf-actions { display: flex; align-items: center; gap: 12px; }
-    .blog-pdf-btn { background: #232836; border: 1px solid #333d52; border-radius: 6px; padding: 6px 12px; font-size: 0.76rem; font-weight: 600; color: #cbd5e1; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+    .blog-pdf-btn { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 6px; padding: 6px 12px; font-size: 0.76rem; font-weight: 600; color: var(--text-main); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
     .blog-pdf-btn:hover { background: #2f68ee; color: #fff; border-color: #2f68ee; }
-    .blog-pdf-close { background: transparent; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; }
-    .blog-pdf-close:hover { color: #fff; }
-    .blog-pdf-frame { width: 100%; flex: 1; border: none; background: #0d0f14; }
+    .blog-pdf-close { background: transparent; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; }
+    .blog-pdf-close:hover { color: var(--text-main); }
+    .blog-pdf-frame { width: 100%; flex: 1; border: none; background: var(--bg-color); }
 
     /* Contact Section */
     .contact-availability-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.6px; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; }
     .contact-availability-dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
     .contact-grid { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: 24px; align-items: flex-start; }
-    .contact-info-card { background: #11141c; border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 22px; }
-    .contact-info-title { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+    .contact-info-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 22px; }
+    .contact-info-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .contact-detail-row { display: flex; align-items: center; gap: 14px; }
-    .contact-detail-icon { width: 40px; height: 40px; border-radius: 10px; background: #171c26; border: 1px solid #232a3a; display: flex; align-items: center; justify-content: center; color: #60a5fa; flex-shrink: 0; }
-    .contact-detail-text { font-size: 0.9rem; color: #e2e8f0; font-weight: 500; word-break: break-all; }
-    .contact-detail-text a { color: #e2e8f0; text-decoration: none; }
+    .contact-detail-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: center; color: #60a5fa; flex-shrink: 0; }
+    .contact-detail-text { font-size: 0.9rem; color: var(--text-main); font-weight: 500; word-break: break-all; }
+    .contact-detail-text a { color: var(--text-main); text-decoration: none; }
     .contact-detail-text a:hover { color: #60a5fa; }
-    .contact-social-block { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; }
-    .contact-social-label { font-size: 0.68rem; font-weight: 700; color: #64748b; letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+    .contact-social-block { border-top: 1px solid var(--card-border); padding-top: 20px; }
+    .contact-social-label { font-size: 0.68rem; font-weight: 700; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
     .contact-social-icons { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .contact-social-btn { width: 38px; height: 38px; border-radius: 10px; background: #171c26; border: 1px solid #232a3a; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; transition: all 0.2s ease; }
+    .contact-social-btn { width: 38px; height: 38px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; transition: all 0.2s ease; }
     .contact-social-btn:hover { background: #2f68ee; border-color: #2f68ee; color: #ffffff; transform: translateY(-2px); }
-    .contact-response-status { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: #64748b; }
+    .contact-response-status { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-dim); }
 
-    .contact-form-card { background: #11141c; border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 18px; }
+    .contact-form-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 18px; }
     .form-inputs-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-field-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-label { font-size: 0.82rem; font-weight: 600; color: #e2e8f0; }
-    .form-input-field { background: #0d1017; border: 1px solid var(--card-border); border-radius: 10px; padding: 12px 16px; color: #ffffff; font-size: 0.88rem; outline: none; width: 100%; }
-    .form-textarea-field { background: #0d1017; border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px; color: #ffffff; font-size: 0.88rem; outline: none; resize: vertical; min-height: 140px; width: 100%; }
-    .form-counter { align-self: flex-end; font-size: 0.72rem; color: #64748b; font-family: 'JetBrains Mono', monospace; margin-top: -8px; }
+    .form-label { font-size: 0.82rem; font-weight: 600; color: var(--text-main); }
+    .form-input-field { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px 16px; color: var(--text-main); font-size: 0.88rem; outline: none; width: 100%; }
+    .form-textarea-field { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px; color: var(--text-main); font-size: 0.88rem; outline: none; resize: vertical; min-height: 140px; width: 100%; }
+    .form-counter { align-self: flex-end; font-size: 0.72rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; margin-top: -8px; }
     .contact-submit-btn { width: 100%; background: #2f68ee; border: none; border-radius: 10px; padding: 14px 20px; font-size: 0.95rem; font-weight: 600; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(47, 104, 238, 0.4); }
 
-    /* =========================================================
-       TERMINAL VIEW (EXACT 1:1 INTERACTIVE CONSOLE)
-    ========================================================= */
-    .terminal-container {
-      background: #090c13;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      font-family: 'JetBrains Mono', monospace;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      cursor: text;
-    }
-    .terminal-header-bar {
-      background: #11141c;
-      border-bottom: 1px solid var(--card-border);
-      padding: 10px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    /* Terminal View */
+    .terminal-container { background: #090c13; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-family: 'JetBrains Mono', monospace; min-height: 520px; display: flex; flex-direction: column; cursor: text; }
+    .terminal-header-bar { background: #11141c; border-bottom: 1px solid var(--card-border); padding: 10px 18px; display: flex; align-items: center; gap: 12px; }
     .terminal-traffic-dots { display: flex; gap: 7px; }
     .t-dot { width: 9px; height: 9px; border-radius: 50%; }
     .t-dot--red { background: #ff5f56; }
@@ -381,18 +367,24 @@
     .term-log-cmd { color: #cbd5e1; margin-bottom: 4px; }
     .term-log-out { color: #94a3b8; padding-left: 12px; }
 
-    /* Search Modal */
-    .search-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 999; display: none; align-items: flex-start; justify-content: center; padding-top: 15vh; }
+    /* Exact 3rd Pic Search Modal */
+    .search-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding-top: 14vh; }
     .search-modal.open-modal { display: flex; }
-    .search-box { width: 100%; max-width: 540px; background: #131722; border: 1px solid #232b3d; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); }
-    .search-input-wrap { display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid #202638; gap: 10px; }
-    .search-input-wrap input { flex: 1; background: transparent; border: none; color: #fff; font-size: 0.95rem; outline: none; }
-    .search-results { max-height: 280px; overflow-y: auto; padding: 8px; }
-    .search-result-item { padding: 10px 14px; border-radius: 8px; color: #cbd5e1; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
-    .search-result-item:hover { background: rgba(47, 104, 238, 0.15); color: #fff; }
+    .search-command-box { width: 100%; max-width: 620px; background: #131722; border: 1px solid #283044; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); font-family: 'Poppins', sans-serif; }
+    .search-input-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #202638; gap: 14px; }
+    .search-input-header svg { color: #94a3b8; flex-shrink: 0; }
+    .search-input-header input { flex: 1; background: transparent; border: none; color: #fff; font-size: 1rem; outline: none; }
+    .search-esc-tag { background: #ffffff; color: #0b0f19; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; }
+    .search-content-body { max-height: 360px; overflow-y: auto; padding: 12px; }
+    .search-item-row { padding: 12px 16px; border-radius: 8px; color: #e2e8f0; font-size: 0.9rem; cursor: pointer; display: flex; flex-direction: column; gap: 4px; margin-bottom: 4px; }
+    .search-item-row:hover { background: rgba(47, 104, 238, 0.2); color: #fff; }
+    .search-item-title { font-weight: 600; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+    .search-item-date { font-size: 0.75rem; color: #64748b; font-family: 'JetBrains Mono', monospace; }
+    .search-modal-footer { background: #10131a; border-top: 1px solid #202638; padding: 10px 18px; display: flex; align-items: center; gap: 16px; font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+    .search-key-badge { background: #ffffff; color: #0b0f19; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
 
     /* Footer & Scroll */
-    .footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 24px; margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 0.78rem; color: var(--text-dim); }
+    .footer { border-top: 1px solid var(--card-border); padding-top: 24px; margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 0.78rem; color: var(--text-dim); }
     .footer a { color: var(--text-dim); text-decoration: none; }
     .footer a:hover { color: var(--text-main); }
     .status-badge { display: inline-flex; align-items: center; gap: 6px; }
@@ -443,7 +435,7 @@
           <span class="header__chrome-dot header__chrome-dot--amber"></span>
           <span class="header__chrome-dot header__chrome-dot--green"></span>
         </div>
-        <span class="header__chrome-label">operator console</span>
+        <span class="header__chrome-label" data-i18n="console_label">operator console</span>
       </div>
 
       <div class="header__body">
@@ -463,18 +455,18 @@
         </div>
 
         <div class="header-signal">
-          <div class="header-signal__title">system status</div>
+          <div class="header-signal__title" data-i18n="status_title">system status</div>
           <div class="header-signal__board">
             <div class="header-signal__row header-signal__row--status">
-              <span class="header-signal__key">status</span>
-              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> available</span>
+              <span class="header-signal__key" data-i18n="status_key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
             </div>
             <div class="header-signal__row">
               <span class="header-signal__key">tz</span>
               <span class="header-signal__value">GMT+5</span>
             </div>
             <div class="header-signal__row">
-              <span class="header-signal__key">response</span>
+              <span class="header-signal__key" data-i18n="response_key">response</span>
               <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
@@ -488,7 +480,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Download CV</span>
+              <span data-i18n="download_cv">Download CV</span>
             </a>
 
             <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
@@ -502,14 +494,14 @@
                 <span class="cv-menu__check">✓</span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">Europass</span>
-                  <span class="cv-menu__desc">Standard Official CV</span>
+                  <span class="cv-menu__desc" data-i18n="cv_human_desc">Standard Official CV</span>
                 </div>
               </li>
               <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
                 <span class="cv-menu__check"></span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">ATS Optimized</span>
-                  <span class="cv-menu__desc">Plain, compatible</span>
+                  <span class="cv-menu__desc" data-i18n="cv_ats_desc">Plain, compatible</span>
                 </div>
               </li>
             </ul>
@@ -545,7 +537,7 @@
     </header>
 
     <div class="main-grid">
-      <!-- SIDEBAR -->
+      <!-- SIDEBAR (Infrastructure & Design System removed entirely) -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           <div class="patch-panel" aria-hidden="true">
@@ -558,56 +550,42 @@
             <li class="nav__item">
               <a class="rack-nav__item rack-nav__item--active" onclick="switchView('about')">
                 <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">ABOUT</span>
+                <span class="nav__label" data-i18n="nav_about">ABOUT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('portfolio')">
                 <span class="nav__icon"><i data-lucide="layout-grid" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">PORTFOLIO</span>
+                <span class="nav__label" data-i18n="nav_portfolio">PORTFOLIO</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('resume')">
                 <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">RESUME</span>
+                <span class="nav__label" data-i18n="nav_resume">RESUME</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('blog')">
                 <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">BLOG</span>
+                <span class="nav__label" data-i18n="nav_blog">BLOG</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('contact')">
                 <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">CONTACT</span>
+                <span class="nav__label" data-i18n="nav_contact">CONTACT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('terminal')">
                 <span class="nav__icon"><i data-lucide="terminal" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">TERMINAL</span>
-                <span class="nav-led" aria-hidden="true"></span>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a class="rack-nav__item" onclick="switchView('infrastructure')">
-                <span class="nav__icon"><i data-lucide="server" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">INFRAST...</span>
-                <span class="nav-led" aria-hidden="true"></span>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a class="rack-nav__item" onclick="switchView('design')">
-                <span class="nav__icon"><i data-lucide="palette" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label">DESIGN ...</span>
+                <span class="nav__label" data-i18n="nav_terminal">TERMINAL</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
@@ -623,10 +601,11 @@
           </div>
 
           <div class="rack-utils">
+            <!-- Exact 3rd Pic Search Trigger -->
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
-              <span style="display:flex; align-items:center;">
-                <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
-                <span class="search-trigger__label">SEARCH</span>
+              <span style="display:flex; align-items:center; gap:6px;">
+                <i data-lucide="search" style="width:13px;height:13px;"></i>
+                <span data-i18n="btn_search">SEARCH</span>
               </span>
               <kbd class="search-trigger__kbd">CTRL+K</kbd>
             </button>
@@ -635,8 +614,8 @@
               <button class="locale-seg__btn" id="langDe" onclick="setLanguage('de')">DE</button>
             </div>
             <button class="theme-toggle" id="themeToggleBtn" role="switch" aria-label="Switch theme">
-              <i data-lucide="moon" id="themeIcon" style="width:12px;height:12px;"></i>
-              <span id="themeLabel">DARK</span>
+              <i data-lucide="sun" id="themeIcon" style="width:12px;height:12px;"></i>
+              <span id="themeLabel" data-i18n="theme_dark">DARK</span>
             </button>
           </div>
         </nav>
@@ -647,64 +626,64 @@
         
         <!-- 1. ABOUT VIEW -->
         <section id="view-about" class="view-panel active-panel">
-          <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="about_title">About Me</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div class="sub-tagline"><span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</div>
+          <div class="sub-tagline"><span>◆</span> <span data-i18n="about_subtitle">Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</span></div>
           <div class="bio-body">
-            <p>IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.</p>
-            <p>I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.</p>
-            <p>Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.</p>
+            <p data-i18n="bio_p1">IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.</p>
+            <p data-i18n="bio_p2">I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.</p>
+            <p data-i18n="bio_p3">Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.</p>
           </div>
-          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;">See my Automation & Infrastructure portfolio &rarr;</a>
+          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;" data-i18n="see_portfolio_link">See my Automation & Infrastructure portfolio &rarr;</a>
 
           <nav class="seg-control-nav" role="tablist">
-            <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')">STATS</button>
-            <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')">SCOPE</button>
+            <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')" data-i18n="tab_stats">STATS</button>
+            <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')" data-i18n="tab_scope">SCOPE</button>
           </nav>
 
           <section id="stats" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title">By the Numbers</h2>
+            <h2 class="section-heading-title" data-i18n="stats_title">By the Numbers</h2>
             <div class="stats-grid">
-              <div class="stat-card"><div class="stat-val">9+</div><div class="stat-label">Years Professional IT</div></div>
-              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label">Projects Done</div></div>
-              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label">Technologies</div></div>
-              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label">Certifications</div></div>
+              <div class="stat-card"><div class="stat-val">9+</div><div class="stat-label" data-i18n="stat_exp">Years Professional IT</div></div>
+              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label" data-i18n="stat_proj">Projects Done</div></div>
+              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label" data-i18n="stat_tech">Technologies</div></div>
+              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label" data-i18n="stat_cert">Certifications</div></div>
             </div>
           </section>
 
           <section id="scope" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title">What I'm Doing</h2>
+            <h2 class="section-heading-title" data-i18n="scope_title">What I'm Doing</h2>
             <div class="about-scope-grid">
               <article class="about-scope-card">
                 <div class="about-scope-card__icon-wrap"><i data-lucide="shield-check" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">SECURITY</span>
-                  <h3 class="about-scope-card__title">Network Security</h3>
-                  <p class="about-scope-card__desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
+                  <span class="about-scope-card__type" data-i18n="scope1_badge">SECURITY</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope1_title">Network Security</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope1_desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
                 </div>
               </article>
               <article class="about-scope-card">
                 <div class="about-scope-card__icon-wrap"><i data-lucide="server" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">INFRASTRUCTURE</span>
-                  <h3 class="about-scope-card__title">Systems & Servers</h3>
-                  <p class="about-scope-card__desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
+                  <span class="about-scope-card__type" data-i18n="scope2_badge">INFRASTRUCTURE</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope2_title">Systems & Servers</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope2_desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
                 </div>
               </article>
               <article class="about-scope-card">
                 <div class="about-scope-card__icon-wrap"><i data-lucide="activity" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">RELIABILITY</span>
-                  <h3 class="about-scope-card__title">Health Monitoring</h3>
-                  <p class="about-scope-card__desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
+                  <span class="about-scope-card__type" data-i18n="scope3_badge">RELIABILITY</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope3_title">Health Monitoring</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope3_desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
                 </div>
               </article>
               <article class="about-scope-card">
                 <div class="about-scope-card__icon-wrap"><i data-lucide="cpu" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
-                  <span class="about-scope-card__type">AUTOMATION</span>
-                  <h3 class="about-scope-card__title">Process Automation</h3>
-                  <p class="about-scope-card__desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
+                  <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
+                  <h3 class="about-scope-card__title" data-i18n="scope4_title">Process Automation</h3>
+                  <p class="about-scope-card__desc" data-i18n="scope4_desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
                 </div>
               </article>
             </div>
@@ -713,9 +692,9 @@
 
         <!-- 2. PORTFOLIO VIEW -->
         <section id="view-portfolio" class="view-panel">
-          <h1 class="content-title">DevOps & Infrastructure Portfolio<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="portfolio_title">DevOps & Infrastructure Portfolio</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;">Cloud infrastructure, Kubernetes, and network designs built for high uptime.</p>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;" data-i18n="portfolio_desc">Cloud infrastructure, automation scripts, and network designs built for high uptime.</p>
           
           <div class="port-filters" role="tablist">
             <button class="port-filter-btn port-filter-btn--active" onclick="filterPortfolio('all')">
@@ -826,34 +805,34 @@
 
         <!-- 3. RESUME VIEW -->
         <section id="view-resume" class="view-panel">
-          <h1 class="content-title">Resume<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
 
           <nav class="resume-seg-nav" role="tablist">
-            <button class="resume-seg-btn resume-seg-btn--active" onclick="scrollResumeTo('res-experience')">EXP .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-education')">EDUC .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-core')">CORE .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-tools')">TOOL .</button>
+            <button class="resume-seg-btn resume-seg-btn--active" onclick="scrollResumeTo('res-experience')" data-i18n="res_tab_exp">EXP .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-education')" data-i18n="res_tab_edu">EDUC .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-core')" data-i18n="res_tab_core">CORE .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-tools')" data-i18n="res_tab_tool">TOOL .</button>
           </nav>
 
           <!-- EXPERIENCE -->
           <div id="res-experience" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span>Experience</span></div>
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_exp_title">Experience</span></div>
             <div class="timeline">
               <div class="timeline-node">
                 <div class="timeline-node__dot"></div>
                 <article class="resume-card">
-                  <h2 class="resume-card__title">Network Administrator</h2>
-                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan (Promoted)</div>
+                  <h2 class="resume-card__title" data-i18n="exp1_title">Network Administrator</h2>
+                  <div class="resume-card__company" data-i18n="exp1_comp">JMS Trading Co. — Karachi, Pakistan (Promoted)</div>
                   <div class="resume-card__meta">
                     <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-                    <span>Karachi, Pakistan</span><span>·</span><span>Jan 2020 — Present</span><span>·</span><span style="color:#2f68ee; font-weight:600;">6+ yrs 9 mo</span>
+                    <span data-i18n="exp1_loc">Karachi, Pakistan</span><span>·</span><span>Jan 2020 — Present</span><span>·</span><span style="color:#2f68ee; font-weight:600;" data-i18n="exp1_dur">6+ yrs 9 mo</span>
                   </div>
                   <ul class="resume-bullets">
-                    <li>Directing enterprise LAN/WAN infrastructure, core routers, switches, multi-branch site connectivity, and VPN tunnels to maintain 99.9% uptime for daily business operations.</li>
-                    <li>Managing and hardening Linux-based production servers (Ubuntu, Red Hat, Fedora), Active Directory group policies, VM environments, and permission access controls.</li>
-                    <li>Building automated automation scripts in Python and PowerShell for scheduled attendance aggregation, log audits, and zero-error routine server backups.</li>
-                    <li>Managing corporate CCTV surveillance infrastructure: camera rollouts, DVR/NVR network configuration, remote monitoring, and firmware maintenance.</li>
+                    <li data-i18n="exp1_b1">Directing enterprise LAN/WAN infrastructure, core routers, switches, multi-branch site connectivity, and VPN tunnels to maintain 99.9% uptime for daily business operations.</li>
+                    <li data-i18n="exp1_b2">Managing and hardening Linux-based production servers (Ubuntu, Red Hat, Fedora), Active Directory group policies, VM environments, and permission access controls.</li>
+                    <li data-i18n="exp1_b3">Building automated automation scripts in Python and PowerShell for scheduled attendance aggregation, log audits, and zero-error routine server backups.</li>
+                    <li data-i18n="exp1_b4">Managing corporate CCTV surveillance infrastructure: camera rollouts, DVR/NVR network configuration, remote monitoring, and firmware maintenance.</li>
                   </ul>
                   <div class="resume-tech-tags">
                     <span class="tech-pill">Linux</span><span class="tech-pill">Ubuntu</span><span class="tech-pill">Red Hat</span><span class="tech-pill">LAN/WAN</span><span class="tech-pill">TCP/IP</span><span class="tech-pill">VPN</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Python</span>
@@ -864,16 +843,16 @@
               <div class="timeline-node">
                 <div class="timeline-node__dot"></div>
                 <article class="resume-card">
-                  <h2 class="resume-card__title">IT Specialist</h2>
-                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan</div>
+                  <h2 class="resume-card__title" data-i18n="exp2_title">IT Specialist</h2>
+                  <div class="resume-card__company" data-i18n="exp2_comp">JMS Trading Co. — Karachi, Pakistan</div>
                   <div class="resume-card__meta">
                     <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-                    <span>Karachi, Pakistan</span><span>·</span><span>Jul 2017 — Dec 2019</span><span>·</span><span>2 yrs 6 mo</span>
+                    <span data-i18n="exp2_loc">Karachi, Pakistan</span><span>·</span><span>Jul 2017 — Dec 2019</span><span>·</span><span data-i18n="exp2_dur">2 yrs 6 mo</span>
                   </div>
                   <ul class="resume-bullets">
-                    <li>Provided comprehensive day-to-day technical operations support to all employees for desktop OS, software tools, printers, and internal LAN connectivity.</li>
-                    <li>Handled structured network cabling, rack terminations, switch port provisioning, and routine endpoint hardware troubleshooting.</li>
-                    <li>Installed, configured, and maintained on-premise CCTV cameras and recording servers ensuring zero blind spots.</li>
+                    <li data-i18n="exp2_b1">Provided comprehensive day-to-day technical operations support to all employees for desktop OS, software tools, printers, and internal LAN connectivity.</li>
+                    <li data-i18n="exp2_b2">Handled structured network cabling, rack terminations, switch port provisioning, and routine endpoint hardware troubleshooting.</li>
+                    <li data-i18n="exp2_b3">Installed, configured, and maintained on-premise CCTV cameras and recording servers ensuring zero blind spots.</li>
                   </ul>
                   <div class="resume-tech-tags">
                     <span class="tech-pill">IT Support</span><span class="tech-pill">Hardware Assembly</span><span class="tech-pill">Network Cabling</span><span class="tech-pill">CCTV</span>
@@ -885,36 +864,36 @@
 
           <!-- EDUCATION -->
           <div id="res-education" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span>Education</span></div>
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_edu_title">Education</span></div>
             <div class="edu-filter-group">
-              <button class="edu-filter-btn edu-filter-btn--active" onclick="filterEducation('all')">All</button>
-              <button class="edu-filter-btn" onclick="filterEducation('formal')">Formal</button>
-              <button class="edu-filter-btn" onclick="filterEducation('courses')">Courses</button>
-              <span style="font-size:0.75rem; color:#64748b; margin-left:auto; font-family:'JetBrains Mono', monospace;" id="eduCountLabel">3 entries</span>
+              <button class="edu-filter-btn edu-filter-btn--active" onclick="filterEducation('all')" data-i18n="edu_all">All</button>
+              <button class="edu-filter-btn" onclick="filterEducation('formal')" data-i18n="edu_formal">Formal</button>
+              <button class="edu-filter-btn" onclick="filterEducation('courses')" data-i18n="edu_courses">Courses</button>
+              <span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto; font-family:'JetBrains Mono', monospace;" id="eduCountLabel">3 entries</span>
             </div>
             <div class="edu-list">
               <div class="edu-card edu-card--formal" data-edutype="formal">
                 <div class="edu-card__icon" style="background:#2f68ee;"><i data-lucide="graduation-cap" style="width:20px;height:20px;"></i></div>
                 <div class="edu-card__content">
-                  <h3 class="edu-card__title">University of Karachi — UBIT</h3>
-                  <div class="edu-card__desc">Bachelor of Science in Computer Science (BSCS)</div>
-                  <div class="edu-card__meta"><span>2018 — 2022</span><span class="edu-card__badge">FORMAL DEGREE</span><span>Karachi, Pakistan</span></div>
+                  <h3 class="edu-card__title" data-i18n="edu1_title">University of Karachi — UBIT</h3>
+                  <div class="edu-card__desc" data-i18n="edu1_desc">Bachelor of Science in Computer Science (BSCS)</div>
+                  <div class="edu-card__meta"><span>2018 — 2022</span><span class="edu-card__badge" data-i18n="edu1_badge">FORMAL DEGREE</span><span data-i18n="edu1_loc">Karachi, Pakistan</span></div>
                 </div>
               </div>
               <div class="edu-card" data-edutype="courses">
                 <div class="edu-card__icon" style="background:#f97316;"><i data-lucide="award" style="width:20px;height:20px;"></i></div>
                 <div class="edu-card__content">
-                  <h3 class="edu-card__title">Cisco Networking Academy</h3>
-                  <div class="edu-card__desc">Enterprise Networking, Security, and Automation (CCNA Enterprise)</div>
-                  <div class="edu-card__meta"><span>Certified</span><span class="edu-card__badge">COURSES</span></div>
+                  <h3 class="edu-card__title" data-i18n="edu2_title">Cisco Networking Academy</h3>
+                  <div class="edu-card__desc" data-i18n="edu2_desc">Enterprise Networking, Security, and Automation (CCNA Enterprise)</div>
+                  <div class="edu-card__meta"><span data-i18n="edu_cert">Certified</span><span class="edu-card__badge" data-i18n="edu_badge_course">COURSES</span></div>
                 </div>
               </div>
               <div class="edu-card" data-edutype="courses">
                 <div class="edu-card__icon" style="background:#10b981;"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
                 <div class="edu-card__content">
-                  <h3 class="edu-card__title">Udemy — Security Certification</h3>
-                  <div class="edu-card__desc">Information Security Management System (ISMS ISO/IEC 27001 Foundation)</div>
-                  <div class="edu-card__meta"><span>Certified</span><span class="edu-card__badge">COURSES</span></div>
+                  <h3 class="edu-card__title" data-i18n="edu3_title">Udemy — Security Certification</h3>
+                  <div class="edu-card__desc" data-i18n="edu3_desc">Information Security Management System (ISMS ISO/IEC 27001 Foundation)</div>
+                  <div class="edu-card__meta"><span data-i18n="edu_cert">Certified</span><span class="edu-card__badge" data-i18n="edu_badge_course">COURSES</span></div>
                 </div>
               </div>
             </div>
@@ -922,35 +901,35 @@
 
           <!-- CORE COMPETENCIES -->
           <div id="res-core" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span>Core Competencies</span></div>
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_core_title">Core Competencies</span></div>
             <div class="core-grid">
               <div class="core-card">
-                <div class="core-card__header">PLATFORM & SYSTEMS</div>
-                <div class="core-row"><span class="core-name">Linux Administration</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">Windows Server & AD</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">Virtual Machines</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-card__header" data-i18n="core_h1">PLATFORM & SYSTEMS</div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r1">Linux Administration</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r2">Windows Server & AD</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r3">Virtual Machines</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
               </div>
               <div class="core-card">
-                <div class="core-card__header">NETWORKING & SECURITY</div>
-                <div class="core-row"><span class="core-name">LAN/WAN & Routing</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">VPN & Firewall Policy</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">Access Control & GPO</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-card__header" data-i18n="core_h2">NETWORKING & SECURITY</div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r4">LAN/WAN & Routing</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r5">VPN & Firewall Policy</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r6">Access Control & GPO</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
               </div>
               <div class="core-card">
-                <div class="core-card__header">OPERATIONS & DISCIPLINE</div>
-                <div class="core-row"><span class="core-name">Root Cause Analysis</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">Process Automation</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
-                <div class="core-row"><span class="core-name">Incident Resolution</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-card__header" data-i18n="core_h3">OPERATIONS & DISCIPLINE</div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r7">Root Cause Analysis</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r8">Process Automation</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
+                <div class="core-row"><span class="core-name" data-i18n="core_r9">Incident Resolution</span><div class="core-rating-wrap"><div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div><span class="core-pill">Adv</span></div></div>
               </div>
             </div>
           </div>
 
           <!-- TOOLS -->
           <div id="res-tools" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span>Tools & Technologies</span></div>
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_tools_title">Tools & Technologies</span></div>
             <div class="tools-grid">
               <div class="tools-card">
-                <div class="tools-card__title">SYSTEMS & INFRASTRUCTURE</div>
+                <div class="tools-card__title" data-i18n="tools_h1">SYSTEMS & INFRASTRUCTURE</div>
                 <div class="tools-pill-group">
                   <span class="tool-badge">Linux <span class="tool-tag tool-tag--adv">Adv</span></span>
                   <span class="tool-badge">Ubuntu Server <span class="tool-tag tool-tag--adv">Adv</span></span>
@@ -960,7 +939,7 @@
                 </div>
               </div>
               <div class="tools-card">
-                <div class="tools-card__title">NETWORKING & ROUTING</div>
+                <div class="tools-card__title" data-i18n="tools_h2">NETWORKING & ROUTING</div>
                 <div class="tools-pill-group">
                   <span class="tool-badge">TCP/IP & Subnetting <span class="tool-tag tool-tag--adv">Adv</span></span>
                   <span class="tool-badge">VLAN Segmentation <span class="tool-tag tool-tag--adv">Adv</span></span>
@@ -969,7 +948,7 @@
                 </div>
               </div>
               <div class="tools-card">
-                <div class="tools-card__title">AUTOMATION & SCRIPTING</div>
+                <div class="tools-card__title" data-i18n="tools_h3">AUTOMATION & SCRIPTING</div>
                 <div class="tools-pill-group">
                   <span class="tool-badge">PowerShell Scripts <span class="tool-tag tool-tag--adv">Adv</span></span>
                   <span class="tool-badge">Python Admin Daemons <span class="tool-tag tool-tag--adv">Adv</span></span>
@@ -977,7 +956,7 @@
                 </div>
               </div>
               <div class="tools-card">
-                <div class="tools-card__title">CCTV & SURVEILLANCE</div>
+                <div class="tools-card__title" data-i18n="tools_h4">CCTV & SURVEILLANCE</div>
                 <div class="tools-pill-group">
                   <span class="tool-badge">CCTV Surveillance <span class="tool-tag tool-tag--adv">Adv</span></span>
                   <span class="tool-badge">DVR / NVR Management <span class="tool-tag tool-tag--adv">Adv</span></span>
@@ -990,7 +969,7 @@
 
         <!-- 4. BLOG VIEW -->
         <section id="view-blog" class="view-panel">
-          <h1 class="content-title">Blog<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="blog_heading">Blog</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
 
           <div class="blog-search-bar">
@@ -1000,7 +979,7 @@
 
           <div class="blog-filters-block">
             <div class="blog-filter-row">
-              <span class="blog-filter-label">BY YEAR</span>
+              <span class="blog-filter-label" data-i18n="blog_by_year">BY YEAR</span>
               <div class="blog-filter-pills" id="yearFilterGroup">
                 <button class="b-pill b-pill--active" onclick="filterBlogYear('all')">All</button>
                 <button class="b-pill" onclick="filterBlogYear('2026')">2026 <span class="b-pill-count">3</span></button>
@@ -1010,7 +989,7 @@
             </div>
 
             <div class="blog-filter-row">
-              <span class="blog-filter-label">TOPICS</span>
+              <span class="blog-filter-label" data-i18n="blog_topics">TOPICS</span>
               <div class="blog-filter-pills" id="topicFilterGroup">
                 <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All <span class="b-pill-count">19</span></button>
                 <button class="b-pill" onclick="filterBlogTopic('backend')">Backend <span class="b-pill-count">5</span></button>
@@ -1071,21 +1050,21 @@
 
         <!-- 5. CONTACT VIEW -->
         <section id="view-contact" class="view-panel">
-          <h1 class="content-title">Contact<span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="contact_title">Contact</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
           
-          <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;">
+          <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;" data-i18n="contact_subheading">
             Have a project in mind or just want to say hi? Fill out the form below.
           </p>
 
           <div class="contact-availability-badge">
             <span class="contact-availability-dot"></span>
-            <span>AVAILABLE FOR PROJECTS</span>
+            <span data-i18n="contact_status_badge">AVAILABLE FOR PROJECTS</span>
           </div>
 
           <div class="contact-grid">
             <div class="contact-info-card">
-              <div><h2 class="contact-info-title">Let's collaborate</h2></div>
+              <div><h2 class="contact-info-title" data-i18n="contact_left_heading">Let's collaborate</h2></div>
               <div class="contact-detail-row">
                 <div class="contact-detail-icon"><i data-lucide="mail" style="width:18px;height:18px;"></i></div>
                 <div class="contact-detail-text"><a href="mailto:hunain.haider69@gmail.com">hunain.haider69@gmail.com</a></div>
@@ -1095,7 +1074,7 @@
                 <div class="contact-detail-text"><span>Karachi, PK</span></div>
               </div>
               <div class="contact-social-block">
-                <div class="contact-social-label">FIND ME ON</div>
+                <div class="contact-social-label" data-i18n="contact_find_me">FIND ME ON</div>
                 <div class="contact-social-icons">
                   <a href="https://x.com/hunainhaider_" target="_blank" rel="noopener" class="contact-social-btn" title="X (Twitter)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
@@ -1109,7 +1088,7 @@
                 </div>
                 <div class="contact-response-status">
                   <i data-lucide="message-square" style="width:14px;height:14px;"></i>
-                  <span>Usually responds within 24 hours</span>
+                  <span data-i18n="contact_response_time">Usually responds within 24 hours</span>
                 </div>
               </div>
             </div>
@@ -1122,31 +1101,31 @@
 
                 <div class="form-inputs-inline">
                   <div class="form-field-group">
-                    <label class="form-label" for="contactName">Full Name</label>
+                    <label class="form-label" for="contactName" data-i18n="form_label_name">Full Name</label>
                     <input type="text" name="name" id="contactName" class="form-input-field" placeholder="Full Name" required>
                   </div>
                   <div class="form-field-group">
-                    <label class="form-label" for="contactEmail">Email Address</label>
+                    <label class="form-label" for="contactEmail" data-i18n="form_label_email">Email Address</label>
                     <input type="email" name="email" id="contactEmail" class="form-input-field" placeholder="Email Address" required>
                   </div>
                 </div>
 
                 <div class="form-field-group" style="margin-top:16px;">
-                  <label class="form-label" for="contactMessage">Your Message</label>
+                  <label class="form-label" for="contactMessage" data-i18n="form_label_msg">Your Message</label>
                   <textarea name="message" id="contactMessage" class="form-textarea-field" maxlength="500" placeholder="Your Message" required oninput="updateMsgCount(this)"></textarea>
                   <span class="form-counter" id="msgCharCount">0/500</span>
                 </div>
 
                 <button type="submit" id="contactSubmitBtn" class="contact-submit-btn" style="margin-top:18px;">
                   <i data-lucide="send" style="width:16px;height:16px;"></i>
-                  <span>Send Message</span>
+                  <span data-i18n="btn_send">Send Message</span>
                 </button>
               </form>
             </div>
           </div>
         </section>
 
-        <!-- 6. TERMINAL VIEW (EXACT 1:1 INTERACTIVE CONSOLE) -->
+        <!-- 6. TERMINAL VIEW -->
         <section id="view-terminal" class="view-panel">
           <div class="terminal-container" onclick="document.getElementById('cliInput').focus()">
             <div class="terminal-header-bar">
@@ -1163,7 +1142,7 @@
                 <pre>
 ╔════════════════════════════════════════════════════╗
 ║                                                    ║
-║   Interactive Terminal Portfolio                   ║
+║   Interactive Terminal Console                     ║
 ║   Type 'help' to see available commands            ║
 ║                                                    ║
 ╚════════════════════════════════════════════════════╝
@@ -1180,31 +1159,6 @@
           </div>
         </section>
 
-        <!-- 7. INFRASTRUCTURE VIEW -->
-        <section id="view-infrastructure" class="view-panel">
-          <h1 class="content-title">Infrastructure Topology<span class="title-dot">.</span></h1>
-          <div class="color-accent-line"></div>
-          <div class="about-scope-card">
-            <div class="about-scope-card__icon-wrap"><i data-lucide="globe" style="width:24px;height:24px;"></i></div>
-            <div class="about-scope-card__body">
-              <span class="about-scope-card__type">EDGE ARCHITECTURE</span>
-              <h3 class="about-scope-card__title">DNS & Hosting Architecture</h3>
-              <p class="about-scope-card__desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- 8. DESIGN SYSTEM VIEW -->
-        <section id="view-design" class="view-panel">
-          <h1 class="content-title">Design System<span class="title-dot">.</span></h1>
-          <div class="color-accent-line"></div>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <div style="background:#14171f; border:1px solid #1e232e; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Surface: #14171f</div>
-            <div style="background:#2f68ee; color:#fff; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Accent: #2f68ee</div>
-            <div style="background:#10b981; color:#000; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Status: #10b981</div>
-          </div>
-        </section>
-
         <!-- FOOTER -->
         <footer class="footer">
           <span class="footer__copyright">© 2026 Hunain Haider</span>
@@ -1215,6 +1169,27 @@
         </footer>
 
       </main>
+    </div>
+  </div>
+
+  <!-- EXACT 3rd PIC SEARCH COMMAND MODAL (Ctrl+K) -->
+  <div class="search-modal" id="searchModal">
+    <div class="search-command-box" onclick="event.stopPropagation()">
+      <div class="search-input-header">
+        <i data-lucide="search" style="width:20px;height:20px;"></i>
+        <input type="text" id="cmdSearchBox" placeholder="Search anything..." oninput="handleGlobalSearch(this.value)" autofocus>
+        <span class="search-esc-tag" onclick="closeSearch()">Esc</span>
+      </div>
+      <div class="search-content-body" id="cmdSearchResults">
+        <div style="text-align:center; color:#64748b; padding:24px; font-family:'JetBrains Mono', monospace; font-size:0.85rem;">
+          Type to search blogs, portfolio, and more...
+        </div>
+      </div>
+      <div class="search-modal-footer">
+        <span><span class="search-key-badge">↑</span> <span class="search-key-badge">↓</span> navigate</span>
+        <span><span class="search-key-badge">↵</span> open</span>
+        <span><span class="search-key-badge">Esc</span> close</span>
+      </div>
     </div>
   </div>
 
@@ -1256,21 +1231,370 @@
     </div>
   </div>
 
-  <!-- SEARCH MODAL (Ctrl+K) -->
-  <div class="search-modal" id="searchModal">
-    <div class="search-box">
-      <div class="search-input-wrap">
-        <i data-lucide="search" style="width:18px; color:#64748b;"></i>
-        <input type="text" id="modalSearchInput" placeholder="Search portfolio, resume, tools...">
-        <kbd class="search-trigger__kbd">ESC</kbd>
-      </div>
-    </div>
-  </div>
-
   <script>
     lucide.createIcons();
 
-    // 1. Navigation Routing
+    // =========================================================
+    // I18N DICTIONARY (ENGLISH / GERMAN FULL TRANSLATION)
+    // =========================================================
+    let currentLang = 'en';
+    const translations = {
+      en: {
+        console_label: "operator console",
+        status_title: "system status",
+        status_key: "status",
+        status_val: "available",
+        response_key: "response",
+        download_cv: "Download CV",
+        cv_human_desc: "Standard Official CV",
+        cv_ats_desc: "Plain, compatible",
+        nav_about: "ABOUT",
+        nav_portfolio: "PORTFOLIO",
+        nav_resume: "RESUME",
+        nav_blog: "BLOG",
+        nav_contact: "CONTACT",
+        nav_terminal: "TERMINAL",
+        btn_search: "SEARCH",
+        theme_dark: "DARK",
+        theme_light: "LIGHT",
+        about_title: "About Me",
+        about_subtitle: "Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale",
+        bio_p1: "IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.",
+        bio_p2: "I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.",
+        bio_p3: "Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.",
+        see_portfolio_link: "See my Automation & Infrastructure portfolio →",
+        tab_stats: "STATS",
+        tab_scope: "SCOPE",
+        stats_title: "By the Numbers",
+        stat_exp: "Years Professional IT",
+        stat_proj: "Projects Done",
+        stat_tech: "Technologies",
+        stat_cert: "Certifications",
+        scope_title: "What I'm Doing",
+        scope1_badge: "SECURITY",
+        scope1_title: "Network Security",
+        scope1_desc: "Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.",
+        scope2_badge: "INFRASTRUCTURE",
+        scope2_title: "Systems & Servers",
+        scope2_desc: "Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.",
+        scope3_badge: "RELIABILITY",
+        scope3_title: "Health Monitoring",
+        scope3_desc: "Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.",
+        scope4_badge: "AUTOMATION",
+        scope4_title: "Process Automation",
+        scope4_desc: "Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.",
+        portfolio_title: "DevOps & Infrastructure Portfolio",
+        portfolio_desc: "Cloud infrastructure, automation scripts, and network designs built for high uptime.",
+        resume_title: "Resume",
+        res_tab_exp: "EXP .",
+        res_tab_edu: "EDUC .",
+        res_tab_core: "CORE .",
+        res_tab_tool: "TOOL .",
+        res_exp_title: "Experience",
+        exp1_title: "Network Administrator",
+        exp1_comp: "JMS Trading Co. — Karachi, Pakistan (Promoted)",
+        exp1_loc: "Karachi, Pakistan",
+        exp1_dur: "6+ yrs 9 mo",
+        exp1_b1: "Directing enterprise LAN/WAN infrastructure, core routers, switches, multi-branch site connectivity, and VPN tunnels to maintain 99.9% uptime for daily business operations.",
+        exp1_b2: "Managing and hardening Linux-based production servers (Ubuntu, Red Hat, Fedora), Active Directory group policies, VM environments, and permission access controls.",
+        exp1_b3: "Building automated automation scripts in Python and PowerShell for scheduled attendance aggregation, log audits, and zero-error routine server backups.",
+        exp1_b4: "Managing corporate CCTV surveillance infrastructure: camera rollouts, DVR/NVR network configuration, remote monitoring, and firmware maintenance.",
+        exp2_title: "IT Specialist",
+        exp2_comp: "JMS Trading Co. — Karachi, Pakistan",
+        exp2_loc: "Karachi, Pakistan",
+        exp2_dur: "2 yrs 6 mo",
+        exp2_b1: "Provided comprehensive day-to-day technical operations support to all employees for desktop OS, software tools, printers, and internal LAN connectivity.",
+        exp2_b2: "Handled structured network cabling, rack terminations, switch port provisioning, and routine endpoint hardware troubleshooting.",
+        exp2_b3: "Installed, configured, and maintained on-premise CCTV cameras and recording servers ensuring zero blind spots.",
+        res_edu_title: "Education",
+        edu_all: "All",
+        edu_formal: "Formal",
+        edu_courses: "Courses",
+        edu1_title: "University of Karachi — UBIT",
+        edu1_desc: "Bachelor of Science in Computer Science (BSCS)",
+        edu1_badge: "FORMAL DEGREE",
+        edu1_loc: "Karachi, Pakistan",
+        edu2_title: "Cisco Networking Academy",
+        edu2_desc: "Enterprise Networking, Security, and Automation (CCNA Enterprise)",
+        edu3_title: "Udemy — Security Certification",
+        edu3_desc: "Information Security Management System (ISMS ISO/IEC 27001 Foundation)",
+        edu_cert: "Certified",
+        edu_badge_course: "COURSES",
+        res_core_title: "Core Competencies",
+        core_h1: "PLATFORM & SYSTEMS",
+        core_r1: "Linux Administration",
+        core_r2: "Windows Server & AD",
+        core_r3: "Virtual Machines",
+        core_h2: "NETWORKING & SECURITY",
+        core_r4: "LAN/WAN & Routing",
+        core_r5: "VPN & Firewall Policy",
+        core_r6: "Access Control & GPO",
+        core_h3: "OPERATIONS & DISCIPLINE",
+        core_r7: "Root Cause Analysis",
+        core_r8: "Process Automation",
+        core_r9: "Incident Resolution",
+        res_tools_title: "Tools & Technologies",
+        tools_h1: "SYSTEMS & INFRASTRUCTURE",
+        tools_h2: "NETWORKING & ROUTING",
+        tools_h3: "AUTOMATION & SCRIPTING",
+        tools_h4: "CCTV & SURVEILLANCE",
+        blog_heading: "Blog",
+        blog_by_year: "BY YEAR",
+        blog_topics: "TOPICS",
+        contact_title: "Contact",
+        contact_subheading: "Have a project in mind or just want to say hi? Fill out the form below.",
+        contact_status_badge: "AVAILABLE FOR PROJECTS",
+        contact_left_heading: "Let's collaborate",
+        contact_find_me: "FIND ME ON",
+        contact_response_time: "Usually responds within 24 hours",
+        form_label_name: "Full Name",
+        form_label_email: "Email Address",
+        form_label_msg: "Your Message",
+        btn_send: "Send Message",
+        roles: ["IT Systems Administrator", "Infrastructure Specialist", "Process Automation Engineer", "Network Operations Specialist"],
+        placeholders: {
+          search: "Search portfolio, resume, tools...",
+          name: "Full Name",
+          email: "Email Address",
+          msg: "Your Message..."
+        }
+      },
+      de: {
+        console_label: "bedienkonsole",
+        status_title: "systemstatus",
+        status_key: "status",
+        status_val: "verfügbar",
+        response_key: "antwort",
+        download_cv: "Lebenslauf Herunterladen",
+        cv_human_desc: "Offizieller Standard-Lebenslauf",
+        cv_ats_desc: "Kompakt, ATS-konform",
+        nav_about: "ÜBER MICH",
+        nav_portfolio: "PORTFOLIO",
+        nav_resume: "LEBENSLAUF",
+        nav_blog: "BLOG",
+        nav_contact: "KONTAKT",
+        nav_terminal: "TERMINAL",
+        btn_search: "SUCHE",
+        theme_dark: "DUNKEL",
+        theme_light: "HELL",
+        about_title: "Über Mich",
+        about_subtitle: "System- & Netzwerkinfrastruktur · Karachi, PK · 5+ Jahre Erfahrung",
+        bio_p1: "Spezialist für IT-Systeme und Netzwerkinfrastruktur aus Karatschi, Pakistan, mit über 5 Jahren Erfahrung im Aufbau sicherer, überwachbarer und hochautomatisierter Betriebsabläufe.",
+        bio_p2: "Ich verwalte geschäftskritische Infrastrukturen mit einer garantierten Betriebszeit von 99,9 % über mehrere Unternehmensstandorte hinweg. Statt manuelle Routinen durchzuführen, erstelle ich Automatisierungsskripte in Python und PowerShell.",
+        bio_p3: "Zertifiziert in Enterprise Networking, Sicherheit und Automatisierung. Informatik-Absolvent der University of Karachi (UBIT). Bereit für Rollen in Infrastruktur-Engineering und Remote IT-Betrieb.",
+        see_portfolio_link: "Mein Automatisierungs- & Infrastruktur-Portfolio ansehen →",
+        tab_stats: "STATISTIK",
+        tab_scope: "BEREICHE",
+        stats_title: "Auf einen Blick",
+        stat_exp: "Jahre IT-Erfahrung",
+        stat_proj: "Projekte Umgesetzt",
+        stat_tech: "Technologien",
+        stat_cert: "Zertifizierungen",
+        scope_title: "Mein Aufgabenspektrum",
+        scope1_badge: "SICHERHEIT",
+        scope1_title: "Netzwerksicherheit",
+        scope1_desc: "Konfiguration von Enterprise-Firewalls, VLAN-Segmentierung, VPN-Tunneln und Zero-Trust-Zugriffskontrollen zum Schutz vor Perimeter-Bedrohungen.",
+        scope2_badge: "INFRASTRUKTUR",
+        scope2_title: "Systeme & Server",
+        scope2_desc: "Bereitstellung und Absicherung von Windows Server- und Linux-Distributionen, Verwaltung von Active Directory GPOs und nahtlose Standortvernetzung.",
+        scope3_badge: "ZUVERLÄSSIGKEIT",
+        scope3_title: "Systemüberwachung",
+        scope3_desc: "Gewährleistung maximaler Uptime durch automatisierte Ping/SNMP-Telemetrie, Echtzeit-Webhooks und sofortige Reaktionsprotokolle.",
+        scope4_badge: "AUTOMATISIERUNG",
+        scope4_title: "Prozessautomatisierung",
+        scope4_desc: "Entwicklung maßgeschneiderter Skripte in Python und PowerShell, die wiederkehrende Sysadmin-Aufgaben und Berichterstattungen vollständig automatisieren.",
+        portfolio_title: "DevOps & Infrastruktur Portfolio",
+        portfolio_desc: "Cloud-Infrastruktur, Automatisierungsskripte und hochverfügbare Netzwerke.",
+        resume_title: "Lebenslauf",
+        res_tab_exp: "BERUF",
+        res_tab_edu: "BILDUNG",
+        res_tab_core: "KOMP",
+        res_tab_tool: "TOOLS",
+        res_exp_title: "Berufserfahrung",
+        exp1_title: "Netzwerkadministrator",
+        exp1_comp: "JMS Trading Co. — Karatschi, Pakistan (Befördert)",
+        exp1_loc: "Karatschi, Pakistan",
+        exp1_dur: "6+ Jahre",
+        exp1_b1: "Leitung der LAN/WAN-Infrastruktur, Core-Router, Switches, Standortvernetzung und VPN-Tunnel zur Gewährleistung von 99,9 % Betriebszeit.",
+        exp1_b2: "Verwaltung und Härtung von Linux-basierten Produktionsservern (Ubuntu, Red Hat, Fedora), Active Directory GPOs und Zugriffskontrollen.",
+        exp1_b3: "Entwicklung automatisierter Skripte in Python und PowerShell für Anwesenheitserfassung, Protokoll-Audits und fehlerfreie Backups.",
+        exp1_b4: "Betreuung der Videoüberwachungsinfrastruktur (CCTV), DVR/NVR-Netzwerkkonfiguration und Fernwartung.",
+        exp2_title: "IT-Spezialist",
+        exp2_comp: "JMS Trading Co. — Karatschi, Pakistan",
+        exp2_loc: "Karatschi, Pakistan",
+        exp2_dur: "2 Jahre 6 Mo.",
+        exp2_b1: "Umfassender technischer Support für Desktop-Betriebssysteme, Software, Drucker und LAN-Konnektivität.",
+        exp2_b2: "Strukturierte Netzwerkverkabelung, Patchpanel-Terminierung, Switch-Port-Konfiguration und Hardware-Fehlerbehebung.",
+        exp2_b3: "Installation und Wartung von IP-Kameras und Überwachungsservern ohne Überwachungslücken.",
+        res_edu_title: "Ausbildung",
+        edu_all: "Alle",
+        edu_formal: "Formal",
+        edu_courses: "Kurse",
+        edu1_title: "University of Karachi — UBIT",
+        edu1_desc: "Bachelor of Science in Computer Science (BSCS)",
+        edu1_badge: "FORMALER ABSCHLUSS",
+        edu1_loc: "Karatschi, Pakistan",
+        edu2_title: "Cisco Networking Academy",
+        edu2_desc: "Enterprise Networking, Security, and Automation (CCNA Enterprise)",
+        edu3_title: "Udemy — Sicherheitszertifizierung",
+        edu3_desc: "Information Security Management System (ISMS ISO/IEC 27001 Foundation)",
+        edu_cert: "Zertifiziert",
+        edu_badge_course: "KURSE",
+        res_core_title: "Kernkompetenzen",
+        core_h1: "PLATTFORM & SYSTEME",
+        core_r1: "Linux-Administration",
+        core_r2: "Windows Server & AD",
+        core_r3: "Virtuelle Maschinen",
+        core_h2: "NETZWERKE & SICHERHEIT",
+        core_r4: "LAN/WAN & Routing",
+        core_r5: "VPN & Firewall-Richtlinien",
+        core_r6: "Zugriffskontrolle & GPO",
+        core_h3: "BETRIEB & PROZESSE",
+        core_r7: "Fehleranalyse",
+        core_r8: "Prozessautomatisierung",
+        core_r9: "Störungsbeseitigung",
+        res_tools_title: "Tools & Technologien",
+        tools_h1: "SYSTEME & INFRASTRUKTUR",
+        tools_h2: "NETZWERKE & ROUTING",
+        tools_h3: "AUTOMATISIERUNG & SKRIPTE",
+        tools_h4: "CCTV & ÜBERWACHUNG",
+        blog_heading: "Blog",
+        blog_by_year: "NACH JAHR",
+        blog_topics: "THEMEN",
+        contact_title: "Kontakt",
+        contact_subheading: "Haben Sie ein Projekt oder möchten Sie Hallo sagen? Füllen Sie das Formular aus.",
+        contact_status_badge: "VERFÜGBAR FÜR PROJEKTE",
+        contact_left_heading: "Lass uns zusammenarbeiten",
+        contact_find_me: "FINDEN SIE MICH AUF",
+        contact_response_time: "Antwortet normalerweise innerhalb von 24 Stunden",
+        form_label_name: "Vollständiger Name",
+        form_label_email: "E-Mail-Adresse",
+        form_label_msg: "Ihre Nachricht",
+        btn_send: "Nachricht Senden",
+        roles: ["IT-Systemadministrator", "Infrastruktur-Spezialist", "Prozessautomatisierungs-Ingenieur", "Netzwerkbetriebs-Spezialist"],
+        placeholders: {
+          search: "Portfolio, Lebenslauf durchsuchen...",
+          name: "Vollständiger Name",
+          email: "E-Mail-Adresse",
+          msg: "Ihre Nachricht..."
+        }
+      }
+    };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const dict = translations[lang];
+
+      document.getElementById('langEn').classList.toggle('locale-seg__btn--active', lang === 'en');
+      document.getElementById('langDe').classList.toggle('locale-seg__btn--active', lang === 'de');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerText = dict[key];
+        }
+      });
+
+      const searchBox = document.getElementById('modalSearchInput');
+      const formName = document.getElementById('contactName');
+      const formEmail = document.getElementById('contactEmail');
+      const formMsg = document.getElementById('contactMessage');
+      if (formName) formName.placeholder = dict.placeholders.name;
+      if (formEmail) formEmail.placeholder = dict.placeholders.email;
+      if (formMsg) formMsg.placeholder = dict.placeholders.msg;
+
+      dict.roles.forEach((r, idx) => {
+        const el = document.getElementById('role-' + idx);
+        if (el) el.innerText = r;
+      });
+
+      lucide.createIcons();
+    }
+
+    // =========================================================
+    // EXACT 3RD PIC SEARCH MODAL LOGIC (CTRL+K)
+    // =========================================================
+    const searchModal = document.getElementById('searchModal');
+    const cmdSearchBox = document.getElementById('cmdSearchBox');
+    const cmdSearchResults = document.getElementById('cmdSearchResults');
+
+    function openSearch() {
+      searchModal.classList.add('open-modal');
+      cmdSearchBox.value = '';
+      cmdSearchBox.focus();
+      renderDefaultSearchResults();
+    }
+
+    function closeSearch() {
+      searchModal.classList.remove('open-modal');
+    }
+
+    document.getElementById('openSearchBtn').addEventListener('click', openSearch);
+    searchModal.addEventListener('click', closeSearch);
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchModal.classList.contains('open-modal') ? closeSearch() : openSearch();
+      }
+      if (e.key === 'Escape') closeSearch();
+    });
+
+    const searchableItems = [
+      { title: "About Me & Systems Overview", type: "Section", view: "about", date: "2026-09-01" },
+      { title: "DevOps & Infrastructure Portfolio", type: "Section", view: "portfolio", date: "2026-09-05" },
+      { title: "Professional Resume & Experience", type: "Section", view: "resume", date: "2026-09-10" },
+      { title: "Engineering Blog & Technical Articles", type: "Section", view: "blog", date: "2026-09-15" },
+      { title: "Contact & Project Collaboration", type: "Section", view: "contact", date: "2026-09-20" },
+      { title: "Interactive Terminal CLI Console", type: "Tool", view: "terminal", date: "2026-09-21" },
+      { title: "Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN", type: "Blog", view: "blog", date: "2026-04-30" },
+      { title: "GitHub Actions Docker Cache: gha vs registry vs inline", type: "Blog", view: "blog", date: "2026-04-17" },
+      { title: "Catatan Migrasi Alibaba Cloud ke AWS dengan Minimal Downtime", type: "Blog", view: "blog", date: "2026-04-11" },
+      { title: "Multi-Cloud Interconnect: HA IPsec VPN Tunnel Between AWS & GCP", type: "Blog", view: "blog", date: "2023-10-01" }
+    ];
+
+    function renderDefaultSearchResults() {
+      cmdSearchResults.innerHTML = searchableItems.map(item => `
+        <div class="search-item-row" onclick="executeSearchResult('${item.view}')">
+          <div class="search-item-title">
+            <span>${item.title}</span>
+            <span style="font-size:0.68rem; background:rgba(47,104,238,0.2); color:#60a5fa; padding:2px 6px; border-radius:4px;">${item.type}</span>
+          </div>
+          <span class="search-item-date">${item.date}</span>
+        </div>
+      `).join('');
+    }
+
+    function handleGlobalSearch(keyword) {
+      const q = keyword.toLowerCase().trim();
+      if (!q) {
+        renderDefaultSearchResults();
+        return;
+      }
+      const filtered = searchableItems.filter(i => i.title.toLowerCase().includes(q) || i.type.toLowerCase().includes(q));
+      if (filtered.length === 0) {
+        cmdSearchResults.innerHTML = `<div style="text-align:center; color:#64748b; padding:24px; font-family:'JetBrains Mono', monospace; font-size:0.85rem;">No matches found for "${keyword}"</div>`;
+        return;
+      }
+      cmdSearchResults.innerHTML = filtered.map(item => `
+        <div class="search-item-row" onclick="executeSearchResult('${item.view}')">
+          <div class="search-item-title">
+            <span>${item.title}</span>
+            <span style="font-size:0.68rem; background:rgba(47,104,238,0.2); color:#60a5fa; padding:2px 6px; border-radius:4px;">${item.type}</span>
+          </div>
+          <span class="search-item-date">${item.date}</span>
+        </div>
+      `).join('');
+    }
+
+    function executeSearchResult(viewName) {
+      closeSearch();
+      switchView(viewName);
+    }
+
+    // =========================================================
+    // NAVIGATION ROUTING
+    // =========================================================
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1278,7 +1602,7 @@
 
       const items = document.querySelectorAll('.rack-nav__item');
       items.forEach((btn, idx) => {
-        const views = ['about', 'portfolio', 'resume', 'blog', 'contact', 'terminal', 'infrastructure', 'design'];
+        const views = ['about', 'portfolio', 'resume', 'blog', 'contact', 'terminal'];
         if (views[idx] === viewName) btn.classList.add('rack-nav__item--active');
         else btn.classList.remove('rack-nav__item--active');
       });
@@ -1293,7 +1617,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. Interactive Terminal Engine
+    // =========================================================
+    // INTERACTIVE TERMINAL ENGINE
+    // =========================================================
     const cliInput = document.getElementById('cliInput');
     const termHistory = document.getElementById('termHistory');
     const termBody = document.getElementById('termBody');
@@ -1316,50 +1642,42 @@
   • <span style="color:#60a5fa;">uptime</span>    : Live telemetry & uptime logs
   • <span style="color:#60a5fa;">clear</span>     : Clear terminal buffer`;
               break;
-
             case 'about':
               output = `Hunain Haider — Systems & Network Infrastructure Specialist
 Location: Karachi, PK | 5+ Years at scale
 Ensuring 99.9% uptime, Linux server hardening & automation pipelines.`;
               break;
-
             case 'skills':
               output = `[Systems]     : Ubuntu, Red Hat, Windows Server, Active Directory GPO
 [Networking]  : TCP/IP, VLANs, Site-to-Site VPN, OSPF, Cisco Switches
 [Automation]  : Python Daemons, PowerShell Attendance Routines, Bash
 [Surveillance]: Enterprise CCTV NVR/DVR Multi-site Architecture`;
               break;
-
             case 'network':
               output = `Domain   : hunainhaider.com
 DNS Host : Hostinger Edge DNS
 Edge CDN : Vercel Global Edge Network
 Uptime   : 99.98% operational`;
               break;
-
             case 'experience':
               output = `• Network Administrator @ JMS Trading Co. (2020 - Present)
 • IT Specialist @ JMS Trading Co. (2017 - 2019)
 • IT Support Intern @ Tech Kolachi (2017)`;
               break;
-
             case 'contact':
               output = `Email   : hunain.haider69@gmail.com
 LinkedIn: linkedin.com/in/hunain-haider-its
 GitHub  : github.com/hunain-haider
 X       : @hunainhaider_`;
               break;
-
             case 'uptime':
               output = `system uptime: 428 days, 14 hours, 22 minutes
 telemetry    : 0 packet drops detected across core enterprise tunnels`;
               break;
-
             case 'clear':
               termHistory.innerHTML = '';
               cliInput.value = '';
               return;
-
             default:
               if (raw !== '') {
                 output = `<span style="color:#ef4444;">bash: command not found: ${raw}</span>. Type '<span style="color:#60a5fa;">help</span>' to list valid commands.`;
@@ -1381,7 +1699,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // 3. Contact Form Submission
+    // =========================================================
+    // CONTACT FORM SUBMISSION
+    // =========================================================
     function updateMsgCount(textarea) {
       document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
@@ -1419,7 +1739,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     }
 
-    // 4. In-App Blog PDF Modal Reader
+    // =========================================================
+    // BLOG PDF MODAL READER
+    // =========================================================
     function openBlogPDF(articleTitle, pdfPath) {
       document.getElementById('pdfModalTitleText').innerText = articleTitle;
       document.getElementById('pdfModalIframe').src = pdfPath;
@@ -1436,7 +1758,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
     });
 
-    // 5. Blog Filters
+    // Blog filters
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
 
@@ -1488,7 +1810,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // 6. Portfolio & Resume Filters
+    // Portfolio & Resume Filters
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -1552,22 +1874,20 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     });
 
-    // Theme & Helpers
+    // =========================================================
+    // EXACT LIGHT / DARK MODE TOGGLE (Fixing Font / Contrast Issues)
+    // =========================================================
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const newTheme = isDark ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
-      document.getElementById('themeLabel').innerText = newTheme.toUpperCase();
+      document.getElementById('themeLabel').innerText = newTheme === 'dark' ? (currentLang === 'de' ? 'DUNKEL' : 'DARK') : (currentLang === 'de' ? 'HELL' : 'LIGHT');
       document.getElementById('themeIcon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
       lucide.createIcons();
     });
 
-    function setLanguage(lang) {
-      document.getElementById('langEn').classList.toggle('locale-seg__btn--active', lang === 'en');
-      document.getElementById('langDe').classList.toggle('locale-seg__btn--active', lang === 'de');
-    }
-
+    // CV Download Dropdown
     const cvGroup = document.getElementById('cvDropdownGroup');
     const cvTrigger = document.getElementById('cvTriggerBtn');
     cvTrigger.addEventListener('click', (e) => {
