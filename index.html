@@ -11,13 +11,13 @@
 
   <style>
     :root {
-      --bg-color: #0d0f14;
-      --card-bg: #13161f;
-      --card-border: #1c2230;
+      --bg-color: #0d0e12;
+      --card-bg: #14171f;
+      --card-border: #1e232e;
       --accent-blue: #2f68ee;
       --text-main: #e2e8f0;
       --text-muted: #8c9ba8;
-      --text-dim: #525d6e;
+      --text-dim: #525a6b;
       --status-green: #10b981;
       --chip-bg: rgba(47, 104, 238, 0.12);
       --chip-text: #60a5fa;
@@ -75,60 +75,56 @@
     }
 
     /* =========================================================
-       TOP OPERATOR CONSOLE (EXACT 1:1 REPLICA)
+       OPERATOR CONSOLE HEADER (EXACT CODE REPLICA)
     ========================================================= */
-    .operator-header {
+    .header.box {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 14px 28px 20px;
+      padding: 12px 24px 20px;
       position: relative;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .header-chrome {
+    .header__chrome {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #1a202c;
-      padding-bottom: 12px;
-      margin-bottom: 18px;
-    }
-    .dots {
-      display: flex;
       gap: 8px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+      position: relative;
     }
-    .dot {
+    .header__chrome-dot {
       width: 9px;
       height: 9px;
       border-radius: 50%;
     }
-    .dot-red { background: #ff5f56; }
-    .dot-amber { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-
-    .console-label {
+    .header__chrome-dot--red { background: #ff5f56; }
+    .header__chrome-dot--amber { background: #ffbd2e; }
+    .header__chrome-dot--green { background: #27c93f; }
+    .header__chrome-label {
+      margin-left: auto;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      color: #4b5563;
+      color: var(--text-dim);
       letter-spacing: 1px;
     }
 
-    /* 3 Distinct Columns with Subtle Vertical Dividers */
-    .header-body-grid {
+    .header__body {
       display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
+      grid-template-columns: 1.3fr 1fr 1fr;
       align-items: center;
     }
 
-    /* Section 1: Profile */
-    .section-profile {
+    /* Identity Section */
+    .header-identity {
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding-right: 24px;
+      gap: 16px;
+      padding-right: 20px;
     }
-    .avatar-ring {
+    .header-identity__photo {
       width: 72px;
       height: 72px;
       border-radius: 16px;
@@ -140,68 +136,86 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .avatar-img {
+    .header-identity__photo-img {
       width: 100%;
       height: 100%;
       border-radius: 12px;
       object-fit: cover;
     }
-    .identity-text h2 {
+    .header-identity__name {
       font-size: 1.25rem;
       font-weight: 600;
       color: #ffffff;
       line-height: 1.2;
       margin-bottom: 4px;
     }
-    .identity-text h2 span {
+    .header-identity__name-surname {
       font-weight: 400;
       color: #ffffff;
     }
-    .identity-text .role {
-      font-size: 0.85rem;
-      color: #94a3b8;
+    
+    /* Role Rotator */
+    .header-identity__role-rotator {
+      position: relative;
+      height: 20px;
+      overflow: hidden;
       margin-bottom: 4px;
     }
-    .identity-text .operator-id {
+    .header-identity__role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    .header-identity__role.active {
+      display: block;
+      animation: fadeInRole 0.4s ease;
+    }
+    @keyframes fadeInRole {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-identity__operator {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
       color: #64748b;
     }
 
-    /* Section 2: System Status */
-    .section-status {
-      padding: 0 32px;
-      border-left: 1px solid #1a202c;
-      border-right: 1px solid #1a202c;
+    /* Signal / System Status Section */
+    .header-signal {
+      padding: 0 28px;
+      border-left: 1px solid var(--card-border);
+      border-right: 1px solid var(--card-border);
       font-family: 'JetBrains Mono', monospace;
     }
-    .status-head {
+    .header-signal__title {
       font-size: 0.68rem;
-      color: #4b5563;
+      color: var(--text-dim);
       letter-spacing: 1px;
       margin-bottom: 8px;
+      text-transform: uppercase;
     }
-    .status-list {
+    .header-signal__board {
       display: flex;
       flex-direction: column;
       gap: 5px;
       font-size: 0.78rem;
     }
-    .status-item {
+    .header-signal__row {
       display: flex;
       align-items: center;
     }
-    .status-item .k {
-      width: 90px;
-      color: #8c9ba8;
+    .header-signal__key {
+      width: 85px;
+      color: #818cf8;
     }
-    .status-item .v {
+    .header-signal__value {
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .status-dot {
+    .header-signal__dot {
       width: 6px;
       height: 6px;
       background: var(--status-green);
@@ -209,32 +223,32 @@
       box-shadow: 0 0 6px var(--status-green);
     }
 
-    /* Section 3: Call-to-Action & Contact */
-    .section-action {
-      padding-left: 28px;
+    /* Action / CTA Section */
+    .header-action {
+      padding-left: 24px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 9px;
+      gap: 8px;
     }
-    .cv-container {
+    .cv-group--header {
       display: inline-flex;
     }
-    .cv-main-btn {
+    .cv-btn--header {
       background: transparent;
       border: 1px solid #28303f;
       border-right: none;
       color: #f1f5f9;
-      padding: 7px 16px;
-      font-size: 0.82rem;
+      padding: 7px 14px;
+      font-size: 0.8rem;
       font-weight: 500;
       border-radius: 8px 0 0 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
     }
-    .cv-arrow-btn {
+    .cv-trigger {
       background: transparent;
       border: 1px solid #28303f;
       color: #94a3b8;
@@ -246,7 +260,7 @@
       align-items: center;
       justify-content: center;
     }
-    .action-email {
+    .header-action__email {
       font-size: 0.78rem;
       color: #94a3b8;
       text-decoration: none;
@@ -254,20 +268,22 @@
       align-items: center;
       gap: 6px;
     }
-    .action-email:hover { color: #ffffff; }
-    .action-socials {
+    .header-action__email:hover { color: #ffffff; }
+    
+    .header-action__social {
       display: flex;
       gap: 12px;
+      list-style: none;
       margin-top: 2px;
     }
-    .action-socials a {
+    .header-action__social a {
       color: #64748b;
       text-decoration: none;
       display: flex;
       align-items: center;
-      transition: 0.2s ease;
+      transition: color 0.2s ease;
     }
-    .action-socials a:hover { color: #cbd5e1; }
+    .header-action__social a:hover { color: #cbd5e1; }
 
     /* =========================================================
        MAIN TWO-COLUMN LAYOUT
@@ -278,7 +294,7 @@
       gap: 24px;
     }
 
-    /* SIDEBAR DOCK */
+    /* Sidebar Dock */
     .sidebar-dock {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -297,10 +313,7 @@
       width: 48px;
       margin-bottom: 20px;
     }
-    .q-block {
-      height: 12px;
-      border-radius: 3px;
-    }
+    .q-block { height: 12px; border-radius: 3px; }
     .q-blue { background: #3b82f6; }
     .q-green { background: #10b981; }
     .q-amber { background: #f59e0b; }
@@ -325,7 +338,6 @@
       font-weight: 500;
       gap: 4px;
       transition: all 0.2s;
-      position: relative;
     }
     .nav-item.active {
       background: rgba(47, 104, 238, 0.15);
@@ -381,7 +393,7 @@
       gap: 4px;
     }
 
-    /* RIGHT CONTENT AREA */
+    /* Content Box */
     .content-box {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -389,7 +401,6 @@
       padding: 36px 40px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-
     .content-title {
       font-size: 1.8rem;
       font-weight: 700;
@@ -437,7 +448,7 @@
     }
     .portfolio-link-action:hover { text-decoration: underline; }
 
-    /* STATS / SCOPE PILL SWITCH */
+    /* Segmented Control */
     .segmented-control {
       background: #0d1017;
       border: 1px solid var(--card-border);
@@ -473,7 +484,7 @@
       margin-bottom: 18px;
     }
 
-    /* NUMBERS GRID */
+    /* Numbers Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -503,7 +514,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* WHAT I'M DOING / CARDS GRID */
+    /* What I'm Doing Grid */
     .doing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -517,9 +528,7 @@
       position: relative;
       transition: 0.2s;
     }
-    .doing-card:hover {
-      border-color: rgba(47, 104, 238, 0.5);
-    }
+    .doing-card:hover { border-color: rgba(47, 104, 238, 0.5); }
     .doing-card-header {
       display: flex;
       align-items: flex-start;
@@ -562,7 +571,7 @@
       line-height: 1.6;
     }
 
-    /* FOOTER */
+    /* Footer */
     .bottom-bar {
       border-top: 1px solid rgba(255,255,255,0.05);
       padding-top: 24px;
@@ -583,24 +592,22 @@
     }
 
     @media (max-width: 900px) {
-      .header-body-grid {
+      .header__body {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .section-status {
+      .header-signal {
         padding: 16px 0;
         border-left: none;
         border-right: none;
-        border-top: 1px solid #1a202c;
-        border-bottom: 1px solid #1a202c;
+        border-top: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
       }
-      .section-action {
+      .header-action {
         padding-left: 0;
         align-items: flex-start;
       }
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
+      .main-grid { grid-template-columns: 1fr; }
       .sidebar-dock {
         flex-direction: row;
         width: 100%;
@@ -635,66 +642,130 @@
 
   <div class="app-layout">
     
-    <!-- TOP OPERATOR CONSOLE HEADER -->
-    <header class="operator-header">
-      <div class="header-chrome">
-        <div class="dots">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-amber"></span>
-          <span class="dot dot-green"></span>
-        </div>
-        <div class="console-label">operator console</div>
+    <!-- TOP OPERATOR CONSOLE (USING YOUR EXACT PROVIDED HTML STRUCTURE) -->
+    <header class="header box header--collapsed">
+      <div class="header__chrome" aria-hidden="true">
+        <span class="header__chrome-dot header__chrome-dot--red"></span>
+        <span class="header__chrome-dot header__chrome-dot--amber"></span>
+        <span class="header__chrome-dot header__chrome-dot--green"></span>
+        <span class="header__chrome-label">operator console</span>
       </div>
 
-      <div class="header-body-grid">
-        <!-- 1. Profile Section -->
-        <div class="section-profile">
-          <div class="avatar-ring">
-            <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" alt="Hunain Haider">
+      <div class="header__body">
+        <!-- Identity -->
+        <div class="header-identity">
+          <div class="header-identity__photo">
+            <img class="header-identity__photo-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320&h=320&fit=crop" alt="Hunain Haider" width="320" height="320">
           </div>
-          <div class="identity-text">
-            <h2>Hunain <span>Haider</span></h2>
-            <div class="role">IT Systems & Infrastructure Specialist</div>
-            <div class="operator-id">operator/01</div>
+          <div class="header-identity__info">
+            <div class="header-identity__name">Hunain <span class="header-identity__name-surname">Haider</span></div>
+            <div class="header-identity__role-rotator">
+              <span class="header-identity__role active">IT Systems Administrator</span>
+              <span class="header-identity__role">Infrastructure Specialist</span>
+              <span class="header-identity__role">Process Automation Engineer</span>
+              <span class="header-identity__role">Network Operations Specialist</span>
+            </div>
+            <div class="header-identity__operator">operator/01</div>
           </div>
         </div>
 
-        <!-- 2. System Status Section -->
-        <div class="section-status">
-          <div class="status-head">SYSTEM STATUS</div>
-          <div class="status-list">
-            <div class="status-item">
-              <span class="k">status :</span>
-              <span class="v"><span class="status-dot"></span> available</span>
+        <!-- System Status -->
+        <div class="header-signal">
+          <div class="header-signal__title">system status</div>
+          <div class="header-signal__board">
+            <div class="header-signal__row header-signal__row--status">
+              <span class="header-signal__key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> available</span>
             </div>
-            <div class="status-item">
-              <span class="k">tz :</span>
-              <span class="v">GMT+5</span>
+            <div class="header-signal__row">
+              <span class="header-signal__key">tz</span>
+              <span class="header-signal__value">GMT+5</span>
             </div>
-            <div class="status-item">
-              <span class="k">response :</span>
-              <span class="v">&lt;24h</span>
+            <div class="header-signal__row">
+              <span class="header-signal__key">response</span>
+              <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
         </div>
 
-        <!-- 3. Actions Section -->
-        <div class="section-action">
-          <div class="cv-container">
-            <button class="cv-main-btn"><i data-lucide="download" style="width:13px;height:13px;"></i> Download CV</button>
-            <button class="cv-arrow-btn"><i data-lucide="chevron-up" style="width:13px;height:13px;"></i></button>
+        <!-- Action / CTA -->
+        <div class="header-action">
+          <div class="cv-group cv-group--header">
+            <button class="cv-btn cv-btn--header" aria-label="Download CV as PDF">
+              <span class="cv-btn__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </span>
+              <span class="cv-btn__text cv-btn__text--responsive">Download CV</span>
+            </button>
+            <button class="cv-trigger" aria-label="Select CV version">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="cv-chevron">
+                <polyline points="6 15 12 9 18 15"></polyline>
+              </svg>
+            </button>
           </div>
-          <a href="mailto:hunain.haider69@gmail.com" class="action-email">
-            <i data-lucide="mail" style="width:13px;height:13px;"></i> hunain.haider69@gmail.com
+
+          <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            hunain.haider69@gmail.com
           </a>
-          <div class="action-socials">
-            <a href="#" title="Facebook"><i data-lucide="facebook" style="width:13px;height:13px;"></i></a>
-            <a href="#" title="X"><i data-lucide="twitter" style="width:13px;height:13px;"></i></a>
-            <a href="#" title="Instagram"><i data-lucide="instagram" style="width:13px;height:13px;"></i></a>
-            <a href="https://linkedin.com/in/hunain-haider-its" target="_blank" title="LinkedIn"><i data-lucide="linkedin" style="width:13px;height:13px;"></i></a>
-            <a href="https://github.com" target="_blank" title="GitHub"><i data-lucide="github" style="width:13px;height:13px;"></i></a>
-            <a href="#" title="Flag / Dribbble"><i data-lucide="flag" style="width:13px;height:13px;"></i></a>
-          </div>
+
+          <ul class="header-action__social" aria-label="Social media links">
+            <li>
+              <a target="_blank" rel="noopener" href="#" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="#" title="X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4l11.733 16h4.267l-11.733-16z"></path>
+                  <path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="#" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://github.com" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Journey / Flag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                  <line x1="4" y1="22" x2="4" y2="15"></line>
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
@@ -907,7 +978,7 @@
           <span>·</span>
           <a href="#">Contact</a>
           <span>·</span>
-          <span class="system-badge"><span class="status-dot"></span> All systems operational</span>
+          <span class="system-badge"><span class="header-signal__dot"></span> All systems operational</span>
         </div>
 
       </main>
@@ -917,7 +988,19 @@
   </div>
 
   <script>
+    // Initialize Lucide icons
     lucide.createIcons();
+
+    // Role Rotator functionality
+    const roles = document.querySelectorAll('.header-identity__role');
+    let currentRoleIndex = 0;
+    if (roles.length > 0) {
+      setInterval(() => {
+        roles[currentRoleIndex].classList.remove('active');
+        currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+        roles[currentRoleIndex].classList.add('active');
+      }, 3000);
+    }
   </script>
 </body>
 </html>
