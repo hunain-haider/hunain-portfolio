@@ -1,422 +1,856 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hunain Haider | IT Systems & Automation Specialist</title>
-  <!-- Lucide Icons -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hunain Haider — Systems & Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
+    :root {
+      --bg-color: #0b0d11;
+      --card-bg: #11141b;
+      --card-border: #1e2430;
+      --accent-blue: #2f68ee;
+      --accent-blue-hover: #3d75f8;
+      --text-main: #e2e8f0;
+      --text-muted: #8c9ba8;
+      --text-dim: #5a6675;
+      --status-green: #10b981;
+      --chip-bg: rgba(47, 104, 238, 0.12);
+      --chip-text: #60a5fa;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: #0d0e12;
-      color: #e2e8f0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Background Canvas */
-    #canvas-bg {
+    /* Left & Right Geometric Polygon Accents */
+    .bg-poly-left {
       position: fixed;
-      top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      top: 15%;
+      width: 140px;
+      height: 380px;
       pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
+    }
+    .bg-poly-right {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 160px;
+      height: 420px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
     }
 
-    .container {
+    /* Main Container */
+    .app-layout {
       position: relative;
       z-index: 1;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 60px 24px 40px;
-      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      padding: 30px 20px 80px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      gap: 24px;
     }
 
-    /* Header */
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 24px;
-      text-align: center;
-      letter-spacing: -0.5px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .social-links a {
-      color: #94a3b8;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .social-links a:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.12);
-      border-color: #3b82f6;
-      transform: translateY(-2px);
-    }
-
-    /* Navigation Tabs */
-    .tabs {
-      display: flex;
-      gap: 32px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 12px;
-      margin-bottom: 48px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      color: #94a3b8;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 6px 12px;
+    /* TOP OPERATOR CONSOLE */
+    .operator-header {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 24px;
       position: relative;
-      transition: color 0.2s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-
-    .tab-btn:hover {
-      color: #ffffff;
-    }
-
-    .tab-btn.active {
-      color: #3b82f6;
-    }
-
-    .tab-btn.active::after {
-      content: "";
-      position: absolute;
-      bottom: -13px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: #3b82f6;
-    }
-
-    /* Tab Content */
-    .tab-content {
-      display: none;
-      width: 100%;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* About Section Text */
-    .intro-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 24px;
-    }
-
-    .bio-text p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: #cbd5e1;
-      margin-bottom: 20px;
-    }
-
-    .highlight-link {
-      color: #60a5fa;
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    .highlight-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Projects Cards */
-    .project-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-      transition: border-color 0.2s ease;
-    }
-
-    .project-card:hover {
-      border-color: rgba(96, 165, 250, 0.4);
-    }
-
-    .project-card h3 {
-      color: #ffffff;
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .project-card p {
-      color: #94a3b8;
-      font-size: 0.98rem;
-      line-height: 1.6;
+    .header-chrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 12px;
       margin-bottom: 16px;
     }
-
-    .tags {
+    .dots {
       display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-amber { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .console-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 20px;
     }
-
-    .tag {
-      background: rgba(59, 130, 246, 0.1);
-      color: #60a5fa;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .project-links {
+    .profile-info {
       display: flex;
+      align-items: center;
       gap: 16px;
     }
+    .avatar-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #181d26;
+    }
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-names h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .profile-names p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
 
-    .project-links a {
-      color: #f1f5f9;
-      font-size: 0.9rem;
+    /* System Status Terminal block */
+    .system-status {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+    }
+    .status-header-text {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .status-row {
+      display: flex;
+      gap: 12px;
+    }
+    .status-key { color: var(--text-muted); width: 65px; }
+    .status-val { color: #fff; display: flex; align-items: center; gap: 6px; }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--status-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--status-green);
+    }
+
+    /* Actions */
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .cv-btn-group {
+      display: flex;
+    }
+    .cv-btn {
+      background: var(--card-border);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: 8px 0 0 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cv-dropdown {
+      background: var(--card-border);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: none;
+      padding: 7px 10px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+    .header-contact-link {
+      font-size: 0.8rem;
+      color: var(--text-muted);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
     }
+    .social-bar {
+      display: flex;
+      gap: 10px;
+    }
+    .social-bar a {
+      color: var(--text-muted);
+      transition: 0.2s;
+    }
+    .social-bar a:hover { color: #fff; }
 
-    .project-links a:hover {
-      color: #60a5fa;
+    /* BODY TWO-COLUMN SECTION */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 24px;
     }
 
-    /* Footer */
-    footer {
+    /* SIDEBAR NAVIGATION */
+    .sidebar-dock {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: fit-content;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .quad-colors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      width: 48px;
+      margin-bottom: 20px;
+    }
+    .q-block {
+      height: 12px;
+      border-radius: 3px;
+    }
+    .q-blue { background: #3b82f6; }
+    .q-green { background: #10b981; }
+    .q-amber { background: #f59e0b; }
+    .q-red { background: #ef4444; }
+
+    .nav-list {
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 4px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.65rem;
+      font-weight: 500;
+      gap: 4px;
+      transition: all 0.2s;
       position: relative;
-      z-index: 1;
+    }
+    .nav-item.active {
+      background: rgba(47, 104, 238, 0.15);
+      color: #fff;
+      border: 1px solid rgba(47, 104, 238, 0.4);
+    }
+    .nav-indicator {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      margin-top: 2px;
+    }
+    .nav-item.active .nav-indicator {
+      background: var(--status-green);
+      box-shadow: 0 0 6px var(--status-green);
+    }
+
+    .patch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 4px);
+      gap: 4px;
+      margin: 20px 0;
+    }
+    .p-hole {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+
+    .sidebar-utils {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 14px;
+    }
+    .util-btn {
+      background: #181d26;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 6px;
+      border-radius: 6px;
+      font-size: 0.65rem;
+      width: 64px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* RIGHT CONTENT AREA */
+    .content-box {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 36px 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .content-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .title-dot { color: var(--accent-blue); }
+    .color-accent-line {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #f59e0b);
+      border-radius: 2px;
+      margin: 10px 0 18px;
+    }
+
+    .sub-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sub-tagline span { color: var(--accent-blue); }
+
+    .bio-body p {
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: #b3c0cf;
+      margin-bottom: 18px;
+    }
+
+    .portfolio-link-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #60a5fa;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin: 8px 0 28px;
+    }
+    .portfolio-link-action:hover { text-decoration: underline; }
+
+    /* STATS / SCOPE PILL SWITCH */
+    .segmented-control {
+      background: #0d1017;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 4px;
+      display: flex;
+      width: 100%;
+      margin-bottom: 36px;
+    }
+    .segment-btn {
+      flex: 1;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: none;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .segment-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .section-headline {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    /* NUMBERS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px 12px;
       text-align: center;
+      transition: 0.2s;
+    }
+    .stat-card:hover { border-color: rgba(47, 104, 238, 0.4); }
+    .stat-val {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #3b82f6;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* WHAT I'M DOING / CARDS GRID */
+    .doing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .doing-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
       padding: 24px;
-      color: #64748b;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      transition: 0.2s;
+    }
+    .doing-card:hover {
+      border-color: rgba(47, 104, 238, 0.5);
+    }
+    .doing-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .doing-icon-box {
+      width: 44px;
+      height: 44px;
+      background: rgba(47, 104, 238, 0.15);
+      border: 1px solid rgba(47, 104, 238, 0.3);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #60a5fa;
+      flex-shrink: 0;
+    }
+    .doing-title-group h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .doing-chip {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .doing-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .bottom-bar {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 24px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .bottom-bar a { color: var(--text-dim); text-decoration: none; }
+    .bottom-bar a:hover { color: #fff; }
+    .system-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-dock {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .nav-list { flex-direction: row; justify-content: space-around; }
+      .quad-colors, .patch-grid, .sidebar-utils { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .doing-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <canvas id="canvas-bg"></canvas>
+  <!-- Geometric SVG Graphic (Left Side) -->
+  <svg class="bg-poly-left" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 80,40 10,120" fill="#e11d48"/>
+    <polygon points="10,120 90,80 140,160 30,190" fill="#f59e0b"/>
+    <polygon points="30,190 140,160 110,250 10,230" fill="#059669"/>
+    <polygon points="10,230 110,250 50,330 0,300" fill="#0284c7"/>
+    <polygon points="50,330 110,250 80,390" fill="#0ea5e9"/>
+  </svg>
 
-  <div class="container">
-    <h1>Hunain Haider</h1>
+  <!-- Geometric SVG Graphic (Right Side) -->
+  <svg class="bg-poly-right" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="150,400 70,360 140,280" fill="#059669"/>
+    <polygon points="140,280 60,320 10,240 120,210" fill="#0284c7"/>
+    <polygon points="120,210 10,240 40,150 140,170" fill="#f59e0b"/>
+    <polygon points="140,170 40,150 100,70 150,100" fill="#e11d48"/>
+  </svg>
 
-    <!-- Social Links -->
-    <div class="social-links">
-      <a href="https://github.com" target="_blank" title="GitHub">
-        <i data-lucide="github"></i>
-      </a>
-      <a href="https://linkedin.com/in/hunain-haider-its" target="_blank" title="LinkedIn">
-        <i data-lucide="linkedin"></i>
-      </a>
-      <a href="mailto:hunain.haider69@gmail.com" title="Email">
-        <i data-lucide="mail"></i>
-      </a>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('about')">About</button>
-      <button class="tab-btn" onclick="switchTab('projects')">Projects</button>
-      <button class="tab-btn" onclick="switchTab('writing')">Writing</button>
-    </div>
-
-    <!-- About Tab -->
-    <div id="about" class="tab-content active">
-      <h2 class="intro-title">Hi! I'm Hunain.</h2>
-      <div class="bio-text">
-        <p>
-          I bridge enterprise network administration with modern automation. Over the past 5+ years, I’ve architected and managed high-availability infrastructure, secure routing, and multi-user environments.
-        </p>
-        <p>
-          I eliminate operational bottlenecks by writing custom automation engines using Python and PowerShell—turning tedious manual system audits, daily operations, and server routines into hands-off background tasks.
-        </p>
-        <p>
-          Currently focused on integrating modern AI workflows into internal operations to help teams scale without technical friction.
-        </p>
-        <p>
-          Whether you want to discuss network design, sysadmin automation, or infrastructure scalability, let's connect.
-        </p>
-        <p>
-          You can reach me at <a class="highlight-link" href="mailto:hunain.haider69@gmail.com">hunain.haider69 [at] gmail [dot] com</a>
-        </p>
-      </div>
-    </div>
-
-    <!-- Projects Tab -->
-    <div id="projects" class="tab-content">
-      <div class="project-card">
-        <h3>Enterprise Operations & Report Engine</h3>
-        <p>
-          Automated multi-department attendance aggregation, log audits, and scheduled PDF reporting using PowerShell and Python, cutting 10+ hours of manual administrative overhead weekly.
-        </p>
-        <div class="tags">
-          <span class="tag">PowerShell</span>
-          <span class="tag">Python</span>
-          <span class="tag">SMTP Automation</span>
+  <div class="app-layout">
+    
+    <!-- TOP OPERATOR CONSOLE HEADER -->
+    <header class="operator-header">
+      <div class="header-chrome">
+        <div class="dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-amber"></span>
+          <span class="dot dot-green"></span>
         </div>
-        <div class="project-links">
-          <a href="#"><i data-lucide="github" style="width:16px;height:16px;"></i> View Code</a>
-        </div>
+        <div class="console-label">operator console</div>
       </div>
 
-      <div class="project-card">
-        <h3>Infrastructure Monitoring & Alerting Bot</h3>
-        <p>
-          A lightweight daemon monitoring critical gateway IPs, switch ports, and server availability, delivering instant rich alerts and auto-restart triggers via Telegram/Slack webhooks.
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Network Protocols</span>
-          <span class="tag">Webhooks</span>
+      <div class="header-content">
+        <!-- Identity -->
+        <div class="profile-info">
+          <div class="avatar-wrapper">
+            <!-- Replace with your actual photo path or GitHub profile image -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" alt="Hunain Haider">
+          </div>
+          <div class="profile-names">
+            <h2>Hunain <span style="font-weight:400; color:var(--text-muted);">Haider</span></h2>
+            <p>IT Systems & Infrastructure Specialist</p>
+          </div>
         </div>
-        <div class="project-links">
-          <a href="#"><i data-lucide="github" style="width:16px;height:16px;"></i> View Code</a>
+
+        <!-- System Status -->
+        <div class="system-status">
+          <div class="status-header-text">SYSTEM STATUS</div>
+          <div class="status-row">
+            <span class="status-key">status :</span>
+            <span class="status-val"><span class="live-dot"></span> available</span>
+          </div>
+          <div class="status-row">
+            <span class="status-key">tz :</span>
+            <span class="status-val">GMT+5</span>
+          </div>
+          <div class="status-row">
+            <span class="status-key">response :</span>
+            <span class="status-val">&lt;24h</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="header-actions">
+          <div class="cv-btn-group">
+            <button class="cv-btn"><i data-lucide="download" style="width:14px;"></i> Download CV</button>
+            <button class="cv-dropdown"><i data-lucide="chevron-down" style="width:12px;"></i></button>
+          </div>
+          <a href="mailto:hunain.haider69@gmail.com" class="header-contact-link">
+            <i data-lucide="mail" style="width:13px;"></i> hunain.haider69@gmail.com
+          </a>
+          <div class="social-bar">
+            <a href="https://linkedin.com/in/hunain-haider-its" target="_blank"><i data-lucide="linkedin" style="width:15px;"></i></a>
+            <a href="https://github.com" target="_blank"><i data-lucide="github" style="width:15px;"></i></a>
+            <a href="#"><i data-lucide="twitter" style="width:15px;"></i></a>
+          </div>
         </div>
       </div>
+    </header>
+
+    <!-- MAIN TWO COLUMN SECTION -->
+    <div class="main-grid">
+      
+      <!-- SIDEBAR DOCK -->
+      <aside class="sidebar-dock">
+        <div class="quad-colors">
+          <div class="q-block q-blue"></div>
+          <div class="q-block q-green"></div>
+          <div class="q-block q-amber"></div>
+          <div class="q-block q-red"></div>
+        </div>
+
+        <ul class="nav-list">
+          <li>
+            <a href="#" class="nav-item active">
+              <i data-lucide="user" style="width:16px;"></i>
+              <span>ABOUT</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="layout-grid" style="width:16px;"></i>
+              <span>PORTFOLIO</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="file-text" style="width:16px;"></i>
+              <span>RESUME</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="book-open" style="width:16px;"></i>
+              <span>BLOG</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="mail" style="width:16px;"></i>
+              <span>CONTACT</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="terminal" style="width:16px;"></i>
+              <span>TERMINAL</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="server" style="width:16px;"></i>
+              <span>INFRAST...</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <i data-lucide="palette" style="width:16px;"></i>
+              <span>DESIGN ...</span>
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="patch-grid">
+          <div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div>
+          <div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div><div class="p-hole"></div>
+        </div>
+
+        <div class="sidebar-utils">
+          <button class="util-btn"><i data-lucide="search" style="width:10px;"></i> SEARCH</button>
+          <div style="display:flex; gap:2px;">
+            <button class="util-btn" style="width:31px; background:#2f68ee; color:#fff;">EN</button>
+            <button class="util-btn" style="width:31px;">ID</button>
+          </div>
+          <button class="util-btn"><i data-lucide="moon" style="width:10px;"></i> DARK</button>
+        </div>
+      </aside>
+
+      <!-- CONTENT BOX -->
+      <main class="content-box">
+        <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
+        <div class="color-accent-line"></div>
+
+        <div class="sub-tagline">
+          <span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale
+        </div>
+
+        <div class="bio-body">
+          <p>
+            IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.
+          </p>
+          <p>
+            I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.
+          </p>
+          <p>
+            Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.
+          </p>
+        </div>
+
+        <a href="#" class="portfolio-link-action">See my Automation & Infrastructure portfolio &rarr;</a>
+
+        <!-- STATS / SCOPE SWITCH -->
+        <div class="segmented-control">
+          <button class="segment-btn active">STATS</button>
+          <button class="segment-btn">SCOPE</button>
+        </div>
+
+        <!-- BY THE NUMBERS -->
+        <h2 class="section-headline">By the Numbers</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-val">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">10+</div>
+            <div class="stat-label">Projects Done</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">37+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">4</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+        </div>
+
+        <!-- WHAT I'M DOING -->
+        <h2 class="section-headline">What I'm Doing</h2>
+        <div class="doing-grid">
+          
+          <div class="doing-card">
+            <span class="doing-chip">SECURITY</span>
+            <div class="doing-card-header">
+              <div class="doing-icon-box">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <div class="doing-title-group">
+                <h3>Network Security</h3>
+              </div>
+            </div>
+            <p>
+              Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.
+            </p>
+          </div>
+
+          <div class="doing-card">
+            <span class="doing-chip">INFRASTRUCTURE</span>
+            <div class="doing-card-header">
+              <div class="doing-icon-box">
+                <i data-lucide="server"></i>
+              </div>
+              <div class="doing-title-group">
+                <h3>Systems & Servers</h3>
+              </div>
+            </div>
+            <p>
+              Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.
+            </p>
+          </div>
+
+          <div class="doing-card">
+            <span class="doing-chip">RELIABILITY</span>
+            <div class="doing-card-header">
+              <div class="doing-icon-box">
+                <i data-lucide="activity"></i>
+              </div>
+              <div class="doing-title-group">
+                <h3>Health Monitoring</h3>
+              </div>
+            </div>
+            <p>
+              Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.
+            </p>
+          </div>
+
+          <div class="doing-card">
+            <span class="doing-chip">AUTOMATION</span>
+            <div class="doing-card-header">
+              <div class="doing-icon-box">
+                <i data-lucide="cpu"></i>
+              </div>
+              <div class="doing-title-group">
+                <h3>Process Automation</h3>
+              </div>
+            </div>
+            <p>
+              Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="bottom-bar">
+          <span>&copy; 2026 Hunain Haider</span>
+          <span>·</span>
+          <a href="#">Contact</a>
+          <span>·</span>
+          <span class="system-badge"><span class="live-dot"></span> All systems operational</span>
+        </div>
+
+      </main>
+
     </div>
 
-    <!-- Writing Tab -->
-    <div id="writing" class="tab-content">
-      <div class="project-card">
-        <h3>Why Small IT Teams Should Stop Manual Server Audits</h3>
-        <p>A practical breakdown on replacing repetitive administrative tasks with simple, reliable scheduled PowerShell daemons.</p>
-        <div class="project-links">
-          <a href="https://linkedin.com/in/hunain-haider-its" target="_blank">Read on LinkedIn &rarr;</a>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <footer>
-    &copy; 2026 Hunain Haider. All rights reserved.
-  </footer>
-
   <script>
-    // Initialize Icons
     lucide.createIcons();
-
-    // Tab Switching Logic
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-      event.target.classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
-
-    // Constellation / Particle Network Background
-    const canvas = document.getElementById('canvas-bg');
-    const ctx = canvas.getContext('2d');
-
-    let particles = [];
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 0.5;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > width) this.vx = -this.vx;
-        if (this.y < 0 || this.y > height) this.vy = -this.vy;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
-        ctx.fill();
-      }
-    }
-
-    const particleCount = Math.min(Math.floor(window.innerWidth / 18), 70);
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(animate);
-    }
-    animate();
   </script>
 </body>
 </html>
