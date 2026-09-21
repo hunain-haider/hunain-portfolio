@@ -231,7 +231,7 @@
     }
 
     /* =========================================================
-       EXACT SCREENSHOT-MATCHING BLUE CV BUTTON & DROPDOWN
+       BLUE CV BUTTON & DROPDOWN
     ========================================================= */
     .header-action {
       padding-left: 24px;
@@ -296,7 +296,7 @@
       transform: rotate(180deg);
     }
 
-    /* Exact Menu Popover */
+    /* Menu Popover */
     .cv-menu {
       position: absolute;
       top: calc(100% + 8px);
@@ -792,14 +792,15 @@
         <!-- Action / CTA with Dropdown -->
         <div class="header-action">
           <div class="cv-group cv-group--header" id="cvDropdownGroup">
-            <button class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV as PDF">
+            <!-- Direct Download Trigger -->
+            <a href="resume.pdf" download="Hunain_Haider_Resume.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV as PDF">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
               <span>Download CV</span>
-            </button>
+            </a>
             
             <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="cv-chevron">
@@ -809,14 +810,14 @@
 
             <!-- CV Version Popover Menu -->
             <ul class="cv-menu" role="listbox" aria-label="CV version">
-              <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="triggerCvDownload('Human')">
+              <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Human')">
                 <span class="cv-menu__check">✓</span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">Human</span>
                   <span class="cv-menu__desc">Colored, polished</span>
                 </div>
               </li>
-              <li role="option" aria-selected="false" class="cv-menu__item" onclick="triggerCvDownload('ATS')">
+              <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
                 <span class="cv-menu__check"></span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">ATS</span>
@@ -827,7 +828,7 @@
           </div>
 
           <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
@@ -1127,6 +1128,7 @@
 
     // Toggle Dropdown
     cvTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       const isOpen = cvGroup.classList.toggle('open');
       cvTrigger.setAttribute('aria-expanded', isOpen);
@@ -1140,38 +1142,15 @@
       }
     });
 
-    // Main Download Button triggers active version
-    directBtn.addEventListener('click', () => {
-      triggerCvDownload('Human');
-    });
-
-    // Safe File Downloader & Fail-safe Handler
-    function triggerCvDownload(version) {
-      // Relative path to your uploaded PDF in the repository
-      const targetFile = 'resume.pdf';
-
-      fetch(targetFile)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('File not found');
-          }
-          return response.blob();
-        })
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = url;
-          a.download = `Hunain_Haider_${version}_Resume.pdf`;
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-        })
-        .catch(() => {
-          // Fail-safe fallback if PDF is still propagating or not yet uploaded
-          window.open(targetFile, '_blank');
-        });
+    // Direct Native Download trigger
+    function selectAndDownload(version) {
+      // Create hidden link and click it to force clean download without tab redirect
+      const a = document.createElement('a');
+      a.href = 'resume.pdf';
+      a.download = `Hunain_Haider_${version}_Resume.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
 
       // Update checkmark state in menu
       const items = document.querySelectorAll('.cv-menu__item');
