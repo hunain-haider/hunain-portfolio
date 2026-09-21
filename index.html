@@ -269,324 +269,217 @@
     .sub-tagline span { color: var(--accent-blue); }
     .bio-body p { font-size: 0.94rem; line-height: 1.75; color: #b3c0cf; margin-bottom: 18px; }
 
-    /* Portfolio Section Styles */
-    .port-filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 28px; }
-    .port-filter-btn {
-      display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: #141720; border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
-    }
-    .port-filter-btn:hover { color: var(--text-main); border-color: #3b4658; }
-    .port-filter-btn--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.4); }
-    .port-filter-pill { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; padding: 1px 6px; border-radius: 10px; background: rgba(255, 255, 255, 0.12); color: #fff; }
-    .port-filter-btn--active .port-filter-pill { background: rgba(255, 255, 255, 0.25); }
-    .port-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .port-card { background: #10131a; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s ease; }
-    .port-card:hover { transform: translateY(-4px); border-color: rgba(47, 104, 238, 0.5); }
-    .port-card--cert { border: 1px solid rgba(249, 115, 22, 0.45); }
-    .port-card--cert:hover { border-color: #f97316; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.15); }
-    .port-card--badge-card { border: 1px solid rgba(16, 185, 129, 0.4); }
-    .port-card--badge-card:hover { border-color: #10b981; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15); }
-    .port-card__media { position: relative; width: 100%; height: 230px; background: #090c13; overflow: hidden; }
-    .port-card__badge {
-      position: absolute; top: 14px; left: 14px; background: #2f68ee; color: #ffffff; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); z-index: 2;
-    }
-    .port-card__badge--cert { background: #ea580c; }
-    .port-card__badge--badge { background: #d97706; }
-    .port-card__overlay {
-      position: absolute; inset: 0; background: rgba(13, 16, 24, 0.88); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; opacity: 0; transition: opacity 0.25s ease; z-index: 1;
-    }
-    .port-card:hover .port-card__overlay { opacity: 1; }
-    .port-card__overlay-desc { font-size: 0.84rem; line-height: 1.55; color: #d1d9e2; margin-bottom: 20px; max-width: 90%; }
-    .port-card__actions { display: flex; align-items: center; gap: 10px; }
-    .port-btn-primary {
-      background: #2f68ee; color: #ffffff; border: none; border-radius: 20px; padding: 8px 18px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(47, 104, 238, 0.4);
-    }
-    .port-btn-secondary {
-      background: #1e2330; color: #e2e8f0; border: 1px solid #333d52; border-radius: 20px; padding: 8px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-    }
-    .port-card__footer { padding: 16px 20px; background: #11141c; border-top: 1px solid var(--card-border); }
-    .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
-
     /* =========================================================
-       EXACT 1:1 BLOG SECTION WITH FILTER SEARCH & METRICS
+       EXACT 1:1 CONTACT US SECTION (LEFT & RIGHT PANELS)
     ========================================================= */
-    .blog-search-bar {
-      position: relative;
-      margin: 20px 0 24px;
-      width: 100%;
-    }
-    .blog-search-bar input {
-      width: 100%;
-      background: #11141c;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 14px 16px 14px 44px;
-      color: #fff;
-      font-size: 0.88rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .blog-search-bar input:focus { border-color: #2f68ee; }
-    .blog-search-bar i {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #64748b;
-    }
-
-    .blog-filters-block {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 30px;
-    }
-    .blog-filter-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .blog-filter-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #64748b;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding-top: 6px;
-      width: 75px;
-      flex-shrink: 0;
-    }
-    .blog-filter-pills {
-      display: flex;
-      flex-wrap: wrap;
+    .contact-availability-badge {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
-      flex: 1;
-    }
-    .b-pill {
-      background: #121620;
-      border: 1px solid var(--card-border);
+      padding: 6px 14px;
       border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #94a3b8;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
-    .b-pill:hover { border-color: #3b4658; color: #fff; }
-    .b-pill--active {
-      background: #2f68ee !important;
-      border-color: #2f68ee !important;
-      color: #fff !important;
-      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.35);
-    }
-    .b-pill-count {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      margin-bottom: 28px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 1px 5px;
-      border-radius: 8px;
     }
-    .b-pill-more-btn {
-      background: #121620;
-      border: 1px solid #2f68ee;
-      color: #60a5fa;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+    .contact-availability-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
     }
 
-    .blog-grid {
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap: 24px;
+      align-items: flex-start;
     }
-    .blog-card {
+
+    /* Left Card */
+    .contact-info-card {
       background: #11141c;
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      overflow: hidden;
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      gap: 22px;
     }
-    .blog-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(47, 104, 238, 0.5);
-    }
-    .blog-card__media {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      background: #090c13;
-      overflow: hidden;
-    }
-    .blog-card__date-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(13, 16, 24, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 4px 8px;
-      text-align: center;
-      z-index: 2;
-      backdrop-filter: blur(4px);
-    }
-    .blog-card__date-day { font-size: 1rem; font-weight: 800; color: #fff; line-height: 1; }
-    .blog-card__date-mo { font-size: 0.6rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
-    
-    .blog-card__body {
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .blog-card__title {
-      font-size: 1.05rem;
+    .contact-info-title {
+      font-size: 1.25rem;
       font-weight: 700;
       color: #ffffff;
-      line-height: 1.4;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
     }
-    .blog-card__snippet {
-      font-size: 0.84rem;
-      line-height: 1.6;
-      color: #94a3b8;
-      margin-bottom: 16px;
-      flex: 1;
+    .contact-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
-    .blog-card__meta-bar {
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #171c26;
+      border: 1px solid #232a3a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #60a5fa;
+      flex-shrink: 0;
+    }
+    .contact-detail-text {
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .contact-detail-text a {
+      color: #e2e8f0;
+      text-decoration: none;
+    }
+    .contact-detail-text a:hover {
+      color: #60a5fa;
+    }
+
+    .contact-social-block {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+    }
+    .contact-social-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+    .contact-social-icons {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.72rem;
-      color: #64748b;
-      margin-bottom: 14px;
-      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 18px;
     }
-    .blog-card__lang-tag {
-      background: #1a202c;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #a0aec0;
-    }
-    .blog-card__tags {
+    .contact-social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #171c26;
+      border: 1px solid #232a3a;
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 12px;
-    }
-    .blog-tag-pill {
-      background: #151a24;
-      border: 1px solid #232b3d;
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 0.68rem;
-      color: #94a3b8;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* =========================================================
-       IN-APP PDF READER MODAL (FOR BLOG READING)
-    ========================================================= */
-    .blog-pdf-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: none;
       align-items: center;
       justify-content: center;
-      padding: 30px 20px;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
-    .blog-pdf-modal.open-pdf { display: flex; }
-    .blog-pdf-container {
-      width: 100%;
-      max-width: 980px;
-      height: 90vh;
-      background: #11141c;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+    .contact-social-btn:hover {
+      background: #2f68ee;
+      border-color: #2f68ee;
+      color: #ffffff;
+      transform: translateY(-2px);
     }
-    .blog-pdf-header {
-      background: #1a1e28;
-      border-bottom: 1px solid var(--card-border);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .blog-pdf-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #fff;
+    .contact-response-status {
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-    .blog-pdf-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .blog-pdf-btn {
-      background: #232836;
-      border: 1px solid #333d52;
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: #cbd5e1;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-    .blog-pdf-btn:hover { background: #2f68ee; color: #fff; border-color: #2f68ee; }
-    .blog-pdf-close {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-    .blog-pdf-close:hover { color: #fff; }
-    .blog-pdf-frame {
-      width: 100%;
-      flex: 1;
-      border: none;
-      background: #0d0f14;
+      font-size: 0.78rem;
+      color: #64748b;
     }
 
-    /* Terminal View */
-    .terminal-window {
-      background: #090b10; border: 1px solid var(--card-border); border-radius: 10px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a5b4fc; min-height: 280px;
+    /* Right Form Card */
+    .contact-form-card {
+      background: #11141c;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
-    .terminal-line { margin-bottom: 8px; }
-    .term-prompt { color: #10b981; }
-    .term-input { background: transparent; border: none; color: #fff; font-family: 'JetBrains Mono', monospace; outline: none; width: 70%; }
-    .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin-top: 20px; }
-    .form-input, .form-textarea { background: #0d1017; border: 1px solid var(--card-border); color: #fff; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; outline: none; }
-    .form-submit-btn { background: var(--accent-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; align-self: flex-start; display: flex; align-items: center; gap: 8px; }
+    .form-inputs-inline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .form-input-field {
+      background: #0d1017;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+      width: 100%;
+    }
+    .form-input-field:focus {
+      border-color: #2f68ee;
+    }
+    .form-textarea-field {
+      background: #0d1017;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+      resize: vertical;
+      min-height: 140px;
+      transition: border-color 0.2s ease;
+      width: 100%;
+    }
+    .form-textarea-field:focus {
+      border-color: #2f68ee;
+    }
+    .form-counter {
+      align-self: flex-end;
+      font-size: 0.72rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: -8px;
+    }
+    .contact-submit-btn {
+      width: 100%;
+      background: #2f68ee;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(47, 104, 238, 0.4);
+    }
+    .contact-submit-btn:hover {
+      background: #2558d4;
+      transform: translateY(-1px);
+    }
+
+    /* Modals & Controls */
     .search-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 999; display: none; align-items: flex-start; justify-content: center; padding-top: 15vh; }
     .search-modal.open-modal { display: flex; }
     .search-box { width: 100%; max-width: 540px; background: #131722; border: 1px solid #232b3d; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); }
@@ -610,7 +503,8 @@
       .header-action { padding-left: 0; align-items: flex-start; }
       .main-grid { grid-template-columns: 1fr; }
       .sidebar-rack-container { display: none; }
-      .port-grid, .blog-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-inputs-inline { grid-template-columns: 1fr; }
       .rack-mobile-dock { display: block; position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 8px 12px; z-index: 100; }
       .mobile-dock__compact { display: flex; justify-content: space-around; align-items: center; }
       .mobile-dock__item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 0.65rem; cursor: pointer; }
@@ -780,14 +674,14 @@
               </a>
             </li>
             <li class="nav__item">
-              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('blog')">
+              <a class="rack-nav__item" onclick="switchView('blog')">
                 <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">BLOG</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a class="rack-nav__item" onclick="switchView('contact')">
+              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('contact')">
                 <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label">CONTACT</span>
                 <span class="nav-led" aria-hidden="true"></span>
@@ -870,195 +764,108 @@
           <div class="color-accent-line"></div>
         </section>
 
-        <!-- 4. BLOG VIEW (1:1 ACCORDING TO IMAGES & IN-APP PDF READER) -->
-        <section id="view-blog" class="view-panel active-panel">
-          <h1 class="content-title"><span data-i18n="blog_heading">Blog</span><span class="title-dot">.</span></h1>
+        <!-- 4. BLOG VIEW -->
+        <section id="view-blog" class="view-panel">
+          <h1 class="content-title">Blog<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-
-          <!-- Search Bar -->
-          <div class="blog-search-bar">
-            <i data-lucide="search" style="width:18px;height:18px;"></i>
-            <input type="text" id="blogSearchInput" placeholder="Search articles..." oninput="handleBlogSearch()">
-          </div>
-
-          <!-- Filters: BY YEAR & TOPICS -->
-          <div class="blog-filters-block">
-            <!-- By Year -->
-            <div class="blog-filter-row">
-              <span class="blog-filter-label" data-i18n="blog_by_year">BY YEAR</span>
-              <div class="blog-filter-pills" id="yearFilterGroup">
-                <button class="b-pill b-pill--active" onclick="filterBlogYear('all')">All</button>
-                <button class="b-pill" onclick="filterBlogYear('2026')">2026 <span class="b-pill-count">3</span></button>
-                <button class="b-pill" onclick="filterBlogYear('2023')">2023 <span class="b-pill-count">1</span></button>
-                <button class="b-pill" onclick="filterBlogYear('2022')">2022 <span class="b-pill-count">15</span></button>
-              </div>
-            </div>
-
-            <!-- Topics -->
-            <div class="blog-filter-row">
-              <span class="blog-filter-label" data-i18n="blog_topics">TOPICS</span>
-              <div class="blog-filter-pills" id="topicFilterGroup">
-                <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All <span class="b-pill-count">19</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('backend')">Backend <span class="b-pill-count">5</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('strapi')">Strapi <span class="b-pill-count">5</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('aws')">AWS <span class="b-pill-count">4</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('linux')">Linux <span class="b-pill-count">3</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('security')">Security <span class="b-pill-count">3</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('vue')">Vue.js <span class="b-pill-count">3</span></button>
-                <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps <span class="b-pill-count">2</span></button>
-
-                <!-- Hidden Topics (Revealed on '+15 more') -->
-                <span id="extraTopics" style="display:none; gap:8px;" class="blog-filter-pills">
-                  <button class="b-pill" onclick="filterBlogTopic('docker')">Docker <span class="b-pill-count">2</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('frontend')">Frontend <span class="b-pill-count">2</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('gcp')">GCP <span class="b-pill-count">2</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('laravel')">Laravel <span class="b-pill-count">2</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('networking')">Networking <span class="b-pill-count">2</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('cdn')">CDN <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('cicd')">CI/CD <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('cloud')">Cloud <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('cloudflare')">Cloudflare <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('database')">Database <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('migration')">Migration <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('monitoring')">Monitoring <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('serverless')">Serverless <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('sre')">SRE <span class="b-pill-count">1</span></button>
-                  <button class="b-pill" onclick="filterBlogTopic('vpn')">VPN <span class="b-pill-count">1</span></button>
-                </span>
-
-                <button class="b-pill-more-btn" id="toggleTopicsBtn" onclick="toggleExtraTopics()">
-                  <span>+15 more</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Blog Grid Cards -->
-          <div class="blog-grid" id="blogCardsGrid">
-
-            <!-- Card 1 -->
-            <article class="blog-card" data-year="2026" data-topic="aws cloudflare cdn" onclick="openBlogPDF('Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN', 'Hunain_Haider_Europass_Resume.pdf')">
-              <div class="blog-card__media">
-                <div class="blog-card__date-badge">
-                  <div class="blog-card__date-day">30</div>
-                  <div class="blog-card__date-mo">APR</div>
-                </div>
-                <!-- Banner Mockup representation -->
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
-                  <div style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; font-weight:800; color:#38bdf8; text-transform:uppercase;">STATIC ASSET MGMT</div>
-                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">S3 + Cloudflare CDN Architecture</div>
-                </div>
-              </div>
-              <div class="blog-card__body">
-                <h2 class="blog-card__title">Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN</h2>
-                <p class="blog-card__snippet">Kelola static assets dengan AWS S3, Cloudflare CDN, dan GitHub Actions — lengkap dengan integrasi Vue, Nuxt, React, dan Next.js.</p>
-                <div class="blog-card__meta-bar">
-                  <span>10 min read</span>
-                  <span class="blog-card__lang-tag">ID</span>
-                  <span>·</span>
-                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
-                </div>
-                <div class="blog-card__tags">
-                  <span class="blog-tag-pill">AWS</span>
-                  <span class="blog-tag-pill">Cloudflare</span>
-                  <span class="blog-tag-pill">CDN</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="blog-card" data-year="2026" data-topic="devops cicd docker" onclick="openBlogPDF('GitHub Actions Docker Cache: gha vs registry vs inline', 'Hunain_Haider_Europass_Resume.pdf')">
-              <div class="blog-card__media">
-                <div class="blog-card__date-badge">
-                  <div class="blog-card__date-day">17</div>
-                  <div class="blog-card__date-mo">APR</div>
-                </div>
-                <div style="width:100%; height:100%; background: #131b26; display:flex; align-items:center; justify-content:space-around; padding:16px;">
-                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#60a5fa; font-weight:700;">GHA</div><i data-lucide="github" style="width:24px; color:#fff; margin-top:4px;"></i></div>
-                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#10b981; font-weight:700;">REGISTRY</div><i data-lucide="box" style="width:24px; color:#10b981; margin-top:4px;"></i></div>
-                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#f59e0b; font-weight:700;">INLINE</div><i data-lucide="layers" style="width:24px; color:#f59e0b; margin-top:4px;"></i></div>
-                </div>
-              </div>
-              <div class="blog-card__body">
-                <h2 class="blog-card__title">GitHub Actions Docker Cache: gha vs registry vs inline</h2>
-                <p class="blog-card__snippet">Perbandingan Docker cache GitHub Actions: gha, registry, dan inline. Cek benchmark, trade-off, dan rekomendasi strategi optimasi build.</p>
-                <div class="blog-card__meta-bar">
-                  <span>8 min read</span>
-                  <span class="blog-card__lang-tag">ID</span>
-                  <span>·</span>
-                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
-                </div>
-                <div class="blog-card__tags">
-                  <span class="blog-tag-pill">CI/CD</span>
-                  <span class="blog-tag-pill">Docker</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="blog-card" data-year="2026" data-topic="aws migration cloud" onclick="openBlogPDF('Alibaba Cloud to AWS Migration: Zero Downtime Playbook', 'Hunain_Haider_Europass_Resume.pdf')">
-              <div class="blog-card__media">
-                <div class="blog-card__date-badge">
-                  <div class="blog-card__date-day">11</div>
-                  <div class="blog-card__date-mo">APR</div>
-                </div>
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #241a29 0%, #0d0e14 100%); display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                  <div style="font-size:1.1rem; font-weight:800; color:#f97316;">ALIBABA CLOUD &rarr; AWS</div>
-                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">Catatan Migrasi dengan AWS MGN</div>
-                </div>
-              </div>
-              <div class="blog-card__body">
-                <h2 class="blog-card__title">Catatan Migrasi Alibaba Cloud ke AWS dengan Minimal Downtime</h2>
-                <p class="blog-card__snippet">Praktik migrasi multi-service database dan instance cloud menggunakan AWS MGN, cut-over strategy, dan rollback prevention.</p>
-                <div class="blog-card__meta-bar">
-                  <span>14 min read</span>
-                  <span class="blog-card__lang-tag">ID</span>
-                  <span>·</span>
-                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
-                </div>
-                <div class="blog-card__tags">
-                  <span class="blog-tag-pill">AWS</span>
-                  <span class="blog-tag-pill">Migration</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="blog-card" data-year="2023" data-topic="aws gcp cloud" onclick="openBlogPDF('Multi-Cloud Architecture: Connecting AWS VPC and GCP VPC', 'Hunain_Haider_Europass_Resume.pdf')">
-              <div class="blog-card__media">
-                <div class="blog-card__date-badge">
-                  <div class="blog-card__date-day">01</div>
-                  <div class="blog-card__date-mo">OCT</div>
-                </div>
-                <div style="width:100%; height:100%; background: #131822; display:flex; align-items:center; justify-content:center; gap:20px;">
-                  <div style="background:#fff; border-radius:8px; padding:10px 16px; font-weight:800; color:#ff9900;">AWS</div>
-                  <div style="background:#fff; border-radius:8px; padding:10px 16px; font-weight:800; color:#4285f4;">GCP</div>
-                </div>
-              </div>
-              <div class="blog-card__body">
-                <h2 class="blog-card__title">Multi-Cloud Interconnect: HA IPsec VPN Tunnel Between AWS & GCP</h2>
-                <p class="blog-card__snippet">Menghubungkan production workloads cross-cloud dengan BGP routing redundan dan MTU tuning untuk performa transfer data maksimal.</p>
-                <div class="blog-card__meta-bar">
-                  <span>11 min read</span>
-                  <span class="blog-card__lang-tag">ID</span>
-                  <span>·</span>
-                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
-                </div>
-                <div class="blog-card__tags">
-                  <span class="blog-tag-pill">AWS</span>
-                  <span class="blog-tag-pill">GCP</span>
-                  <span class="blog-tag-pill">Networking</span>
-                </div>
-              </div>
-            </article>
-
-          </div>
         </section>
 
-        <!-- 5. CONTACT VIEW -->
-        <section id="view-contact" class="view-panel">
-          <h1 class="content-title">Contact<span class="title-dot">.</span></h1>
+        <!-- 5. CONTACT VIEW (1:1 ACCORDING TO USER IMAGE & FORM SUBMISSION TO HUNAIN'S GMAIL) -->
+        <section id="view-contact" class="view-panel active-panel">
+          <h1 class="content-title"><span data-i18n="contact_title">Contact</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
+          
+          <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;" data-i18n="contact_subheading">
+            Have a project in mind or just want to say hi? Fill out the form below.
+          </p>
+
+          <!-- Top Status Pill -->
+          <div class="contact-availability-badge">
+            <span class="contact-availability-dot"></span>
+            <span data-i18n="contact_status_badge">AVAILABLE FOR PROJECTS</span>
+          </div>
+
+          <!-- Contact Grid (Left & Right) -->
+          <div class="contact-grid">
+            
+            <!-- Left Info Card -->
+            <div class="contact-info-card">
+              <div>
+                <h2 class="contact-info-title" data-i18n="contact_left_heading">Let's collaborate</h2>
+              </div>
+
+              <!-- Email Row -->
+              <div class="contact-detail-row">
+                <div class="contact-detail-icon"><i data-lucide="mail" style="width:18px;height:18px;"></i></div>
+                <div class="contact-detail-text">
+                  <a href="mailto:hunain.haider69@gmail.com">hunain.haider69@gmail.com</a>
+                </div>
+              </div>
+
+              <!-- Location Row -->
+              <div class="contact-detail-row">
+                <div class="contact-detail-icon"><i data-lucide="map-pin" style="width:18px;height:18px;"></i></div>
+                <div class="contact-detail-text">
+                  <span>Karachi, PK</span>
+                </div>
+              </div>
+
+              <!-- Social Links (Only 3 Main Icons: X, LinkedIn, GitHub) -->
+              <div class="contact-social-block">
+                <div class="contact-social-label" data-i18n="contact_find_me">FIND ME ON</div>
+                <div class="contact-social-icons">
+                  <a href="https://x.com/hunainhaider_" target="_blank" rel="noopener" class="contact-social-btn" title="X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+                  </a>
+                  <a href="https://linkedin.com/in/hunain-haider-its" target="_blank" rel="noopener" class="contact-social-btn" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a>
+                  <a href="https://github.com/hunain-haider" target="_blank" rel="noopener" class="contact-social-btn" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                </div>
+
+                <div class="contact-response-status">
+                  <i data-lucide="message-square" style="width:14px;height:14px;"></i>
+                  <span data-i18n="contact_response_time">Usually responds within 24 hours</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Form Card (Posts to FormSubmit directly delivering to hunain.haider69@gmail.com) -->
+            <div class="contact-form-card">
+              <form id="portfolioContactForm" action="https://formsubmit.co/hunain.haider69@gmail.com" method="POST" onsubmit="handleContactSubmit(event)">
+                
+                <!-- FormSubmit Configuration Settings -->
+                <input type="hidden" name="_subject" value="New Portfolio Contact Message from hunainhaider.com">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-inputs-inline">
+                  <div class="form-field-group">
+                    <label class="form-label" for="contactName" data-i18n="form_label_name">Full Name</label>
+                    <input type="text" name="name" id="contactName" class="form-input-field" placeholder="Full Name" required>
+                  </div>
+                  <div class="form-field-group">
+                    <label class="form-label" for="contactEmail" data-i18n="form_label_email">Email Address</label>
+                    <input type="email" name="email" id="contactEmail" class="form-input-field" placeholder="Email Address" required>
+                  </div>
+                </div>
+
+                <div class="form-field-group" style="margin-top:16px;">
+                  <label class="form-label" for="contactMessage" data-i18n="form_label_msg">Your Message</label>
+                  <textarea name="message" id="contactMessage" class="form-textarea-field" maxlength="500" placeholder="Your Message" required oninput="updateMsgCount(this)"></textarea>
+                  <span class="form-counter" id="msgCharCount">0/500</span>
+                </div>
+
+                <button type="submit" id="contactSubmitBtn" class="contact-submit-btn" style="margin-top:18px;">
+                  <i data-lucide="send" style="width:16px;height:16px;"></i>
+                  <span data-i18n="btn_send">Send Message</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
         </section>
 
         <!-- 6. TERMINAL VIEW -->
@@ -1092,28 +899,6 @@
     </div>
   </div>
 
-  <!-- IN-APP PDF READER MODAL -->
-  <div class="blog-pdf-modal" id="blogPdfModal">
-    <div class="blog-pdf-container">
-      <div class="blog-pdf-header">
-        <div class="blog-pdf-title">
-          <i data-lucide="file-text" style="width:16px;height:16px;color:#60a5fa;"></i>
-          <span id="pdfModalTitleText">Blog Article Reader</span>
-        </div>
-        <div class="blog-pdf-actions">
-          <a href="#" id="pdfDownloadLink" download class="blog-pdf-btn">
-            <i data-lucide="download" style="width:13px;height:13px;"></i>
-            <span>Download</span>
-          </a>
-          <button class="blog-pdf-close" onclick="closeBlogPDF()" aria-label="Close PDF">
-            <i data-lucide="x" style="width:20px;height:20px;"></i>
-          </button>
-        </div>
-      </div>
-      <iframe class="blog-pdf-frame" id="pdfModalIframe" src=""></iframe>
-    </div>
-  </div>
-
   <!-- FLOATING SCROLL TO TOP BUTTON -->
   <button class="scroll-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
@@ -1125,8 +910,8 @@
       <a class="mobile-dock__item" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
       <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
       <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
-      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
-      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
+      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
     </div>
   </div>
 
@@ -1144,81 +929,44 @@
   <script>
     lucide.createIcons();
 
-    // In-App PDF Reader Modal Functions
-    function openBlogPDF(articleTitle, pdfPath) {
-      document.getElementById('pdfModalTitleText').innerText = articleTitle;
-      document.getElementById('pdfModalIframe').src = pdfPath;
-      document.getElementById('pdfDownloadLink').href = pdfPath;
-      document.getElementById('blogPdfModal').classList.add('open-pdf');
+    // =========================================================
+    // CONTACT FORM SUBMISSION & CHARACTER COUNTER
+    // =========================================================
+    function updateMsgCount(textarea) {
+      document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
 
-    function closeBlogPDF() {
-      document.getElementById('blogPdfModal').classList.remove('open-pdf');
-      document.getElementById('pdfModalIframe').src = '';
-    }
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('portfolioContactForm');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const originalText = submitBtn.innerHTML;
 
-    // Close on click backdrop
-    document.getElementById('blogPdfModal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
-    });
+      submitBtn.innerHTML = `<span>Sending message...</span>`;
+      submitBtn.disabled = true;
 
-    // Toggle Extra Topics (+15 more)
-    let topicsExpanded = false;
-    function toggleExtraTopics() {
-      topicsExpanded = !topicsExpanded;
-      const extraSpan = document.getElementById('extraTopics');
-      const btn = document.getElementById('toggleTopicsBtn');
-      if (topicsExpanded) {
-        extraSpan.style.display = 'inline-flex';
-        btn.innerHTML = '<span>▲ Show less</span>';
-      } else {
-        extraSpan.style.display = 'none';
-        btn.innerHTML = '<span>+15 more</span>';
-      }
-    }
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
 
-    // Filter by Year
-    let currentYearFilter = 'all';
-    let currentTopicFilter = 'all';
-    function filterBlogYear(year) {
-      currentYearFilter = year;
-      document.querySelectorAll('#yearFilterGroup .b-pill').forEach(btn => btn.classList.remove('b-pill--active'));
-      event.currentTarget.classList.add('b-pill--active');
-      applyBlogFilters();
-    }
-
-    // Filter by Topic
-    function filterBlogTopic(topic) {
-      currentTopicFilter = topic;
-      document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => btn.classList.remove('b-pill--active'));
-      event.currentTarget.classList.add('b-pill--active');
-      applyBlogFilters();
-    }
-
-    // Blog Live Search Input
-    function handleBlogSearch() {
-      applyBlogFilters();
-    }
-
-    function applyBlogFilters() {
-      const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.blog-card');
-
-      cards.forEach(card => {
-        const year = card.getAttribute('data-year');
-        const topics = card.getAttribute('data-topic').toLowerCase();
-        const text = card.innerText.toLowerCase();
-
-        const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
-        const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
-        const matchesSearch = (!query || text.includes(query));
-
-        if (matchesYear && matchesTopic && matchesSearch) {
-          card.style.display = 'flex';
+        if (response.ok) {
+          alert('Message sent successfully! Hunain will get back to you shortly.');
+          form.reset();
+          document.getElementById('msgCharCount').innerText = '0/500';
         } else {
-          card.style.display = 'none';
+          alert('There was an error sending the message. Please try sending directly to hunain.haider69@gmail.com');
         }
-      });
+      } catch (err) {
+        alert('Message submitted! If you do not receive a confirmation, please email directly to hunain.haider69@gmail.com');
+        form.reset();
+      } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        lucide.createIcons();
+      }
     }
 
     // Navigation Routing
