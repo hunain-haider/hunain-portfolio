@@ -41,7 +41,7 @@
       --nav-active-bg: rgba(47, 104, 238, 0.14);
       --nav-active-border: #2f68ee;
 
-      /* Scope Card Styling Variables */
+      /* Scope Card Exact Styling */
       --scope-card-bg: #12151e;
       --scope-card-border: #1c2230;
       --scope-card-hover-border: #2f68ee;
@@ -74,6 +74,10 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg-color);
       color: var(--text-main);
@@ -85,7 +89,7 @@
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Left & Right Geometric Accents */
+    /* Left & Right Geometric Polygon Accents */
     .bg-poly-left {
       position: fixed;
       left: 0;
@@ -391,7 +395,7 @@
     .header-action__social a:hover { color: var(--text-main); }
 
     /* =========================================================
-       MAIN GRID & RACK SIDEBAR
+       MAIN GRID & 1:1 RACK SIDEBAR
     ========================================================= */
     .main-grid {
       display: grid;
@@ -613,9 +617,11 @@
       margin-bottom: 18px;
     }
 
-    /* SEGMENTED CONTROL (Sticky Scroll Spy Nav) */
+    /* =========================================================
+       STICKY SCROLL SPY SEGMENTED CONTROL
+    ========================================================= */
     .seg-control-nav {
-      background: #0d1017;
+      background: rgba(13, 16, 23, 0.85);
       border: 1px solid var(--card-border);
       border-radius: 10px;
       padding: 4px;
@@ -623,14 +629,16 @@
       width: 100%;
       margin: 24px 0 32px;
       position: sticky;
-      top: 16px;
-      z-index: 20;
-      backdrop-filter: blur(8px);
+      top: 14px;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     .seg-btn {
       flex: 1;
-      padding: 8px 14px;
-      font-size: 0.8rem;
+      padding: 9px 14px;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-dim);
       background: none;
@@ -638,13 +646,16 @@
       border-radius: 7px;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.25s ease;
+      letter-spacing: 0.6px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .seg-btn:hover {
+      color: var(--text-main);
     }
     .seg-btn--active {
-      background: var(--accent-blue);
-      color: #ffffff;
-      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.4);
+      background: var(--accent-blue) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45);
     }
 
     .section-heading-title {
@@ -687,7 +698,7 @@
     }
 
     /* =========================================================
-       EXACT SCOPE CARDS DESIGN (WHAT I'M DOING)
+       EXACT 1:1 SCOPE CARDS DESIGN (WHAT I'M DOING)
     ========================================================= */
     .about-scope-grid {
       display: grid;
@@ -704,18 +715,18 @@
       gap: 18px;
       position: relative;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     }
     .about-scope-card:hover {
       border-color: var(--scope-card-hover-border);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(47, 104, 238, 0.18);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(47, 104, 238, 0.2);
     }
 
     /* Solid Blue Rounded Icon Box */
     .about-scope-card__icon-wrap {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       background: var(--scope-icon-bg);
       border-radius: 12px;
       display: flex;
@@ -723,7 +734,7 @@
       justify-content: center;
       color: #ffffff;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(47, 104, 238, 0.35);
+      box-shadow: 0 4px 14px rgba(47, 104, 238, 0.35);
     }
 
     .about-scope-card__body {
@@ -744,7 +755,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
     .about-scope-card__title {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 600;
       color: var(--text-main);
       margin-bottom: 8px;
@@ -1224,8 +1235,8 @@
             <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')">SCOPE</button>
           </nav>
 
-          <!-- STATS SECTION -->
-          <section id="stats" style="scroll-margin-top: 90px;">
+          <!-- STATS SECTION (BY THE NUMBERS) -->
+          <section id="stats" style="scroll-margin-top: 80px;">
             <h2 class="section-heading-title">By the Numbers</h2>
             <div class="stats-grid">
               <div class="stat-card"><div class="stat-val">5+</div><div class="stat-label">Years Experience</div></div>
@@ -1236,7 +1247,7 @@
           </section>
 
           <!-- SCOPE SECTION (WHAT I'M DOING) WITH EXACT 1:1 CARDS -->
-          <section id="scope" style="scroll-margin-top: 90px;">
+          <section id="scope" style="scroll-margin-top: 80px;">
             <h2 class="section-heading-title">What I'm Doing</h2>
             <div class="about-scope-grid">
               
@@ -1457,6 +1468,16 @@
     </div>
   </div>
 
+  <!-- SVG CLIPPATH DEFS FROM ORIGINAL SITE -->
+  <svg class="svg-defs" style="display:none;">
+    <clippath id="avatar-box">
+      <path d="M1.85379 38.4859C2.9221 18.6653 18.6653 2.92275 38.4858 1.85453 56.0986.905299 77.2792 0 94 0c16.721 0 37.901.905299 55.514 1.85453 19.821 1.06822 35.564 16.81077 36.632 36.63137C187.095 56.0922 188 77.267 188 94c0 16.733-.905 37.908-1.854 55.514-1.068 19.821-16.811 35.563-36.632 36.631C131.901 187.095 110.721 188 94 188c-16.7208 0-37.9014-.905-55.5142-1.855-19.8205-1.068-35.5637-16.81-36.63201-36.631C.904831 131.908 0 110.733 0 94c0-16.733.904831-37.9078 1.85379-55.5141z"></path>
+    </clippath>
+    <clippath id="avatar-hexagon">
+      <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"></path>
+    </clippath>
+  </svg>
+
   <script>
     lucide.createIcons();
 
@@ -1497,18 +1518,20 @@
       }
     }
 
-    // 3. AUTO SCROLL SPY FOR STATS / SCOPE BUTTONS
+    // 3. EXACT SCROLL SPY LOGIC (STATS / SCOPE AUTO SWITCH)
     window.addEventListener('scroll', () => {
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
       const tabBtnStats = document.getElementById('tabBtnStats');
       const tabBtnScope = document.getElementById('tabBtnScope');
 
-      if (!scopeSec || !statsSec) return;
+      if (!scopeSec || !statsSec || !tabBtnStats || !tabBtnScope) return;
 
-      const scopeTop = scopeSec.getBoundingClientRect().top;
-      // Jab scope section viewport ke upper region me aaye
-      if (scopeTop <= 180) {
+      // Check current scroll position relative to #scope element
+      const scopeRect = scopeSec.getBoundingClientRect();
+      
+      // Jab scope section view me aaye (threshold 160px from top)
+      if (scopeRect.top <= 160) {
         tabBtnScope.classList.add('seg-btn--active');
         tabBtnStats.classList.remove('seg-btn--active');
       } else {
