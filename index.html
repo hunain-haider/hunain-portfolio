@@ -11,14 +11,13 @@
 
   <style>
     :root {
-      --bg-color: #0b0d11;
-      --card-bg: #11141b;
-      --card-border: #1e2430;
+      --bg-color: #0d0f14;
+      --card-bg: #13161f;
+      --card-border: #1c2230;
       --accent-blue: #2f68ee;
-      --accent-blue-hover: #3d75f8;
       --text-main: #e2e8f0;
       --text-muted: #8c9ba8;
-      --text-dim: #5a6675;
+      --text-dim: #525d6e;
       --status-green: #10b981;
       --chip-bg: rgba(47, 104, 238, 0.12);
       --chip-text: #60a5fa;
@@ -75,163 +74,211 @@
       gap: 24px;
     }
 
-    /* TOP OPERATOR CONSOLE */
+    /* =========================================================
+       TOP OPERATOR CONSOLE (EXACT 1:1 REPLICA)
+    ========================================================= */
     .operator-header {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 16px 24px;
+      padding: 14px 28px 20px;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
+
     .header-chrome {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid #1a202c;
       padding-bottom: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .dots {
       display: flex;
-      gap: 6px;
+      gap: 8px;
     }
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
     }
-    .dot-red { background: #ef4444; }
-    .dot-amber { background: #f59e0b; }
-    .dot-green { background: #10b981; }
+    .dot-red { background: #ff5f56; }
+    .dot-amber { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
     .console-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.5px;
+      font-size: 0.72rem;
+      color: #4b5563;
+      letter-spacing: 1px;
     }
 
-    .header-content {
+    /* 3 Distinct Columns with Subtle Vertical Dividers */
+    .header-body-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      align-items: center;
+    }
+
+    /* Section 1: Profile */
+    .section-profile {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
+      gap: 18px;
+      padding-right: 24px;
     }
-    .profile-info {
+    .avatar-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      padding: 2.5px;
+      border: 2px solid #f97316;
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.35);
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .avatar-wrapper {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: #181d26;
-    }
-    .avatar-wrapper img {
+    .avatar-img {
       width: 100%;
       height: 100%;
+      border-radius: 12px;
       object-fit: cover;
     }
-    .profile-names h2 {
+    .identity-text h2 {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #fff;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 4px;
     }
-    .profile-names p {
+    .identity-text h2 span {
+      font-weight: 400;
+      color: #ffffff;
+    }
+    .identity-text .role {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .identity-text .operator-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #64748b;
     }
 
-    /* System Status Terminal block */
-    .system-status {
+    /* Section 2: System Status */
+    .section-status {
+      padding: 0 32px;
+      border-left: 1px solid #1a202c;
+      border-right: 1px solid #1a202c;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-head {
+      font-size: 0.68rem;
+      color: #4b5563;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .status-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-family: 'JetBrains Mono', monospace;
+      gap: 5px;
       font-size: 0.78rem;
     }
-    .status-header-text {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-    .status-row {
+    .status-item {
       display: flex;
-      gap: 12px;
+      align-items: center;
     }
-    .status-key { color: var(--text-muted); width: 65px; }
-    .status-val { color: #fff; display: flex; align-items: center; gap: 6px; }
-    .live-dot {
-      width: 7px;
-      height: 7px;
+    .status-item .k {
+      width: 90px;
+      color: #8c9ba8;
+    }
+    .status-item .v {
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
       background: var(--status-green);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--status-green);
+      box-shadow: 0 0 6px var(--status-green);
     }
 
-    /* Actions */
-    .header-actions {
+    /* Section 3: Call-to-Action & Contact */
+    .section-action {
+      padding-left: 28px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 10px;
+      gap: 9px;
     }
-    .cv-btn-group {
-      display: flex;
+    .cv-container {
+      display: inline-flex;
     }
-    .cv-btn {
-      background: var(--card-border);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 7px 14px;
+    .cv-main-btn {
+      background: transparent;
+      border: 1px solid #28303f;
+      border-right: none;
+      color: #f1f5f9;
+      padding: 7px 16px;
       font-size: 0.82rem;
       font-weight: 500;
       border-radius: 8px 0 0 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
-    .cv-dropdown {
-      background: var(--card-border);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-left: none;
+    .cv-arrow-btn {
+      background: transparent;
+      border: 1px solid #28303f;
+      color: #94a3b8;
       padding: 7px 10px;
+      font-size: 0.75rem;
       border-radius: 0 8px 8px 0;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .header-contact-link {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .action-email {
+      font-size: 0.78rem;
+      color: #94a3b8;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .social-bar {
+    .action-email:hover { color: #ffffff; }
+    .action-socials {
       display: flex;
-      gap: 10px;
+      gap: 12px;
+      margin-top: 2px;
     }
-    .social-bar a {
-      color: var(--text-muted);
-      transition: 0.2s;
+    .action-socials a {
+      color: #64748b;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: 0.2s ease;
     }
-    .social-bar a:hover { color: #fff; }
+    .action-socials a:hover { color: #cbd5e1; }
 
-    /* BODY TWO-COLUMN SECTION */
+    /* =========================================================
+       MAIN TWO-COLUMN LAYOUT
+    ========================================================= */
     .main-grid {
       display: grid;
       grid-template-columns: 88px 1fr;
       gap: 24px;
     }
 
-    /* SIDEBAR NAVIGATION */
+    /* SIDEBAR DOCK */
     .sidebar-dock {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -241,7 +288,7 @@
       flex-direction: column;
       align-items: center;
       height: fit-content;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .quad-colors {
       display: grid;
@@ -340,7 +387,7 @@
       border: 1px solid var(--card-border);
       border-radius: 14px;
       padding: 36px 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .content-title {
@@ -536,6 +583,21 @@
     }
 
     @media (max-width: 900px) {
+      .header-body-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .section-status {
+        padding: 16px 0;
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #1a202c;
+        border-bottom: 1px solid #1a202c;
+      }
+      .section-action {
+        padding-left: 0;
+        align-items: flex-start;
+      }
       .main-grid {
         grid-template-columns: 1fr;
       }
@@ -584,49 +646,54 @@
         <div class="console-label">operator console</div>
       </div>
 
-      <div class="header-content">
-        <!-- Identity -->
-        <div class="profile-info">
-          <div class="avatar-wrapper">
-            <!-- Replace with your actual photo path or GitHub profile image -->
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" alt="Hunain Haider">
+      <div class="header-body-grid">
+        <!-- 1. Profile Section -->
+        <div class="section-profile">
+          <div class="avatar-ring">
+            <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" alt="Hunain Haider">
           </div>
-          <div class="profile-names">
-            <h2>Hunain <span style="font-weight:400; color:var(--text-muted);">Haider</span></h2>
-            <p>IT Systems & Infrastructure Specialist</p>
-          </div>
-        </div>
-
-        <!-- System Status -->
-        <div class="system-status">
-          <div class="status-header-text">SYSTEM STATUS</div>
-          <div class="status-row">
-            <span class="status-key">status :</span>
-            <span class="status-val"><span class="live-dot"></span> available</span>
-          </div>
-          <div class="status-row">
-            <span class="status-key">tz :</span>
-            <span class="status-val">GMT+5</span>
-          </div>
-          <div class="status-row">
-            <span class="status-key">response :</span>
-            <span class="status-val">&lt;24h</span>
+          <div class="identity-text">
+            <h2>Hunain <span>Haider</span></h2>
+            <div class="role">IT Systems & Infrastructure Specialist</div>
+            <div class="operator-id">operator/01</div>
           </div>
         </div>
 
-        <!-- Actions -->
-        <div class="header-actions">
-          <div class="cv-btn-group">
-            <button class="cv-btn"><i data-lucide="download" style="width:14px;"></i> Download CV</button>
-            <button class="cv-dropdown"><i data-lucide="chevron-down" style="width:12px;"></i></button>
+        <!-- 2. System Status Section -->
+        <div class="section-status">
+          <div class="status-head">SYSTEM STATUS</div>
+          <div class="status-list">
+            <div class="status-item">
+              <span class="k">status :</span>
+              <span class="v"><span class="status-dot"></span> available</span>
+            </div>
+            <div class="status-item">
+              <span class="k">tz :</span>
+              <span class="v">GMT+5</span>
+            </div>
+            <div class="status-item">
+              <span class="k">response :</span>
+              <span class="v">&lt;24h</span>
+            </div>
           </div>
-          <a href="mailto:hunain.haider69@gmail.com" class="header-contact-link">
-            <i data-lucide="mail" style="width:13px;"></i> hunain.haider69@gmail.com
+        </div>
+
+        <!-- 3. Actions Section -->
+        <div class="section-action">
+          <div class="cv-container">
+            <button class="cv-main-btn"><i data-lucide="download" style="width:13px;height:13px;"></i> Download CV</button>
+            <button class="cv-arrow-btn"><i data-lucide="chevron-up" style="width:13px;height:13px;"></i></button>
+          </div>
+          <a href="mailto:hunain.haider69@gmail.com" class="action-email">
+            <i data-lucide="mail" style="width:13px;height:13px;"></i> hunain.haider69@gmail.com
           </a>
-          <div class="social-bar">
-            <a href="https://linkedin.com/in/hunain-haider-its" target="_blank"><i data-lucide="linkedin" style="width:15px;"></i></a>
-            <a href="https://github.com" target="_blank"><i data-lucide="github" style="width:15px;"></i></a>
-            <a href="#"><i data-lucide="twitter" style="width:15px;"></i></a>
+          <div class="action-socials">
+            <a href="#" title="Facebook"><i data-lucide="facebook" style="width:13px;height:13px;"></i></a>
+            <a href="#" title="X"><i data-lucide="twitter" style="width:13px;height:13px;"></i></a>
+            <a href="#" title="Instagram"><i data-lucide="instagram" style="width:13px;height:13px;"></i></a>
+            <a href="https://linkedin.com/in/hunain-haider-its" target="_blank" title="LinkedIn"><i data-lucide="linkedin" style="width:13px;height:13px;"></i></a>
+            <a href="https://github.com" target="_blank" title="GitHub"><i data-lucide="github" style="width:13px;height:13px;"></i></a>
+            <a href="#" title="Flag / Dribbble"><i data-lucide="flag" style="width:13px;height:13px;"></i></a>
           </div>
         </div>
       </div>
@@ -840,7 +907,7 @@
           <span>·</span>
           <a href="#">Contact</a>
           <span>·</span>
-          <span class="system-badge"><span class="live-dot"></span> All systems operational</span>
+          <span class="system-badge"><span class="status-dot"></span> All systems operational</span>
         </div>
 
       </main>
