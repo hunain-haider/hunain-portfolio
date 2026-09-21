@@ -832,6 +832,22 @@
       border-color: rgba(47, 104, 238, 0.5);
     }
 
+    /* SPECIFIC ACCENTS FOR CERTIFICATIONS & BADGES */
+    .port-card--cert {
+      border: 1px solid rgba(249, 115, 22, 0.45);
+    }
+    .port-card--cert:hover {
+      border-color: #f97316;
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.15);
+    }
+    .port-card--badge-card {
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .port-card--badge-card:hover {
+      border-color: #10b981;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+    }
+
     .port-card__media {
       position: relative;
       width: 100%;
@@ -850,7 +866,7 @@
       transform: scale(1.03);
     }
 
-    /* Solid Blue 'PROJECTS' Badge */
+    /* Badges Style */
     .port-card__badge {
       position: absolute;
       top: 14px;
@@ -868,6 +884,12 @@
       gap: 5px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       z-index: 2;
+    }
+    .port-card__badge--cert {
+      background: #ea580c;
+    }
+    .port-card__badge--badge {
+      background: #d97706;
     }
 
     /* Dark Frosted Hover Overlay with Action Buttons */
@@ -1518,11 +1540,228 @@
           <!-- Cards Grid -->
           <div class="port-grid">
             
-            <!-- Card 1: Hidemail -->
+            <!-- ================= CERTIFICATIONS CARDS ================= -->
+            <!-- Cert 1: GCP Associate Cloud Engineer -->
+            <article class="port-card port-card--cert" data-category="certifications">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
+                <div style="width:100%; height:100%; background: #ffffff; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#1e293b; font-family:'Poppins', sans-serif;">
+                  <div style="width:75px; height:75px; border-radius:50%; border:3px solid #e2e8f0; display:flex; align-items:center; justify-content:center; margin-bottom:8px;">
+                    <div style="display:flex; gap:3px;">
+                      <div style="width:10px; height:10px; background:#4285f4; border-radius:50%;"></div>
+                      <div style="width:10px; height:10px; background:#ea4335; border-radius:50%;"></div>
+                      <div style="width:10px; height:10px; background:#fbbc05; border-radius:50%;"></div>
+                      <div style="width:10px; height:10px; background:#34a853; border-radius:50%;"></div>
+                    </div>
+                  </div>
+                  <div style="font-size:0.95rem; font-weight:700; color:#1e293b;">Google Cloud Certified</div>
+                  <div style="font-size:0.75rem; color:#64748b;">Associate Cloud Engineer</div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Demonstrates ability to deploy applications, monitor operations, and manage enterprise identity & security on Google Cloud Platform.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">GCP Associate Cloud Engineer</h3>
+              </div>
+            </article>
+
+            <!-- Cert 2: AWS Cloud Practitioner -->
+            <article class="port-card port-card--cert" data-category="certifications">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
+                <div style="width:100%; height:100%; background: #121622; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px;">
+                  <div style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
+                    Foundational AWS certification validating core cloud concepts, services, and pricing models. Issued by Amazon Web Services.
+                  </div>
+                  <div style="display:flex; gap:10px; margin-top:16px;">
+                    <a href="#" class="port-btn-secondary" style="border-color:#475569;">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
+                    <a href="#" class="port-btn-secondary" style="border-color:#475569;">Verify <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Foundational AWS certification validating core cloud concepts, services, security, architecture, and pricing models.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">AWS Cloud Practitioner</h3>
+              </div>
+            </article>
+
+            <!-- Cert 3: Telkomsel Tech Titans League — Cyber Security -->
+            <article class="port-card port-card--cert" data-category="certifications">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
+                <div style="width:100%; height:100%; background: #0c0f16; display:flex; align-items:center; justify-content:center; padding:16px;">
+                  <div style="border:2px solid #ef4444; border-radius:8px; padding:12px 24px; text-align:center; background:#180b0f;">
+                    <div style="font-size:0.65rem; color:#ef4444; font-weight:700; letter-spacing:1px; text-transform:uppercase;">TELKOMSEL</div>
+                    <div style="font-size:1.2rem; font-weight:900; color:#ffffff; font-family:'JetBrains Mono', monospace; letter-spacing:1px;">TECH TITANS</div>
+                    <div style="font-size:0.7rem; color:#cbd5e1; letter-spacing:3px;">LEAGUE</div>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Secured qualifying ranking in competitive cyber defense challenge, network forensic packet analysis, and perimeter threat mitigation.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">Telkomsel Tech Titans League — Cyber Security</h3>
+              </div>
+            </article>
+
+            <!-- Cert 4: Telkomsel Tech Titans League — Software Development -->
+            <article class="port-card port-card--cert" data-category="certifications">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
+                <div style="width:100%; height:100%; background: #0c0f16; display:flex; align-items:center; justify-content:center; padding:16px;">
+                  <div style="border:2px solid #ef4444; border-radius:8px; padding:12px 24px; text-align:center; background:#180b0f;">
+                    <div style="font-size:0.65rem; color:#ef4444; font-weight:700; letter-spacing:1px; text-transform:uppercase;">TELKOMSEL</div>
+                    <div style="font-size:1.2rem; font-weight:900; color:#ffffff; font-family:'JetBrains Mono', monospace; letter-spacing:1px;">TECH TITANS</div>
+                    <div style="font-size:0.7rem; color:#cbd5e1; letter-spacing:3px;">LEAGUE</div>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Recognized for architecture and backend automation scripting performance in corporate scale engineering challenges.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">Telkomsel Tech Titans League — Software Development</h3>
+              </div>
+            </article>
+
+            <!-- ================= BADGES CARDS ================= -->
+            <!-- Badge 1: AWS Cloud Practitioner Essentials — Dicoding -->
+            <article class="port-card port-card--badge-card" data-category="badges">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
+                <div style="width:100%; height:100%; background:#f8fafc; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid #e2e8f0;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">dicoding</div>
+                    <div style="background:#334155; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SERTIFIKAT</div>
+                  </div>
+                  <div>
+                    <div style="font-size:0.65rem; color:#64748b;">Diberikan kepada:</div>
+                    <div style="font-size:0.95rem; font-weight:700; color:#0284c7;">Hunain Haider</div>
+                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Cloud Practitioner Essentials</div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px;">
+                    <span>AWS Cloud Academy</span>
+                    <span>Verifikasi Terakreditasi</span>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Accredited Indonesian cloud training program covering foundational AWS architectural best practices.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">AWS Cloud Practitioner Essentials — Dicoding</h3>
+              </div>
+            </article>
+
+            <!-- Badge 2: DTS 2020 — CCNA Cybersecurity Operations -->
+            <article class="port-card port-card--badge-card" data-category="badges">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
+                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #063d37 0%, #06181b 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:22px;">
+                  <div style="font-size:0.84rem; color:#e2e8f0; line-height:1.6;">
+                    CCNA Cybersecurity Operations training under Digitalent Scholarship (Kominfo). Covered SOC operations, incident response, and intrusion analysis.
+                  </div>
+                  <a href="#" class="port-btn-secondary" style="margin-top:16px; border-color:#059669;">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">In-depth SOC monitoring training, network packet inspection, security telemetry workflows, and intrusion counter-measures.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">DTS 2020 — CCNA Cybersecurity Operations</h3>
+              </div>
+            </article>
+
+            <!-- Badge 3: TryHackMe Badge -->
+            <article class="port-card port-card--badge-card" data-category="badges">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
+                <div style="width:100%; height:100%; background: #11141c; display:flex; align-items:center; justify-content:center; gap:16px; padding:20px;">
+                  <div style="width:54px; height:54px; background:#ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:1.4rem;">
+                    &gt;
+                  </div>
+                  <div>
+                    <div style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; font-weight:700; color:#ffffff;">hunainhaider <span style="font-size:0.75rem; color:#64748b;">[0x5]</span></div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:4px; font-size:0.8rem; color:#cbd5e1; font-family:'JetBrains Mono', monospace;">
+                      <span>🏆 8934</span>
+                      <span>🚪 13</span>
+                      <span>🎯 4</span>
+                    </div>
+                    <div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">tryhackme.com</div>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Hands-on penetration testing, offensive vulnerability enumeration, and system security CTF badges.</p>
+                  <div class="port-card__actions">
+                    <a href="https://tryhackme.com" target="_blank" class="port-btn-primary">View Profile <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">TryHackMe Badge</h3>
+              </div>
+            </article>
+
+            <!-- Badge 4: Azure Cloud Fundamentals — Dicoding -->
+            <article class="port-card port-card--badge-card" data-category="badges">
+              <div class="port-card__media">
+                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
+                <div style="width:100%; height:100%; background:#f8fafc; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid #e2e8f0;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">dicoding</div>
+                    <div style="background:#0284c7; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SERTIFIKAT</div>
+                  </div>
+                  <div>
+                    <div style="font-size:0.65rem; color:#64748b;">Diberikan kepada:</div>
+                    <div style="font-size:0.95rem; font-weight:700; color:#0284c7;">Hunain Haider</div>
+                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Belajar Dasar-Dasar Azure Cloud</div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px;">
+                    <span>Microsoft Partner Program</span>
+                    <span>Tervalidasi Digital</span>
+                  </div>
+                </div>
+                <div class="port-card__overlay">
+                  <p class="port-card__overlay-desc">Foundational credentials validating Microsoft Azure cloud resource groups, compute, networking, and SLA metrics.</p>
+                  <div class="port-card__actions">
+                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="port-card__footer">
+                <h3 class="port-card__title">Azure Cloud Fundamentals — Dicoding</h3>
+              </div>
+            </article>
+
+            <!-- ================= PROJECTS CARDS ================= -->
+            <!-- Project 1: Hidemail -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
-                <!-- Abstract UI Canvas representation -->
                 <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b3d4d 0%, #0d151c 100%); display:flex; align-items:center; justify-content:center; color:#2dd4bf; font-family:'JetBrains Mono', monospace; font-size:0.9rem; font-weight:600;">
                   &lt;Protected Email Interface&gt;
                 </div>
@@ -1539,7 +1778,7 @@
               </div>
             </article>
 
-            <!-- Card 2: High-Availability Network Design -->
+            <!-- Project 2: High-Availability Network Design -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
@@ -1558,7 +1797,7 @@
               </div>
             </article>
 
-            <!-- Card 3: Birthday Countdown -->
+            <!-- Project 3: Birthday Countdown -->
             <article class="port-card" data-category="vibe-coding">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
@@ -1578,7 +1817,7 @@
               </div>
             </article>
 
-            <!-- Card 4: Static Asset Management -->
+            <!-- Project 4: Static Asset Management -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
@@ -1598,7 +1837,7 @@
               </div>
             </article>
 
-            <!-- Card 5: ThingsBin — IoT Data Platform -->
+            <!-- Project 5: ThingsBin — IoT Data Platform -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
@@ -1617,7 +1856,7 @@
               </div>
             </article>
 
-            <!-- Card 6: Mini-Link — URL Shortener -->
+            <!-- Project 6: Mini-Link — URL Shortener -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
