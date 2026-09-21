@@ -706,18 +706,18 @@
       grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
-    .about-scope-card[data-v-d93d2c35] {
-    position: relative;
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    padding: 1.5rem;
-    background: var(--c-surface);
-    border: 1px solid var(--c-border);
-    border-left: 3px solid var(--c-accent);
-    border-radius: 16px;
-    transition: all .25s ease;
-}
+    .about-scope-card {
+      background: var(--scope-card-bg);
+      border: 1px solid var(--scope-card-border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
     .about-scope-card:hover {
       border-color: var(--scope-card-hover-border);
       transform: translateY(-4px);
