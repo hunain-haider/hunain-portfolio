@@ -269,39 +269,7 @@
     .sub-tagline span { color: var(--accent-blue); }
     .bio-body p { font-size: 0.94rem; line-height: 1.75; color: #b3c0cf; margin-bottom: 18px; }
 
-    /* About Segmented nav & stats */
-    .seg-control-nav {
-      background: rgba(13, 16, 23, 0.85); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    .seg-btn {
-      flex: 1; padding: 9px 14px; font-size: 0.82rem; font-weight: 600; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.25s ease;
-    }
-    .seg-btn:hover { color: var(--text-main); }
-    .seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45); }
-    .section-heading-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 18px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
-    .stat-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 10px; padding: 20px 12px; text-align: center; transition: border-color 0.2s ease; }
-    .stat-card:hover { border-color: rgba(47, 104, 238, 0.4); }
-    .stat-val { font-size: 1.9rem; font-weight: 700; color: #3b82f6; margin-bottom: 4px; }
-    .stat-label { font-size: 0.68rem; text-transform: uppercase; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; }
-
-    /* About Scope cards */
-    .about-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .about-scope-card {
-      background: var(--scope-card-bg); border: 1px solid var(--scope-card-border); border-radius: 14px; border-left: 3px solid #5b8def; padding: 24px; display: flex; align-items: flex-start; gap: 18px; position: relative; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-    }
-    .about-scope-card:hover { border-color: var(--scope-card-hover-border); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(47, 104, 238, 0.2); }
-    .about-scope-card__icon-wrap {
-      width: 46px; height: 46px; background: var(--scope-icon-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 14px rgba(47, 104, 238, 0.35);
-    }
-    .about-scope-card__body { flex: 1; }
-    .about-scope-card__type {
-      position: absolute; top: 18px; right: 18px; font-size: 0.62rem; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; background: var(--chip-bg); color: var(--chip-text); font-weight: 700; letter-spacing: 0.6px; font-family: 'JetBrains Mono', monospace;
-    }
-    .about-scope-card__title { font-size: 1.08rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
-    .about-scope-card__desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-
-    /* Portfolio Section */
+    /* Portfolio Section Styles */
     .port-filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 28px; }
     .port-filter-btn {
       display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: #141720; border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
@@ -339,338 +307,277 @@
     .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
 
     /* =========================================================
-       EXACT 1:1 RESUME TIMELINE, EDUCATION & SKILLS
+       EXACT 1:1 BLOG SECTION WITH FILTER SEARCH & METRICS
     ========================================================= */
-    .resume-seg-nav {
-      background: rgba(13, 16, 23, 0.85);
+    .blog-search-bar {
+      position: relative;
+      margin: 20px 0 24px;
+      width: 100%;
+    }
+    .blog-search-bar input {
+      width: 100%;
+      background: #11141c;
       border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 4px;
-      display: flex;
-      width: 100%;
-      margin: 24px 0 32px;
-      position: sticky;
-      top: 14px;
-      z-index: 30;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    .resume-seg-btn {
-      flex: 1;
-      padding: 8px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-dim);
-      background: none;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      transition: all 0.2s ease;
-    }
-    .resume-seg-btn:hover { color: #fff; }
-    .resume-seg-btn--active {
-      background: var(--accent-blue) !important;
-      color: #ffffff !important;
-      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45);
-    }
-
-    .resume-sec-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 36px 0 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .resume-sec-title span { color: #ffffff; }
-
-    /* Timeline Styling */
-    .timeline {
-      position: relative;
-      padding-left: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 12px;
-      bottom: 20px;
-      width: 2px;
-      background: #232b3d;
-    }
-    .timeline-node {
-      position: relative;
-    }
-    .timeline-node__dot {
-      position: absolute;
-      left: -28px;
-      top: 24px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #0d1017;
-      border: 3px solid #2f68ee;
-      box-shadow: 0 0 10px rgba(47, 104, 238, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .timeline-node__dot::after {
-      content: '';
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #fff;
-    }
-
-    .resume-card {
-      background: #11141c;
-      border: 1px solid #1c2230;
-      border-radius: 14px;
-      padding: 24px 28px;
-      transition: all 0.2s ease;
-    }
-    .resume-card:hover {
-      border-color: rgba(47, 104, 238, 0.4);
-    }
-    .resume-card__title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-    .resume-card__company {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #3b82f6;
-      margin-bottom: 8px;
-    }
-    .resume-card__meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.78rem;
-      color: #64748b;
-      margin-bottom: 16px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .resume-card__meta i { color: #f97316; }
-    
-    .resume-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .resume-bullets li {
-      position: relative;
-      padding-left: 20px;
+      padding: 14px 16px 14px 44px;
+      color: #fff;
       font-size: 0.88rem;
-      line-height: 1.65;
-      color: #cbd5e1;
+      outline: none;
+      transition: border-color 0.2s ease;
     }
-    .resume-bullets li::before {
-      content: '•';
+    .blog-search-bar input:focus { border-color: #2f68ee; }
+    .blog-search-bar i {
       position: absolute;
-      left: 4px;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
       color: #64748b;
-      font-size: 1.1rem;
     }
 
-    .resume-show-more-btn {
-      width: 100%;
-      background: rgba(47, 104, 238, 0.05);
-      border: 1px dashed rgba(47, 104, 238, 0.35);
-      border-radius: 8px;
-      padding: 10px 0;
-      color: #60a5fa;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 18px;
-      transition: background 0.2s ease;
+    .blog-filters-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
     }
-    .resume-show-more-btn:hover { background: rgba(47, 104, 238, 0.1); }
-
-    .resume-tech-tags {
+    .blog-filter-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .blog-filter-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #64748b;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding-top: 6px;
+      width: 75px;
+      flex-shrink: 0;
+    }
+    .blog-filter-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      flex: 1;
     }
-    .tech-pill {
+    .b-pill {
+      background: #121620;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .b-pill:hover { border-color: #3b4658; color: #fff; }
+    .b-pill--active {
+      background: #2f68ee !important;
+      border-color: #2f68ee !important;
+      color: #fff !important;
+      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.35);
+    }
+    .b-pill-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 1px 5px;
+      border-radius: 8px;
+    }
+    .b-pill-more-btn {
+      background: #121620;
+      border: 1px solid #2f68ee;
+      color: #60a5fa;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .blog-card {
+      background: #11141c;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(47, 104, 238, 0.5);
+    }
+    .blog-card__media {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #090c13;
+      overflow: hidden;
+    }
+    .blog-card__date-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(13, 16, 24, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 4px 8px;
+      text-align: center;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+    .blog-card__date-day { font-size: 1rem; font-weight: 800; color: #fff; line-height: 1; }
+    .blog-card__date-mo { font-size: 0.6rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    
+    .blog-card__body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .blog-card__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .blog-card__snippet {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: #94a3b8;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .blog-card__meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-bottom: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .blog-card__lang-tag {
+      background: #1a202c;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #a0aec0;
+    }
+    .blog-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 12px;
+    }
+    .blog-tag-pill {
       background: #151a24;
       border: 1px solid #232b3d;
-      border-radius: 6px;
-      padding: 3px 9px;
-      font-size: 0.72rem;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.68rem;
       color: #94a3b8;
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Education Cards */
-    .edu-filter-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .edu-filter-btn {
-      background: #141720;
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      color: var(--text-dim);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 14px;
-      cursor: pointer;
-    }
-    .edu-filter-btn--active {
-      background: #2f68ee;
-      border-color: #2f68ee;
-      color: #fff;
-    }
-    .edu-card {
-      background: #11141c;
-      border: 1px solid #1c2230;
-      border-radius: 12px;
-      border-left: 3px solid #f97316;
-      padding: 18px 22px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 14px;
-      transition: all 0.2s ease;
-    }
-    .edu-card--formal { border-left-color: #2f68ee; }
-    .edu-card:hover { transform: translateX(3px); }
-    .edu-card__icon {
-      width: 42px;
-      height: 42px;
-      background: #2f68ee;
-      border-radius: 10px;
-      display: flex;
+    /* =========================================================
+       IN-APP PDF READER MODAL (FOR BLOG READING)
+    ========================================================= */
+    .blog-pdf-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      flex-shrink: 0;
+      padding: 30px 20px;
     }
-    .edu-card__content { flex: 1; }
-    .edu-card__title { font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .edu-card__desc { font-size: 0.84rem; color: #94a3b8; margin-bottom: 6px; }
-    .edu-card__meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.72rem;
-      color: #64748b;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .edu-card__badge {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 2px 7px;
-      border-radius: 4px;
-      color: #cbd5e1;
-    }
-
-    /* Core Competencies Matrix */
-    .core-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 36px;
-    }
-    .core-card {
+    .blog-pdf-modal.open-pdf { display: flex; }
+    .blog-pdf-container {
+      width: 100%;
+      max-width: 980px;
+      height: 90vh;
       background: #11141c;
-      border: 1px solid #1c2230;
+      border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
     }
-    .core-card__header {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #64748b;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 18px;
-    }
-    .core-row {
+    .blog-pdf-header {
+      background: #1a1e28;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
     }
-    .core-name { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
-    .core-rating-wrap { display: flex; align-items: center; gap: 8px; }
-    .core-bars { display: flex; gap: 4px; }
-    .core-bar { width: 10px; height: 3.5px; background: #3b82f6; border-radius: 2px; }
-    .core-pill {
-      background: #172554;
-      color: #60a5fa;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Tools & Technologies Grid */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    .tools-card {
-      background: #11141c;
-      border: 1px solid #1c2230;
-      border-radius: 14px;
-      padding: 22px;
-    }
-    .tools-card__title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #64748b;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 16px;
-    }
-    .tools-pill-group {
+    .blog-pdf-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 8px;
     }
-    .tool-badge {
+    .blog-pdf-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .blog-pdf-btn {
+      background: #232836;
+      border: 1px solid #333d52;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #151a24;
-      border: 1px solid #232b3d;
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #e2e8f0;
+      text-decoration: none;
     }
-    .tool-tag {
-      font-size: 0.62rem;
-      font-weight: 700;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-family: 'JetBrains Mono', monospace;
+    .blog-pdf-btn:hover { background: #2f68ee; color: #fff; border-color: #2f68ee; }
+    .blog-pdf-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
     }
-    .tool-tag--adv { background: #1e3a8a; color: #93c5fd; }
-    .tool-tag--int { background: #1f2937; color: #9ca3af; }
+    .blog-pdf-close:hover { color: #fff; }
+    .blog-pdf-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #0d0f14;
+    }
 
-    /* Other views & utilities */
+    /* Terminal View */
     .terminal-window {
       background: #090b10; border: 1px solid var(--card-border); border-radius: 10px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a5b4fc; min-height: 280px;
     }
@@ -703,8 +610,7 @@
       .header-action { padding-left: 0; align-items: flex-start; }
       .main-grid { grid-template-columns: 1fr; }
       .sidebar-rack-container { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-scope-grid, .port-grid, .core-grid, .tools-grid { grid-template-columns: 1fr; }
+      .port-grid, .blog-grid { grid-template-columns: 1fr; }
       .rack-mobile-dock { display: block; position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 8px 12px; z-index: 100; }
       .mobile-dock__compact { display: flex; justify-content: space-around; align-items: center; }
       .mobile-dock__item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 0.65rem; cursor: pointer; }
@@ -740,7 +646,7 @@
           <span class="header__chrome-dot header__chrome-dot--amber"></span>
           <span class="header__chrome-dot header__chrome-dot--green"></span>
         </div>
-        <span class="header__chrome-label" data-i18n="console_label">operator console</span>
+        <span class="header__chrome-label">operator console</span>
       </div>
 
       <div class="header__body">
@@ -760,18 +666,18 @@
         </div>
 
         <div class="header-signal">
-          <div class="header-signal__title" data-i18n="status_title">system status</div>
+          <div class="header-signal__title">system status</div>
           <div class="header-signal__board">
             <div class="header-signal__row header-signal__row--status">
-              <span class="header-signal__key" data-i18n="status_key">status</span>
-              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
+              <span class="header-signal__key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> available</span>
             </div>
             <div class="header-signal__row">
               <span class="header-signal__key">tz</span>
               <span class="header-signal__value">GMT+5</span>
             </div>
             <div class="header-signal__row">
-              <span class="header-signal__key" data-i18n="response_key">response</span>
+              <span class="header-signal__key">response</span>
               <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
@@ -785,7 +691,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span data-i18n="download_cv">Download CV</span>
+              <span>Download CV</span>
             </a>
 
             <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
@@ -799,14 +705,14 @@
                 <span class="cv-menu__check">✓</span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">Europass</span>
-                  <span class="cv-menu__desc" data-i18n="cv_human_desc">Standard Official CV</span>
+                  <span class="cv-menu__desc">Standard Official CV</span>
                 </div>
               </li>
               <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
                 <span class="cv-menu__check"></span>
                 <div class="cv-menu__text-wrap">
                   <span class="cv-menu__label">ATS Optimized</span>
-                  <span class="cv-menu__desc" data-i18n="cv_ats_desc">Plain, compatible</span>
+                  <span class="cv-menu__desc">Plain, compatible</span>
                 </div>
               </li>
             </ul>
@@ -855,56 +761,56 @@
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('about')">
                 <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_about">ABOUT</span>
+                <span class="nav__label">ABOUT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('portfolio')">
                 <span class="nav__icon"><i data-lucide="layout-grid" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_portfolio">PORTFOLIO</span>
+                <span class="nav__label">PORTFOLIO</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('resume')">
+              <a class="rack-nav__item" onclick="switchView('resume')">
                 <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_resume">RESUME</span>
+                <span class="nav__label">RESUME</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
-              <a class="rack-nav__item" onclick="switchView('blog')">
+              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('blog')">
                 <span class="nav__icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_blog">BLOG</span>
+                <span class="nav__label">BLOG</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('contact')">
                 <span class="nav__icon"><i data-lucide="mail" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_contact">CONTACT</span>
+                <span class="nav__label">CONTACT</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('terminal')">
                 <span class="nav__icon"><i data-lucide="terminal" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_terminal">TERMINAL</span>
+                <span class="nav__label">TERMINAL</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('infrastructure')">
                 <span class="nav__icon"><i data-lucide="server" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_infra">INFRAST...</span>
+                <span class="nav__label">INFRAST...</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
             <li class="nav__item">
               <a class="rack-nav__item" onclick="switchView('design')">
                 <span class="nav__icon"><i data-lucide="palette" style="width:16px;height:16px;"></i></span>
-                <span class="nav__label" data-i18n="nav_design">DESIGN ...</span>
+                <span class="nav__label">DESIGN ...</span>
                 <span class="nav-led" aria-hidden="true"></span>
               </a>
             </li>
@@ -912,10 +818,10 @@
 
           <div class="perf-plate" aria-hidden="true">
             <div class="perf-plate__row">
-              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
+              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
             </div>
             <div class="perf-plate__row">
-              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
+              <span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span><span class="perf-plate__dot"></span>
             </div>
           </div>
 
@@ -923,7 +829,7 @@
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center;">
                 <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
-                <span class="search-trigger__label" data-i18n="btn_search">SEARCH</span>
+                <span class="search-trigger__label">SEARCH</span>
               </span>
               <kbd class="search-trigger__kbd">CTRL+K</kbd>
             </button>
@@ -944,583 +850,268 @@
         
         <!-- 1. ABOUT VIEW -->
         <section id="view-about" class="view-panel">
-          <h1 class="content-title"><span data-i18n="about_title">About Me</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">About Me<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div class="sub-tagline"><span>◆</span> <span data-i18n="about_subtitle">Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</span></div>
+          <div class="sub-tagline"><span>◆</span> Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</div>
           <div class="bio-body">
-            <p data-i18n="bio_p1">IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.</p>
-            <p data-i18n="bio_p2">I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.</p>
-            <p data-i18n="bio_p3">Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.</p>
+            <p>IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.</p>
           </div>
-          <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;" data-i18n="see_portfolio_link">See my Automation & Infrastructure portfolio &rarr;</a>
-
-          <nav class="seg-control-nav" role="tablist">
-            <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')" data-i18n="tab_stats">STATS</button>
-            <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')" data-i18n="tab_scope">SCOPE</button>
-          </nav>
-
-          <section id="stats" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title" data-i18n="stats_title">By the Numbers</h2>
-            <div class="stats-grid">
-              <div class="stat-card"><div class="stat-val">9+</div><div class="stat-label" data-i18n="stat_exp">Years Professional IT</div></div>
-              <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label" data-i18n="stat_proj">Projects Done</div></div>
-              <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label" data-i18n="stat_tech">Technologies</div></div>
-              <div class="stat-card"><div class="stat-val">4</div><div class="stat-label" data-i18n="stat_cert">Certifications</div></div>
-            </div>
-          </section>
-
-          <section id="scope" style="scroll-margin-top: 80px;">
-            <h2 class="section-heading-title" data-i18n="scope_title">What I'm Doing</h2>
-            <div class="about-scope-grid">
-              <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap"><i data-lucide="shield-check" style="width:24px;height:24px;"></i></div>
-                <div class="about-scope-card__body">
-                  <span class="about-scope-card__type" data-i18n="scope1_badge">SECURITY</span>
-                  <h3 class="about-scope-card__title" data-i18n="scope1_title">Network Security</h3>
-                  <p class="about-scope-card__desc" data-i18n="scope1_desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
-                </div>
-              </article>
-              <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap"><i data-lucide="server" style="width:24px;height:24px;"></i></div>
-                <div class="about-scope-card__body">
-                  <span class="about-scope-card__type" data-i18n="scope2_badge">INFRASTRUCTURE</span>
-                  <h3 class="about-scope-card__title" data-i18n="scope2_title">Systems & Servers</h3>
-                  <p class="about-scope-card__desc" data-i18n="scope2_desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
-                </div>
-              </article>
-              <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap"><i data-lucide="activity" style="width:24px;height:24px;"></i></div>
-                <div class="about-scope-card__body">
-                  <span class="about-scope-card__type" data-i18n="scope3_badge">RELIABILITY</span>
-                  <h3 class="about-scope-card__title" data-i18n="scope3_title">Health Monitoring</h3>
-                  <p class="about-scope-card__desc" data-i18n="scope3_desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
-                </div>
-              </article>
-              <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap"><i data-lucide="cpu" style="width:24px;height:24px;"></i></div>
-                <div class="about-scope-card__body">
-                  <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
-                  <h3 class="about-scope-card__title" data-i18n="scope4_title">Process Automation</h3>
-                  <p class="about-scope-card__desc" data-i18n="scope4_desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
-                </div>
-              </article>
-            </div>
-          </section>
         </section>
 
         <!-- 2. PORTFOLIO VIEW -->
         <section id="view-portfolio" class="view-panel">
-          <h1 class="content-title"><span data-i18n="portfolio_title">DevOps & Infrastructure Portfolio</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">DevOps & Infrastructure Portfolio<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;" data-i18n="portfolio_desc">Enterprise infrastructure, automated administration scripts, and telemetry systems built for high resilience.</p>
-          
-          <div class="port-filters" role="tablist">
-            <button class="port-filter-btn port-filter-btn--active" onclick="filterPortfolio('all')">
-              <span>All</span> <span class="port-filter-pill">23</span>
-            </button>
-            <button class="port-filter-btn" onclick="filterPortfolio('certifications')">
-              <span>🏆 Certifications</span> <span class="port-filter-pill">4</span>
-            </button>
-            <button class="port-filter-btn" onclick="filterPortfolio('projects')">
-              <span>🚀 Projects</span> <span class="port-filter-pill">10</span>
-            </button>
-            <button class="port-filter-btn" onclick="filterPortfolio('badges')">
-              <span>🎖️ Badges</span> <span class="port-filter-pill">7</span>
-            </button>
-            <button class="port-filter-btn" onclick="filterPortfolio('vibe-coding')">
-              <span>🤖 Vibe Coding</span> <span class="port-filter-pill">2</span>
-            </button>
-          </div>
-
-          <div class="port-grid">
-            <article class="port-card port-card--cert" data-category="certifications">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
-                <div style="width:100%; height:100%; background: #ffffff; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#1e293b;">
-                  <div style="width:75px; height:75px; border-radius:50%; border:3px solid #e2e8f0; display:flex; align-items:center; justify-content:center; margin-bottom:8px;">
-                    <div style="display:flex; gap:3px;">
-                      <div style="width:10px; height:10px; background:#4285f4; border-radius:50%;"></div>
-                      <div style="width:10px; height:10px; background:#ea4335; border-radius:50%;"></div>
-                      <div style="width:10px; height:10px; background:#fbbc05; border-radius:50%;"></div>
-                      <div style="width:10px; height:10px; background:#34a853; border-radius:50%;"></div>
-                    </div>
-                  </div>
-                  <div style="font-size:0.95rem; font-weight:700;">Google Cloud Certified</div>
-                  <div style="font-size:0.75rem; color:#64748b;">Associate Cloud Engineer</div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Demonstrates ability to deploy applications, monitor operations, and manage enterprise identity & security on GCP.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer"><h3 class="port-card__title">GCP Associate Cloud Engineer</h3></div>
-            </article>
-
-            <article class="port-card port-card--cert" data-category="certifications">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
-                <div style="width:100%; height:100%; background: #121622; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px;">
-                  <div style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">Enterprise Networking, Security, and Automation. Certified by Cisco Systems.</div>
-                  <div style="display:flex; gap:10px; margin-top:16px;">
-                    <a href="#" class="port-btn-secondary">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
-                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Cisco certified in implementing enterprise switches, dynamic OSPF routing, site-to-site VPN tunnels, and network security.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer"><h3 class="port-card__title">Cisco Enterprise Networking & Security</h3></div>
-            </article>
-
-            <article class="port-card port-card--badge-card" data-category="badges">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
-                <div style="width:100%; height:100%; background:#f8fafc; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid #e2e8f0;">
-                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">ISMS Certified</div>
-                    <div style="background:#334155; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SECURITY</div>
-                  </div>
-                  <div>
-                    <div style="font-size:0.65rem; color:#64748b;">Awarded to:</div>
-                    <div style="font-size:0.95rem; font-weight:700; color:#0284c7;">Hunain Haider</div>
-                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Information Security Management</div>
-                  </div>
-                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px;">
-                    <span>Udemy Accredited</span><span>Verified</span>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">ISO/IEC 27001 baseline training on internal IT audit frameworks, perimeter governance, and business disaster recovery.</p>
-                  <div class="port-card__actions"><a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a></div>
-                </div>
-              </div>
-              <div class="port-card__footer"><h3 class="port-card__title">Information Security Management System</h3></div>
-            </article>
-
-            <article class="port-card" data-category="projects">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1e283b 0%, #0c121e 100%); display:flex; align-items:center; justify-content:center; color:#94a3b8; font-family:'JetBrains Mono', monospace; font-size:0.85rem; text-align:center; padding:16px;">
-                  [Topology: OSPF / VRRP Multi-Branch Mesh]
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">HA network topology designed with multi-WAN failover, VLAN segmentation, and perimeter firewall security rules.</p>
-                  <div class="port-card__actions"><a href="#" class="port-btn-primary">View project &rarr;</a></div>
-                </div>
-              </div>
-              <div class="port-card__footer"><h3 class="port-card__title">High-Availability Enterprise Network</h3></div>
-            </article>
-          </div>
         </section>
 
-        <!-- 3. RESUME VIEW (1:1 ACCORDING TO USER IMAGES & RESUME DATA) -->
-        <section id="view-resume" class="view-panel active-panel">
-          <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
+        <!-- 3. RESUME VIEW -->
+        <section id="view-resume" class="view-panel">
+          <h1 class="content-title">Resume<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-
-          <!-- Sticky Segmented Control Navigation -->
-          <nav class="resume-seg-nav" role="tablist">
-            <button class="resume-seg-btn resume-seg-btn--active" onclick="scrollResumeTo('res-experience')">EXP .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-education')">EDUC .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-core')">CORE .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-tools')">TOOL .</button>
-          </nav>
-
-          <!-- 1. EXPERIENCE SECTION -->
-          <div id="res-experience" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_exp_title">Experience</span></div>
-            
-            <div class="timeline">
-              
-              <!-- Role 1: Network Administrator (Promoted) -->
-              <div class="timeline-node">
-                <div class="timeline-node__dot"></div>
-                <article class="resume-card">
-                  <h2 class="resume-card__title">Network Administrator</h2>
-                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan (Promoted)</div>
-                  <div class="resume-card__meta">
-                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-                    <span>Karachi, Pakistan</span>
-                    <span>·</span>
-                    <span>Jan 2020 — Present</span>
-                    <span>·</span>
-                    <span style="color:#2f68ee; font-weight:600;">6+ yrs 9 mo</span>
-                  </div>
-
-                  <ul class="resume-bullets">
-                    <li>Directing enterprise LAN/WAN infrastructure, core routers, switches, multi-branch site connectivity, and VPN tunnels to maintain 99.9% uptime for daily business operations.</li>
-                    <li>Managing and hardening Linux-based production servers (Ubuntu, Red Hat, Fedora), Active Directory group policies, VM environments, and permission access controls.</li>
-                    <li>Building automated automation scripts in Python and PowerShell for scheduled attendance aggregation, log audits, and zero-error routine server backups.</li>
-                    <li>Managing corporate CCTV surveillance infrastructure: camera rollouts, DVR/NVR network configuration, remote monitoring, and firmware maintenance.</li>
-                    <li>Serving as Tier-3 technical escalation engineer diagnosing complex networking, routing, DHCP/DNS, and hardware incidents across branch offices.</li>
-                  </ul>
-
-                  <button class="resume-show-more-btn">Show More Work Accomplishments</button>
-
-                  <div class="resume-tech-tags">
-                    <span class="tech-pill">Linux</span>
-                    <span class="tech-pill">Ubuntu</span>
-                    <span class="tech-pill">Red Hat</span>
-                    <span class="tech-pill">LAN/WAN</span>
-                    <span class="tech-pill">TCP/IP</span>
-                    <span class="tech-pill">VPN</span>
-                    <span class="tech-pill">PowerShell</span>
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">DNS / DHCP</span>
-                    <span class="tech-pill">Firewall</span>
-                    <span class="tech-pill">CCTV / NVR</span>
-                    <span class="tech-pill">Virtualization</span>
-                  </div>
-                </article>
-              </div>
-
-              <!-- Role 2: IT Specialist -->
-              <div class="timeline-node">
-                <div class="timeline-node__dot"></div>
-                <article class="resume-card">
-                  <h2 class="resume-card__title">IT Specialist</h2>
-                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan</div>
-                  <div class="resume-card__meta">
-                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-                    <span>Karachi, Pakistan</span>
-                    <span>·</span>
-                    <span>Jul 2017 — Dec 2019</span>
-                    <span>·</span>
-                    <span>2 yrs 6 mo</span>
-                  </div>
-
-                  <ul class="resume-bullets">
-                    <li>Provided comprehensive day-to-day technical operations support to all employees for desktop OS, software tools, printers, and internal LAN connectivity.</li>
-                    <li>Handled structured network cabling, rack terminations, switch port provisioning, and routine endpoint hardware troubleshooting.</li>
-                    <li>Carried out scheduled workstation OS patching, anti-malware deployments, and daily data backup synchronization routines.</li>
-                    <li>Installed, configured, and maintained on-premise CCTV cameras and recording servers ensuring zero blind spots.</li>
-                  </ul>
-
-                  <div class="resume-tech-tags">
-                    <span class="tech-pill">IT Support</span>
-                    <span class="tech-pill">Hardware Assembly</span>
-                    <span class="tech-pill">Network Cabling</span>
-                    <span class="tech-pill">Windows Desktop</span>
-                    <span class="tech-pill">Troubleshooting</span>
-                    <span class="tech-pill">CCTV</span>
-                  </div>
-                </article>
-              </div>
-
-              <!-- Role 3: IT Fundamentals Intern -->
-              <div class="timeline-node">
-                <div class="timeline-node__dot"></div>
-                <article class="resume-card">
-                  <h2 class="resume-card__title">IT Support Intern</h2>
-                  <div class="resume-card__company">Tech Kolachi — Karachi, Pakistan</div>
-                  <div class="resume-card__meta">
-                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-                    <span>Karachi, Pakistan</span>
-                    <span>·</span>
-                    <span>2017</span>
-                  </div>
-                  <ul class="resume-bullets">
-                    <li>Gained foundational industry experience in workstation assembly, basic networking architectures, and enterprise user assistance protocols.</li>
-                  </ul>
-                </article>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 2. EDUCATION SECTION -->
-          <div id="res-education" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_edu_title">Education</span></div>
-
-            <div class="edu-filter-group">
-              <button class="edu-filter-btn edu-filter-btn--active" onclick="filterEducation('all')">All</button>
-              <button class="edu-filter-btn" onclick="filterEducation('formal')">Formal</button>
-              <button class="edu-filter-btn" onclick="filterEducation('courses')">Courses</button>
-              <span style="font-size:0.75rem; color:#64748b; margin-left:auto; font-family:'JetBrains Mono', monospace;" id="eduCountLabel">3 entries</span>
-            </div>
-
-            <div class="edu-list">
-              <!-- Formal: University of Karachi -->
-              <div class="edu-card edu-card--formal" data-edutype="formal">
-                <div class="edu-card__icon" style="background:#2f68ee;"><i data-lucide="graduation-cap" style="width:20px;height:20px;"></i></div>
-                <div class="edu-card__content">
-                  <h3 class="edu-card__title">University of Karachi — UBIT</h3>
-                  <div class="edu-card__desc">Bachelor of Science in Computer Science (BSCS)</div>
-                  <div class="edu-card__meta">
-                    <span>2018 — 2022</span>
-                    <span class="edu-card__badge">FORMAL DEGREE</span>
-                    <span>Karachi, Pakistan</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Course 1: Cisco -->
-              <div class="edu-card" data-edutype="courses">
-                <div class="edu-card__icon" style="background:#f97316;"><i data-lucide="award" style="width:20px;height:20px;"></i></div>
-                <div class="edu-card__content">
-                  <h3 class="edu-card__title">Cisco Networking Academy</h3>
-                  <div class="edu-card__desc">Enterprise Networking, Security, and Automation (CCNA Enterprise)</div>
-                  <div class="edu-card__meta">
-                    <span>Certified</span>
-                    <span class="edu-card__badge">COURSES</span>
-                    <span>Enterprise Infrastructure</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Course 2: ISMS -->
-              <div class="edu-card" data-edutype="courses">
-                <div class="edu-card__icon" style="background:#10b981;"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
-                <div class="edu-card__content">
-                  <h3 class="edu-card__title">Udemy — Security Certification</h3>
-                  <div class="edu-card__desc">Information Security Management System (ISMS ISO/IEC 27001 Foundation)</div>
-                  <div class="edu-card__meta">
-                    <span>Certified</span>
-                    <span class="edu-card__badge">COURSES</span>
-                    <span>Audit & Compliance</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. CORE COMPETENCIES (EXACT PROGRESS BARS & ADV PILLS) -->
-          <div id="res-core" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_core_title">Core Competencies</span></div>
-
-            <div class="core-grid">
-              <!-- Platform -->
-              <div class="core-card">
-                <div class="core-card__header">PLATFORM & SYSTEMS</div>
-                <div class="core-row">
-                  <span class="core-name">Linux Administration</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">Windows Server & AD</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">Virtual Machines</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Network & Infrastructure -->
-              <div class="core-card">
-                <div class="core-card__header">NETWORKING & SECURITY</div>
-                <div class="core-row">
-                  <span class="core-name">LAN/WAN & Routing</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">VPN & Firewall Policy</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">Access Control & GPO</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Discipline & Operations -->
-              <div class="core-card">
-                <div class="core-card__header">OPERATIONS & DISCIPLINE</div>
-                <div class="core-row">
-                  <span class="core-name">Root Cause Analysis</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">Process Automation</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-                <div class="core-row">
-                  <span class="core-name">Incident Resolution</span>
-                  <div class="core-rating-wrap">
-                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
-                    <span class="core-pill">Adv</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. TOOLS & TECHNOLOGIES (EXACT PILL BADGES WITH ADV / INT) -->
-          <div id="res-tools" style="scroll-margin-top: 80px;">
-            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_tools_title">Tools & Technologies</span></div>
-
-            <div class="tools-grid">
-              <!-- Systems & Servers -->
-              <div class="tools-card">
-                <div class="tools-card__title">SYSTEMS & INFRASTRUCTURE</div>
-                <div class="tools-pill-group">
-                  <span class="tool-badge">Linux <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Ubuntu Server <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Red Hat / Fedora <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Windows Server <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Active Directory <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">VMware / VirtualBox <span class="tool-tag tool-tag--adv">Adv</span></span>
-                </div>
-              </div>
-
-              <!-- Networking & Security -->
-              <div class="tools-card">
-                <div class="tools-card__title">NETWORKING & ROUTING</div>
-                <div class="tools-pill-group">
-                  <span class="tool-badge">TCP/IP & Subnetting <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">VLAN Segmentation <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">DNS & DHCP <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Firewalls & NAT <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Site-to-Site VPN <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">MikroTik RouterOS <span class="tool-tag tool-tag--int">Int</span></span>
-                </div>
-              </div>
-
-              <!-- Automation & Scripting -->
-              <div class="tools-card">
-                <div class="tools-card__title">AUTOMATION & SCRIPTING</div>
-                <div class="tools-pill-group">
-                  <span class="tool-badge">PowerShell Scripts <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Python Admin Daemons <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Bash Shell <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Scheduled Cronjobs <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Git & GitHub <span class="tool-tag tool-tag--int">Int</span></span>
-                </div>
-              </div>
-
-              <!-- Hardware, CCTV & Observability -->
-              <div class="tools-card">
-                <div class="tools-card__title">CCTV, SURVEILLANCE & OBSERVABILITY</div>
-                <div class="tools-pill-group">
-                  <span class="tool-badge">CCTV Surveillance <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">DVR / NVR Management <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">SNMP Telemetry <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Ping Monitoring Daemons <span class="tool-tag tool-tag--adv">Adv</span></span>
-                  <span class="tool-badge">Hardware Diagnostics <span class="tool-tag tool-tag--adv">Adv</span></span>
-                </div>
-              </div>
-            </div>
-
-            <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin-top:28px;">
-              View DevOps & Infrastructure portfolio projects &rarr;
-            </a>
-          </div>
-
         </section>
 
-        <!-- 4. BLOG VIEW -->
-        <section id="view-blog" class="view-panel">
-          <h1 class="content-title"><span data-i18n="blog_title">Engineering Blog</span><span class="title-dot">.</span></h1>
+        <!-- 4. BLOG VIEW (1:1 ACCORDING TO IMAGES & IN-APP PDF READER) -->
+        <section id="view-blog" class="view-panel active-panel">
+          <h1 class="content-title"><span data-i18n="blog_heading">Blog</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div class="about-scope-card">
-            <div class="about-scope-card__icon-wrap"><i data-lucide="terminal" style="width:24px;height:24px;"></i></div>
-            <div class="about-scope-card__body">
-              <span class="about-scope-card__type">AUTOMATION</span>
-              <h3 class="about-scope-card__title">Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
-              <p class="about-scope-card__desc">A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
+
+          <!-- Search Bar -->
+          <div class="blog-search-bar">
+            <i data-lucide="search" style="width:18px;height:18px;"></i>
+            <input type="text" id="blogSearchInput" placeholder="Search articles..." oninput="handleBlogSearch()">
+          </div>
+
+          <!-- Filters: BY YEAR & TOPICS -->
+          <div class="blog-filters-block">
+            <!-- By Year -->
+            <div class="blog-filter-row">
+              <span class="blog-filter-label" data-i18n="blog_by_year">BY YEAR</span>
+              <div class="blog-filter-pills" id="yearFilterGroup">
+                <button class="b-pill b-pill--active" onclick="filterBlogYear('all')">All</button>
+                <button class="b-pill" onclick="filterBlogYear('2026')">2026 <span class="b-pill-count">3</span></button>
+                <button class="b-pill" onclick="filterBlogYear('2023')">2023 <span class="b-pill-count">1</span></button>
+                <button class="b-pill" onclick="filterBlogYear('2022')">2022 <span class="b-pill-count">15</span></button>
+              </div>
             </div>
+
+            <!-- Topics -->
+            <div class="blog-filter-row">
+              <span class="blog-filter-label" data-i18n="blog_topics">TOPICS</span>
+              <div class="blog-filter-pills" id="topicFilterGroup">
+                <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All <span class="b-pill-count">19</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('backend')">Backend <span class="b-pill-count">5</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('strapi')">Strapi <span class="b-pill-count">5</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('aws')">AWS <span class="b-pill-count">4</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('linux')">Linux <span class="b-pill-count">3</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('security')">Security <span class="b-pill-count">3</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('vue')">Vue.js <span class="b-pill-count">3</span></button>
+                <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps <span class="b-pill-count">2</span></button>
+
+                <!-- Hidden Topics (Revealed on '+15 more') -->
+                <span id="extraTopics" style="display:none; gap:8px;" class="blog-filter-pills">
+                  <button class="b-pill" onclick="filterBlogTopic('docker')">Docker <span class="b-pill-count">2</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('frontend')">Frontend <span class="b-pill-count">2</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('gcp')">GCP <span class="b-pill-count">2</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('laravel')">Laravel <span class="b-pill-count">2</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('networking')">Networking <span class="b-pill-count">2</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('cdn')">CDN <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('cicd')">CI/CD <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('cloud')">Cloud <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('cloudflare')">Cloudflare <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('database')">Database <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('migration')">Migration <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('monitoring')">Monitoring <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('serverless')">Serverless <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('sre')">SRE <span class="b-pill-count">1</span></button>
+                  <button class="b-pill" onclick="filterBlogTopic('vpn')">VPN <span class="b-pill-count">1</span></button>
+                </span>
+
+                <button class="b-pill-more-btn" id="toggleTopicsBtn" onclick="toggleExtraTopics()">
+                  <span>+15 more</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog Grid Cards -->
+          <div class="blog-grid" id="blogCardsGrid">
+
+            <!-- Card 1 -->
+            <article class="blog-card" data-year="2026" data-topic="aws cloudflare cdn" onclick="openBlogPDF('Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN', 'Hunain_Haider_Europass_Resume.pdf')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge">
+                  <div class="blog-card__date-day">30</div>
+                  <div class="blog-card__date-mo">APR</div>
+                </div>
+                <!-- Banner Mockup representation -->
+                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; font-weight:800; color:#38bdf8; text-transform:uppercase;">STATIC ASSET MGMT</div>
+                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">S3 + Cloudflare CDN Architecture</div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN</h2>
+                <p class="blog-card__snippet">Kelola static assets dengan AWS S3, Cloudflare CDN, dan GitHub Actions — lengkap dengan integrasi Vue, Nuxt, React, dan Next.js.</p>
+                <div class="blog-card__meta-bar">
+                  <span>10 min read</span>
+                  <span class="blog-card__lang-tag">ID</span>
+                  <span>·</span>
+                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
+                </div>
+                <div class="blog-card__tags">
+                  <span class="blog-tag-pill">AWS</span>
+                  <span class="blog-tag-pill">Cloudflare</span>
+                  <span class="blog-tag-pill">CDN</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card" data-year="2026" data-topic="devops cicd docker" onclick="openBlogPDF('GitHub Actions Docker Cache: gha vs registry vs inline', 'Hunain_Haider_Europass_Resume.pdf')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge">
+                  <div class="blog-card__date-day">17</div>
+                  <div class="blog-card__date-mo">APR</div>
+                </div>
+                <div style="width:100%; height:100%; background: #131b26; display:flex; align-items:center; justify-content:space-around; padding:16px;">
+                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#60a5fa; font-weight:700;">GHA</div><i data-lucide="github" style="width:24px; color:#fff; margin-top:4px;"></i></div>
+                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#10b981; font-weight:700;">REGISTRY</div><i data-lucide="box" style="width:24px; color:#10b981; margin-top:4px;"></i></div>
+                  <div style="text-align:center;"><div style="font-size:0.75rem; color:#f59e0b; font-weight:700;">INLINE</div><i data-lucide="layers" style="width:24px; color:#f59e0b; margin-top:4px;"></i></div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">GitHub Actions Docker Cache: gha vs registry vs inline</h2>
+                <p class="blog-card__snippet">Perbandingan Docker cache GitHub Actions: gha, registry, dan inline. Cek benchmark, trade-off, dan rekomendasi strategi optimasi build.</p>
+                <div class="blog-card__meta-bar">
+                  <span>8 min read</span>
+                  <span class="blog-card__lang-tag">ID</span>
+                  <span>·</span>
+                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
+                </div>
+                <div class="blog-card__tags">
+                  <span class="blog-tag-pill">CI/CD</span>
+                  <span class="blog-tag-pill">Docker</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card" data-year="2026" data-topic="aws migration cloud" onclick="openBlogPDF('Alibaba Cloud to AWS Migration: Zero Downtime Playbook', 'Hunain_Haider_Europass_Resume.pdf')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge">
+                  <div class="blog-card__date-day">11</div>
+                  <div class="blog-card__date-mo">APR</div>
+                </div>
+                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #241a29 0%, #0d0e14 100%); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <div style="font-size:1.1rem; font-weight:800; color:#f97316;">ALIBABA CLOUD &rarr; AWS</div>
+                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">Catatan Migrasi dengan AWS MGN</div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">Catatan Migrasi Alibaba Cloud ke AWS dengan Minimal Downtime</h2>
+                <p class="blog-card__snippet">Praktik migrasi multi-service database dan instance cloud menggunakan AWS MGN, cut-over strategy, dan rollback prevention.</p>
+                <div class="blog-card__meta-bar">
+                  <span>14 min read</span>
+                  <span class="blog-card__lang-tag">ID</span>
+                  <span>·</span>
+                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
+                </div>
+                <div class="blog-card__tags">
+                  <span class="blog-tag-pill">AWS</span>
+                  <span class="blog-tag-pill">Migration</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="blog-card" data-year="2023" data-topic="aws gcp cloud" onclick="openBlogPDF('Multi-Cloud Architecture: Connecting AWS VPC and GCP VPC', 'Hunain_Haider_Europass_Resume.pdf')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge">
+                  <div class="blog-card__date-day">01</div>
+                  <div class="blog-card__date-mo">OCT</div>
+                </div>
+                <div style="width:100%; height:100%; background: #131822; display:flex; align-items:center; justify-content:center; gap:20px;">
+                  <div style="background:#fff; border-radius:8px; padding:10px 16px; font-weight:800; color:#ff9900;">AWS</div>
+                  <div style="background:#fff; border-radius:8px; padding:10px 16px; font-weight:800; color:#4285f4;">GCP</div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">Multi-Cloud Interconnect: HA IPsec VPN Tunnel Between AWS & GCP</h2>
+                <p class="blog-card__snippet">Menghubungkan production workloads cross-cloud dengan BGP routing redundan dan MTU tuning untuk performa transfer data maksimal.</p>
+                <div class="blog-card__meta-bar">
+                  <span>11 min read</span>
+                  <span class="blog-card__lang-tag">ID</span>
+                  <span>·</span>
+                  <span style="color:#60a5fa;"><i data-lucide="file-text" style="width:12px;height:12px;display:inline;"></i> Read PDF</span>
+                </div>
+                <div class="blog-card__tags">
+                  <span class="blog-tag-pill">AWS</span>
+                  <span class="blog-tag-pill">GCP</span>
+                  <span class="blog-tag-pill">Networking</span>
+                </div>
+              </div>
+            </article>
+
           </div>
         </section>
 
         <!-- 5. CONTACT VIEW -->
         <section id="view-contact" class="view-panel">
-          <h1 class="content-title"><span data-i18n="contact_title">Contact</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">Contact<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted);" data-i18n="contact_desc">Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.</p>
-          <form class="contact-form" onsubmit="event.preventDefault(); alert(currentLang === 'de' ? 'Nachricht erfolgreich gesendet!' : 'Message sent!');">
-            <input type="text" class="form-input" id="formName" placeholder="Full Name" required>
-            <input type="email" class="form-input" id="formEmail" placeholder="Email Address" required>
-            <textarea class="form-textarea" id="formMsg" rows="5" placeholder="Your Message..." required></textarea>
-            <button type="submit" class="form-submit-btn"><i data-lucide="send" style="width:16px;"></i> <span data-i18n="btn_send">Send Message</span></button>
-          </form>
         </section>
 
         <!-- 6. TERMINAL VIEW -->
         <section id="view-terminal" class="view-panel">
-          <h1 class="content-title"><span data-i18n="term_title">Terminal Console</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">Terminal Console<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div class="terminal-window" onclick="document.getElementById('cliInput').focus()">
-            <div class="terminal-line">Hunain OS v2.4 (x86_64-karachi-linux)</div>
-            <div class="terminal-line"><span data-i18n="term_help_hint">Type 'help' to see available commands.</span></div>
-            <div id="termHistory"></div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span class="term-prompt">hunain@infra:~$</span>
-              <input type="text" id="cliInput" class="term-input" autocomplete="off">
-            </div>
-          </div>
         </section>
 
         <!-- 7. INFRASTRUCTURE VIEW -->
         <section id="view-infrastructure" class="view-panel">
-          <h1 class="content-title"><span data-i18n="infra_title">Infrastructure Topology</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">Infrastructure Topology<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div class="about-scope-card">
-            <div class="about-scope-card__icon-wrap"><i data-lucide="globe" style="width:24px;height:24px;"></i></div>
-            <div class="about-scope-card__body">
-              <span class="about-scope-card__type">EDGE ARCHITECTURE</span>
-              <h3 class="about-scope-card__title">DNS & Hosting Architecture</h3>
-              <p class="about-scope-card__desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
-            </div>
-          </div>
         </section>
 
         <!-- 8. DESIGN SYSTEM VIEW -->
         <section id="view-design" class="view-panel">
-          <h1 class="content-title"><span data-i18n="design_title">Design System</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title">Design System<span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); margin-bottom:20px;">Operator Console Design Tokens & Colors</p>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <div style="background:#14171f; border:1px solid #1e232e; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Surface: #14171f</div>
-            <div style="background:#2f68ee; color:#fff; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Accent: #2f68ee</div>
-            <div style="background:#10b981; color:#000; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Status: #10b981</div>
-          </div>
         </section>
 
         <!-- FOOTER -->
         <footer class="footer">
           <span class="footer__copyright">© 2026 Hunain Haider</span>
           <span class="footer__sep" aria-hidden="true">·</span>
-          <a onclick="switchView('contact')" style="cursor:pointer;" class="footer__contact" data-i18n="footer_contact">Contact</a>
+          <a onclick="switchView('contact')" style="cursor:pointer;" class="footer__contact">Contact</a>
           <span class="footer__sep" aria-hidden="true">·</span>
-          <span class="status-badge"><span class="status-badge__dot"></span><span class="status-badge__text" data-i18n="footer_status">All systems operational</span></span>
+          <span class="status-badge"><span class="status-badge__dot"></span><span class="status-badge__text">All systems operational</span></span>
         </footer>
 
       </main>
-
     </div>
+  </div>
 
+  <!-- IN-APP PDF READER MODAL -->
+  <div class="blog-pdf-modal" id="blogPdfModal">
+    <div class="blog-pdf-container">
+      <div class="blog-pdf-header">
+        <div class="blog-pdf-title">
+          <i data-lucide="file-text" style="width:16px;height:16px;color:#60a5fa;"></i>
+          <span id="pdfModalTitleText">Blog Article Reader</span>
+        </div>
+        <div class="blog-pdf-actions">
+          <a href="#" id="pdfDownloadLink" download class="blog-pdf-btn">
+            <i data-lucide="download" style="width:13px;height:13px;"></i>
+            <span>Download</span>
+          </a>
+          <button class="blog-pdf-close" onclick="closeBlogPDF()" aria-label="Close PDF">
+            <i data-lucide="x" style="width:20px;height:20px;"></i>
+          </button>
+        </div>
+      </div>
+      <iframe class="blog-pdf-frame" id="pdfModalIframe" src=""></iframe>
+    </div>
   </div>
 
   <!-- FLOATING SCROLL TO TOP BUTTON -->
@@ -1531,15 +1122,15 @@
   <!-- MOBILE RESPONSIVE DOCK BAR -->
   <div class="rack-mobile-dock">
     <div class="mobile-dock__compact">
-      <a class="mobile-dock__item" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span data-i18n="mob_about">About</span></a>
-      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span data-i18n="mob_portfolio">Portfolio</span></a>
-      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span data-i18n="mob_resume">Resume</span></a>
-      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span data-i18n="mob_blog">Blog</span></a>
-      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span data-i18n="mob_contact">Contact</span></a>
+      <a class="mobile-dock__item" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
+      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
+      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
+      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
     </div>
   </div>
 
-  <!-- SEARCH POP-UP MODAL (Ctrl+K) -->
+  <!-- SEARCH MODAL (Ctrl+K) -->
   <div class="search-modal" id="searchModal">
     <div class="search-box">
       <div class="search-input-wrap">
@@ -1547,203 +1138,90 @@
         <input type="text" id="modalSearchInput" placeholder="Search portfolio, resume, tools...">
         <kbd class="search-trigger__kbd">ESC</kbd>
       </div>
-      <div class="search-results">
-        <div class="search-result-item" onclick="switchView('about'); closeSearch();"><span data-i18n="about_title">About Me</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span data-i18n="portfolio_title">DevOps & Infrastructure Portfolio</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('resume'); closeSearch();"><span data-i18n="resume_title">Resume</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('terminal'); closeSearch();"><span data-i18n="term_title">Terminal Console</span><span style="font-size:0.7rem; color:#64748b;">Tool</span></div>
-      </div>
     </div>
   </div>
 
   <script>
     lucide.createIcons();
 
-    // =========================================================
-    // I18N DICTIONARY (ENGLISH / GERMAN)
-    // =========================================================
-    let currentLang = 'en';
-    const translations = {
-      en: {
-        console_label: "operator console",
-        status_title: "system status",
-        status_key: "status",
-        status_val: "available",
-        response_key: "response",
-        download_cv: "Download CV",
-        cv_human_desc: "Standard Official CV",
-        cv_ats_desc: "Plain, compatible",
-        nav_about: "ABOUT",
-        nav_portfolio: "PORTFOLIO",
-        nav_resume: "RESUME",
-        nav_blog: "BLOG",
-        nav_contact: "CONTACT",
-        nav_terminal: "TERMINAL",
-        nav_infra: "INFRAST...",
-        nav_design: "DESIGN ...",
-        btn_search: "SEARCH",
-        about_title: "About Me",
-        about_subtitle: "Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale",
-        bio_p1: "IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.",
-        bio_p2: "I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.",
-        bio_p3: "Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.",
-        see_portfolio_link: "See my Automation & Infrastructure portfolio →",
-        tab_stats: "STATS",
-        tab_scope: "SCOPE",
-        stats_title: "By the Numbers",
-        stat_exp: "Years Professional IT",
-        stat_proj: "Projects Done",
-        stat_tech: "Technologies",
-        stat_cert: "Certifications",
-        scope_title: "What I'm Doing",
-        scope1_badge: "SECURITY",
-        scope1_title: "Network Security",
-        scope1_desc: "Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.",
-        scope2_badge: "INFRASTRUCTURE",
-        scope2_title: "Systems & Servers",
-        scope2_desc: "Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.",
-        scope3_badge: "RELIABILITY",
-        scope3_title: "Health Monitoring",
-        scope3_desc: "Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.",
-        scope4_badge: "AUTOMATION",
-        scope4_title: "Process Automation",
-        scope4_desc: "Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.",
-        portfolio_title: "DevOps & Infrastructure Portfolio",
-        portfolio_desc: "Enterprise infrastructure, automated administration scripts, and telemetry systems built for high resilience.",
-        resume_title: "Resume",
-        res_exp_title: "Experience",
-        res_edu_title: "Education",
-        res_core_title: "Core Competencies",
-        res_tools_title: "Tools & Technologies",
-        blog_title: "Engineering Blog",
-        contact_title: "Contact",
-        contact_desc: "Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.",
-        btn_send: "Send Message",
-        term_title: "Terminal Console",
-        term_help_hint: "Type 'help' to see available commands.",
-        infra_title: "Infrastructure Topology",
-        footer_contact: "Contact",
-        footer_status: "All systems operational",
-        mob_about: "About",
-        mob_portfolio: "Portfolio",
-        mob_resume: "Resume",
-        mob_blog: "Blog",
-        mob_contact: "Contact",
-        roles: ["IT Systems Administrator", "Infrastructure Specialist", "Process Automation Engineer", "Network Operations Specialist"],
-        placeholders: {
-          search: "Search portfolio, resume, tools...",
-          name: "Full Name",
-          email: "Email Address",
-          msg: "Your Message..."
-        }
-      },
-      de: {
-        console_label: "bedienkonsole",
-        status_title: "systemstatus",
-        status_key: "status",
-        status_val: "verfügbar",
-        response_key: "antwort",
-        download_cv: "Lebenslauf Herunterladen",
-        cv_human_desc: "Offizieller Standard-Lebenslauf",
-        cv_ats_desc: "Kompakt, ATS-konform",
-        nav_about: "ÜBER MICH",
-        nav_portfolio: "PORTFOLIO",
-        nav_resume: "LEBENSLAUF",
-        nav_blog: "BLOG",
-        nav_contact: "KONTAKT",
-        nav_terminal: "TERMINAL",
-        nav_infra: "INFRAST...",
-        nav_design: "DESIGN ...",
-        btn_search: "SUCHE",
-        about_title: "Über Mich",
-        about_subtitle: "System- & Netzwerkinfrastruktur · Karachi, PK · 5+ Jahre Erfahrung",
-        bio_p1: "Spezialist für IT-Systeme und Netzwerkinfrastruktur aus Karatschi, Pakistan, mit über 5 Jahren Erfahrung im Aufbau sicherer, überwachbarer und hochautomatisierter Betriebsabläufe.",
-        bio_p2: "Ich verwalte geschäftskritische Infrastrukturen mit einer garantierten Betriebszeit von 99,9 % über mehrere Unternehmensstandorte hinweg.",
-        bio_p3: "Zertifiziert in Enterprise Networking, Sicherheit und Automatisierung. Informatik-Absolvent der University of Karachi (UBIT).",
-        see_portfolio_link: "Mein Automatisierungs- & Infrastruktur-Portfolio ansehen →",
-        tab_stats: "STATISTIK",
-        tab_scope: "BEREICHE",
-        stats_title: "Auf einen Blick",
-        stat_exp: "Jahre IT-Erfahrung",
-        stat_proj: "Projekte Umgesetzt",
-        stat_tech: "Technologien",
-        stat_cert: "Zertifizierungen",
-        scope_title: "Mein Aufgabenspektrum",
-        scope1_badge: "SICHERHEIT",
-        scope1_title: "Netzwerksicherheit",
-        scope1_desc: "Konfiguration von Enterprise-Firewalls, VLAN-Segmentierung, VPN-Tunneln und Zero-Trust-Zugriffskontrollen zum Schutz vor Perimeter-Bedrohungen.",
-        scope2_badge: "INFRASTRUKTUR",
-        scope2_title: "Systeme & Server",
-        scope2_desc: "Bereitstellung und Absicherung von Windows Server- und Linux-Distributionen, Verwaltung von Active Directory GPOs und nahtlose Standortvernetzung.",
-        scope3_badge: "ZUVERLÄSSIGKEIT",
-        scope3_title: "Systemüberwachung",
-        scope3_desc: "Gewährleistung maximaler Uptime durch automatisierte Ping/SNMP-Telemetrie, Echtzeit-Webhooks und sofortige Reaktionsprotokolle.",
-        scope4_badge: "AUTOMATISIERUNG",
-        scope4_title: "Prozessautomatisierung",
-        scope4_desc: "Entwicklung maßgeschneiderter Skripte in Python und PowerShell, die wiederkehrende Sysadmin-Aufgaben und Berichterstattungen vollständig automatisieren.",
-        portfolio_title: "DevOps & Infrastruktur Portfolio",
-        portfolio_desc: "Unternehmensinfrastruktur, Automatisierungsskripte und Telemetriesysteme.",
-        resume_title: "Lebenslauf",
-        res_exp_title: "Berufserfahrung",
-        res_edu_title: "Ausbildung",
-        res_core_title: "Kernkompetenzen",
-        res_tools_title: "Tools & Technologien",
-        blog_title: "Technik-Blog",
-        contact_title: "Kontakt",
-        contact_desc: "Haben Sie ein Projekt oder möchten Sie über Unternehmenssysteme und Uptime sprechen?",
-        btn_send: "Nachricht Senden",
-        term_title: "Terminal-Konsole",
-        term_help_hint: "Geben Sie 'help' ein, um verfügbare Befehle anzuzeigen.",
-        infra_title: "Infrastruktur-Topologie",
-        footer_contact: "Kontakt",
-        footer_status: "Alle Systeme betriebsbereit",
-        mob_about: "Über mich",
-        mob_portfolio: "Portfolio",
-        mob_resume: "Lebenslauf",
-        mob_blog: "Blog",
-        mob_contact: "Kontakt",
-        roles: ["IT-Systemadministrator", "Infrastruktur-Spezialist", "Prozessautomatisierungs-Ingenieur", "Netzwerkbetriebs-Spezialist"],
-        placeholders: {
-          search: "Portfolio, Lebenslauf, Tools durchsuchen...",
-          name: "Vollständiger Name",
-          email: "E-Mail-Adresse",
-          msg: "Ihre Nachricht..."
-        }
-      }
-    };
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      const dict = translations[lang];
-
-      document.getElementById('langEn').classList.toggle('locale-seg__btn--active', lang === 'en');
-      document.getElementById('langDe').classList.toggle('locale-seg__btn--active', lang === 'de');
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-          el.innerText = dict[key];
-        }
-      });
-
-      const searchBox = document.getElementById('modalSearchInput');
-      const formName = document.getElementById('formName');
-      const formEmail = document.getElementById('formEmail');
-      const formMsg = document.getElementById('formMsg');
-      if (searchBox) searchBox.placeholder = dict.placeholders.search;
-      if (formName) formName.placeholder = dict.placeholders.name;
-      if (formEmail) formEmail.placeholder = dict.placeholders.email;
-      if (formMsg) formMsg.placeholder = dict.placeholders.msg;
-
-      dict.roles.forEach((r, idx) => {
-        const el = document.getElementById('role-' + idx);
-        if (el) el.innerText = r;
-      });
-
-      lucide.createIcons();
+    // In-App PDF Reader Modal Functions
+    function openBlogPDF(articleTitle, pdfPath) {
+      document.getElementById('pdfModalTitleText').innerText = articleTitle;
+      document.getElementById('pdfModalIframe').src = pdfPath;
+      document.getElementById('pdfDownloadLink').href = pdfPath;
+      document.getElementById('blogPdfModal').classList.add('open-pdf');
     }
 
-    // 1. Navigation Routing
+    function closeBlogPDF() {
+      document.getElementById('blogPdfModal').classList.remove('open-pdf');
+      document.getElementById('pdfModalIframe').src = '';
+    }
+
+    // Close on click backdrop
+    document.getElementById('blogPdfModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
+    });
+
+    // Toggle Extra Topics (+15 more)
+    let topicsExpanded = false;
+    function toggleExtraTopics() {
+      topicsExpanded = !topicsExpanded;
+      const extraSpan = document.getElementById('extraTopics');
+      const btn = document.getElementById('toggleTopicsBtn');
+      if (topicsExpanded) {
+        extraSpan.style.display = 'inline-flex';
+        btn.innerHTML = '<span>▲ Show less</span>';
+      } else {
+        extraSpan.style.display = 'none';
+        btn.innerHTML = '<span>+15 more</span>';
+      }
+    }
+
+    // Filter by Year
+    let currentYearFilter = 'all';
+    let currentTopicFilter = 'all';
+    function filterBlogYear(year) {
+      currentYearFilter = year;
+      document.querySelectorAll('#yearFilterGroup .b-pill').forEach(btn => btn.classList.remove('b-pill--active'));
+      event.currentTarget.classList.add('b-pill--active');
+      applyBlogFilters();
+    }
+
+    // Filter by Topic
+    function filterBlogTopic(topic) {
+      currentTopicFilter = topic;
+      document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => btn.classList.remove('b-pill--active'));
+      event.currentTarget.classList.add('b-pill--active');
+      applyBlogFilters();
+    }
+
+    // Blog Live Search Input
+    function handleBlogSearch() {
+      applyBlogFilters();
+    }
+
+    function applyBlogFilters() {
+      const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.blog-card');
+
+      cards.forEach(card => {
+        const year = card.getAttribute('data-year');
+        const topics = card.getAttribute('data-topic').toLowerCase();
+        const text = card.innerText.toLowerCase();
+
+        const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
+        const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
+        const matchesSearch = (!query || text.includes(query));
+
+        if (matchesYear && matchesTopic && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Navigation Routing
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1752,97 +1230,19 @@
       const items = document.querySelectorAll('.rack-nav__item');
       items.forEach((btn, idx) => {
         const views = ['about', 'portfolio', 'resume', 'blog', 'contact', 'terminal', 'infrastructure', 'design'];
-        if (views[idx] === viewName) {
-          btn.classList.add('rack-nav__item--active');
-        } else {
-          btn.classList.remove('rack-nav__item--active');
-        }
+        if (views[idx] === viewName) btn.classList.add('rack-nav__item--active');
+        else btn.classList.remove('rack-nav__item--active');
       });
 
       const mobItems = document.querySelectorAll('.mobile-dock__item');
       mobItems.forEach((btn, idx) => {
         const views = ['about', 'portfolio', 'resume', 'blog', 'contact'];
-        if (views[idx] === viewName) {
-          btn.classList.add('mobile-dock__item--active');
-        } else {
-          btn.classList.remove('mobile-dock__item--active');
-        }
+        if (views[idx] === viewName) btn.classList.add('mobile-dock__item--active');
+        else btn.classList.remove('mobile-dock__item--active');
       });
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // Portfolio Category Filtering
-    function filterPortfolio(category) {
-      const buttons = document.querySelectorAll('.port-filter-btn');
-      buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
-      event.currentTarget.classList.add('port-filter-btn--active');
-
-      const cards = document.querySelectorAll('.port-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // Education Filter
-    function filterEducation(type) {
-      const buttons = document.querySelectorAll('.edu-filter-btn');
-      buttons.forEach(btn => btn.classList.remove('edu-filter-btn--active'));
-      event.currentTarget.classList.add('edu-filter-btn--active');
-
-      const cards = document.querySelectorAll('.edu-card');
-      let count = 0;
-      cards.forEach(card => {
-        if (type === 'all' || card.getAttribute('data-edutype') === type) {
-          card.style.display = 'flex';
-          count++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-      document.getElementById('eduCountLabel').innerText = `${count} entries`;
-    }
-
-    // Resume Sub-section Smooth Scroll
-    function scrollResumeTo(secId) {
-      const buttons = document.querySelectorAll('.resume-seg-btn');
-      buttons.forEach(btn => btn.classList.remove('resume-seg-btn--active'));
-      event.currentTarget.classList.add('resume-seg-btn--active');
-
-      const el = document.getElementById(secId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Smooth Scroll To Section from Segmented Nav
-    function scrollToSection(sectionId) {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Scroll Spy for About Stats / Scope
-    window.addEventListener('scroll', () => {
-      const scopeSec = document.getElementById('scope');
-      const statsSec = document.getElementById('stats');
-      const tabBtnStats = document.getElementById('tabBtnStats');
-      const tabBtnScope = document.getElementById('tabBtnScope');
-
-      if (!scopeSec || !statsSec || !tabBtnStats || !tabBtnScope) return;
-
-      const scopeRect = scopeSec.getBoundingClientRect();
-      const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
-
-      if (isAtBottom || scopeRect.top <= 260) {
-        tabBtnScope.classList.add('seg-btn--active');
-        tabBtnStats.classList.remove('seg-btn--active');
-      } else {
-        tabBtnStats.classList.add('seg-btn--active');
-        tabBtnScope.classList.remove('seg-btn--active');
-      }
-    });
 
     // Light / Dark Mode Toggle
     const themeBtn = document.getElementById('themeToggleBtn');
@@ -1855,64 +1255,17 @@
       lucide.createIcons();
     });
 
-    // Search Modal (Ctrl+K)
-    const searchModal = document.getElementById('searchModal');
-    const searchInput = document.getElementById('modalSearchInput');
-    function openSearch() { searchModal.classList.add('open-modal'); searchInput.focus(); }
-    function closeSearch() { searchModal.classList.remove('open-modal'); searchInput.value = ''; }
-    document.getElementById('openSearchBtn').addEventListener('click', openSearch);
-
-    window.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        searchModal.classList.contains('open-modal') ? closeSearch() : openSearch();
-      }
-      if (e.key === 'Escape') closeSearch();
-    });
-    searchModal.addEventListener('click', (e) => {
-      if (e.target === searchModal) closeSearch();
-    });
-
-    // Interactive Terminal Console
-    const cliInput = document.getElementById('cliInput');
-    if (cliInput) {
-      cliInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          const val = cliInput.value.trim().toLowerCase();
-          const history = document.getElementById('termHistory');
-          let output = '';
-          if (val === 'help') output = currentLang === 'de' ? 'Befehle: help, about, skills, uptime, clear' : 'Commands: help, about, skills, uptime, clear';
-          else if (val === 'about') output = currentLang === 'de' ? 'Hunain Haider — Spezialist für System- und Netzwerkinfrastruktur' : 'Hunain Haider — Systems & Network Infrastructure Specialist';
-          else if (val === 'skills') output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
-          else if (val === 'uptime') output = currentLang === 'de' ? 'System-Betriebszeit: 99.98% einsatzbereit' : 'System uptime: 99.98% operational';
-          else if (val === 'clear') { history.innerHTML = ''; cliInput.value = ''; return; }
-          else if (val !== '') output = `bash: command not found: ${val}`;
-
-          history.innerHTML += `<div class="terminal-line"><span class="term-prompt">hunain@infra:~$</span> ${cliInput.value}</div>`;
-          if (output) history.innerHTML += `<div class="terminal-line" style="color:#cbd5e1;">${output}</div>`;
-          cliInput.value = '';
-          document.querySelector('.terminal-window').scrollTop = 9999;
-        }
-      });
+    // Language Toggle
+    function setLanguage(lang) {
+      document.getElementById('langEn').classList.toggle('locale-seg__btn--active', lang === 'en');
+      document.getElementById('langDe').classList.toggle('locale-seg__btn--active', lang === 'de');
     }
 
-    // Role Rotator
-    const roles = document.querySelectorAll('.header-identity__role');
-    let currentRoleIndex = 0;
-    if (roles.length > 0) {
-      setInterval(() => {
-        roles[currentRoleIndex].classList.remove('active');
-        currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-        roles[currentRoleIndex].classList.add('active');
-      }, 3000);
-    }
-
-    // CV Download logic
+    // CV Download Dropdown
     const cvGroup = document.getElementById('cvDropdownGroup');
     const cvTrigger = document.getElementById('cvTriggerBtn');
     cvTrigger.addEventListener('click', (e) => {
-      e.preventDefault(); e.stopPropagation();
-      cvGroup.classList.toggle('open');
+      e.preventDefault(); e.stopPropagation(); cvGroup.classList.toggle('open');
     });
     document.addEventListener('click', (e) => {
       if (!cvGroup.contains(e.target)) cvGroup.classList.remove('open');
