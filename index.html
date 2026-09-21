@@ -122,9 +122,7 @@
       gap: 24px;
     }
 
-    /* =========================================================
-       OPERATOR CONSOLE HEADER
-    ========================================================= */
+    /* Header Styling */
     .header.box {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -134,7 +132,6 @@
       position: relative;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-
     .header__chrome {
       background-color: var(--chrome-bg);
       border-bottom: 1px solid var(--chrome-border);
@@ -143,17 +140,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    .header__chrome-dots {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .header__chrome-dot {
-      width: 8.5px;
-      height: 8.5px;
-      border-radius: 50%;
-      display: inline-block;
-    }
+    .header__chrome-dots { display: flex; align-items: center; gap: 7px; }
+    .header__chrome-dot { width: 8.5px; height: 8.5px; border-radius: 50%; display: inline-block; }
     .header__chrome-dot--red { background: #ff5f56; }
     .header__chrome-dot--amber { background: #ffbd2e; }
     .header__chrome-dot--green { background: #27c93f; }
@@ -163,20 +151,13 @@
       color: var(--chrome-text);
       letter-spacing: 0.8px;
     }
-
     .header__body {
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr;
       align-items: center;
       padding: 18px 26px 20px;
     }
-
-    .header-identity {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-right: 20px;
-    }
+    .header-identity { display: flex; align-items: center; gap: 16px; padding-right: 20px; }
     .header-identity__photo {
       width: 72px;
       height: 72px;
@@ -191,437 +172,176 @@
       overflow: hidden;
     }
     .header-identity__photo-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
+      width: 100%; height: 100%; border-radius: 12px; object-fit: cover; object-position: center 20%; display: block;
     }
-    .header-identity__name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .header-identity__name-surname {
-      font-weight: 400;
-    }
-    
-    .header-identity__role-rotator {
-      position: relative;
-      height: 20px;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-    .header-identity__role {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      display: none;
-    }
-    .header-identity__role.active {
-      display: block;
-      animation: fadeInRole 0.4s ease;
-    }
-    @keyframes fadeInRole {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .header-identity__name { font-size: 1.25rem; font-weight: 600; color: var(--text-main); line-height: 1.2; margin-bottom: 4px; }
+    .header-identity__name-surname { font-weight: 400; }
+    .header-identity__role-rotator { position: relative; height: 20px; overflow: hidden; margin-bottom: 4px; }
+    .header-identity__role { font-size: 0.82rem; color: var(--text-muted); display: none; }
+    .header-identity__role.active { display: block; animation: fadeInRole 0.4s ease; }
+    @keyframes fadeInRole { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    .header-signal {
-      padding: 0 28px;
-      border-left: 1px solid var(--card-border);
-      border-right: 1px solid var(--card-border);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .header-signal__title {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-    .header-signal__board {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 0.78rem;
-    }
-    .header-signal__row {
-      display: flex;
-      align-items: center;
-    }
-    .header-signal__key {
-      width: 85px;
-      color: #c8cdd8;
-    }
-    .header-signal__value {
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .header-signal__dot {
-      width: 6px;
-      height: 6px;
-      background: var(--status-green);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--status-green);
-    }
+    .header-signal { padding: 0 28px; border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border); font-family: 'JetBrains Mono', monospace; }
+    .header-signal__title { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+    .header-signal__board { display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem; }
+    .header-signal__row { display: flex; align-items: center; }
+    .header-signal__key { width: 85px; color: #c8cdd8; }
+    .header-signal__value { color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+    .header-signal__dot { width: 6px; height: 6px; background: var(--status-green); border-radius: 50%; box-shadow: 0 0 6px var(--status-green); }
 
-    /* Actions / CV Button */
-    .header-action {
-      padding-left: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
-      position: relative;
-    }
-    
+    .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
     .cv-group--header {
-      display: inline-flex;
-      position: relative;
-      border-radius: 10px;
-      border: 1.5px solid var(--btn-blue-border);
-      background: var(--btn-blue-dark);
-      overflow: visible;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      display: inline-flex; position: relative; border-radius: 10px; border: 1.5px solid var(--btn-blue-border); background: var(--btn-blue-dark); overflow: visible; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
-
     .cv-btn--header {
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      padding: 7px 16px;
-      font-size: 0.84rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
+      background: transparent; border: none; color: #ffffff; padding: 7px 16px; font-size: 0.84rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none;
     }
-    .cv-btn--header svg {
-      stroke: var(--btn-blue-text);
-    }
-
+    .cv-btn--header svg { stroke: var(--btn-blue-text); }
     .cv-trigger {
-      background: var(--btn-blue-solid);
-      border: none;
-      color: #0b0f19;
-      padding: 7px 11px;
-      border-radius: 0 7px 7px 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: var(--btn-blue-solid); border: none; color: #0b0f19; padding: 7px 11px; border-radius: 0 7px 7px 0; cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
-    .cv-chevron {
-      stroke: #0d121c;
-      transition: transform 0.2s ease;
-    }
-    .cv-group--header.open .cv-chevron {
-      transform: rotate(180deg);
-    }
-
+    .cv-chevron { stroke: #0d121c; transition: transform 0.2s ease; }
+    .cv-group--header.open .cv-chevron { transform: rotate(180deg); }
     .cv-menu {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      width: 215px;
-      background: var(--menu-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
-      list-style: none;
-      padding: 10px 8px;
-      z-index: 100;
-      display: none;
+      position: absolute; top: calc(100% + 8px); left: 0; width: 215px; background: var(--menu-bg); border: 1px solid var(--card-border); border-radius: 12px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7); list-style: none; padding: 10px 8px; z-index: 100; display: none;
     }
-    .cv-group--header.open .cv-menu {
-      display: block;
-    }
-    .cv-menu__item {
-      display: grid;
-      grid-template-columns: 20px 1fr;
-      padding: 8px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .cv-menu__item:hover {
-      background: rgba(255, 255, 255, 0.04);
-    }
-    .cv-menu__check {
-      color: var(--btn-blue-text);
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-    .cv-menu__label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #94a3b8;
-    }
-    .cv-menu__item--active .cv-menu__label {
-      color: var(--btn-blue-text);
-    }
-    .cv-menu__desc {
-      color: #5b677a;
-      font-size: 0.73rem;
-    }
-
-    .header-action__email {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .header-action__social {
-      display: flex;
-      gap: 12px;
-      list-style: none;
-      margin-top: 2px;
-    }
-    .header-action__social a {
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-    }
+    .cv-group--header.open .cv-menu { display: block; }
+    .cv-menu__item { display: grid; grid-template-columns: 20px 1fr; padding: 8px 10px; border-radius: 8px; cursor: pointer; text-decoration: none; }
+    .cv-menu__item:hover { background: rgba(255, 255, 255, 0.04); }
+    .cv-menu__check { color: var(--btn-blue-text); font-size: 0.95rem; font-weight: 700; }
+    .cv-menu__label { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
+    .cv-menu__item--active .cv-menu__label { color: var(--btn-blue-text); }
+    .cv-menu__desc { color: #5b677a; font-size: 0.73rem; }
+    .header-action__email { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .header-action__social { display: flex; gap: 12px; list-style: none; margin-top: 2px; }
+    .header-action__social a { color: var(--text-dim); display: flex; align-items: center; }
     .header-action__social a:hover { color: var(--text-main); }
 
-    /* =========================================================
-       MAIN GRID & 1:1 RACK SIDEBAR
-    ========================================================= */
-    .main-grid {
-      display: grid;
-      grid-template-columns: 148px 1fr;
-      gap: 24px;
-      align-items: flex-start;
-    }
-
+    /* Rack Sidebar */
+    .main-grid { display: grid; grid-template-columns: 148px 1fr; gap: 24px; align-items: flex-start; }
     .sidebar.rack-desktop {
-      background-color: var(--rack-bg);
-      border: 1px solid var(--rack-border);
-      border-radius: 18px;
-      padding: 18px 12px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background-color: var(--rack-bg); border: 1px solid var(--rack-border); border-radius: 18px; padding: 18px 12px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-
-    .patch-panel {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .patch-port {
-      height: 22px;
-      border-radius: 6px;
-    }
+    .patch-panel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .patch-port { height: 22px; border-radius: 6px; }
     .patch-port--1 { background: #3b82f6; }
     .patch-port--2 { background: #10b981; }
     .patch-port--3 { background: #f59e0b; }
     .patch-port--4 { background: #ef4444; }
-
-    .nav {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .nav { list-style: none; display: flex; flex-direction: column; gap: 5px; }
     .rack-nav__item {
-      display: flex;
-      align-items: center;
-      padding: 7px 10px;
-      border-radius: 8px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      position: relative;
+      display: flex; align-items: center; padding: 7px 10px; border-radius: 8px; color: var(--text-muted); text-decoration: none; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; position: relative;
     }
-    .rack-nav__item:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.03);
-    }
-    .nav__icon {
-      display: flex;
-      align-items: center;
-      margin-right: 8px;
-      flex-shrink: 0;
-    }
-    .nav__label {
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .nav-led {
-      width: 5.5px;
-      height: 5.5px;
-      border-radius: 50%;
-      background: #3b4658;
-      flex-shrink: 0;
-      margin-left: 6px;
-    }
-    .rack-nav__item--active {
-      background: var(--nav-active-bg);
-      border: 1px solid var(--nav-active-border);
-      color: #ffffff;
-      box-shadow: 0 0 14px rgba(47, 104, 238, 0.25);
-    }
-    .rack-nav__item--active .nav-led {
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-    }
-
-    .perf-plate {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
-      padding: 10px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
+    .rack-nav__item:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.03); }
+    .nav__icon { display: flex; align-items: center; margin-right: 8px; flex-shrink: 0; }
+    .nav__label { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-led { width: 5.5px; height: 5.5px; border-radius: 50%; background: #3b4658; flex-shrink: 0; margin-left: 6px; }
+    .rack-nav__item--active { background: var(--nav-active-bg); border: 1px solid var(--nav-active-border); color: #ffffff; box-shadow: 0 0 14px rgba(47, 104, 238, 0.25); }
+    .rack-nav__item--active .nav-led { background: #10b981; box-shadow: 0 0 8px #10b981; }
+    .perf-plate { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 10px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .perf-plate__row { display: flex; gap: 6px; }
     .perf-plate__dot { width: 4px; height: 4px; border-radius: 50%; background: #252c3b; }
-
     .rack-utils { display: flex; flex-direction: column; gap: 7px; }
     .search-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: #151a24;
-      border: 1px solid #232a3a;
-      border-radius: 7px;
-      padding: 6px 8px;
-      color: var(--text-muted);
-      font-size: 0.68rem;
-      cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; width: 100%; background: #151a24; border: 1px solid #232a3a; border-radius: 7px; padding: 6px 8px; color: var(--text-muted); font-size: 0.68rem; cursor: pointer;
     }
-    .search-trigger__kbd {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      background: #0e121a;
-      border: 1px solid #263044;
-      border-radius: 4px;
-      padding: 1px 4px;
-      color: #a0aec0;
-    }
-    .locale-seg {
-      display: flex;
-      background: #131722;
-      border: 1px solid #232a3a;
-      border-radius: 7px;
-      padding: 2px;
-    }
+    .search-trigger__kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: #0e121a; border: 1px solid #263044; border-radius: 4px; padding: 1px 4px; color: #a0aec0; }
+    .locale-seg { display: flex; background: #131722; border: 1px solid #232a3a; border-radius: 7px; padding: 2px; }
     .locale-seg__btn {
-      flex: 1;
-      border: none;
-      background: transparent;
-      color: #64748b;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 4px 0;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'JetBrains Mono', monospace;
-      transition: all 0.2s ease;
+      flex: 1; border: none; background: transparent; color: #64748b; font-size: 0.68rem; font-weight: 700; padding: 4px 0; border-radius: 5px; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s ease;
     }
     .locale-seg__btn--active { background: var(--accent-blue); color: #ffffff; }
-
     .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 100%;
-      background: #151a24;
-      border: 1px solid #232a3a;
-      border-radius: 7px;
-      padding: 6px 0;
-      color: var(--text-muted);
-      font-size: 0.68rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: #151a24; border: 1px solid #232a3a; border-radius: 7px; padding: 6px 0; color: var(--text-muted); font-size: 0.68rem; font-weight: 600; cursor: pointer; text-transform: uppercase;
     }
 
-    /* =========================================================
-       DYNAMIC CONTENT VIEW PANELS & ABOUT SECTION
-    ========================================================= */
+    /* Content Panels */
     .content-box {
-      background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 36px 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      min-height: 520px;
+      background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 36px 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); min-height: 520px;
     }
-
-    .view-panel {
-      display: none;
-      animation: panelFade 0.2s ease;
-    }
-    .view-panel.active-panel {
-      display: block;
-    }
-    @keyframes panelFade {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .content-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .view-panel { display: none; animation: panelFade 0.2s ease; }
+    .view-panel.active-panel { display: block; }
+    @keyframes panelFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .content-title { font-size: 1.8rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 4px; }
     .title-dot { color: var(--accent-blue); }
-    .color-accent-line {
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, #3b82f6, #f59e0b);
-      border-radius: 2px;
-      margin: 10px 0 18px;
-    }
-
-    .sub-tagline {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-bottom: 22px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .color-accent-line { width: 40px; height: 3px; background: linear-gradient(90deg, #3b82f6, #f59e0b); border-radius: 2px; margin: 10px 0 18px; }
+    .sub-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 22px; display: flex; align-items: center; gap: 8px; }
     .sub-tagline span { color: var(--accent-blue); }
+    .bio-body p { font-size: 0.94rem; line-height: 1.75; color: #b3c0cf; margin-bottom: 18px; }
 
-    .bio-body p {
-      font-size: 0.94rem;
-      line-height: 1.75;
-      color: #b3c0cf;
-      margin-bottom: 18px;
+    /* About Segmented nav & stats */
+    .seg-control-nav {
+      background: rgba(13, 16, 23, 0.85); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+    .seg-btn {
+      flex: 1; padding: 9px 14px; font-size: 0.82rem; font-weight: 600; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.25s ease;
+    }
+    .seg-btn:hover { color: var(--text-main); }
+    .seg-btn--active { background: var(--accent-blue) !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45); }
+    .section-heading-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 18px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+    .stat-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 10px; padding: 20px 12px; text-align: center; transition: border-color 0.2s ease; }
+    .stat-card:hover { border-color: rgba(47, 104, 238, 0.4); }
+    .stat-val { font-size: 1.9rem; font-weight: 700; color: #3b82f6; margin-bottom: 4px; }
+    .stat-label { font-size: 0.68rem; text-transform: uppercase; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; }
+
+    /* About Scope cards */
+    .about-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .about-scope-card {
+      background: var(--scope-card-bg); border: 1px solid var(--scope-card-border); border-radius: 14px; border-left: 3px solid #5b8def; padding: 24px; display: flex; align-items: flex-start; gap: 18px; position: relative; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .about-scope-card:hover { border-color: var(--scope-card-hover-border); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(47, 104, 238, 0.2); }
+    .about-scope-card__icon-wrap {
+      width: 46px; height: 46px; background: var(--scope-icon-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 14px rgba(47, 104, 238, 0.35);
+    }
+    .about-scope-card__body { flex: 1; }
+    .about-scope-card__type {
+      position: absolute; top: 18px; right: 18px; font-size: 0.62rem; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; background: var(--chip-bg); color: var(--chip-text); font-weight: 700; letter-spacing: 0.6px; font-family: 'JetBrains Mono', monospace;
+    }
+    .about-scope-card__title { font-size: 1.08rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
+    .about-scope-card__desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Portfolio Section */
+    .port-filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 28px; }
+    .port-filter-btn {
+      display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: #141720; border: 1px solid var(--card-border); border-radius: 20px; color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+    }
+    .port-filter-btn:hover { color: var(--text-main); border-color: #3b4658; }
+    .port-filter-btn--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #ffffff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.4); }
+    .port-filter-pill { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; padding: 1px 6px; border-radius: 10px; background: rgba(255, 255, 255, 0.12); color: #fff; }
+    .port-filter-btn--active .port-filter-pill { background: rgba(255, 255, 255, 0.25); }
+    .port-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .port-card { background: #10131a; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s ease; }
+    .port-card:hover { transform: translateY(-4px); border-color: rgba(47, 104, 238, 0.5); }
+    .port-card--cert { border: 1px solid rgba(249, 115, 22, 0.45); }
+    .port-card--cert:hover { border-color: #f97316; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.15); }
+    .port-card--badge-card { border: 1px solid rgba(16, 185, 129, 0.4); }
+    .port-card--badge-card:hover { border-color: #10b981; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15); }
+    .port-card__media { position: relative; width: 100%; height: 230px; background: #090c13; overflow: hidden; }
+    .port-card__badge {
+      position: absolute; top: 14px; left: 14px; background: #2f68ee; color: #ffffff; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); z-index: 2;
+    }
+    .port-card__badge--cert { background: #ea580c; }
+    .port-card__badge--badge { background: #d97706; }
+    .port-card__overlay {
+      position: absolute; inset: 0; background: rgba(13, 16, 24, 0.88); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; opacity: 0; transition: opacity 0.25s ease; z-index: 1;
+    }
+    .port-card:hover .port-card__overlay { opacity: 1; }
+    .port-card__overlay-desc { font-size: 0.84rem; line-height: 1.55; color: #d1d9e2; margin-bottom: 20px; max-width: 90%; }
+    .port-card__actions { display: flex; align-items: center; gap: 10px; }
+    .port-btn-primary {
+      background: #2f68ee; color: #ffffff; border: none; border-radius: 20px; padding: 8px 18px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(47, 104, 238, 0.4);
+    }
+    .port-btn-secondary {
+      background: #1e2330; color: #e2e8f0; border: 1px solid #333d52; border-radius: 20px; padding: 8px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .port-card__footer { padding: 16px 20px; background: #11141c; border-top: 1px solid var(--card-border); }
+    .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
 
     /* =========================================================
-       STICKY SCROLL SPY SEGMENTED CONTROL
+       EXACT 1:1 RESUME TIMELINE, EDUCATION & SKILLS
     ========================================================= */
-    .seg-control-nav {
+    .resume-seg-nav {
       background: rgba(13, 16, 23, 0.85);
       border: 1px solid var(--card-border);
       border-radius: 10px;
@@ -636,499 +356,345 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-    .seg-btn {
+    .resume-seg-btn {
       flex: 1;
-      padding: 9px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--text-dim);
       background: none;
       border: none;
       border-radius: 7px;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: 0.8px;
+      transition: all 0.2s ease;
     }
-    .seg-btn:hover {
-      color: var(--text-main);
-    }
-    .seg-btn--active {
+    .resume-seg-btn:hover { color: #fff; }
+    .resume-seg-btn--active {
       background: var(--accent-blue) !important;
       color: #ffffff !important;
       box-shadow: 0 2px 10px rgba(47, 104, 238, 0.45);
     }
 
-    .section-heading-title {
+    .resume-sec-title {
       font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-
-    /* STATS GRID */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    .stat-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 20px 12px;
-      text-align: center;
-      transition: border-color 0.2s ease;
-    }
-    .stat-card:hover {
-      border-color: rgba(47, 104, 238, 0.4);
-    }
-    .stat-val {
-      font-size: 1.9rem;
       font-weight: 700;
-      color: #3b82f6;
-      margin-bottom: 4px;
-    }
-    .stat-label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    /* =========================================================
-       EXACT 1:1 SCOPE CARDS DESIGN (WHAT I'M DOING)
-    ========================================================= */
-    .about-scope-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    .about-scope-card {
-      background: var(--scope-card-bg);
-      border: 1px solid var(--scope-card-border);
-      border-radius: 14px;
-      border-left: 3px solid #5b8def;
-      padding: 24px;
+      color: #ffffff;
+      margin: 36px 0 22px;
       display: flex;
-      align-items: flex-start;
-      gap: 18px;
-      position: relative;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      align-items: center;
+      gap: 10px;
     }
-    .about-scope-card:hover {
-      border-color: var(--scope-card-hover-border);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 28px rgba(47, 104, 238, 0.2);
-    }
+    .resume-sec-title span { color: #ffffff; }
 
-    .about-scope-card__icon-wrap {
-      width: 46px;
-      height: 46px;
-      background: var(--scope-icon-bg);
-      border-radius: 12px;
+    /* Timeline Styling */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 12px;
+      bottom: 20px;
+      width: 2px;
+      background: #232b3d;
+    }
+    .timeline-node {
+      position: relative;
+    }
+    .timeline-node__dot {
+      position: absolute;
+      left: -28px;
+      top: 24px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #0d1017;
+      border: 3px solid #2f68ee;
+      box-shadow: 0 0 10px rgba(47, 104, 238, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      flex-shrink: 0;
-      box-shadow: 0 4px 14px rgba(47, 104, 238, 0.35);
+    }
+    .timeline-node__dot::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
     }
 
-    .about-scope-card__body {
-      flex: 1;
+    .resume-card {
+      background: #11141c;
+      border: 1px solid #1c2230;
+      border-radius: 14px;
+      padding: 24px 28px;
+      transition: all 0.2s ease;
     }
-    .about-scope-card__type {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      font-size: 0.62rem;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 6px;
-      background: var(--chip-bg);
-      color: var(--chip-text);
+    .resume-card:hover {
+      border-color: rgba(47, 104, 238, 0.4);
+    }
+    .resume-card__title {
+      font-size: 1.18rem;
       font-weight: 700;
-      letter-spacing: 0.6px;
-      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
-    .about-scope-card__title {
-      font-size: 1.08rem;
+    .resume-card__company {
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--text-main);
+      color: #3b82f6;
       margin-bottom: 8px;
     }
-    .about-scope-card__desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .resume-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .resume-card__meta i { color: #f97316; }
+    
+    .resume-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .resume-bullets li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #cbd5e1;
+    }
+    .resume-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: #64748b;
+      font-size: 1.1rem;
     }
 
-    /* =========================================================
-       PORTFOLIO 1:1 EXACT DESIGN & FILTER PILLS
-    ========================================================= */
-    .port-filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 22px 0 28px;
+    .resume-show-more-btn {
+      width: 100%;
+      background: rgba(47, 104, 238, 0.05);
+      border: 1px dashed rgba(47, 104, 238, 0.35);
+      border-radius: 8px;
+      padding: 10px 0;
+      color: #60a5fa;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 18px;
+      transition: background 0.2s ease;
     }
-    .port-filter-btn {
-      display: inline-flex;
+    .resume-show-more-btn:hover { background: rgba(47, 104, 238, 0.1); }
+
+    .resume-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tech-pill {
+      background: #151a24;
+      border: 1px solid #232b3d;
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Education Cards */
+    .edu-filter-group {
+      display: flex;
       align-items: center;
-      gap: 7px;
-      padding: 6px 14px;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .edu-filter-btn {
       background: #141720;
       border: 1px solid var(--card-border);
       border-radius: 20px;
       color: var(--text-dim);
       font-size: 0.78rem;
       font-weight: 600;
+      padding: 5px 14px;
       cursor: pointer;
+    }
+    .edu-filter-btn--active {
+      background: #2f68ee;
+      border-color: #2f68ee;
+      color: #fff;
+    }
+    .edu-card {
+      background: #11141c;
+      border: 1px solid #1c2230;
+      border-radius: 12px;
+      border-left: 3px solid #f97316;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
       transition: all 0.2s ease;
     }
-    .port-filter-btn:hover {
-      color: var(--text-main);
-      border-color: #3b4658;
-    }
-    .port-filter-btn--active {
-      background: #2f68ee !important;
-      border-color: #2f68ee !important;
-      color: #ffffff !important;
-      box-shadow: 0 2px 10px rgba(47, 104, 238, 0.4);
-    }
-    .port-filter-pill {
-      font-size: 0.65rem;
-      font-family: 'JetBrains Mono', monospace;
-      padding: 1px 6px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-    }
-    .port-filter-btn--active .port-filter-pill {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .port-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .port-card {
-      background: #10131a;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-    .port-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(47, 104, 238, 0.5);
-    }
-
-    /* SPECIFIC ACCENTS FOR CERTIFICATIONS & BADGES */
-    .port-card--cert {
-      border: 1px solid rgba(249, 115, 22, 0.45);
-    }
-    .port-card--cert:hover {
-      border-color: #f97316;
-      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.15);
-    }
-    .port-card--badge-card {
-      border: 1px solid rgba(16, 185, 129, 0.4);
-    }
-    .port-card--badge-card:hover {
-      border-color: #10b981;
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
-    }
-
-    .port-card__media {
-      position: relative;
-      width: 100%;
-      height: 230px;
-      background: #090c13;
-      overflow: hidden;
-    }
-    .port-card__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    .port-card:hover .port-card__img {
-      transform: scale(1.03);
-    }
-
-    /* Badges Style */
-    .port-card__badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
+    .edu-card--formal { border-left-color: #2f68ee; }
+    .edu-card:hover { transform: translateX(3px); }
+    .edu-card__icon {
+      width: 42px;
+      height: 42px;
       background: #2f68ee;
-      color: #ffffff;
-      font-size: 0.64rem;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      z-index: 2;
-    }
-    .port-card__badge--cert {
-      background: #ea580c;
-    }
-    .port-card__badge--badge {
-      background: #d97706;
-    }
-
-    /* Dark Frosted Hover Overlay with Action Buttons */
-    .port-card__overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(13, 16, 24, 0.88);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 24px;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      z-index: 1;
-    }
-    .port-card:hover .port-card__overlay {
-      opacity: 1;
-    }
-    .port-card__overlay-desc {
-      font-size: 0.84rem;
-      line-height: 1.55;
-      color: #d1d9e2;
-      margin-bottom: 20px;
-      max-width: 90%;
-    }
-    .port-card__actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .port-btn-primary {
-      background: #2f68ee;
-      color: #ffffff;
-      border: none;
-      border-radius: 20px;
-      padding: 8px 18px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 12px rgba(47, 104, 238, 0.4);
-      transition: background 0.2s ease;
-    }
-    .port-btn-primary:hover {
-      background: #2558d4;
-    }
-    .port-btn-secondary {
-      background: #1e2330;
-      color: #e2e8f0;
-      border: 1px solid #333d52;
-      border-radius: 20px;
-      padding: 8px 16px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.2s ease;
-    }
-    .port-btn-secondary:hover {
-      background: #283042;
-    }
-
-    .port-card__footer {
-      padding: 16px 20px;
-      background: #11141c;
-      border-top: 1px solid var(--card-border);
-    }
-    .port-card__title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: -0.2px;
-    }
-
-    /* Terminal View */
-    .terminal-window {
-      background: #090b10;
-      border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #a5b4fc;
-      min-height: 280px;
-    }
-    .terminal-line { margin-bottom: 8px; }
-    .term-prompt { color: #10b981; }
-    .term-input {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      outline: none;
-      width: 70%;
-    }
-
-    /* Contact View */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 600px;
-      margin-top: 20px;
-    }
-    .form-input, .form-textarea {
-      background: #0d1017;
-      border: 1px solid var(--card-border);
-      color: #fff;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      outline: none;
-    }
-    .form-submit-btn {
-      background: var(--accent-blue);
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      align-self: flex-start;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    /* Modal Search (Ctrl+K) */
-    .search-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      z-index: 999;
-      display: none;
-      align-items: flex-start;
       justify-content: center;
-      padding-top: 15vh;
+      color: #fff;
+      flex-shrink: 0;
     }
-    .search-modal.open-modal { display: flex; }
-    .search-box {
-      width: 100%;
-      max-width: 540px;
-      background: #131722;
-      border: 1px solid #232b3d;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-    }
-    .search-input-wrap {
+    .edu-card__content { flex: 1; }
+    .edu-card__title { font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .edu-card__desc { font-size: 0.84rem; color: #94a3b8; margin-bottom: 6px; }
+    .edu-card__meta {
       display: flex;
       align-items: center;
-      padding: 14px 18px;
-      border-bottom: 1px solid #202638;
-      gap: 10px;
+      gap: 12px;
+      font-size: 0.72rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
     }
-    .search-input-wrap input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-    }
-    .search-results {
-      max-height: 280px;
-      overflow-y: auto;
-      padding: 8px;
-    }
-    .search-result-item {
-      padding: 10px 14px;
-      border-radius: 8px;
+    .edu-card__badge {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 7px;
+      border-radius: 4px;
       color: #cbd5e1;
-      font-size: 0.85rem;
-      cursor: pointer;
+    }
+
+    /* Core Competencies Matrix */
+    .core-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .core-card {
+      background: #11141c;
+      border: 1px solid #1c2230;
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .core-card__header {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 18px;
+    }
+    .core-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 16px;
     }
-    .search-result-item:hover { background: rgba(47, 104, 238, 0.15); color: #fff; }
+    .core-name { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
+    .core-rating-wrap { display: flex; align-items: center; gap: 8px; }
+    .core-bars { display: flex; gap: 4px; }
+    .core-bar { width: 10px; height: 3.5px; background: #3b82f6; border-radius: 2px; }
+    .core-pill {
+      background: #172554;
+      color: #60a5fa;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-    /* Footer & Status Badge */
-    .footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 24px;
-      margin-top: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      font-size: 0.78rem;
-      color: var(--text-dim);
+    /* Tools & Technologies Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
+    .tools-card {
+      background: #11141c;
+      border: 1px solid #1c2230;
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .tools-card__title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 16px;
+    }
+    .tools-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #151a24;
+      border: 1px solid #232b3d;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .tool-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .tool-tag--adv { background: #1e3a8a; color: #93c5fd; }
+    .tool-tag--int { background: #1f2937; color: #9ca3af; }
+
+    /* Other views & utilities */
+    .terminal-window {
+      background: #090b10; border: 1px solid var(--card-border); border-radius: 10px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a5b4fc; min-height: 280px;
+    }
+    .terminal-line { margin-bottom: 8px; }
+    .term-prompt { color: #10b981; }
+    .term-input { background: transparent; border: none; color: #fff; font-family: 'JetBrains Mono', monospace; outline: none; width: 70%; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin-top: 20px; }
+    .form-input, .form-textarea { background: #0d1017; border: 1px solid var(--card-border); color: #fff; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; outline: none; }
+    .form-submit-btn { background: var(--accent-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; align-self: flex-start; display: flex; align-items: center; gap: 8px; }
+    .search-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 999; display: none; align-items: flex-start; justify-content: center; padding-top: 15vh; }
+    .search-modal.open-modal { display: flex; }
+    .search-box { width: 100%; max-width: 540px; background: #131722; border: 1px solid #232b3d; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); }
+    .search-input-wrap { display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid #202638; gap: 10px; }
+    .search-input-wrap input { flex: 1; background: transparent; border: none; color: #fff; font-size: 0.95rem; outline: none; }
+    .search-results { max-height: 280px; overflow-y: auto; padding: 8px; }
+    .search-result-item { padding: 10px 14px; border-radius: 8px; color: #cbd5e1; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+    .search-result-item:hover { background: rgba(47, 104, 238, 0.15); color: #fff; }
+    .footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 24px; margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 0.78rem; color: var(--text-dim); }
     .footer a { color: var(--text-dim); text-decoration: none; }
     .footer a:hover { color: var(--text-main); }
     .status-badge { display: inline-flex; align-items: center; gap: 6px; }
-    .status-badge__dot {
-      width: 6px;
-      height: 6px;
-      background: var(--status-green);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--status-green);
-    }
-
-    /* Scroll To Top */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 40px;
-      height: 40px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 50;
-      opacity: 0.8;
-      transition: all 0.2s ease;
-    }
-    .scroll-to-top:hover {
-      opacity: 1;
-      color: var(--text-main);
-      border-color: var(--accent-blue);
-    }
-
+    .status-badge__dot { width: 6px; height: 6px; background: var(--status-green); border-radius: 50%; box-shadow: 0 0 6px var(--status-green); }
+    .scroll-to-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; opacity: 0.8; transition: all 0.2s ease; }
+    .scroll-to-top:hover { opacity: 1; color: var(--text-main); border-color: var(--accent-blue); }
     .rack-mobile-dock { display: none; }
 
     @media (max-width: 960px) {
@@ -1138,42 +704,17 @@
       .main-grid { grid-template-columns: 1fr; }
       .sidebar-rack-container { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-scope-grid { grid-template-columns: 1fr; }
-      .port-grid { grid-template-columns: 1fr; }
-      
-      .rack-mobile-dock {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--card-bg);
-        border-top: 1px solid var(--card-border);
-        padding: 8px 12px;
-        z-index: 100;
-      }
-      .mobile-dock__compact {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-      .mobile-dock__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.65rem;
-        cursor: pointer;
-      }
+      .about-scope-grid, .port-grid, .core-grid, .tools-grid { grid-template-columns: 1fr; }
+      .rack-mobile-dock { display: block; position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 8px 12px; z-index: 100; }
+      .mobile-dock__compact { display: flex; justify-content: space-around; align-items: center; }
+      .mobile-dock__item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 0.65rem; cursor: pointer; }
       .mobile-dock__item--active { color: var(--accent-blue); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Left & Right Polygon Graphic Accents -->
+  <!-- Geometric Polygon Accents -->
   <svg class="bg-poly-left" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0,0 80,40 10,120" fill="#e11d48"/>
     <polygon points="10,120 90,80 140,160 30,190" fill="#f59e0b"/>
@@ -1191,7 +732,7 @@
 
   <div class="app-layout">
     
-    <!-- TOP OPERATOR CONSOLE HEADER -->
+    <!-- HEADER -->
     <header class="header box header--collapsed">
       <div class="header__chrome" aria-hidden="true">
         <div class="header__chrome-dots">
@@ -1238,7 +779,7 @@
 
         <div class="header-action">
           <div class="cv-group cv-group--header" id="cvDropdownGroup">
-            <a href="resume.pdf" download="Hunain_Haider_Resume.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV as PDF">
+            <a href="Hunain_Haider_Europass_Resume.pdf" download="Hunain_Haider_Resume.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -1254,17 +795,17 @@
             </button>
 
             <ul class="cv-menu" role="listbox" aria-label="CV version">
-              <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Human')">
+              <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Europass')">
                 <span class="cv-menu__check">✓</span>
                 <div class="cv-menu__text-wrap">
-                  <span class="cv-menu__label">Human</span>
-                  <span class="cv-menu__desc" data-i18n="cv_human_desc">Colored, polished</span>
+                  <span class="cv-menu__label">Europass</span>
+                  <span class="cv-menu__desc" data-i18n="cv_human_desc">Standard Official CV</span>
                 </div>
               </li>
               <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
                 <span class="cv-menu__check"></span>
                 <div class="cv-menu__text-wrap">
-                  <span class="cv-menu__label">ATS</span>
+                  <span class="cv-menu__label">ATS Optimized</span>
                   <span class="cv-menu__desc" data-i18n="cv_ats_desc">Plain, compatible</span>
                 </div>
               </li>
@@ -1282,26 +823,17 @@
           <ul class="header-action__social" aria-label="Social media links">
             <li>
               <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4l11.733 16h4.267l-11.733-16z"></path>
-                  <path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
               </a>
             </li>
             <li>
               <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
             </li>
             <li>
               <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               </a>
             </li>
           </ul>
@@ -1309,23 +841,19 @@
       </div>
     </header>
 
-    <!-- MAIN TWO COLUMN SECTION -->
     <div class="main-grid">
-      
-      <!-- INTERACTIVE RACK SIDEBAR -->
+      <!-- SIDEBAR -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
-          
           <div class="patch-panel" aria-hidden="true">
             <div class="patch-port patch-port--1"></div>
             <div class="patch-port patch-port--2"></div>
             <div class="patch-port patch-port--3"></div>
             <div class="patch-port patch-port--4"></div>
           </div>
-
           <ul class="nav">
             <li class="nav__item">
-              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('about')">
+              <a class="rack-nav__item" onclick="switchView('about')">
                 <span class="nav__icon"><i data-lucide="user" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label" data-i18n="nav_about">ABOUT</span>
                 <span class="nav-led" aria-hidden="true"></span>
@@ -1339,7 +867,7 @@
               </a>
             </li>
             <li class="nav__item">
-              <a class="rack-nav__item" onclick="switchView('resume')">
+              <a class="rack-nav__item rack-nav__item--active" onclick="switchView('resume')">
                 <span class="nav__icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></span>
                 <span class="nav__label" data-i18n="nav_resume">RESUME</span>
                 <span class="nav-led" aria-hidden="true"></span>
@@ -1392,7 +920,7 @@
           </div>
 
           <div class="rack-utils">
-            <button class="search-trigger" id="openSearchBtn" aria-label="Search (Ctrl+K)">
+            <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center;">
                 <span class="search-trigger__icon"><i data-lucide="search" style="width:12px;height:12px;"></i></span>
                 <span class="search-trigger__label" data-i18n="btn_search">SEARCH</span>
@@ -1408,117 +936,84 @@
               <span id="themeLabel">DARK</span>
             </button>
           </div>
-
         </nav>
       </aside>
 
-      <!-- DYNAMIC CONTENT MAIN BOX -->
+      <!-- MAIN CONTENT CONTAINER -->
       <main class="content-box">
         
         <!-- 1. ABOUT VIEW -->
-        <section id="view-about" class="view-panel active-panel">
+        <section id="view-about" class="view-panel">
           <h1 class="content-title"><span data-i18n="about_title">About Me</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-
-          <div class="sub-tagline">
-            <span>◆</span> <span data-i18n="about_subtitle">Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</span>
-          </div>
-
+          <div class="sub-tagline"><span>◆</span> <span data-i18n="about_subtitle">Systems & Network Infrastructure · Karachi, PK · 5+ yrs at scale</span></div>
           <div class="bio-body">
-            <p data-i18n="bio_p1">
-              IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.
-            </p>
-            <p data-i18n="bio_p2">
-              I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.
-            </p>
-            <p data-i18n="bio_p3">
-              Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.
-            </p>
+            <p data-i18n="bio_p1">IT Systems and Network Infrastructure Specialist based in Karachi, Pakistan, with 5+ years designing secure, observable, and automated operations at scale.</p>
+            <p data-i18n="bio_p2">I manage mission-critical infrastructure ensuring 99.9% uptime across multi-branch enterprise setups. Rather than treating routine administration manually, I build custom automation scripts in Python and PowerShell that handle server auditing, routine backups, and cross-department report distribution without human error.</p>
+            <p data-i18n="bio_p3">Certified in Enterprise Networking, Security, and Automation. Computer Science graduate from University of Karachi (UBIT). Open to Infrastructure Engineering, Systems Automation, and Remote IT Operations roles where uptime, security, and automation are non-negotiable.</p>
           </div>
-
           <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin: 8px 0 28px;" data-i18n="see_portfolio_link">See my Automation & Infrastructure portfolio &rarr;</a>
 
-          <!-- STICKY SCROLL SPY SEGMENTED CONTROL -->
           <nav class="seg-control-nav" role="tablist">
             <button class="seg-btn seg-btn--active" id="tabBtnStats" onclick="scrollToSection('stats')" data-i18n="tab_stats">STATS</button>
             <button class="seg-btn" id="tabBtnScope" onclick="scrollToSection('scope')" data-i18n="tab_scope">SCOPE</button>
           </nav>
 
-          <!-- STATS SECTION (BY THE NUMBERS) -->
           <section id="stats" style="scroll-margin-top: 80px;">
             <h2 class="section-heading-title" data-i18n="stats_title">By the Numbers</h2>
             <div class="stats-grid">
-              <div class="stat-card"><div class="stat-val">5+</div><div class="stat-label" data-i18n="stat_exp">Years Experience</div></div>
+              <div class="stat-card"><div class="stat-val">9+</div><div class="stat-label" data-i18n="stat_exp">Years Professional IT</div></div>
               <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label" data-i18n="stat_proj">Projects Done</div></div>
               <div class="stat-card"><div class="stat-val">37+</div><div class="stat-label" data-i18n="stat_tech">Technologies</div></div>
               <div class="stat-card"><div class="stat-val">4</div><div class="stat-label" data-i18n="stat_cert">Certifications</div></div>
             </div>
           </section>
 
-          <!-- SCOPE SECTION (WHAT I'M DOING) WITH EXACT 1:1 CARDS -->
           <section id="scope" style="scroll-margin-top: 80px;">
             <h2 class="section-heading-title" data-i18n="scope_title">What I'm Doing</h2>
             <div class="about-scope-grid">
-              
-              <!-- Card 1: Security -->
               <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap">
-                  <i data-lucide="shield-check" style="width:24px;height:24px;"></i>
-                </div>
+                <div class="about-scope-card__icon-wrap"><i data-lucide="shield-check" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
                   <span class="about-scope-card__type" data-i18n="scope1_badge">SECURITY</span>
                   <h3 class="about-scope-card__title" data-i18n="scope1_title">Network Security</h3>
                   <p class="about-scope-card__desc" data-i18n="scope1_desc">Configuring enterprise firewalls, VLAN network segmentation, VPN tunnels, and zero-trust access controls to safeguard internal infrastructure from perimeter threats.</p>
                 </div>
               </article>
-
-              <!-- Card 2: Infrastructure -->
               <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap">
-                  <i data-lucide="server" style="width:24px;height:24px;"></i>
-                </div>
+                <div class="about-scope-card__icon-wrap"><i data-lucide="server" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
                   <span class="about-scope-card__type" data-i18n="scope2_badge">INFRASTRUCTURE</span>
                   <h3 class="about-scope-card__title" data-i18n="scope2_title">Systems & Servers</h3>
                   <p class="about-scope-card__desc" data-i18n="scope2_desc">Deploying and hardening Windows Server & Linux distributions, maintaining Active Directory GPOs, and scaling multi-user branch connectivity seamlessly.</p>
                 </div>
               </article>
-
-              <!-- Card 3: Reliability -->
               <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap">
-                  <i data-lucide="activity" style="width:24px;height:24px;"></i>
-                </div>
+                <div class="about-scope-card__icon-wrap"><i data-lucide="activity" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
                   <span class="about-scope-card__type" data-i18n="scope3_badge">RELIABILITY</span>
                   <h3 class="about-scope-card__title" data-i18n="scope3_title">Health Monitoring</h3>
                   <p class="about-scope-card__desc" data-i18n="scope3_desc">Maintaining high availability with automated ping/SNMP telemetry, real-time alert triggers via Webhooks, and rapid incident response protocols.</p>
                 </div>
               </article>
-
-              <!-- Card 4: Automation -->
               <article class="about-scope-card">
-                <div class="about-scope-card__icon-wrap">
-                  <i data-lucide="cpu" style="width:24px;height:24px;"></i>
-                </div>
+                <div class="about-scope-card__icon-wrap"><i data-lucide="cpu" style="width:24px;height:24px;"></i></div>
                 <div class="about-scope-card__body">
                   <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
                   <h3 class="about-scope-card__title" data-i18n="scope4_title">Process Automation</h3>
                   <p class="about-scope-card__desc" data-i18n="scope4_desc">Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.</p>
                 </div>
               </article>
-
             </div>
           </section>
         </section>
 
-        <!-- 2. PORTFOLIO VIEW (1:1 EXACT DESIGN MATCH) -->
+        <!-- 2. PORTFOLIO VIEW -->
         <section id="view-portfolio" class="view-panel">
-          <h1 class="content-title"><span data-i18n="portfolio_title">DevOps Cloud Engineer Portfolio</span><span class="title-dot">.</span></h1>
+          <h1 class="content-title"><span data-i18n="portfolio_title">DevOps & Infrastructure Portfolio</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;" data-i18n="portfolio_desc">Cloud infrastructure, Kubernetes, CI/CD projects — from AWS Landing Zones to serverless architectures. Each project includes architecture decisions, tech stack, and key outcomes.</p>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;" data-i18n="portfolio_desc">Enterprise infrastructure, automated administration scripts, and telemetry systems built for high resilience.</p>
           
-          <!-- Category Filter Pills -->
           <div class="port-filters" role="tablist">
             <button class="port-filter-btn port-filter-btn--active" onclick="filterPortfolio('all')">
               <span>All</span> <span class="port-filter-pill">23</span>
@@ -1537,15 +1032,11 @@
             </button>
           </div>
 
-          <!-- Cards Grid -->
           <div class="port-grid">
-            
-            <!-- ================= CERTIFICATIONS CARDS ================= -->
-            <!-- Cert 1: GCP Associate Cloud Engineer -->
             <article class="port-card port-card--cert" data-category="certifications">
               <div class="port-card__media">
                 <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
-                <div style="width:100%; height:100%; background: #ffffff; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#1e293b; font-family:'Poppins', sans-serif;">
+                <div style="width:100%; height:100%; background: #ffffff; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#1e293b;">
                   <div style="width:75px; height:75px; border-radius:50%; border:3px solid #e2e8f0; display:flex; align-items:center; justify-content:center; margin-bottom:8px;">
                     <div style="display:flex; gap:3px;">
                       <div style="width:10px; height:10px; background:#4285f4; border-radius:50%;"></div>
@@ -1554,353 +1045,399 @@
                       <div style="width:10px; height:10px; background:#34a853; border-radius:50%;"></div>
                     </div>
                   </div>
-                  <div style="font-size:0.95rem; font-weight:700; color:#1e293b;">Google Cloud Certified</div>
+                  <div style="font-size:0.95rem; font-weight:700;">Google Cloud Certified</div>
                   <div style="font-size:0.75rem; color:#64748b;">Associate Cloud Engineer</div>
                 </div>
                 <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Demonstrates ability to deploy applications, monitor operations, and manage enterprise identity & security on Google Cloud Platform.</p>
+                  <p class="port-card__overlay-desc">Demonstrates ability to deploy applications, monitor operations, and manage enterprise identity & security on GCP.</p>
                   <div class="port-card__actions">
                     <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
                     <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
                   </div>
                 </div>
               </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">GCP Associate Cloud Engineer</h3>
-              </div>
+              <div class="port-card__footer"><h3 class="port-card__title">GCP Associate Cloud Engineer</h3></div>
             </article>
 
-            <!-- Cert 2: AWS Cloud Practitioner -->
             <article class="port-card port-card--cert" data-category="certifications">
               <div class="port-card__media">
                 <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
                 <div style="width:100%; height:100%; background: #121622; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px;">
-                  <div style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
-                    Foundational AWS certification validating core cloud concepts, services, and pricing models. Issued by Amazon Web Services.
-                  </div>
+                  <div style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">Enterprise Networking, Security, and Automation. Certified by Cisco Systems.</div>
                   <div style="display:flex; gap:10px; margin-top:16px;">
-                    <a href="#" class="port-btn-secondary" style="border-color:#475569;">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
-                    <a href="#" class="port-btn-secondary" style="border-color:#475569;">Verify <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
+                    <a href="#" class="port-btn-secondary">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
+                    <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
                   </div>
                 </div>
                 <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Foundational AWS certification validating core cloud concepts, services, security, architecture, and pricing models.</p>
+                  <p class="port-card__overlay-desc">Cisco certified in implementing enterprise switches, dynamic OSPF routing, site-to-site VPN tunnels, and network security.</p>
                   <div class="port-card__actions">
                     <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
                     <a href="#" class="port-btn-secondary">Verify <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
                   </div>
                 </div>
               </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">AWS Cloud Practitioner</h3>
-              </div>
+              <div class="port-card__footer"><h3 class="port-card__title">Cisco Enterprise Networking & Security</h3></div>
             </article>
 
-            <!-- Cert 3: Telkomsel Tech Titans League — Cyber Security -->
-            <article class="port-card port-card--cert" data-category="certifications">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
-                <div style="width:100%; height:100%; background: #0c0f16; display:flex; align-items:center; justify-content:center; padding:16px;">
-                  <div style="border:2px solid #ef4444; border-radius:8px; padding:12px 24px; text-align:center; background:#180b0f;">
-                    <div style="font-size:0.65rem; color:#ef4444; font-weight:700; letter-spacing:1px; text-transform:uppercase;">TELKOMSEL</div>
-                    <div style="font-size:1.2rem; font-weight:900; color:#ffffff; font-family:'JetBrains Mono', monospace; letter-spacing:1px;">TECH TITANS</div>
-                    <div style="font-size:0.7rem; color:#cbd5e1; letter-spacing:3px;">LEAGUE</div>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Secured qualifying ranking in competitive cyber defense challenge, network forensic packet analysis, and perimeter threat mitigation.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Telkomsel Tech Titans League — Cyber Security</h3>
-              </div>
-            </article>
-
-            <!-- Cert 4: Telkomsel Tech Titans League — Software Development -->
-            <article class="port-card port-card--cert" data-category="certifications">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--cert">🏆 CERTIFICATIONS</span>
-                <div style="width:100%; height:100%; background: #0c0f16; display:flex; align-items:center; justify-content:center; padding:16px;">
-                  <div style="border:2px solid #ef4444; border-radius:8px; padding:12px 24px; text-align:center; background:#180b0f;">
-                    <div style="font-size:0.65rem; color:#ef4444; font-weight:700; letter-spacing:1px; text-transform:uppercase;">TELKOMSEL</div>
-                    <div style="font-size:1.2rem; font-weight:900; color:#ffffff; font-family:'JetBrains Mono', monospace; letter-spacing:1px;">TECH TITANS</div>
-                    <div style="font-size:0.7rem; color:#cbd5e1; letter-spacing:3px;">LEAGUE</div>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Recognized for architecture and backend automation scripting performance in corporate scale engineering challenges.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Telkomsel Tech Titans League — Software Development</h3>
-              </div>
-            </article>
-
-            <!-- ================= BADGES CARDS ================= -->
-            <!-- Badge 1: AWS Cloud Practitioner Essentials — Dicoding -->
             <article class="port-card port-card--badge-card" data-category="badges">
               <div class="port-card__media">
                 <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
                 <div style="width:100%; height:100%; background:#f8fafc; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid #e2e8f0;">
                   <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">dicoding</div>
-                    <div style="background:#334155; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SERTIFIKAT</div>
+                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">ISMS Certified</div>
+                    <div style="background:#334155; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SECURITY</div>
                   </div>
                   <div>
-                    <div style="font-size:0.65rem; color:#64748b;">Diberikan kepada:</div>
+                    <div style="font-size:0.65rem; color:#64748b;">Awarded to:</div>
                     <div style="font-size:0.95rem; font-weight:700; color:#0284c7;">Hunain Haider</div>
-                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Cloud Practitioner Essentials</div>
+                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Information Security Management</div>
                   </div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px;">
-                    <span>AWS Cloud Academy</span>
-                    <span>Verifikasi Terakreditasi</span>
+                    <span>Udemy Accredited</span><span>Verified</span>
                   </div>
                 </div>
                 <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Accredited Indonesian cloud training program covering foundational AWS architectural best practices.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
+                  <p class="port-card__overlay-desc">ISO/IEC 27001 baseline training on internal IT audit frameworks, perimeter governance, and business disaster recovery.</p>
+                  <div class="port-card__actions"><a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a></div>
                 </div>
               </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">AWS Cloud Practitioner Essentials — Dicoding</h3>
-              </div>
+              <div class="port-card__footer"><h3 class="port-card__title">Information Security Management System</h3></div>
             </article>
 
-            <!-- Badge 2: DTS 2020 — CCNA Cybersecurity Operations -->
-            <article class="port-card port-card--badge-card" data-category="badges">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #063d37 0%, #06181b 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:22px;">
-                  <div style="font-size:0.84rem; color:#e2e8f0; line-height:1.6;">
-                    CCNA Cybersecurity Operations training under Digitalent Scholarship (Kominfo). Covered SOC operations, incident response, and intrusion analysis.
-                  </div>
-                  <a href="#" class="port-btn-secondary" style="margin-top:16px; border-color:#059669;">Certificate <i data-lucide="external-link" style="width:12px; height:12px;"></i></a>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">In-depth SOC monitoring training, network packet inspection, security telemetry workflows, and intrusion counter-measures.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">DTS 2020 — CCNA Cybersecurity Operations</h3>
-              </div>
-            </article>
-
-            <!-- Badge 3: TryHackMe Badge -->
-            <article class="port-card port-card--badge-card" data-category="badges">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
-                <div style="width:100%; height:100%; background: #11141c; display:flex; align-items:center; justify-content:center; gap:16px; padding:20px;">
-                  <div style="width:54px; height:54px; background:#ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:1.4rem;">
-                    &gt;
-                  </div>
-                  <div>
-                    <div style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; font-weight:700; color:#ffffff;">hunainhaider <span style="font-size:0.75rem; color:#64748b;">[0x5]</span></div>
-                    <div style="display:flex; align-items:center; gap:10px; margin-top:4px; font-size:0.8rem; color:#cbd5e1; font-family:'JetBrains Mono', monospace;">
-                      <span>🏆 8934</span>
-                      <span>🚪 13</span>
-                      <span>🎯 4</span>
-                    </div>
-                    <div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">tryhackme.com</div>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Hands-on penetration testing, offensive vulnerability enumeration, and system security CTF badges.</p>
-                  <div class="port-card__actions">
-                    <a href="https://tryhackme.com" target="_blank" class="port-btn-primary">View Profile <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">TryHackMe Badge</h3>
-              </div>
-            </article>
-
-            <!-- Badge 4: Azure Cloud Fundamentals — Dicoding -->
-            <article class="port-card port-card--badge-card" data-category="badges">
-              <div class="port-card__media">
-                <span class="port-card__badge port-card__badge--badge">🎖️ BADGES</span>
-                <div style="width:100%; height:100%; background:#f8fafc; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid #e2e8f0;">
-                  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <div style="font-size:1rem; font-weight:800; color:#0f172a; font-family:'JetBrains Mono', monospace;">dicoding</div>
-                    <div style="background:#0284c7; color:#fff; font-size:0.6rem; padding:4px 8px; border-radius:4px; font-weight:700;">SERTIFIKAT</div>
-                  </div>
-                  <div>
-                    <div style="font-size:0.65rem; color:#64748b;">Diberikan kepada:</div>
-                    <div style="font-size:0.95rem; font-weight:700; color:#0284c7;">Hunain Haider</div>
-                    <div style="font-size:0.72rem; color:#334155; font-weight:500; margin-top:2px;">Belajar Dasar-Dasar Azure Cloud</div>
-                  </div>
-                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px;">
-                    <span>Microsoft Partner Program</span>
-                    <span>Tervalidasi Digital</span>
-                  </div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Foundational credentials validating Microsoft Azure cloud resource groups, compute, networking, and SLA metrics.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">Certificate <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Azure Cloud Fundamentals — Dicoding</h3>
-              </div>
-            </article>
-
-            <!-- ================= PROJECTS CARDS ================= -->
-            <!-- Project 1: Hidemail -->
-            <article class="port-card" data-category="projects">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b3d4d 0%, #0d151c 100%); display:flex; align-items:center; justify-content:center; color:#2dd4bf; font-family:'JetBrains Mono', monospace; font-size:0.9rem; font-weight:600;">
-                  &lt;Protected Email Interface&gt;
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Email masking service built with MEVN stack. Generates disposable aliases to protect real email addresses. Frontend on Vercel, API on Heroku.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                    <a href="#" target="_blank" class="port-btn-secondary">Website <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Hidemail</h3>
-              </div>
-            </article>
-
-            <!-- Project 2: High-Availability Network Design -->
             <article class="port-card" data-category="projects">
               <div class="port-card__media">
                 <span class="port-card__badge">🚀 PROJECTS</span>
                 <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1e283b 0%, #0c121e 100%); display:flex; align-items:center; justify-content:center; color:#94a3b8; font-family:'JetBrains Mono', monospace; font-size:0.85rem; text-align:center; padding:16px;">
-                  [Topology: OSPF / VRRP Mesh & Core Routers]
+                  [Topology: OSPF / VRRP Multi-Branch Mesh]
                 </div>
                 <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">HA network topology designed and simulated in GNS3 using MikroTik. Implements OSPF, VRRP, and redundant links for automatic failover.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                  </div>
+                  <p class="port-card__overlay-desc">HA network topology designed with multi-WAN failover, VLAN segmentation, and perimeter firewall security rules.</p>
+                  <div class="port-card__actions"><a href="#" class="port-btn-primary">View project &rarr;</a></div>
                 </div>
               </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">High-Availability Network Design</h3>
-              </div>
+              <div class="port-card__footer"><h3 class="port-card__title">High-Availability Enterprise Network</h3></div>
             </article>
-
-            <!-- Project 3: Birthday Countdown -->
-            <article class="port-card" data-category="vibe-coding">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: #0c1018; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#e2e8f0;">
-                  <div style="font-size:0.75rem; color:#64748b; margin-bottom:8px;">Hunain's Birthday in:</div>
-                  <div style="font-family:'JetBrains Mono', monospace; font-size:1.4rem; font-weight:700; color:#38bdf8;">274 : 09 : 11 : 21</div>
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Lightweight high-precision UTC synchronized live countdown clock built with vanilla JavaScript & CSS animations.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Birthday Countdown</h3>
-              </div>
-            </article>
-
-            <!-- Project 4: Static Asset Management -->
-            <article class="port-card" data-category="projects">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: #0e1422; display:flex; align-items:center; justify-content:center; color:#818cf8; font-family:'JetBrains Mono', monospace; font-size:0.85rem;">
-                  AWS S3 + Cloudflare CDN CI/CD
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Managing static assets with AWS S3, Cloudflare CDN, and GitHub Actions automated pipelines with zero-downtime cache invalidations.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                    <a href="#" target="_blank" class="port-btn-secondary">Blog <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Static Asset Management</h3>
-              </div>
-            </article>
-
-            <!-- Project 5: ThingsBin — IoT Data Platform -->
-            <article class="port-card" data-category="projects">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c1017 100%); display:flex; align-items:center; justify-content:center; color:#38bdf8; font-family:'JetBrains Mono', monospace; font-size:0.85rem;">
-                  Isometric Serverless IoT Schema
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Scalable serverless IoT ingestion platform on AWS using API Gateway, DynamoDB, Lambda, and Cognito identity telemetry.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">ThingsBin — IoT Data Platform</h3>
-              </div>
-            </article>
-
-            <!-- Project 6: Mini-Link — URL Shortener -->
-            <article class="port-card" data-category="projects">
-              <div class="port-card__media">
-                <span class="port-card__badge">🚀 PROJECTS</span>
-                <div style="width:100%; height:100%; background: #0d121c; display:flex; align-items:center; justify-content:center; color:#cbd5e1; font-family:'JetBrains Mono', monospace; font-size:0.85rem;">
-                  [mini-link service console]
-                </div>
-                <div class="port-card__overlay">
-                  <p class="port-card__overlay-desc">Fast URL shortening service with analytics, click-tracking telemetry, and custom slugs deployed on containerized node instances.</p>
-                  <div class="port-card__actions">
-                    <a href="#" class="port-btn-primary">View project &rarr;</a>
-                    <a href="#" target="_blank" class="port-btn-secondary">Website <i data-lucide="external-link" style="width:13px; height:13px;"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="port-card__footer">
-                <h3 class="port-card__title">Mini-Link — URL Shortener</h3>
-              </div>
-            </article>
-
           </div>
         </section>
 
-        <!-- 3. RESUME VIEW -->
-        <section id="view-resume" class="view-panel">
+        <!-- 3. RESUME VIEW (1:1 ACCORDING TO USER IMAGES & RESUME DATA) -->
+        <section id="view-resume" class="view-panel active-panel">
           <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <div style="display:flex; flex-direction:column; gap:20px;">
-            <div class="about-scope-card">
-              <div class="about-scope-card__icon-wrap"><i data-lucide="briefcase" style="width:24px;height:24px;"></i></div>
-              <div class="about-scope-card__body">
-                <span class="about-scope-card__type" data-i18n="res1_badge">2020 — Present</span>
-                <h3 class="about-scope-card__title" data-i18n="res1_title">Network Administrator — JMS Trading Co.</h3>
-                <p class="about-scope-card__desc" data-i18n="res1_desc">Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.</p>
+
+          <!-- Sticky Segmented Control Navigation -->
+          <nav class="resume-seg-nav" role="tablist">
+            <button class="resume-seg-btn resume-seg-btn--active" onclick="scrollResumeTo('res-experience')">EXP .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-education')">EDUC .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-core')">CORE .</button>
+            <button class="resume-seg-btn" onclick="scrollResumeTo('res-tools')">TOOL .</button>
+          </nav>
+
+          <!-- 1. EXPERIENCE SECTION -->
+          <div id="res-experience" style="scroll-margin-top: 80px;">
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_exp_title">Experience</span></div>
+            
+            <div class="timeline">
+              
+              <!-- Role 1: Network Administrator (Promoted) -->
+              <div class="timeline-node">
+                <div class="timeline-node__dot"></div>
+                <article class="resume-card">
+                  <h2 class="resume-card__title">Network Administrator</h2>
+                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan (Promoted)</div>
+                  <div class="resume-card__meta">
+                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+                    <span>Karachi, Pakistan</span>
+                    <span>·</span>
+                    <span>Jan 2020 — Present</span>
+                    <span>·</span>
+                    <span style="color:#2f68ee; font-weight:600;">6+ yrs 9 mo</span>
+                  </div>
+
+                  <ul class="resume-bullets">
+                    <li>Directing enterprise LAN/WAN infrastructure, core routers, switches, multi-branch site connectivity, and VPN tunnels to maintain 99.9% uptime for daily business operations.</li>
+                    <li>Managing and hardening Linux-based production servers (Ubuntu, Red Hat, Fedora), Active Directory group policies, VM environments, and permission access controls.</li>
+                    <li>Building automated automation scripts in Python and PowerShell for scheduled attendance aggregation, log audits, and zero-error routine server backups.</li>
+                    <li>Managing corporate CCTV surveillance infrastructure: camera rollouts, DVR/NVR network configuration, remote monitoring, and firmware maintenance.</li>
+                    <li>Serving as Tier-3 technical escalation engineer diagnosing complex networking, routing, DHCP/DNS, and hardware incidents across branch offices.</li>
+                  </ul>
+
+                  <button class="resume-show-more-btn">Show More Work Accomplishments</button>
+
+                  <div class="resume-tech-tags">
+                    <span class="tech-pill">Linux</span>
+                    <span class="tech-pill">Ubuntu</span>
+                    <span class="tech-pill">Red Hat</span>
+                    <span class="tech-pill">LAN/WAN</span>
+                    <span class="tech-pill">TCP/IP</span>
+                    <span class="tech-pill">VPN</span>
+                    <span class="tech-pill">PowerShell</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">DNS / DHCP</span>
+                    <span class="tech-pill">Firewall</span>
+                    <span class="tech-pill">CCTV / NVR</span>
+                    <span class="tech-pill">Virtualization</span>
+                  </div>
+                </article>
               </div>
+
+              <!-- Role 2: IT Specialist -->
+              <div class="timeline-node">
+                <div class="timeline-node__dot"></div>
+                <article class="resume-card">
+                  <h2 class="resume-card__title">IT Specialist</h2>
+                  <div class="resume-card__company">JMS Trading Co. — Karachi, Pakistan</div>
+                  <div class="resume-card__meta">
+                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+                    <span>Karachi, Pakistan</span>
+                    <span>·</span>
+                    <span>Jul 2017 — Dec 2019</span>
+                    <span>·</span>
+                    <span>2 yrs 6 mo</span>
+                  </div>
+
+                  <ul class="resume-bullets">
+                    <li>Provided comprehensive day-to-day technical operations support to all employees for desktop OS, software tools, printers, and internal LAN connectivity.</li>
+                    <li>Handled structured network cabling, rack terminations, switch port provisioning, and routine endpoint hardware troubleshooting.</li>
+                    <li>Carried out scheduled workstation OS patching, anti-malware deployments, and daily data backup synchronization routines.</li>
+                    <li>Installed, configured, and maintained on-premise CCTV cameras and recording servers ensuring zero blind spots.</li>
+                  </ul>
+
+                  <div class="resume-tech-tags">
+                    <span class="tech-pill">IT Support</span>
+                    <span class="tech-pill">Hardware Assembly</span>
+                    <span class="tech-pill">Network Cabling</span>
+                    <span class="tech-pill">Windows Desktop</span>
+                    <span class="tech-pill">Troubleshooting</span>
+                    <span class="tech-pill">CCTV</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Role 3: IT Fundamentals Intern -->
+              <div class="timeline-node">
+                <div class="timeline-node__dot"></div>
+                <article class="resume-card">
+                  <h2 class="resume-card__title">IT Support Intern</h2>
+                  <div class="resume-card__company">Tech Kolachi — Karachi, Pakistan</div>
+                  <div class="resume-card__meta">
+                    <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+                    <span>Karachi, Pakistan</span>
+                    <span>·</span>
+                    <span>2017</span>
+                  </div>
+                  <ul class="resume-bullets">
+                    <li>Gained foundational industry experience in workstation assembly, basic networking architectures, and enterprise user assistance protocols.</li>
+                  </ul>
+                </article>
+              </div>
+
             </div>
-            <div class="about-scope-card">
-              <div class="about-scope-card__icon-wrap"><i data-lucide="shield" style="width:24px;height:24px;"></i></div>
-              <div class="about-scope-card__body">
-                <span class="about-scope-card__type">2017 — 2019</span>
-                <h3 class="about-scope-card__title" data-i18n="res2_title">IT Specialist — JMS Trading Co.</h3>
-                <p class="about-scope-card__desc" data-i18n="res2_desc">Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.</p>
+          </div>
+
+          <!-- 2. EDUCATION SECTION -->
+          <div id="res-education" style="scroll-margin-top: 80px;">
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_edu_title">Education</span></div>
+
+            <div class="edu-filter-group">
+              <button class="edu-filter-btn edu-filter-btn--active" onclick="filterEducation('all')">All</button>
+              <button class="edu-filter-btn" onclick="filterEducation('formal')">Formal</button>
+              <button class="edu-filter-btn" onclick="filterEducation('courses')">Courses</button>
+              <span style="font-size:0.75rem; color:#64748b; margin-left:auto; font-family:'JetBrains Mono', monospace;" id="eduCountLabel">3 entries</span>
+            </div>
+
+            <div class="edu-list">
+              <!-- Formal: University of Karachi -->
+              <div class="edu-card edu-card--formal" data-edutype="formal">
+                <div class="edu-card__icon" style="background:#2f68ee;"><i data-lucide="graduation-cap" style="width:20px;height:20px;"></i></div>
+                <div class="edu-card__content">
+                  <h3 class="edu-card__title">University of Karachi — UBIT</h3>
+                  <div class="edu-card__desc">Bachelor of Science in Computer Science (BSCS)</div>
+                  <div class="edu-card__meta">
+                    <span>2018 — 2022</span>
+                    <span class="edu-card__badge">FORMAL DEGREE</span>
+                    <span>Karachi, Pakistan</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 1: Cisco -->
+              <div class="edu-card" data-edutype="courses">
+                <div class="edu-card__icon" style="background:#f97316;"><i data-lucide="award" style="width:20px;height:20px;"></i></div>
+                <div class="edu-card__content">
+                  <h3 class="edu-card__title">Cisco Networking Academy</h3>
+                  <div class="edu-card__desc">Enterprise Networking, Security, and Automation (CCNA Enterprise)</div>
+                  <div class="edu-card__meta">
+                    <span>Certified</span>
+                    <span class="edu-card__badge">COURSES</span>
+                    <span>Enterprise Infrastructure</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 2: ISMS -->
+              <div class="edu-card" data-edutype="courses">
+                <div class="edu-card__icon" style="background:#10b981;"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
+                <div class="edu-card__content">
+                  <h3 class="edu-card__title">Udemy — Security Certification</h3>
+                  <div class="edu-card__desc">Information Security Management System (ISMS ISO/IEC 27001 Foundation)</div>
+                  <div class="edu-card__meta">
+                    <span>Certified</span>
+                    <span class="edu-card__badge">COURSES</span>
+                    <span>Audit & Compliance</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- 3. CORE COMPETENCIES (EXACT PROGRESS BARS & ADV PILLS) -->
+          <div id="res-core" style="scroll-margin-top: 80px;">
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_core_title">Core Competencies</span></div>
+
+            <div class="core-grid">
+              <!-- Platform -->
+              <div class="core-card">
+                <div class="core-card__header">PLATFORM & SYSTEMS</div>
+                <div class="core-row">
+                  <span class="core-name">Linux Administration</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">Windows Server & AD</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">Virtual Machines</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Network & Infrastructure -->
+              <div class="core-card">
+                <div class="core-card__header">NETWORKING & SECURITY</div>
+                <div class="core-row">
+                  <span class="core-name">LAN/WAN & Routing</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">VPN & Firewall Policy</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">Access Control & GPO</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Discipline & Operations -->
+              <div class="core-card">
+                <div class="core-card__header">OPERATIONS & DISCIPLINE</div>
+                <div class="core-row">
+                  <span class="core-name">Root Cause Analysis</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">Process Automation</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+                <div class="core-row">
+                  <span class="core-name">Incident Resolution</span>
+                  <div class="core-rating-wrap">
+                    <div class="core-bars"><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span><span class="core-bar"></span></div>
+                    <span class="core-pill">Adv</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. TOOLS & TECHNOLOGIES (EXACT PILL BADGES WITH ADV / INT) -->
+          <div id="res-tools" style="scroll-margin-top: 80px;">
+            <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_tools_title">Tools & Technologies</span></div>
+
+            <div class="tools-grid">
+              <!-- Systems & Servers -->
+              <div class="tools-card">
+                <div class="tools-card__title">SYSTEMS & INFRASTRUCTURE</div>
+                <div class="tools-pill-group">
+                  <span class="tool-badge">Linux <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Ubuntu Server <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Red Hat / Fedora <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Windows Server <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Active Directory <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">VMware / VirtualBox <span class="tool-tag tool-tag--adv">Adv</span></span>
+                </div>
+              </div>
+
+              <!-- Networking & Security -->
+              <div class="tools-card">
+                <div class="tools-card__title">NETWORKING & ROUTING</div>
+                <div class="tools-pill-group">
+                  <span class="tool-badge">TCP/IP & Subnetting <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">VLAN Segmentation <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">DNS & DHCP <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Firewalls & NAT <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Site-to-Site VPN <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">MikroTik RouterOS <span class="tool-tag tool-tag--int">Int</span></span>
+                </div>
+              </div>
+
+              <!-- Automation & Scripting -->
+              <div class="tools-card">
+                <div class="tools-card__title">AUTOMATION & SCRIPTING</div>
+                <div class="tools-pill-group">
+                  <span class="tool-badge">PowerShell Scripts <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Python Admin Daemons <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Bash Shell <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Scheduled Cronjobs <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Git & GitHub <span class="tool-tag tool-tag--int">Int</span></span>
+                </div>
+              </div>
+
+              <!-- Hardware, CCTV & Observability -->
+              <div class="tools-card">
+                <div class="tools-card__title">CCTV, SURVEILLANCE & OBSERVABILITY</div>
+                <div class="tools-pill-group">
+                  <span class="tool-badge">CCTV Surveillance <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">DVR / NVR Management <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">SNMP Telemetry <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Ping Monitoring Daemons <span class="tool-tag tool-tag--adv">Adv</span></span>
+                  <span class="tool-badge">Hardware Diagnostics <span class="tool-tag tool-tag--adv">Adv</span></span>
+                </div>
+              </div>
+            </div>
+
+            <a onclick="switchView('portfolio')" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; font-size:0.88rem; font-weight:500; margin-top:28px;">
+              View DevOps & Infrastructure portfolio projects &rarr;
+            </a>
+          </div>
+
         </section>
 
         <!-- 4. BLOG VIEW -->
@@ -1910,9 +1447,9 @@
           <div class="about-scope-card">
             <div class="about-scope-card__icon-wrap"><i data-lucide="terminal" style="width:24px;height:24px;"></i></div>
             <div class="about-scope-card__body">
-              <span class="about-scope-card__type" data-i18n="scope4_badge">AUTOMATION</span>
-              <h3 class="about-scope-card__title" data-i18n="blog1_title">Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
-              <p class="about-scope-card__desc" data-i18n="blog1_desc">A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
+              <span class="about-scope-card__type">AUTOMATION</span>
+              <h3 class="about-scope-card__title">Eliminating Repetitive IT Admin Overhead with PowerShell</h3>
+              <p class="about-scope-card__desc">A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.</p>
             </div>
           </div>
         </section>
@@ -1952,9 +1489,9 @@
           <div class="about-scope-card">
             <div class="about-scope-card__icon-wrap"><i data-lucide="globe" style="width:24px;height:24px;"></i></div>
             <div class="about-scope-card__body">
-              <span class="about-scope-card__type" data-i18n="infra_badge">EDGE ARCHITECTURE</span>
-              <h3 class="about-scope-card__title" data-i18n="infra_card_title">DNS & Hosting Architecture</h3>
-              <p class="about-scope-card__desc" data-i18n="infra_card_desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
+              <span class="about-scope-card__type">EDGE ARCHITECTURE</span>
+              <h3 class="about-scope-card__title">DNS & Hosting Architecture</h3>
+              <p class="about-scope-card__desc">Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.</p>
             </div>
           </div>
         </section>
@@ -1963,7 +1500,7 @@
         <section id="view-design" class="view-panel">
           <h1 class="content-title"><span data-i18n="design_title">Design System</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
-          <p style="color:var(--text-muted); margin-bottom:20px;" data-i18n="design_desc">Operator Console Design Tokens & Colors</p>
+          <p style="color:var(--text-muted); margin-bottom:20px;">Operator Console Design Tokens & Colors</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
             <div style="background:#14171f; border:1px solid #1e232e; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Surface: #14171f</div>
             <div style="background:#2f68ee; color:#fff; padding:12px 18px; border-radius:8px; font-size:0.75rem;">Accent: #2f68ee</div>
@@ -1994,9 +1531,9 @@
   <!-- MOBILE RESPONSIVE DOCK BAR -->
   <div class="rack-mobile-dock">
     <div class="mobile-dock__compact">
-      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span data-i18n="mob_about">About</span></a>
+      <a class="mobile-dock__item" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span data-i18n="mob_about">About</span></a>
       <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span data-i18n="mob_portfolio">Portfolio</span></a>
-      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span data-i18n="mob_resume">Resume</span></a>
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span data-i18n="mob_resume">Resume</span></a>
       <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span data-i18n="mob_blog">Blog</span></a>
       <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span data-i18n="mob_contact">Contact</span></a>
     </div>
@@ -2012,7 +1549,7 @@
       </div>
       <div class="search-results">
         <div class="search-result-item" onclick="switchView('about'); closeSearch();"><span data-i18n="about_title">About Me</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
-        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span data-i18n="portfolio_title">DevOps Cloud Engineer Portfolio</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
+        <div class="search-result-item" onclick="switchView('portfolio'); closeSearch();"><span data-i18n="portfolio_title">DevOps & Infrastructure Portfolio</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
         <div class="search-result-item" onclick="switchView('resume'); closeSearch();"><span data-i18n="resume_title">Resume</span><span style="font-size:0.7rem; color:#64748b;">Section</span></div>
         <div class="search-result-item" onclick="switchView('terminal'); closeSearch();"><span data-i18n="term_title">Terminal Console</span><span style="font-size:0.7rem; color:#64748b;">Tool</span></div>
       </div>
@@ -2034,7 +1571,7 @@
         status_val: "available",
         response_key: "response",
         download_cv: "Download CV",
-        cv_human_desc: "Colored, polished",
+        cv_human_desc: "Standard Official CV",
         cv_ats_desc: "Plain, compatible",
         nav_about: "ABOUT",
         nav_portfolio: "PORTFOLIO",
@@ -2054,7 +1591,7 @@
         tab_stats: "STATS",
         tab_scope: "SCOPE",
         stats_title: "By the Numbers",
-        stat_exp: "Years Experience",
+        stat_exp: "Years Professional IT",
         stat_proj: "Projects Done",
         stat_tech: "Technologies",
         stat_cert: "Certifications",
@@ -2071,28 +1608,20 @@
         scope4_badge: "AUTOMATION",
         scope4_title: "Process Automation",
         scope4_desc: "Building the tooling that glues operations together — automated routines in Python and PowerShell that eliminate repetitive sysadmin tasks and manual reporting.",
-        portfolio_title: "DevOps Cloud Engineer Portfolio",
-        portfolio_desc: "Cloud infrastructure, Kubernetes, CI/CD projects — from AWS Landing Zones to serverless architectures. Each project includes architecture decisions, tech stack, and key outcomes.",
+        portfolio_title: "DevOps & Infrastructure Portfolio",
+        portfolio_desc: "Enterprise infrastructure, automated administration scripts, and telemetry systems built for high resilience.",
         resume_title: "Resume",
-        res1_badge: "2020 — Present",
-        res1_title: "Network Administrator — JMS Trading Co.",
-        res1_desc: "Lead management of LAN/WAN infrastructure, Linux-based production servers, firewall policies, and multi-branch communication lines ensuring 99.9% uptime.",
-        res2_title: "IT Specialist — JMS Trading Co.",
-        res2_desc: "Delivered technical operations support, managed system rollouts, workstation OS hardening, and corporate CCTV network surveillance.",
+        res_exp_title: "Experience",
+        res_edu_title: "Education",
+        res_core_title: "Core Competencies",
+        res_tools_title: "Tools & Technologies",
         blog_title: "Engineering Blog",
-        blog1_title: "Eliminating Repetitive IT Admin Overhead with PowerShell",
-        blog1_desc: "A practical engineering walkthrough of using scheduled headless daemons to replace manual morning server audits.",
         contact_title: "Contact",
         contact_desc: "Have a project in mind or want to discuss enterprise systems and uptime? Drop a message below.",
         btn_send: "Send Message",
         term_title: "Terminal Console",
         term_help_hint: "Type 'help' to see available commands.",
         infra_title: "Infrastructure Topology",
-        infra_badge: "EDGE ARCHITECTURE",
-        infra_card_title: "DNS & Hosting Architecture",
-        infra_card_desc: "Domain: hunainhaider.com hosted via Hostinger DNS edge-routed globally to Vercel Global CDN servers with zero cold start latency.",
-        design_title: "Design System",
-        design_desc: "Operator Console Design Tokens & Colors",
         footer_contact: "Contact",
         footer_status: "All systems operational",
         mob_about: "About",
@@ -2115,7 +1644,7 @@
         status_val: "verfügbar",
         response_key: "antwort",
         download_cv: "Lebenslauf Herunterladen",
-        cv_human_desc: "Farbig, formatiert",
+        cv_human_desc: "Offizieller Standard-Lebenslauf",
         cv_ats_desc: "Kompakt, ATS-konform",
         nav_about: "ÜBER MICH",
         nav_portfolio: "PORTFOLIO",
@@ -2129,13 +1658,13 @@
         about_title: "Über Mich",
         about_subtitle: "System- & Netzwerkinfrastruktur · Karachi, PK · 5+ Jahre Erfahrung",
         bio_p1: "Spezialist für IT-Systeme und Netzwerkinfrastruktur aus Karatschi, Pakistan, mit über 5 Jahren Erfahrung im Aufbau sicherer, überwachbarer und hochautomatisierter Betriebsabläufe.",
-        bio_p2: "Ich verwalte geschäftskritische Infrastrukturen mit einer garantierten Betriebszeit von 99,9 % über mehrere Unternehmensstandorte hinweg. Statt manuelle Routinen durchzuführen, erstelle ich Automatisierungsskripte in Python und PowerShell für Server-Audits, Backups und Berichte.",
-        bio_p3: "Zertifiziert in Enterprise Networking, Sicherheit und Automatisierung. Informatik-Absolvent der University of Karachi (UBIT). Bereit für Rollen in Infrastruktur-Engineering und Remote IT-Betrieb, bei denen Ausfallsicherheit oberste Priorität hat.",
+        bio_p2: "Ich verwalte geschäftskritische Infrastrukturen mit einer garantierten Betriebszeit von 99,9 % über mehrere Unternehmensstandorte hinweg.",
+        bio_p3: "Zertifiziert in Enterprise Networking, Sicherheit und Automatisierung. Informatik-Absolvent der University of Karachi (UBIT).",
         see_portfolio_link: "Mein Automatisierungs- & Infrastruktur-Portfolio ansehen →",
         tab_stats: "STATISTIK",
         tab_scope: "BEREICHE",
         stats_title: "Auf einen Blick",
-        stat_exp: "Jahre Erfahrung",
+        stat_exp: "Jahre IT-Erfahrung",
         stat_proj: "Projekte Umgesetzt",
         stat_tech: "Technologien",
         stat_cert: "Zertifizierungen",
@@ -2152,28 +1681,20 @@
         scope4_badge: "AUTOMATISIERUNG",
         scope4_title: "Prozessautomatisierung",
         scope4_desc: "Entwicklung maßgeschneiderter Skripte in Python und PowerShell, die wiederkehrende Sysadmin-Aufgaben und Berichterstattungen vollständig automatisieren.",
-        portfolio_title: "DevOps Cloud Engineer Portfolio",
-        portfolio_desc: "Cloud-Infrastruktur, Kubernetes, CI/CD-Projekte — von AWS Landing Zones bis hin zu serverlosen Architekturen. Jedes Projekt enthält Architekturentscheidungen und Ergebnisse.",
+        portfolio_title: "DevOps & Infrastruktur Portfolio",
+        portfolio_desc: "Unternehmensinfrastruktur, Automatisierungsskripte und Telemetriesysteme.",
         resume_title: "Lebenslauf",
-        res1_badge: "2020 — Heute",
-        res1_title: "Netzwerkadministrator — JMS Trading Co.",
-        res1_desc: "Leitung der LAN/WAN-Infrastruktur, Linux-Produktionsserver, Firewall-Regeln und Anbindung verteilter Standorte mit 99,9 % Verfügbarkeit.",
-        res2_title: "IT-Spezialist — JMS Trading Co.",
-        res2_desc: "Technischer IT-Support, System-Rollouts, Härtung von Client-Betriebssystemen und zentrale Videoüberwachungsinfrastruktur.",
+        res_exp_title: "Berufserfahrung",
+        res_edu_title: "Ausbildung",
+        res_core_title: "Kernkompetenzen",
+        res_tools_title: "Tools & Technologien",
         blog_title: "Technik-Blog",
-        blog1_title: "Reduzierung des IT-Admin-Aufwands mit PowerShell",
-        blog1_desc: "Ein praxisorientierter Leitfaden zur Nutzung hintergrundgestützter Daemons zur Vermeidung manueller Server-Prüfungen.",
         contact_title: "Kontakt",
-        contact_desc: "Haben Sie ein Projekt oder möchten Sie über Unternehmenssysteme und Uptime sprechen? Schreiben Sie mir gerne eine Nachricht.",
+        contact_desc: "Haben Sie ein Projekt oder möchten Sie über Unternehmenssysteme und Uptime sprechen?",
         btn_send: "Nachricht Senden",
         term_title: "Terminal-Konsole",
         term_help_hint: "Geben Sie 'help' ein, um verfügbare Befehle anzuzeigen.",
         infra_title: "Infrastruktur-Topologie",
-        infra_badge: "EDGE-ARCHITEKTUR",
-        infra_card_title: "DNS & Hosting-Architektur",
-        infra_card_desc: "Domain hunainhaider.com über Hostinger-DNS mit globalem Routing zu Vercel CDN-Servern ohne Kaltstartlatenz.",
-        design_title: "Designsystem",
-        design_desc: "Operator Console Design-Tokens & Farbpalette",
         footer_contact: "Kontakt",
         footer_status: "Alle Systeme betriebsbereit",
         mob_about: "Über mich",
@@ -2222,7 +1743,7 @@
       lucide.createIcons();
     }
 
-    // 1. Tab Navigation Routing
+    // 1. Navigation Routing
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -2251,7 +1772,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Portfolio Filter Logic
+    // Portfolio Category Filtering
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -2267,15 +1788,42 @@
       });
     }
 
-    // 2. Smooth Scroll To Section from Segmented Nav
-    function scrollToSection(sectionId) {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    // Education Filter
+    function filterEducation(type) {
+      const buttons = document.querySelectorAll('.edu-filter-btn');
+      buttons.forEach(btn => btn.classList.remove('edu-filter-btn--active'));
+      event.currentTarget.classList.add('edu-filter-btn--active');
+
+      const cards = document.querySelectorAll('.edu-card');
+      let count = 0;
+      cards.forEach(card => {
+        if (type === 'all' || card.getAttribute('data-edutype') === type) {
+          card.style.display = 'flex';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.getElementById('eduCountLabel').innerText = `${count} entries`;
     }
 
-    // 3. EXACT SCROLL SPY LOGIC (STATS / SCOPE AUTO SWITCH)
+    // Resume Sub-section Smooth Scroll
+    function scrollResumeTo(secId) {
+      const buttons = document.querySelectorAll('.resume-seg-btn');
+      buttons.forEach(btn => btn.classList.remove('resume-seg-btn--active'));
+      event.currentTarget.classList.add('resume-seg-btn--active');
+
+      const el = document.getElementById(secId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Smooth Scroll To Section from Segmented Nav
+    function scrollToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Scroll Spy for About Stats / Scope
     window.addEventListener('scroll', () => {
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
@@ -2296,7 +1844,7 @@
       }
     });
 
-    // 4. Light / Dark Mode Toggle
+    // Light / Dark Mode Toggle
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -2307,7 +1855,7 @@
       lucide.createIcons();
     });
 
-    // 5. Search Modal (Ctrl+K)
+    // Search Modal (Ctrl+K)
     const searchModal = document.getElementById('searchModal');
     const searchInput = document.getElementById('modalSearchInput');
     function openSearch() { searchModal.classList.add('open-modal'); searchInput.focus(); }
@@ -2325,7 +1873,7 @@
       if (e.target === searchModal) closeSearch();
     });
 
-    // 6. Interactive Terminal Console
+    // Interactive Terminal Console
     const cliInput = document.getElementById('cliInput');
     if (cliInput) {
       cliInput.addEventListener('keydown', (e) => {
@@ -2333,19 +1881,12 @@
           const val = cliInput.value.trim().toLowerCase();
           const history = document.getElementById('termHistory');
           let output = '';
-          if (val === 'help') {
-            output = currentLang === 'de' ? 'Befehle: help, about, skills, uptime, clear' : 'Commands: help, about, skills, uptime, clear';
-          } else if (val === 'about') {
-            output = currentLang === 'de' ? 'Hunain Haider — Spezialist für System- und Netzwerkinfrastruktur' : 'Hunain Haider — Systems & Network Infrastructure Specialist';
-          } else if (val === 'skills') {
-            output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
-          } else if (val === 'uptime') {
-            output = currentLang === 'de' ? 'System-Betriebszeit: 99.98% einsatzbereit' : 'System uptime: 99.98% operational';
-          } else if (val === 'clear') {
-            history.innerHTML = ''; cliInput.value = ''; return;
-          } else if (val !== '') {
-            output = `bash: command not found: ${val}`;
-          }
+          if (val === 'help') output = currentLang === 'de' ? 'Befehle: help, about, skills, uptime, clear' : 'Commands: help, about, skills, uptime, clear';
+          else if (val === 'about') output = currentLang === 'de' ? 'Hunain Haider — Spezialist für System- und Netzwerkinfrastruktur' : 'Hunain Haider — Systems & Network Infrastructure Specialist';
+          else if (val === 'skills') output = 'Linux, Windows Server, PowerShell, Python, Networking, Security';
+          else if (val === 'uptime') output = currentLang === 'de' ? 'System-Betriebszeit: 99.98% einsatzbereit' : 'System uptime: 99.98% operational';
+          else if (val === 'clear') { history.innerHTML = ''; cliInput.value = ''; return; }
+          else if (val !== '') output = `bash: command not found: ${val}`;
 
           history.innerHTML += `<div class="terminal-line"><span class="term-prompt">hunain@infra:~$</span> ${cliInput.value}</div>`;
           if (output) history.innerHTML += `<div class="terminal-line" style="color:#cbd5e1;">${output}</div>`;
@@ -2378,7 +1919,7 @@
     });
     function selectAndDownload(version) {
       const a = document.createElement('a');
-      a.href = 'resume.pdf';
+      a.href = 'Hunain_Haider_Europass_Resume.pdf';
       a.download = `Hunain_Haider_${version}_Resume.pdf`;
       document.body.appendChild(a);
       a.click();
