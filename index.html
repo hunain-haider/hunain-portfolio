@@ -98,14 +98,12 @@
     .header__chrome-dot--amber { background: #ffbd2e; }
     .header__chrome-dot--green { background: #27c93f; }
     .header__chrome-label { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--chrome-text); letter-spacing: 0.8px; }
-    
     .header__body { display: grid; grid-template-columns: 1.3fr 1fr 1fr; align-items: center; padding: 18px 26px 20px; }
-    .header-identity { display: flex; align-items: center; gap: 16px; padding-right: 20px; width: 100%; }
+    .header-identity { display: flex; align-items: center; gap: 16px; padding-right: 20px; }
     .header-identity__photo {
       width: 72px; height: 72px; border-radius: 16px; padding: 2.5px; border: 2px solid #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
     }
     .header-identity__photo-img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; object-position: center 20%; display: block; }
-    .header-identity__info { flex: 1; }
     .header-identity__name { font-size: 1.25rem; font-weight: 600; color: var(--text-main); line-height: 1.2; margin-bottom: 4px; }
     .header-identity__name-surname { font-weight: 400; }
     .header-identity__role-rotator { position: relative; height: 20px; overflow: hidden; margin-bottom: 4px; }
@@ -156,22 +154,6 @@
     .header-action__social { display: flex; gap: 12px; list-style: none; margin-top: 2px; }
     .header-action__social a { color: var(--text-dim); display: flex; align-items: center; }
     .header-action__social a:hover { color: var(--text-main); }
-
-    /* Mobile Toggle Button */
-    .header-mobile-toggle {
-      display: none;
-      background: #1e2330;
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: transform 0.25s ease;
-    }
 
     /* Rack Sidebar */
     .main-grid { display: grid; grid-template-columns: 148px 1fr; gap: 24px; align-items: flex-start; }
@@ -417,7 +399,7 @@
     .term-log-cmd { color: var(--text-main); margin-bottom: 4px; }
     .term-log-out { color: var(--text-muted); padding-left: 12px; }
 
-    /* Search Modal */
+    /* Exact 3rd Pic Search Modal */
     .search-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 14vh 16px 0; }
     .search-modal.open-modal { display: flex; }
     .search-command-box { width: 100%; max-width: 620px; background: #131722; border: 1px solid #283044; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); font-family: 'Poppins', sans-serif; }
@@ -444,24 +426,9 @@
     .rack-mobile-dock { display: none; }
 
     @media (max-width: 960px) {
-      .header__body { grid-template-columns: 1fr; gap: 0; padding: 14px 18px; }
-      
-      /* Mobile Collapsible Header States */
-      .header-mobile-toggle { display: flex; }
-      .header-collapsible-content { display: none; flex-direction: column; gap: 16px; margin-top: 16px; border-top: 1px solid var(--card-border); padding-top: 16px; animation: fadeInRole 0.3s ease; }
-      .header.box.mobile-expanded .header-collapsible-content { display: flex; }
-      .header.box.mobile-expanded .header-mobile-toggle svg { transform: rotate(180deg); }
-
-      /* Mobile layout adjustment matching original reference */
-      .header-signal { padding: 0; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; }
-      .header-signal__title { display: none; } /* Original reference hides SYSTEM STATUS label on mobile */
-      .header-signal__board { gap: 12px; }
-      .header-signal__row { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-      .header-signal__key { width: auto; color: var(--text-muted); }
-      
-      .header-action { padding-left: 0; align-items: flex-start; width: 100%; gap: 16px; }
-      .header-action__social { display: flex; gap: 18px; list-style: none; margin-top: 0; }
-      
+      .header__body { grid-template-columns: 1fr; gap: 20px; }
+      .header-signal { padding: 16px 0; border: none; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+      .header-action { padding-left: 0; align-items: flex-start; }
       .main-grid { grid-template-columns: 1fr; }
       .sidebar-rack-container { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -508,7 +475,7 @@
   <div class="app-layout">
     
     <!-- HEADER -->
-    <header class="header box" id="mainHeaderBox">
+    <header class="header box header--collapsed">
       <div class="header__chrome" aria-hidden="true">
         <div class="header__chrome-dots">
           <span class="header__chrome-dot header__chrome-dot--red"></span>
@@ -519,90 +486,81 @@
       </div>
 
       <div class="header__body">
-        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-          <div class="header-identity" style="cursor: pointer;" onclick="toggleMobileHeader()">
-            <div class="header-identity__photo">
-              <img class="header-identity__photo-img" src="Hunain.jpeg" alt="Hunain Haider" width="320" height="320">
-            </div>
-            <div class="header-identity__info">
-              <div class="header-identity__name">Hunain <span class="header-identity__name-surname">Haider</span></div>
-              <div class="header-identity__role-rotator">
-                <span class="header-identity__role active" id="role-0">IT Systems Administrator</span>
-                <span class="header-identity__role" id="role-1">Infrastructure Specialist</span>
-                <span class="header-identity__role" id="role-2">Process Automation Engineer</span>
-                <span class="header-identity__role" id="role-3">Network Operations Specialist</span>
-              </div>
+        <div class="header-identity">
+          <div class="header-identity__photo">
+            <img class="header-identity__photo-img" src="Hunain.jpeg" alt="Hunain Haider" width="320" height="320">
+          </div>
+          <div class="header-identity__info">
+            <div class="header-identity__name">Hunain <span class="header-identity__name-surname">Haider</span></div>
+            <div class="header-identity__role-rotator">
+              <span class="header-identity__role active" id="role-0">IT Systems Administrator</span>
+              <span class="header-identity__role" id="role-1">Infrastructure Specialist</span>
+              <span class="header-identity__role" id="role-2">Process Automation Engineer</span>
+              <span class="header-identity__role" id="role-3">Network Operations Specialist</span>
             </div>
           </div>
-
-          <!-- Mobile Toggle Chevron Arrow Button -->
-          <button class="header-mobile-toggle" onclick="toggleMobileHeader()" aria-label="Toggle Header">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
         </div>
 
-        <!-- Collapsible Content Wrapper for Mobile -->
-        <div class="header-collapsible-content">
-          <div class="header-signal">
-            <div class="header-signal__title" data-i18n="status_title">system status</div>
-            <div class="header-signal__board">
-              <div class="header-signal__row header-signal__row--status">
-                <span class="header-signal__key" data-i18n="status_key">status</span>
-                <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
-              </div>
-              <div class="header-signal__row">
-                <span class="header-signal__key">tz</span>
-                <span class="header-signal__value">GMT+5</span>
-              </div>
-              <div class="header-signal__row">
-                <span class="header-signal__key" data-i18n="response_key">response</span>
-                <span class="header-signal__value">&lt;24h</span>
-              </div>
+        <div class="header-signal">
+          <div class="header-signal__title" data-i18n="status_title">system status</div>
+          <div class="header-signal__board">
+            <div class="header-signal__row header-signal__row--status">
+              <span class="header-signal__key" data-i18n="status_key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
+            </div>
+            <div class="header-signal__row">
+              <span class="header-signal__key">tz</span>
+              <span class="header-signal__value">GMT+5</span>
+            </div>
+            <div class="header-signal__row">
+              <span class="header-signal__key" data-i18n="response_key">response</span>
+              <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
+        </div>
 
-          <div class="header-action">
-            <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span data-i18n="download_cv">Download CV</span>
-            </a>
+        <div class="header-action">
+          <!-- Clean Single Download CV Button (Hunain.pdf) -->
+          <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-i18n="download_cv">Download CV</span>
+          </a>
 
-            <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              hunain.haider69@gmail.com
-            </a>
+          <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            hunain.haider69@gmail.com
+          </a>
 
-            <ul class="header-action__social" aria-label="Social media links">
-              <li>
-                <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
-                </a>
-              </li>
-              <li>
-                <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-              </li>
-              <li>
-                <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <ul class="header-action__social" aria-label="Social media links">
+            <li>
+              <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
 
     <div class="main-grid">
-      <!-- SIDEBAR -->
+      <!-- SIDEBAR (Fixed Sticky) -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           <div class="patch-panel" aria-hidden="true">
@@ -666,6 +624,7 @@
           </div>
 
           <div class="rack-utils">
+            <!-- Search Trigger -->
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center; gap:6px;">
                 <i data-lucide="search" style="width:13px;height:13px;"></i>
@@ -879,6 +838,7 @@
             <button class="resume-seg-btn" id="resBtnTool" onclick="scrollResumeTo('res-tools')" data-i18n="res_tab_tool">TOOL .</button>
           </nav>
 
+          <!-- EXPERIENCE -->
           <div id="res-experience" style="scroll-margin-top: 80px;">
             <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_exp_title">Experience</span></div>
             <div class="timeline">
@@ -925,6 +885,7 @@
             </div>
           </div>
 
+          <!-- EDUCATION -->
           <div id="res-education" style="scroll-margin-top: 80px;">
             <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_edu_title">Education</span></div>
             <div class="edu-filter-group">
@@ -961,6 +922,7 @@
             </div>
           </div>
 
+          <!-- CORE COMPETENCIES -->
           <div id="res-core" style="scroll-margin-top: 80px;">
             <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_core_title">Core Competencies</span></div>
             <div class="core-grid">
@@ -985,6 +947,7 @@
             </div>
           </div>
 
+          <!-- TOOLS -->
           <div id="res-tools" style="scroll-margin-top: 80px;">
             <div class="resume-sec-title"><span>◆</span> <span data-i18n="res_tools_title">Tools & Technologies</span></div>
             <div class="tools-grid">
@@ -1202,8 +1165,8 @@
                 <pre>
 ╔════════════════════════════════════════════════════╗
 ║                                                    ║
-║    Interactive Terminal Console                    ║
-║    Type 'help' to see available commands           ║
+║   Interactive Terminal Console                     ║
+║   Type 'help' to see available commands            ║
 ║                                                    ║
 ╚════════════════════════════════════════════════════╝
                 </pre>
@@ -1232,7 +1195,7 @@
     </div>
   </div>
 
-  <!-- SEARCH MODAL -->
+  <!-- EXACT 3rd PIC SEARCH COMMAND MODAL (CTRL+K) -->
   <div class="search-modal" id="searchModal">
     <div class="search-command-box" onclick="event.stopPropagation()">
       <div class="search-input-header">
@@ -1253,7 +1216,7 @@
     </div>
   </div>
 
-  <!-- PDF READER MODAL -->
+  <!-- IN-APP PDF READER MODAL -->
   <div class="blog-pdf-modal" id="blogPdfModal">
     <div class="blog-pdf-container">
       <div class="blog-pdf-header">
@@ -1294,12 +1257,6 @@
   <script>
     lucide.createIcons();
 
-    // Mobile Header Toggle Function
-    function toggleMobileHeader() {
-      const headerBox = document.getElementById('mainHeaderBox');
-      headerBox.classList.toggle('mobile-expanded');
-    }
-
     // Mobile Dock active state sync
     function updateMobileDockActive(el) {
       document.querySelectorAll('.mobile-dock__item').forEach(i => i.classList.remove('mobile-dock__item--active'));
@@ -1307,7 +1264,7 @@
     }
 
     // =========================================================
-    // CONSTELLATION NETWORK BACKGROUND ANIMATION
+    // INTERACTIVE CONSTELLATION NETWORK BACKGROUND ANIMATION
     // =========================================================
     const canvas = document.getElementById('constellationCanvas');
     const ctx = canvas.getContext('2d');
@@ -1382,7 +1339,7 @@
     animateConstellation();
 
     // =========================================================
-    // I18N DICTIONARY
+    // I18N DICTIONARY (ENGLISH / GERMAN FULL TRANSLATION)
     // =========================================================
     let currentLang = 'en';
     const translations = {
@@ -1656,7 +1613,9 @@
       lucide.createIcons();
     }
 
-    // SEARCH MODAL LOGIC
+    // =========================================================
+    // SEARCH MODAL LOGIC (CTRL+K)
+    // =========================================================
     const searchModal = document.getElementById('searchModal');
     const cmdSearchBox = document.getElementById('cmdSearchBox');
     const cmdSearchResults = document.getElementById('cmdSearchResults');
@@ -1731,6 +1690,9 @@
       switchView(viewName);
     }
 
+    // =========================================================
+    // NAVIGATION ROUTING
+    // =========================================================
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1753,7 +1715,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // TERMINAL ENGINE
+    // =========================================================
+    // INTERACTIVE TERMINAL ENGINE
+    // =========================================================
     const cliInput = document.getElementById('cliInput');
     const termHistory = document.getElementById('termHistory');
     const termBody = document.getElementById('termBody');
@@ -1833,6 +1797,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
+    // =========================================================
+    // CONTACT FORM SUBMISSION
+    // =========================================================
     function updateMsgCount(textarea) {
       document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
@@ -1870,6 +1837,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     }
 
+    // =========================================================
+    // BLOG PDF MODAL READER
+    // =========================================================
     function openBlogPDF(articleTitle, pdfPath) {
       document.getElementById('pdfModalTitleText').innerText = articleTitle;
       document.getElementById('pdfModalIframe').src = pdfPath;
@@ -1886,6 +1856,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
     });
 
+    // Blog filters
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
 
@@ -1937,6 +1908,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
+    // Portfolio & Resume Filters
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -1972,6 +1944,53 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // Scroll spy for About stats/scope & Resume sections
+    window.addEventListener('scroll', () => {
+      const scopeSec = document.getElementById('scope');
+      const statsSec = document.getElementById('stats');
+      const tabBtnStats = document.getElementById('tabBtnStats');
+      const tabBtnScope = document.getElementById('tabBtnScope');
+
+      if (scopeSec && statsSec && tabBtnStats && tabBtnScope) {
+        const scopeRect = scopeSec.getBoundingClientRect();
+        const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
+
+        if (isAtBottom || scopeRect.top <= 260) {
+          tabBtnScope.classList.add('seg-btn--active');
+          tabBtnStats.classList.remove('seg-btn--active');
+        } else {
+          tabBtnStats.classList.add('seg-btn--active');
+          tabBtnScope.classList.remove('seg-btn--active');
+        }
+      }
+
+      const resExp = document.getElementById('res-experience');
+      const resEdu = document.getElementById('res-education');
+      const resCore = document.getElementById('res-core');
+      const resTools = document.getElementById('res-tools');
+
+      const btnExp = document.getElementById('resBtnExp');
+      const btnEdu = document.getElementById('resBtnEdu');
+      const btnCore = document.getElementById('resBtnCore');
+      const btnTool = document.getElementById('resBtnTool');
+
+      if (resExp && resEdu && resCore && resTools && btnExp && btnEdu && btnCore && btnTool) {
+        const scrollPos = window.scrollY + 200;
+        [btnExp, btnEdu, btnCore, btnTool].forEach(b => b.classList.remove('resume-seg-btn--active'));
+
+        if (scrollPos >= resTools.offsetTop) {
+          btnTool.classList.add('resume-seg-btn--active');
+        } else if (scrollPos >= resCore.offsetTop) {
+          btnCore.classList.add('resume-seg-btn--active');
+        } else if (scrollPos >= resEdu.offsetTop) {
+          btnEdu.classList.add('resume-seg-btn--active');
+        } else {
+          btnExp.classList.add('resume-seg-btn--active');
+        }
+      }
+    });
+
+    // Theme Toggle
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -1982,6 +2001,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       lucide.createIcons();
     });
 
+    // Role Rotator
     const roles = document.querySelectorAll('.header-identity__role');
     let currentRoleIndex = 0;
     if (roles.length > 0) {
