@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Aapki alag se banayi hui Mobile & Tablet Responsive CSS -->
   <link rel="stylesheet" href="mobile-responsive.css" media="screen and (max-width: 960px)">
 
   <style>
@@ -115,7 +114,6 @@
     .header-identity__role.active { display: block; animation: fadeInRole 0.4s ease; }
     @keyframes fadeInRole { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Desktop par mobile chevron toggle button hide rahega */
     .header-mobile-toggle { display: none; }
     .header-mobile-collapsible { display: contents; }
 
@@ -128,26 +126,68 @@
     .header-signal__dot { width: 6px; height: 6px; background: var(--status-green); border-radius: 50%; box-shadow: 0 0 6px var(--status-green); }
 
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
-    .header-action__bottom-row { display: flex; align-items: center; gap: 14px; }
-
-    .cv-btn--single {
-      background: var(--btn-blue-solid);
-      border: 1.5px solid var(--btn-blue-border);
-      color: #0b0f19;
-      padding: 8px 18px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      border-radius: 10px;
-      cursor: pointer;
+    
+    /* PC/Laptop Original Dropdown CV Button */
+    .cv-group--header {
       display: inline-flex;
+      position: relative;
+      border-radius: 10px;
+      border: 1.5px solid var(--btn-blue-border);
+      background: var(--btn-blue-dark);
+      overflow: visible;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .cv-btn--header {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      padding: 7px 16px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      transition: background 0.2s ease;
     }
-    .cv-btn--single:hover { background: #8eaef5; }
-    .cv-btn--single svg { stroke: #0b0f19; }
+    .cv-btn--header svg { stroke: var(--btn-blue-text); }
+
+    .cv-trigger {
+      background: var(--btn-blue-solid);
+      border: none;
+      color: #0b0f19;
+      padding: 7px 11px;
+      border-radius: 0 7px 7px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cv-chevron { stroke: #0d121c; transition: transform 0.2s ease; }
+    .cv-group--header.open .cv-chevron { transform: rotate(180deg); }
+
+    .cv-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 215px;
+      background: var(--menu-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+      list-style: none;
+      padding: 10px 8px;
+      z-index: 100;
+      display: none;
+    }
+    .cv-group--header.open .cv-menu { display: block; }
+    .cv-menu__item { display: grid; grid-template-columns: 20px 1fr; padding: 8px 10px; border-radius: 8px; cursor: pointer; text-decoration: none; }
+    .cv-menu__item:hover { background: rgba(255, 255, 255, 0.04); }
+    .cv-menu__check { color: var(--btn-blue-text); font-size: 0.95rem; font-weight: 700; }
+    .cv-menu__label { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
+    .cv-menu__item--active .cv-menu__label { color: var(--btn-blue-text); }
+    .cv-menu__desc { color: #5b677a; font-size: 0.73rem; }
 
     .header-action__email {
       font-size: 0.78rem;
@@ -495,8 +535,42 @@
             </div>
           </div>
 
-          <!-- Actions Row: Email, Single CV button & Socials -->
+          <!-- Actions Row: Email, Desktop Dropdown CV Button & Socials -->
           <div class="header-action">
+            <div class="cv-group cv-group--header" id="cvDropdownGroup">
+              <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span data-i18n="download_cv">Download CV</span>
+              </a>
+
+              <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="cv-chevron">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <ul class="cv-menu" role="listbox" aria-label="CV version">
+                <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Europass')">
+                  <span class="cv-menu__check">✓</span>
+                  <div class="cv-menu__text-wrap">
+                    <span class="cv-menu__label">Europass</span>
+                    <span class="cv-menu__desc">Standard Official CV</span>
+                  </div>
+                </li>
+                <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
+                  <span class="cv-menu__check"></span>
+                  <div class="cv-menu__text-wrap">
+                    <span class="cv-menu__label">ATS Optimized</span>
+                    <span class="cv-menu__desc">Plain, compatible</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
             <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -506,15 +580,6 @@
             </a>
 
             <div class="header-action__bottom-row">
-              <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span data-i18n="download_cv">Download CV</span>
-              </a>
-
               <ul class="header-action__social" aria-label="Social media links">
                 <li>
                   <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
@@ -603,7 +668,6 @@
           </div>
 
           <div class="rack-utils">
-            <!-- Search Trigger -->
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center; gap:6px;">
                 <i data-lucide="search" style="width:13px;height:13px;"></i>
@@ -805,7 +869,7 @@
           </div>
         </section>
 
-        <!-- 3. RESUME VIEW (WITH SCROLL SPY SYNCED BUTTONS) -->
+        <!-- 3. RESUME VIEW -->
         <section id="view-resume" class="view-panel">
           <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
@@ -1252,9 +1316,7 @@
       el.classList.add('mobile-dock__item--active');
     }
 
-    // =========================================================
-    // INTERACTIVE CONSTELLATION NETWORK BACKGROUND ANIMATION
-    // =========================================================
+    // Constellation Canvas Animation
     const canvas = document.getElementById('constellationCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -1327,9 +1389,7 @@
     }
     animateConstellation();
 
-    // =========================================================
-    // I18N DICTIONARY (ENGLISH / GERMAN FULL TRANSLATION)
-    // =========================================================
+    // Language Dictionary
     let currentLang = 'en';
     const translations = {
       en: {
@@ -1602,9 +1662,7 @@
       lucide.createIcons();
     }
 
-    // =========================================================
-    // SEARCH MODAL LOGIC (CTRL+K)
-    // =========================================================
+    // Search Modal
     const searchModal = document.getElementById('searchModal');
     const cmdSearchBox = document.getElementById('cmdSearchBox');
     const cmdSearchResults = document.getElementById('cmdSearchResults');
@@ -1679,9 +1737,7 @@
       switchView(viewName);
     }
 
-    // =========================================================
-    // NAVIGATION ROUTING
-    // =========================================================
+    // Navigation Routing
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1704,9 +1760,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // =========================================================
-    // INTERACTIVE TERMINAL ENGINE
-    // =========================================================
+    // Interactive Terminal
     const cliInput = document.getElementById('cliInput');
     const termHistory = document.getElementById('termHistory');
     const termBody = document.getElementById('termBody');
@@ -1786,9 +1840,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // =========================================================
-    // CONTACT FORM SUBMISSION
-    // =========================================================
+    // Contact Form Submission
     function updateMsgCount(textarea) {
       document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
@@ -1826,9 +1878,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     }
 
-    // =========================================================
-    // BLOG PDF MODAL READER
-    // =========================================================
+    // Blog PDF Modal
     function openBlogPDF(articleTitle, pdfPath) {
       document.getElementById('pdfModalTitleText').innerText = articleTitle;
       document.getElementById('pdfModalIframe').src = pdfPath;
@@ -1845,7 +1895,6 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
     });
 
-    // Blog filters
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
 
@@ -1897,7 +1946,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // Portfolio & Resume Filters
+    // Portfolio & Resume
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -1933,7 +1982,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Scroll spy for About stats/scope & Resume sections
+    // Scroll spy
     window.addEventListener('scroll', () => {
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
@@ -1999,6 +2048,28 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
         currentRoleIndex = (currentRoleIndex + 1) % roles.length;
         roles[currentRoleIndex].classList.add('active');
       }, 3000);
+    }
+
+    // CV Download Dropdown Logic for PC/Laptop
+    const cvGroup = document.getElementById('cvDropdownGroup');
+    const cvTrigger = document.getElementById('cvTriggerBtn');
+    if (cvTrigger && cvGroup) {
+      cvTrigger.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation(); cvGroup.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!cvGroup.contains(e.target)) cvGroup.classList.remove('open');
+      });
+    }
+
+    function selectAndDownload(version) {
+      const a = document.createElement('a');
+      a.href = 'Hunain.pdf';
+      a.download = `Hunain_Haider_${version}_Resume.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      if (cvGroup) cvGroup.classList.remove('open');
     }
   </script>
 </body>
