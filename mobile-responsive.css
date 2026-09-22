@@ -1,1 +1,192 @@
+/* ==========================================================================
+   MOBILE, TABLET, IPHONE, FOLD & DUO RESPONSIVE STYLESHEET
+   (Sirf choti screens par chalegi, PC/Laptop ko bilkul nahi touch karegi)
+   ========================================================================== */
 
+@media screen and (max-width: 960px) {
+
+  /* 1. Main Page Layout & Spacing */
+  .app-layout {
+    padding: 12px 14px 120px !important; /* Bottom dock ke liye 120px safe space */
+    gap: 16px !important;
+  }
+
+  /* 2. Top Header Mobile Redesign (Like Screenshots 1 & 4) */
+  .header.box {
+    border-radius: 12px !important;
+  }
+
+  .header__chrome {
+    padding: 8px 14px !important;
+  }
+
+  .header__body {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 16px !important;
+  }
+
+  .header-identity {
+    padding-right: 0 !important;
+  }
+
+  .header-identity__photo {
+    width: 62px !important;
+    height: 62px !important;
+  }
+
+  .header-identity__name {
+    font-size: 1.15rem !important;
+  }
+
+  .header-signal {
+    padding: 12px 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid var(--card-border) !important;
+    border-bottom: 1px solid var(--card-border) !important;
+  }
+
+  .header-action {
+    padding-left: 0 !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .cv-btn--single {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .header-action__social {
+    justify-content: flex-start !important;
+    margin-top: 4px !important;
+  }
+
+  /* 3. Main Two-Column to Single Column */
+  .main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Desktop Rack Sidebar Ko Mobile Mein Hide Karna */
+  .sidebar-rack-container {
+    display: none !important;
+  }
+
+  /* 4. Content Container */
+  .content-box {
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+    min-height: auto !important;
+  }
+
+  .content-title {
+    font-size: 1.45rem !important;
+  }
+
+  /* 5. Sticky Navigation Spy Controls (Stats, Scope, Resume Tabs) */
+  .seg-control-nav, 
+  .resume-seg-nav {
+    top: 10px !important;
+    margin: 16px 0 24px !important;
+  }
+
+  .seg-btn, 
+  .resume-seg-btn {
+    padding: 7px 8px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* 6. Grids (1-Column for Phones, 2-Column for Stats) */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .stat-card {
+    padding: 14px 8px !important;
+  }
+
+  .stat-val {
+    font-size: 1.5rem !important;
+  }
+
+  .about-scope-grid,
+  .port-grid,
+  .blog-grid,
+  .core-grid,
+  .tools-grid,
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* 7. Contact Us Form Fields */
+  .form-inputs-inline {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* 8. Fixed Bottom Navigation Dock (Exact 1:1 Reference Style) */
+  .rack-mobile-dock {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: var(--card-bg) !important;
+    border-top: 1px solid var(--card-border) !important;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom)) !important; /* iPhone safe area notch handling */
+    z-index: 1000 !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  .mobile-dock__compact {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .mobile-dock__item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 3px !important;
+    color: var(--text-dim) !important;
+    text-decoration: none !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-dock__item--active {
+    color: var(--accent-blue) !important;
+  }
+
+  .mobile-dock__item i {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* 9. Floating Scroll-To-Top Button */
+  .scroll-to-top {
+    bottom: 74px !important; /* Mobile dock ke theek upar */
+    right: 16px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+/* ==========================================================================
+   TABLET & FOLD EXPANDED SCREEN SIZES (Screens between 600px and 960px)
+   ========================================================================== */
+@media screen and (min-width: 601px) and (max-width: 960px) {
+  .port-grid, 
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Fold phone unfold hone par ya tablet par 2 columns */
+  }
+}
