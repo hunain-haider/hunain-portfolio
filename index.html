@@ -425,48 +425,9 @@
     .scroll-to-top:hover { opacity: 1; color: var(--text-main); border-color: var(--accent-blue); }
     .rack-mobile-dock { display: none; }
 
-    @media (max-width: 960px) {
-      .header__body { grid-template-columns: 1fr; gap: 20px; }
-      .header-signal { padding: 16px 0; border: none; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
-      .header-action { padding-left: 0; align-items: flex-start; }
-      .main-grid { grid-template-columns: 1fr; }
-      .sidebar-rack-container { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-scope-grid, .port-grid, .core-grid, .tools-grid, .blog-grid, .contact-grid, .form-inputs-inline { grid-template-columns: 1fr; }
-      
-      .content-box { padding: 20px 16px; margin-bottom: 30px; }
-      
-      .rack-mobile-dock {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--card-bg);
-        border-top: 1px solid var(--card-border);
-        padding: 8px 12px;
-        z-index: 100;
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-      }
-      .mobile-dock__compact {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-      .mobile-dock__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.65rem;
-        cursor: pointer;
-      }
-      .mobile-dock__item--active { color: var(--accent-blue); }
-      .app-layout { padding: 15px 12px 110px; }
-    }
+    
   </style>
+  <link rel="stylesheet" href="mobile-responsive.css">
 </head>
 <body>
 
