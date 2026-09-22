@@ -1,13 +1,20 @@
 /* ==========================================================================
    MOBILE & TABLET RESPONSIVE STYLESHEET (mobile-responsive.css)
-   Targeting: Android, iPhone, Foldables (Galaxy Fold / Surface Duo), Tablets & Mini Tablets
+   Targets: Android, iPhones, Samsung Fold / Surface Duo, Tablets
    ========================================================================== */
 
-/* ---------- 1. TABLETS & MINI TABLETS (max-width: 960px) ---------- */
+/* Desktop par mobile collapse button hide rahega */
+.header-collapse-btn {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   TABLETS & SMALL LAPTOPS (max-width: 960px)
+   -------------------------------------------------------------------------- */
 @media screen and (max-width: 960px) {
   .app-layout {
-    padding: 20px 16px 120px !important;
-    gap: 18px !important;
+    padding: 16px 14px 115px !important;
+    gap: 16px !important;
   }
 
   .main-grid {
@@ -15,35 +22,11 @@
     gap: 0 !important;
   }
 
-  /* Desktop Rack Sidebar hide on tablets/mobile */
+  /* Desktop side rack bar hide */
   .sidebar-rack-container {
     display: none !important;
   }
 
-  /* Header Tablet Adjustments */
-  .header__body {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    padding: 16px 20px !important;
-  }
-
-  .header-signal {
-    padding: 14px 0 !important;
-    border-left: none !important;
-    border-right: none !important;
-    border-top: 1px solid var(--card-border) !important;
-    border-bottom: 1px solid var(--card-border) !important;
-  }
-
-  .header-action {
-    padding-left: 0 !important;
-    align-items: flex-start !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-  }
-
-  /* Grids to 2 Columns or 1 Column */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
@@ -53,17 +36,19 @@
   .port-grid,
   .core-grid,
   .tools-grid,
-  .blog-grid {
+  .blog-grid,
+  .contact-grid,
+  .form-inputs-inline {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
 
   .content-box {
-    padding: 24px 20px !important;
+    padding: 22px 18px !important;
     min-height: auto !important;
   }
 
-  /* Mobile Bottom Dock Bar */
+  /* Fixed Bottom Dock Navigation */
   .rack-mobile-dock {
     display: block !important;
     position: fixed !important;
@@ -72,9 +57,9 @@
     right: 0 !important;
     background: var(--card-bg) !important;
     border-top: 1px solid var(--card-border) !important;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
     z-index: 999 !important;
-    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
   }
@@ -83,7 +68,7 @@
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
-    max-width: 500px !important;
+    max-width: 480px !important;
     margin: 0 auto !important;
   }
 
@@ -91,76 +76,204 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 3px !important;
     color: var(--text-muted) !important;
     text-decoration: none !important;
-    font-size: 0.7rem !important;
-    font-weight: 500 !important;
-    padding: 4px 10px !important;
+    font-size: 0.68rem !important;
+    cursor: pointer !important;
+    padding: 4px 8px !important;
     border-radius: 8px !important;
-    transition: all 0.2s ease !important;
   }
 
   .mobile-dock__item--active {
     color: var(--accent-blue) !important;
-    background: rgba(47, 104, 238, 0.1) !important;
+    background: rgba(47, 104, 238, 0.12) !important;
   }
 }
 
-/* ---------- 2. SMARTPHONES & IPHONES (max-width: 600px) ---------- */
-@media screen and (max-width: 600px) {
-  .app-layout {
-    padding: 12px 10px 110px !important;
+/* --------------------------------------------------------------------------
+   SMARTPHONES (max-width: 580px) - EXACT ADITYA REFERENCE HEADER LOOK
+   -------------------------------------------------------------------------- */
+@media only screen and (max-width: 580px) {
+  .header.box {
+    position: relative !important;
+    padding: 0 !important;
+    border-radius: 1.25rem !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    transition: all 0.3s ease !important;
   }
 
-  /* Header Compact */
+  .header__chrome {
+    padding: 8px 16px !important;
+  }
+
+  .header__body {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1rem 1.25rem !important;
+    gap: 0.875rem !important;
+    position: relative !important;
+  }
+
+  /* Identity row */
   .header-identity {
-    gap: 12px !important;
-    padding-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding-right: 42px !important; /* Button ki jagah chhodne ke liye */
+    width: 100% !important;
   }
 
   .header-identity__photo {
-    width: 62px !important;
-    height: 62px !important;
-    border-radius: 12px !important;
+    width: 66px !important;
+    height: 66px !important;
+    border-radius: 18px !important;
+    border: 2px solid #f97316 !important;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.35) !important;
+    padding: 2px !important;
+    flex-shrink: 0 !important;
   }
 
   .header-identity__name {
-    font-size: 1.15rem !important;
+    font-size: 1.18rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 2px !important;
   }
 
-  .header-action {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 12px !important;
-    width: 100% !important;
+  .header-identity__role-rotator {
+    height: 18px !important;
+    margin-bottom: 2px !important;
   }
 
-  .cv-btn--single {
+  .header-identity__role {
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+  }
+
+  .header-identity__operator {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.72rem !important;
+    color: #60a5fa !important;
+  }
+
+  /* Round Collapse / Expand Arrow Button */
+  .header-collapse-btn {
+    display: flex !important;
+    align-items: center !important;
     justify-content: center !important;
+    background: #181d28 !important;
+    border: 1.5px solid var(--card-border) !important;
+    border-radius: 50% !important;
+    color: var(--text-main) !important;
+    cursor: pointer !important;
+    height: 1.85rem !important;
+    width: 1.85rem !important;
+    padding: 0 !important;
+    position: absolute !important;
+    right: 1rem !important;
+    bottom: 0.85rem !important;
+    transition: transform 0.25s ease, background 0.2s ease !important;
+    z-index: 10 !important;
+  }
+
+  .header-collapse-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+    transition: transform 0.25s ease !important;
+  }
+
+  /* 1. DEFAULT STATE: Collapsed / Band */
+  .header--collapsed .header-signal,
+  .header--collapsed .header-action {
+    display: none !important;
+  }
+
+  .header--collapsed .header-collapse-btn {
+    bottom: 1.15rem !important;
+  }
+
+  .header--collapsed .header-collapse-btn svg {
+    transform: rotate(0deg) !important;
+  }
+
+  /* 2. EXPANDED STATE: Open / Khula Hua */
+  .header--expanded .header-signal {
+    display: flex !important;
+    border: none !important;
+    border-top: 1px solid var(--card-border) !important;
+    padding-top: 0.75rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     width: 100% !important;
   }
 
-  .header-action__email {
-    font-size: 0.75rem !important;
-    word-break: break-all !important;
+  .header--expanded .header-signal__title {
+    display: none !important;
   }
 
-  .content-title {
-    font-size: 1.45rem !important;
+  .header--expanded .header-signal__board {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.78rem !important;
+    flex-wrap: wrap !important;
   }
 
-  .content-box {
-    padding: 20px 14px !important;
-    border-radius: 12px !important;
+  .header--expanded .header-signal__row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
   }
 
-  /* Segment Tabs (Stats / Scope / Resume Tabs) */
+  .header--expanded .header-signal__key {
+    width: auto !important;
+    color: var(--text-dim) !important;
+  }
+
+  .header--expanded .header-action {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    border-top: 1px solid var(--card-border) !important;
+    padding-top: 0.75rem !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .header--expanded .header-action__email {
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+  }
+
+  .header--expanded .header-action-bottom-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding-right: 42px !important;
+  }
+
+  .header--expanded .header-action__social {
+    display: flex !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  .header--expanded .header-collapse-btn svg {
+    transform: rotate(180deg) !important;
+  }
+
+  /* Segmented Nav Buttons Scrollable */
   .seg-control-nav,
   .resume-seg-nav {
     overflow-x: auto !important;
     justify-content: flex-start !important;
-    padding: 3px !important;
     scrollbar-width: none !important;
   }
   .seg-control-nav::-webkit-scrollbar,
@@ -171,11 +284,11 @@
   .seg-btn,
   .resume-seg-btn {
     font-size: 0.72rem !important;
-    padding: 8px 12px !important;
+    padding: 7px 12px !important;
     white-space: nowrap !important;
   }
 
-  /* Portfolio & Filter buttons */
+  /* Filters */
   .port-filters {
     overflow-x: auto !important;
     flex-wrap: nowrap !important;
@@ -191,33 +304,15 @@
     flex-shrink: 0 !important;
   }
 
-  /* Contact & Form */
-  .contact-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  .form-inputs-inline {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-
-  .contact-info-card,
-  .contact-form-card {
-    padding: 18px 14px !important;
-  }
-
-  /* Terminal on Mobile */
-  .terminal-container {
-    min-height: 420px !important;
-  }
-  .terminal-ascii-box pre {
-    font-size: 0.65rem !important;
+  .content-title {
+    font-size: 1.45rem !important;
   }
 }
 
-/* ---------- 3. FOLDABLE / DUO / SMALL SCREENS (max-width: 380px) ---------- */
-@media screen and (max-width: 380px) {
+/* --------------------------------------------------------------------------
+   FOLDABLES & EXTRA SMALL SCREENS (max-width: 360px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 360px) {
   .header-identity__name {
     font-size: 1rem !important;
   }
@@ -225,14 +320,9 @@
     width: 52px !important;
     height: 52px !important;
   }
-  .stat-val {
-    font-size: 1.5rem !important;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
-  .mobile-dock__item span {
-    font-size: 0.6rem !important;
+  .header--expanded .header-action-bottom-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
   }
 }
