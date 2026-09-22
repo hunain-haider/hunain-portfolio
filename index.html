@@ -10,8 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="mobile-responsive.css" media="screen and (max-width: 960px)">
-
   <style>
     :root {
       --bg-color: #07090e;
@@ -101,7 +99,6 @@
     .header__chrome-dot--green { background: #27c93f; }
     .header__chrome-label { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--chrome-text); letter-spacing: 0.8px; }
     .header__body { display: grid; grid-template-columns: 1.3fr 1fr 1fr; align-items: center; padding: 18px 26px 20px; }
-    
     .header-identity { display: flex; align-items: center; gap: 16px; padding-right: 20px; }
     .header-identity__photo {
       width: 72px; height: 72px; border-radius: 16px; padding: 2.5px; border: 2px solid #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
@@ -114,9 +111,6 @@
     .header-identity__role.active { display: block; animation: fadeInRole 0.4s ease; }
     @keyframes fadeInRole { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    .header-mobile-toggle { display: none; }
-    .header-mobile-collapsible { display: contents; }
-
     .header-signal { padding: 0 28px; border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border); font-family: 'JetBrains Mono', monospace; }
     .header-signal__title { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
     .header-signal__board { display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem; }
@@ -127,67 +121,24 @@
 
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
     
-    /* PC/Laptop Original Dropdown CV Button */
-    .cv-group--header {
-      display: inline-flex;
-      position: relative;
-      border-radius: 10px;
+    .cv-btn--single {
+      background: var(--btn-blue-solid);
       border: 1.5px solid var(--btn-blue-border);
-      background: var(--btn-blue-dark);
-      overflow: visible;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    .cv-btn--header {
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      padding: 7px 16px;
+      color: #0b0f19;
+      padding: 8px 18px;
       font-size: 0.84rem;
-      font-weight: 500;
+      font-weight: 600;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
       text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s ease;
     }
-    .cv-btn--header svg { stroke: var(--btn-blue-text); }
-
-    .cv-trigger {
-      background: var(--btn-blue-solid);
-      border: none;
-      color: #0b0f19;
-      padding: 7px 11px;
-      border-radius: 0 7px 7px 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cv-chevron { stroke: #0d121c; transition: transform 0.2s ease; }
-    .cv-group--header.open .cv-chevron { transform: rotate(180deg); }
-
-    .cv-menu {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      width: 215px;
-      background: var(--menu-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
-      list-style: none;
-      padding: 10px 8px;
-      z-index: 100;
-      display: none;
-    }
-    .cv-group--header.open .cv-menu { display: block; }
-    .cv-menu__item { display: grid; grid-template-columns: 20px 1fr; padding: 8px 10px; border-radius: 8px; cursor: pointer; text-decoration: none; }
-    .cv-menu__item:hover { background: rgba(255, 255, 255, 0.04); }
-    .cv-menu__check { color: var(--btn-blue-text); font-size: 0.95rem; font-weight: 700; }
-    .cv-menu__label { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
-    .cv-menu__item--active .cv-menu__label { color: var(--btn-blue-text); }
-    .cv-menu__desc { color: #5b677a; font-size: 0.73rem; }
+    .cv-btn--single:hover { background: #8eaef5; }
+    .cv-btn--single svg { stroke: #0b0f19; }
 
     .header-action__email {
       font-size: 0.78rem;
@@ -473,11 +424,52 @@
     .scroll-to-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; opacity: 0.8; transition: all 0.2s ease; }
     .scroll-to-top:hover { opacity: 1; color: var(--text-main); border-color: var(--accent-blue); }
     .rack-mobile-dock { display: none; }
+
+    @media (max-width: 960px) {
+      .header__body { grid-template-columns: 1fr; gap: 20px; }
+      .header-signal { padding: 16px 0; border: none; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+      .header-action { padding-left: 0; align-items: flex-start; }
+      .main-grid { grid-template-columns: 1fr; }
+      .sidebar-rack-container { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-scope-grid, .port-grid, .core-grid, .tools-grid, .blog-grid, .contact-grid, .form-inputs-inline { grid-template-columns: 1fr; }
+      
+      .content-box { padding: 20px 16px; margin-bottom: 30px; }
+      
+      .rack-mobile-dock {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--card-border);
+        padding: 8px 12px;
+        z-index: 100;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      }
+      .mobile-dock__compact {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .mobile-dock__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.65rem;
+        cursor: pointer;
+      }
+      .mobile-dock__item--active { color: var(--accent-blue); }
+      .app-layout { padding: 15px 12px 110px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background Constellation Canvas -->
   <canvas id="constellationCanvas"></canvas>
 
   <div class="app-layout">
@@ -494,7 +486,6 @@
       </div>
 
       <div class="header__body">
-        <!-- Identity Row with Mobile Chevron -->
         <div class="header-identity">
           <div class="header-identity__photo">
             <img class="header-identity__photo-img" src="Hunain.jpeg" alt="Hunain Haider" width="320" height="320">
@@ -508,103 +499,68 @@
               <span class="header-identity__role" id="role-3">Network Operations Specialist</span>
             </div>
           </div>
-          <!-- Mobile Expand/Collapse Chevron Button -->
-          <button class="header-mobile-toggle" id="headerMobileToggle" onclick="toggleMobileHeader()" aria-label="Toggle Header">
-            <i data-lucide="chevron-down" id="headerToggleIcon"></i>
-          </button>
         </div>
 
-        <!-- Collapsible Content Wrapper for Mobile Accordion -->
-        <div class="header-mobile-collapsible" id="headerMobileCollapsible">
-          <!-- Status Row -->
-          <div class="header-signal">
-            <div class="header-signal__title" data-i18n="status_title">system status</div>
-            <div class="header-signal__board">
-              <div class="header-signal__row header-signal__row--status">
-                <span class="header-signal__key" data-i18n="status_key">status</span>
-                <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
-              </div>
-              <div class="header-signal__row">
-                <span class="header-signal__key">tz</span>
-                <span class="header-signal__value">GMT+5</span>
-              </div>
-              <div class="header-signal__row">
-                <span class="header-signal__key" data-i18n="response_key">response</span>
-                <span class="header-signal__value">&lt;24h</span>
-              </div>
+        <div class="header-signal">
+          <div class="header-signal__title" data-i18n="status_title">system status</div>
+          <div class="header-signal__board">
+            <div class="header-signal__row header-signal__row--status">
+              <span class="header-signal__key" data-i18n="status_key">status</span>
+              <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
+            </div>
+            <div class="header-signal__row">
+              <span class="header-signal__key">tz</span>
+              <span class="header-signal__value">GMT+5</span>
+            </div>
+            <div class="header-signal__row">
+              <span class="header-signal__key" data-i18n="response_key">response</span>
+              <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
+        </div>
 
-          <!-- Actions Row: Email, Desktop Dropdown CV Button & Socials -->
-          <div class="header-action">
-            <div class="cv-group cv-group--header" id="cvDropdownGroup">
-              <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn cv-btn--header" id="cvDirectDownloadBtn" aria-label="Download CV">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span data-i18n="download_cv">Download CV</span>
+        <div class="header-action">
+          <!-- Clean Single Download CV Button (Hunain.pdf) -->
+          <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-i18n="download_cv">Download CV</span>
+          </a>
+
+          <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            hunain.haider69@gmail.com
+          </a>
+
+          <ul class="header-action__social" aria-label="Social media links">
+            <li>
+              <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
               </a>
-
-              <button class="cv-trigger" id="cvTriggerBtn" aria-label="Select CV version" aria-haspopup="listbox" aria-expanded="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="cv-chevron">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-
-              <ul class="cv-menu" role="listbox" aria-label="CV version">
-                <li role="option" aria-selected="true" class="cv-menu__item cv-menu__item--active" onclick="selectAndDownload('Europass')">
-                  <span class="cv-menu__check">✓</span>
-                  <div class="cv-menu__text-wrap">
-                    <span class="cv-menu__label">Europass</span>
-                    <span class="cv-menu__desc">Standard Official CV</span>
-                  </div>
-                </li>
-                <li role="option" aria-selected="false" class="cv-menu__item" onclick="selectAndDownload('ATS')">
-                  <span class="cv-menu__check"></span>
-                  <div class="cv-menu__text-wrap">
-                    <span class="cv-menu__label">ATS Optimized</span>
-                    <span class="cv-menu__desc">Plain, compatible</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              hunain.haider69@gmail.com
-            </a>
-
-            <div class="header-action__bottom-row">
-              <ul class="header-action__social" aria-label="Social media links">
-                <li>
-                  <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
 
     <div class="main-grid">
-      <!-- SIDEBAR -->
+      <!-- SIDEBAR (Fixed Sticky) -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           <div class="patch-panel" aria-hidden="true">
@@ -668,6 +624,7 @@
           </div>
 
           <div class="rack-utils">
+            <!-- Search Trigger -->
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center; gap:6px;">
                 <i data-lucide="search" style="width:13px;height:13px;"></i>
@@ -1300,23 +1257,15 @@
   <script>
     lucide.createIcons();
 
-    // Mobile Header Accordion Toggle Logic
-    function toggleMobileHeader() {
-      const collapsible = document.getElementById('headerMobileCollapsible');
-      const toggleBtn = document.getElementById('headerMobileToggle');
-      if (collapsible && toggleBtn) {
-        collapsible.classList.toggle('open');
-        toggleBtn.classList.toggle('open');
-      }
-    }
-
     // Mobile Dock active state sync
     function updateMobileDockActive(el) {
       document.querySelectorAll('.mobile-dock__item').forEach(i => i.classList.remove('mobile-dock__item--active'));
       el.classList.add('mobile-dock__item--active');
     }
 
-    // Constellation Canvas Animation
+    // =========================================================
+    // INTERACTIVE CONSTELLATION NETWORK BACKGROUND ANIMATION
+    // =========================================================
     const canvas = document.getElementById('constellationCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -1389,7 +1338,9 @@
     }
     animateConstellation();
 
-    // Language Dictionary
+    // =========================================================
+    // I18N DICTIONARY (ENGLISH / GERMAN FULL TRANSLATION)
+    // =========================================================
     let currentLang = 'en';
     const translations = {
       en: {
@@ -1662,7 +1613,9 @@
       lucide.createIcons();
     }
 
-    // Search Modal
+    // =========================================================
+    // SEARCH MODAL LOGIC (CTRL+K)
+    // =========================================================
     const searchModal = document.getElementById('searchModal');
     const cmdSearchBox = document.getElementById('cmdSearchBox');
     const cmdSearchResults = document.getElementById('cmdSearchResults');
@@ -1737,7 +1690,9 @@
       switchView(viewName);
     }
 
-    // Navigation Routing
+    // =========================================================
+    // NAVIGATION ROUTING
+    // =========================================================
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1760,7 +1715,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Interactive Terminal
+    // =========================================================
+    // INTERACTIVE TERMINAL ENGINE
+    // =========================================================
     const cliInput = document.getElementById('cliInput');
     const termHistory = document.getElementById('termHistory');
     const termBody = document.getElementById('termBody');
@@ -1840,7 +1797,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // Contact Form Submission
+    // =========================================================
+    // CONTACT FORM SUBMISSION
+    // =========================================================
     function updateMsgCount(textarea) {
       document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
@@ -1878,7 +1837,9 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     }
 
-    // Blog PDF Modal
+    // =========================================================
+    // BLOG PDF MODAL READER
+    // =========================================================
     function openBlogPDF(articleTitle, pdfPath) {
       document.getElementById('pdfModalTitleText').innerText = articleTitle;
       document.getElementById('pdfModalIframe').src = pdfPath;
@@ -1895,6 +1856,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (e.target === document.getElementById('blogPdfModal')) closeBlogPDF();
     });
 
+    // Blog filters
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
 
@@ -1946,7 +1908,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // Portfolio & Resume
+    // Portfolio & Resume Filters
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -1982,7 +1944,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Scroll spy
+    // Scroll spy for About stats/scope & Resume sections
     window.addEventListener('scroll', () => {
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
@@ -2048,28 +2010,6 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
         currentRoleIndex = (currentRoleIndex + 1) % roles.length;
         roles[currentRoleIndex].classList.add('active');
       }, 3000);
-    }
-
-    // CV Download Dropdown Logic for PC/Laptop
-    const cvGroup = document.getElementById('cvDropdownGroup');
-    const cvTrigger = document.getElementById('cvTriggerBtn');
-    if (cvTrigger && cvGroup) {
-      cvTrigger.addEventListener('click', (e) => {
-        e.preventDefault(); e.stopPropagation(); cvGroup.classList.toggle('open');
-      });
-      document.addEventListener('click', (e) => {
-        if (!cvGroup.contains(e.target)) cvGroup.classList.remove('open');
-      });
-    }
-
-    function selectAndDownload(version) {
-      const a = document.createElement('a');
-      a.href = 'Hunain.pdf';
-      a.download = `Hunain_Haider_${version}_Resume.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      if (cvGroup) cvGroup.classList.remove('open');
     }
   </script>
 </body>
