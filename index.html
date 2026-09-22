@@ -98,7 +98,7 @@
     .header__chrome-dot--amber { background: #ffbd2e; }
     .header__chrome-dot--green { background: #27c93f; }
     .header__chrome-label { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--chrome-text); letter-spacing: 0.8px; }
-    .header__body { display: grid; grid-template-columns: 1.3fr 1fr 1fr; align-items: center; padding: 18px 26px 20px; }
+    .header__body { display: grid; grid-template-columns: 1.3fr 1fr 1fr; align-items: center; padding: 18px 26px 20px; position: relative; }
     .header-identity { display: flex; align-items: center; gap: 16px; padding-right: 20px; }
     .header-identity__photo {
       width: 72px; height: 72px; border-radius: 16px; padding: 2.5px; border: 2px solid #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
@@ -111,6 +111,8 @@
     .header-identity__role.active { display: block; animation: fadeInRole 0.4s ease; }
     @keyframes fadeInRole { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
+    .header-identity__operator { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #60a5fa; }
+
     .header-signal { padding: 0 28px; border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border); font-family: 'JetBrains Mono', monospace; }
     .header-signal__title { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
     .header-signal__board { display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem; }
@@ -120,7 +122,8 @@
     .header-signal__dot { width: 6px; height: 6px; background: var(--status-green); border-radius: 50%; box-shadow: 0 0 6px var(--status-green); }
 
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
-    
+    .header-action-bottom-row { display: flex; align-items: center; gap: 16px; }
+
     .cv-btn--single {
       background: var(--btn-blue-solid);
       border: 1.5px solid var(--btn-blue-border);
@@ -424,8 +427,6 @@
     .scroll-to-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; opacity: 0.8; transition: all 0.2s ease; }
     .scroll-to-top:hover { opacity: 1; color: var(--text-main); border-color: var(--accent-blue); }
     .rack-mobile-dock { display: none; }
-
-    
   </style>
   <link rel="stylesheet" href="mobile-responsive.css">
 </head>
@@ -436,7 +437,7 @@
   <div class="app-layout">
     
     <!-- HEADER -->
-    <header class="header box header--collapsed">
+    <header id="mainHeader" class="header box header--collapsed">
       <div class="header__chrome" aria-hidden="true">
         <div class="header__chrome-dots">
           <span class="header__chrome-dot header__chrome-dot--red"></span>
@@ -459,6 +460,7 @@
               <span class="header-identity__role" id="role-2">Process Automation Engineer</span>
               <span class="header-identity__role" id="role-3">Network Operations Specialist</span>
             </div>
+            <div class="header-identity__operator">operator/01</div>
           </div>
         </div>
 
@@ -466,31 +468,21 @@
           <div class="header-signal__title" data-i18n="status_title">system status</div>
           <div class="header-signal__board">
             <div class="header-signal__row header-signal__row--status">
-              <span class="header-signal__key" data-i18n="status_key">status</span>
+              <span class="header-signal__key" data-i18n="status_key">status:</span>
               <span class="header-signal__value"><span class="header-signal__dot" aria-hidden="true"></span> <span data-i18n="status_val">available</span></span>
             </div>
             <div class="header-signal__row">
-              <span class="header-signal__key">tz</span>
+              <span class="header-signal__key">tz:</span>
               <span class="header-signal__value">GMT+5</span>
             </div>
             <div class="header-signal__row">
-              <span class="header-signal__key" data-i18n="response_key">response</span>
+              <span class="header-signal__key" data-i18n="response_key">response:</span>
               <span class="header-signal__value">&lt;24h</span>
             </div>
           </div>
         </div>
 
         <div class="header-action">
-          <!-- Clean Single Download CV Button (Hunain.pdf) -->
-          <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span data-i18n="download_cv">Download CV</span>
-          </a>
-
           <a href="mailto:hunain.haider69@gmail.com" target="_blank" rel="noopener" class="header-action__email" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -499,24 +491,43 @@
             hunain.haider69@gmail.com
           </a>
 
-          <ul class="header-action__social" aria-label="Social media links">
-            <li>
-              <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
-              </a>
-            </li>
-            <li>
-              <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </a>
-            </li>
-            <li>
-              <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-            </li>
-          </ul>
+          <div class="header-action-bottom-row">
+            <!-- Clean Single Download CV Button (Hunain.pdf) -->
+            <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span data-i18n="download_cv">Download CV</span>
+            </a>
+
+            <ul class="header-action__social" aria-label="Social media links">
+              <li>
+                <a target="_blank" rel="noopener" href="https://x.com/hunainhaider_" title="X">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" rel="noopener" href="https://linkedin.com/in/hunain-haider-its" title="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/hunain-haider" title="GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Mobile Expand/Collapse Arrow Button -->
+        <button class="header-collapse-btn" id="headerCollapseToggle" aria-label="Toggle profile details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -1973,5 +1984,6 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }, 3000);
     }
   </script>
+  <script src="mobile-script.js"></script>
 </body>
 </html>
