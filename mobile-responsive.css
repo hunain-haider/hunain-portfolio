@@ -11,57 +11,150 @@
     gap: 16px !important;
   }
 
-  /* 2. Top Header Mobile Redesign (Like Screenshots 1 & 4) */
+ /* ==========================================================================
+   MOBILE HEADER 1:1 EXACT LAYOUT
+   ========================================================================== */
+@media screen and (max-width: 960px) {
+
+  /* Header Box Container */
   .header.box {
-    border-radius: 12px !important;
+    border-radius: 14px !important;
   }
 
   .header__chrome {
-    padding: 8px 14px !important;
+    padding: 8px 16px !important;
   }
 
+  /* Body ko vertical stack me convert karein */
   .header__body {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
-    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px 18px !important;
+    gap: 12px !important;
   }
 
+  /* 1. Identity Row (Photo + Name + Role) */
   .header-identity {
-    padding-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 0 0 4px 0 !important;
+    width: 100% !important;
   }
 
   .header-identity__photo {
-    width: 62px !important;
-    height: 62px !important;
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 16px !important;
+    flex-shrink: 0 !important;
   }
 
   .header-identity__name {
     font-size: 1.15rem !important;
+    margin-bottom: 2px !important;
   }
 
+  /* 2. Status & TZ Single Row */
   .header-signal {
-    padding: 12px 0 !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
     border-left: none !important;
     border-right: none !important;
-    border-top: 1px solid var(--card-border) !important;
-    border-bottom: 1px solid var(--card-border) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .header-signal__title {
+    display: none !important; /* Image me title hide hai */
+  }
+
+  .header-signal__board {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .header-signal__row {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .header-signal__key {
+    width: auto !important;
+    color: var(--text-dim) !important;
+  }
+
+  .header-signal__key::after {
+    content: ":";
+    margin-right: 4px;
+  }
+
+  /* Response item mobile row se hide */
+  .header-signal__row:nth-child(3) {
+    display: none !important;
+  }
+
+  /* 3. Action Section: Email & Bottom Row */
   .header-action {
-    padding-left: 0 !important;
-    align-items: stretch !important;
     width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
   }
 
-  .cv-btn--single {
+  /* Email line */
+  .header-action__email {
+    font-size: 0.82rem !important;
+    color: var(--text-main) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
     width: 100% !important;
-    justify-content: center !important;
+    padding-bottom: 4px !important;
+  }
+
+  /* 4. Bottom Row: Download button left par, Social icons right par */
+  .cv-btn--single {
+    width: auto !important;
+    display: inline-flex !important;
+    padding: 8px 14px !important;
+    font-size: 0.8rem !important;
   }
 
   .header-action__social {
-    justify-content: flex-start !important;
-    margin-top: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin: 0 !important;
   }
+
+  /* Ek hi horizontal row me rakhne ke liye wrapper behavior */
+  .header-action {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+  }
+
+  .header-action__email {
+    grid-column: 1 / -1 !important;
+  }
+
+  .cv-btn--single {
+    grid-column: 1 !important;
+    justify-self: start !important;
+  }
+
+  .header-action__social {
+    grid-column: 2 !important;
+    justify-self: end !important;
+  }
+}
 
   /* 3. Main Two-Column to Single Column */
   .main-grid {
