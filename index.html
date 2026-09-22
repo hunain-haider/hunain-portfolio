@@ -124,27 +124,27 @@
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
     .header-action-bottom-row { display: flex; align-items: center; gap: 16px; }
 
-    .cv-btn--single {
-      display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    padding: .5rem 1rem;
-    background: transparent;
-    color: var(--c-accent);
-    font-family: Poppins, sans-serif;
-    font-size: .8125rem;
-    font-weight: 600;
-    border: 1.5px solid var(--c-accent);
-    border-right: none;
-    border-radius: .625rem 0 0 .625rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all .2s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-    letter-spacing: .01em;
-    line-height: 1;
+   .cv-btn--single { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: .5rem; 
+    padding: .5rem 1rem; 
+    background: transparent; 
+    color: var(--c-accent); 
+    font-family: Poppins, sans-serif; 
+    font-size: .8125rem; 
+    font-weight: 600; 
+    border: 1.5px solid var(--c-accent); /* Ye charo taraf border lagaye ga */
+    border-radius: .625rem; /* Ye charo konon ko round kare ga */
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: all .2s ease; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    letter-spacing: .01em; 
+    line-height: 1; 
 }
+
     .cv-btn--single:hover { background: #8eaef5; }
     .cv-btn--single svg { stroke: #0b0f19; }
 
