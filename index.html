@@ -114,7 +114,6 @@
 
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
     
-    /* Clean Single Download CV Button */
     .cv-btn--single {
       background: var(--btn-blue-solid);
       border: 1.5px solid var(--btn-blue-border);
@@ -134,7 +133,6 @@
     .cv-btn--single:hover { background: #8eaef5; }
     .cv-btn--single svg { stroke: #0b0f19; }
 
-    /* Email Hover Effect */
     .header-action__email {
       font-size: 0.78rem;
       color: var(--text-muted);
@@ -150,9 +148,20 @@
     .header-action__social a { color: var(--text-dim); display: flex; align-items: center; }
     .header-action__social a:hover { color: var(--text-main); }
 
-    /* Rack Sidebar */
+    /* Rack Sidebar (Fixed / Sticky Fix as requested) */
     .main-grid { display: grid; grid-template-columns: 148px 1fr; gap: 24px; align-items: flex-start; }
-    .sidebar.rack-desktop { background-color: var(--rack-bg); border: 1px solid var(--rack-border); border-radius: 18px; padding: 18px 12px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+    
+    .sidebar-rack-container {
+      position: sticky;
+      top: 24px;
+      height: fit-content;
+      align-self: flex-start;
+      z-index: 40;
+    }
+
+    .sidebar.rack-desktop {
+      background-color: var(--rack-bg); border: 1px solid var(--rack-border); border-radius: 18px; padding: 18px 12px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
     .patch-panel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--card-border); }
     .patch-port { height: 22px; border-radius: 6px; }
     .patch-port--1 { background: #3b82f6; }
@@ -490,7 +499,7 @@
         </div>
 
         <div class="header-action">
-          <!-- Clean Single Download CV Button (Hunain.pdf) -->
+          <!-- Clean Single Download CV Button (Hunain.pdf) without broken dropdown -->
           <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -530,7 +539,7 @@
     </header>
 
     <div class="main-grid">
-      <!-- SIDEBAR (Infrastructure & Design System removed entirely) -->
+      <!-- SIDEBAR (Fixed Sticky Rack Sidebar) -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           <div class="patch-panel" aria-hidden="true">
@@ -1239,8 +1248,6 @@
         status_val: "available",
         response_key: "response",
         download_cv: "Download CV",
-        cv_human_desc: "Standard Official CV",
-        cv_ats_desc: "Plain, compatible",
         nav_about: "ABOUT",
         nav_portfolio: "PORTFOLIO",
         nav_resume: "RESUME",
@@ -1359,8 +1366,6 @@
         status_val: "verfügbar",
         response_key: "antwort",
         download_cv: "Lebenslauf Herunterladen",
-        cv_human_desc: "Offizieller Standard-Lebenslauf",
-        cv_ats_desc: "Kompakt, ATS-konform",
         nav_about: "ÜBER MICH",
         nav_portfolio: "PORTFOLIO",
         nav_resume: "LEBENSLAUF",
@@ -1866,7 +1871,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
     });
 
     // =========================================================
-    // EXACT LIGHT / DARK MODE TOGGLE (Fixing Font / Contrast Issues)
+    // THEME & ROLE ROTATOR
     // =========================================================
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
