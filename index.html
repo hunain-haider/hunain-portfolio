@@ -154,9 +154,18 @@
 }
 */
 
+/* Hover state: Background aur border dono yellow (#eab308) honge, aur text black hoga */
+.cv-btn--single:hover { 
+    background: #eab308 !important; 
+    border-color: #eab308 !important;
+    color: #000000 !important; /* Text color black */
+}
 
-    .cv-btn--single:hover { background: #8eaef5; }
-    .cv-btn--single svg { stroke: #8eaef5; }
+/* Hover ke waqt SVG icon ka color black karne ke liye */
+.cv-btn--single:hover svg { 
+    stroke: #000000 !important; 
+    fill: #000000 !important; /* Agar icon stroke ki jagah fill use kar raha ho */
+}
 
     .header-action__email {
       font-size: 0.78rem;
