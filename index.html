@@ -148,7 +148,7 @@
     .header-action__social a { color: var(--text-dim); display: flex; align-items: center; }
     .header-action__social a:hover { color: var(--text-main); }
 
-    /* Rack Sidebar (Fixed / Sticky Fix as requested) */
+    /* Rack Sidebar (Fixed Sticky) */
     .main-grid { display: grid; grid-template-columns: 148px 1fr; gap: 24px; align-items: flex-start; }
     
     .sidebar-rack-container {
@@ -251,7 +251,7 @@
     .port-card__footer { padding: 16px 20px; background: var(--card-bg); border-top: 1px solid var(--card-border); }
     .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
 
-    /* Resume Section */
+    /* Resume Section with Scroll Spy */
     .resume-seg-nav { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
     .resume-seg-btn { flex: 1; padding: 8px 12px; font-size: 0.8rem; font-weight: 700; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.2s ease; }
     .resume-seg-btn:hover { color: var(--text-main); }
@@ -499,7 +499,7 @@
         </div>
 
         <div class="header-action">
-          <!-- Clean Single Download CV Button (Hunain.pdf) without broken dropdown -->
+          <!-- Clean Single Download CV Button (Hunain.pdf) -->
           <a href="Hunain.pdf" download="Hunain.pdf" class="cv-btn--single" aria-label="Download CV">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -805,16 +805,16 @@
           </div>
         </section>
 
-        <!-- 3. RESUME VIEW -->
+        <!-- 3. RESUME VIEW (WITH SCROLL SPY SYNCED BUTTONS) -->
         <section id="view-resume" class="view-panel">
           <h1 class="content-title"><span data-i18n="resume_title">Resume</span><span class="title-dot">.</span></h1>
           <div class="color-accent-line"></div>
 
           <nav class="resume-seg-nav" role="tablist">
-            <button class="resume-seg-btn resume-seg-btn--active" onclick="scrollResumeTo('res-experience')" data-i18n="res_tab_exp">EXP .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-education')" data-i18n="res_tab_edu">EDUC .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-core')" data-i18n="res_tab_core">CORE .</button>
-            <button class="resume-seg-btn" onclick="scrollResumeTo('res-tools')" data-i18n="res_tab_tool">TOOL .</button>
+            <button class="resume-seg-btn resume-seg-btn--active" id="resBtnExp" onclick="scrollResumeTo('res-experience')" data-i18n="res_tab_exp">EXP .</button>
+            <button class="resume-seg-btn" id="resBtnEdu" onclick="scrollResumeTo('res-education')" data-i18n="res_tab_edu">EDUC .</button>
+            <button class="resume-seg-btn" id="resBtnCore" onclick="scrollResumeTo('res-core')" data-i18n="res_tab_core">CORE .</button>
+            <button class="resume-seg-btn" id="resBtnTool" onclick="scrollResumeTo('res-tools')" data-i18n="res_tab_tool">TOOL .</button>
           </nav>
 
           <!-- EXPERIENCE -->
@@ -1838,35 +1838,63 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
     }
 
     function scrollResumeTo(secId) {
-      const buttons = document.querySelectorAll('.resume-seg-btn');
-      buttons.forEach(btn => btn.classList.remove('resume-seg-btn--active'));
-      event.currentTarget.classList.add('resume-seg-btn--active');
       const el = document.getElementById(secId);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function scrollToSection(sectionId) {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Scroll spy
+    // =========================================================
+    // SCROLL SPY FOR BOTH MAIN STATS/SCOPE & RESUME EXP/EDUC/CORE/TOOL
+    // =========================================================
     window.addEventListener('scroll', () => {
+      // 1. About section spy
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
       const tabBtnStats = document.getElementById('tabBtnStats');
       const tabBtnScope = document.getElementById('tabBtnScope');
 
-      if (!scopeSec || !statsSec || !tabBtnStats || !tabBtnScope) return;
-      const scopeRect = scopeSec.getBoundingClientRect();
-      const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
+      if (scopeSec && statsSec && tabBtnStats && tabBtnScope) {
+        const scopeRect = scopeSec.getBoundingClientRect();
+        const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
 
-      if (isAtBottom || scopeRect.top <= 260) {
-        tabBtnScope.classList.add('seg-btn--active');
-        tabBtnStats.classList.remove('seg-btn--active');
-      } else {
-        tabBtnStats.classList.add('seg-btn--active');
-        tabBtnScope.classList.remove('seg-btn--active');
+        if (isAtBottom || scopeRect.top <= 260) {
+          tabBtnScope.classList.add('seg-btn--active');
+          tabBtnStats.classList.remove('seg-btn--active');
+        } else {
+          tabBtnStats.classList.add('seg-btn--active');
+          tabBtnScope.classList.remove('seg-btn--active');
+        }
+      }
+
+      // 2. Resume sub-section spy (EXP, EDUC, CORE, TOOL)
+      const resExp = document.getElementById('res-experience');
+      const resEdu = document.getElementById('res-education');
+      const resCore = document.getElementById('res-core');
+      const resTools = document.getElementById('res-tools');
+
+      const btnExp = document.getElementById('resBtnExp');
+      const btnEdu = document.getElementById('resBtnEdu');
+      const btnCore = document.getElementById('resBtnCore');
+      const btnTool = document.getElementById('resBtnTool');
+
+      if (resExp && resEdu && resCore && resTools && btnExp && btnEdu && btnCore && btnTool) {
+        const scrollPos = window.scrollY + 200;
+
+        const topExp = resExp.offsetTop;
+        const topEdu = resEdu.offsetTop;
+        const topCore = resCore.offsetTop;
+        const topTools = resTools.offsetTop;
+
+        [btnExp, btnEdu, btnCore, btnTool].forEach(b => b.classList.remove('resume-seg-btn--active'));
+
+        if (scrollPos >= topTools) {
+          btnTool.classList.add('resume-seg-btn--active');
+        } else if (scrollPos >= topCore) {
+          btnCore.classList.add('resume-seg-btn--active');
+        } else if (scrollPos >= topEdu) {
+          btnEdu.classList.add('resume-seg-btn--active');
+        } else {
+          btnExp.classList.add('resume-seg-btn--active');
+        }
       }
     });
 
