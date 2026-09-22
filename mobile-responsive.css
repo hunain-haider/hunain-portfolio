@@ -1,221 +1,69 @@
 /* ==========================================================================
-   MOBILE, TABLET, IPHONE, FOLD & DUO RESPONSIVE STYLESHEET
-   (Sirf choti screens par chalegi, PC/Laptop ko bilkul nahi touch karegi)
+   MOBILE & TABLET RESPONSIVE STYLESHEET (mobile-responsive.css)
+   Targeting: Android, iPhone, Foldables (Galaxy Fold / Surface Duo), Tablets & Mini Tablets
    ========================================================================== */
 
+/* ---------- 1. TABLETS & MINI TABLETS (max-width: 960px) ---------- */
 @media screen and (max-width: 960px) {
-
-  /* 1. Main Page Layout & Spacing */
   .app-layout {
-    padding: 12px 14px 120px !important; /* Bottom dock ke liye 120px safe space */
-    gap: 16px !important;
+    padding: 20px 16px 120px !important;
+    gap: 18px !important;
   }
 
- /* ==========================================================================
-   MOBILE ACCORDION HEADER (EXACT 1:1 REFERENCE)
-   ========================================================================== */
-
-/* Desktop par toggle button hide rahega */
-.header-mobile-toggle {
-  display: none;
-}
-
-@media screen and (max-width: 960px) {
-
-  .header__body {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 16px 18px !important;
+  .main-grid {
+    grid-template-columns: 1fr !important;
     gap: 0 !important;
   }
 
-  /* Identity Row: Full width with right-aligned chevron */
-  .header-identity {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .header-identity__info {
-    flex: 1 !important;
-    margin-left: 14px !important;
-  }
-
-  /* Chevron Button (Round gray pill button like screenshot) */
-  .header-mobile-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 50% !important;
-    background: #171c26 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #cbd5e1 !important;
-    cursor: pointer !important;
-    transition: transform 0.3s ease, background 0.2s ease !important;
-  }
-
-  .header-mobile-toggle i {
-    width: 18px !important;
-    height: 18px !important;
-    transition: transform 0.3s ease !important;
-  }
-
-  /* When expanded, rotate chevron */
-  .header-mobile-toggle.open i {
-    transform: rotate(180deg) !important;
-  }
-
-  /* Collapsible wrapper: Mobile par by default hide rahega */
-  .header-mobile-collapsible {
-    display: none;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 14px;
-    animation: fadeInHeader 0.3s ease;
-  }
-
-  .header-mobile-collapsible.open {
-    display: flex !important;
-  }
-
-  @keyframes fadeInHeader {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* 1. Status & TZ Row */
-  .header-signal {
-    width: 100% !important;
-    padding: 0 !important;
-    border: none !important;
-  }
-  .header-signal__title {
-    display: none !important;
-  }
-  .header-signal__board {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 18px !important;
-    font-size: 0.82rem !important;
-  }
-  .header-signal__row:nth-child(3) {
-    display: none !important;
-  }
-
-  /* 2. Email Row (Upar) */
-  .header-action {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .header-action__email {
-    font-size: 0.85rem !important;
-    color: var(--text-main) !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
-    padding-top: 12px !important;
-  }
-
-  /* 3. Bottom Row: Download Left, Socials Right */
-  .header-action__bottom-row {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-  }
-
-  .cv-btn--single {
-    padding: 7px 14px !important;
-    font-size: 0.78rem !important;
-  }
-
-  .header-action__social {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin: 0 !important;
-  }
-}
-
-  /* 3. Main Two-Column to Single Column */
-  .main-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  /* Desktop Rack Sidebar Ko Mobile Mein Hide Karna */
+  /* Desktop Rack Sidebar hide on tablets/mobile */
   .sidebar-rack-container {
     display: none !important;
   }
 
-  /* 4. Content Container */
-  .content-box {
-    padding: 20px 16px !important;
-    border-radius: 12px !important;
-    min-height: auto !important;
+  /* Header Tablet Adjustments */
+  .header__body {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 16px 20px !important;
   }
 
-  .content-title {
-    font-size: 1.45rem !important;
+  .header-signal {
+    padding: 14px 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid var(--card-border) !important;
+    border-bottom: 1px solid var(--card-border) !important;
   }
 
-  /* 5. Sticky Navigation Spy Controls (Stats, Scope, Resume Tabs) */
-  .seg-control-nav, 
-  .resume-seg-nav {
-    top: 10px !important;
-    margin: 16px 0 24px !important;
+  .header-action {
+    padding-left: 0 !important;
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
   }
 
-  .seg-btn, 
-  .resume-seg-btn {
-    padding: 7px 8px !important;
-    font-size: 0.72rem !important;
-  }
-
-  /* 6. Grids (1-Column for Phones, 2-Column for Stats) */
+  /* Grids to 2 Columns or 1 Column */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
   }
 
-  .stat-card {
-    padding: 14px 8px !important;
-  }
-
-  .stat-val {
-    font-size: 1.5rem !important;
-  }
-
   .about-scope-grid,
   .port-grid,
-  .blog-grid,
   .core-grid,
   .tools-grid,
-  .contact-grid {
+  .blog-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
 
-  /* 7. Contact Us Form Fields */
-  .form-inputs-inline {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+  .content-box {
+    padding: 24px 20px !important;
+    min-height: auto !important;
   }
 
-  /* 8. Fixed Bottom Navigation Dock (Exact 1:1 Reference Style) */
+  /* Mobile Bottom Dock Bar */
   .rack-mobile-dock {
     display: block !important;
     position: fixed !important;
@@ -224,56 +72,167 @@
     right: 0 !important;
     background: var(--card-bg) !important;
     border-top: 1px solid var(--card-border) !important;
-    padding: 8px 10px calc(8px + env(safe-area-inset-bottom)) !important; /* iPhone safe area notch handling */
-    z-index: 1000 !important;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 999 !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
   }
 
   .mobile-dock__compact {
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
-    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
   }
 
   .mobile-dock__item {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 3px !important;
-    color: var(--text-dim) !important;
+    gap: 4px !important;
+    color: var(--text-muted) !important;
     text-decoration: none !important;
-    font-size: 0.65rem !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    padding: 4px 10px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
   }
 
   .mobile-dock__item--active {
     color: var(--accent-blue) !important;
-  }
-
-  .mobile-dock__item i {
-    width: 18px !important;
-    height: 18px !important;
-  }
-
-  /* 9. Floating Scroll-To-Top Button */
-  .scroll-to-top {
-    bottom: 74px !important; /* Mobile dock ke theek upar */
-    right: 16px !important;
-    width: 36px !important;
-    height: 36px !important;
+    background: rgba(47, 104, 238, 0.1) !important;
   }
 }
 
-/* ==========================================================================
-   TABLET & FOLD EXPANDED SCREEN SIZES (Screens between 600px and 960px)
-   ========================================================================== */
-@media screen and (min-width: 601px) and (max-width: 960px) {
-  .port-grid, 
-  .blog-grid {
-    grid-template-columns: repeat(2, 1fr) !important; /* Fold phone unfold hone par ya tablet par 2 columns */
+/* ---------- 2. SMARTPHONES & IPHONES (max-width: 600px) ---------- */
+@media screen and (max-width: 600px) {
+  .app-layout {
+    padding: 12px 10px 110px !important;
+  }
+
+  /* Header Compact */
+  .header-identity {
+    gap: 12px !important;
+    padding-right: 0 !important;
+  }
+
+  .header-identity__photo {
+    width: 62px !important;
+    height: 62px !important;
+    border-radius: 12px !important;
+  }
+
+  .header-identity__name {
+    font-size: 1.15rem !important;
+  }
+
+  .header-action {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .cv-btn--single {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .header-action__email {
+    font-size: 0.75rem !important;
+    word-break: break-all !important;
+  }
+
+  .content-title {
+    font-size: 1.45rem !important;
+  }
+
+  .content-box {
+    padding: 20px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Segment Tabs (Stats / Scope / Resume Tabs) */
+  .seg-control-nav,
+  .resume-seg-nav {
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 3px !important;
+    scrollbar-width: none !important;
+  }
+  .seg-control-nav::-webkit-scrollbar,
+  .resume-seg-nav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .seg-btn,
+  .resume-seg-btn {
+    font-size: 0.72rem !important;
+    padding: 8px 12px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Portfolio & Filter buttons */
+  .port-filters {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 6px !important;
+    scrollbar-width: none !important;
+  }
+  .port-filters::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .port-filter-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Contact & Form */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .form-inputs-inline {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 18px 14px !important;
+  }
+
+  /* Terminal on Mobile */
+  .terminal-container {
+    min-height: 420px !important;
+  }
+  .terminal-ascii-box pre {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* ---------- 3. FOLDABLE / DUO / SMALL SCREENS (max-width: 380px) ---------- */
+@media screen and (max-width: 380px) {
+  .header-identity__name {
+    font-size: 1rem !important;
+  }
+  .header-identity__photo {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .stat-val {
+    font-size: 1.5rem !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .mobile-dock__item span {
+    font-size: 0.6rem !important;
   }
 }
