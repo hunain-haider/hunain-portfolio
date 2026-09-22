@@ -434,7 +434,7 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .about-scope-grid, .port-grid, .core-grid, .tools-grid, .blog-grid, .contact-grid, .form-inputs-inline { grid-template-columns: 1fr; }
       
-      .content-box { padding: 20px 16px; }
+      .content-box { padding: 20px 16px; margin-bottom: 30px; }
       
       .rack-mobile-dock {
         display: block;
@@ -464,7 +464,7 @@
         cursor: pointer;
       }
       .mobile-dock__item--active { color: var(--accent-blue); }
-      .app-layout { padding: 15px 12px 100px; }
+      .app-layout { padding: 15px 12px 110px; }
     }
   </style>
 </head>
@@ -1246,16 +1246,22 @@
   <!-- MOBILE DOCK -->
   <div class="rack-mobile-dock">
     <div class="mobile-dock__compact">
-      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about')"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
-      <a class="mobile-dock__item" onclick="switchView('portfolio')"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
-      <a class="mobile-dock__item" onclick="switchView('resume')"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
-      <a class="mobile-dock__item" onclick="switchView('blog')"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
-      <a class="mobile-dock__item" onclick="switchView('contact')"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
+      <a class="mobile-dock__item mobile-dock__item--active" onclick="switchView('about'); updateMobileDockActive(this);"><i data-lucide="user" style="width:18px;height:18px;"></i><span>About</span></a>
+      <a class="mobile-dock__item" onclick="switchView('portfolio'); updateMobileDockActive(this);"><i data-lucide="layout-grid" style="width:18px;height:18px;"></i><span>Portfolio</span></a>
+      <a class="mobile-dock__item" onclick="switchView('resume'); updateMobileDockActive(this);"><i data-lucide="file-text" style="width:18px;height:18px;"></i><span>Resume</span></a>
+      <a class="mobile-dock__item" onclick="switchView('blog'); updateMobileDockActive(this);"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>Blog</span></a>
+      <a class="mobile-dock__item" onclick="switchView('contact'); updateMobileDockActive(this);"><i data-lucide="mail" style="width:18px;height:18px;"></i><span>Contact</span></a>
     </div>
   </div>
 
   <script>
     lucide.createIcons();
+
+    // Mobile Dock active state sync
+    function updateMobileDockActive(el) {
+      document.querySelectorAll('.mobile-dock__item').forEach(i => i.classList.remove('mobile-dock__item--active'));
+      el.classList.add('mobile-dock__item--active');
+    }
 
     // =========================================================
     // INTERACTIVE CONSTELLATION NETWORK BACKGROUND ANIMATION
@@ -1271,15 +1277,15 @@
     resizeCanvas();
 
     let particlesArray = [];
-    const numberOfParticles = 55;
+    const numberOfParticles = 45;
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 1.6 + 0.8;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.7;
       }
       update() {
         this.x += this.vx;
@@ -1291,7 +1297,7 @@
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        ctx.fillStyle = isLight ? 'rgba(47, 104, 238, 0.4)' : 'rgba(96, 165, 250, 0.5)';
+        ctx.fillStyle = isLight ? 'rgba(47, 104, 238, 0.35)' : 'rgba(96, 165, 250, 0.45)';
         ctx.fill();
       }
     }
@@ -1317,13 +1323,13 @@
           const dy = particlesArray[i].y - particlesArray[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
             ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-            const alpha = (1 - (dist / 120)) * (isLight ? 0.2 : 0.16);
+            const alpha = (1 - (dist / 110)) * (isLight ? 0.18 : 0.14);
             ctx.strokeStyle = isLight ? `rgba(47, 104, 238, ${alpha})` : `rgba(148, 163, 184, ${alpha})`;
-            ctx.lineWidth = 0.75;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
