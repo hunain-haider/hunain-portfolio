@@ -124,26 +124,36 @@
     .header-action { padding-left: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; }
     .header-action-bottom-row { display: flex; align-items: center; gap: 16px; }
 
-   .cv-btn--single { 
-    display: inline-flex; 
-    align-items: center; 
-    gap: .5rem; 
-    padding: .5rem 1rem; 
-    background: transparent; 
-    color: var(--c-accent); 
-    font-family: Poppins, sans-serif; 
-    font-size: .8125rem; 
-    font-weight: 600; 
-    border: 1.5px solid var(--c-accent); /* Ye charo taraf border lagaye ga */
-    border-radius: .625rem; /* Ye charo konon ko round kare ga */
-    cursor: pointer; 
-    text-decoration: none; 
-    transition: all .2s ease; 
-    white-space: nowrap; 
-    flex-shrink: 0; 
-    letter-spacing: .01em; 
-    line-height: 1; 
+   /* Agat aap Vue 3 / Nuxt 3 use kar rahe hain */
+:deep(.cv-btn) {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .5rem !important;
+    padding: .5rem 1rem !important;
+    background: transparent !important;
+    color: #eab308 !important; /* Yellow text color */
+    font-family: Poppins, sans-serif !important;
+    font-size: .8125rem !important;
+    font-weight: 600 !important;
+    border: 1.5px solid #eab308 !important; /* Border ko right side samet charo taraf lagane ke liye */
+    border-radius: .625rem !important; /* Charo konon ko round karne ke liye */
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all .2s ease !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    letter-spacing: .01em !important;
+    line-height: 1 !important;
 }
+
+/* Agar aap Vue 2 use kar rahe hain aur upar wala code kaam na kare, to ye lagayein: */
+/*
+::v-deep .cv-btn {
+    border: 1.5px solid #eab308 !important;
+    border-radius: .625rem !important;
+}
+*/
+
 
     .cv-btn--single:hover { background: #8eaef5; }
     .cv-btn--single svg { stroke: #0b0f19; }
