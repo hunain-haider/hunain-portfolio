@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Optional separate mobile responsive stylesheet link -->
+  <link rel="stylesheet" href="mobile-responsive.css" media="screen and (max-width: 960px)">
+
   <style>
     :root {
       --bg-color: #07090e;
@@ -434,7 +437,7 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .about-scope-grid, .port-grid, .core-grid, .tools-grid, .blog-grid, .contact-grid, .form-inputs-inline { grid-template-columns: 1fr; }
       
-      .content-box { padding: 20px 16px; margin-bottom: 30px; }
+      .content-box { padding: 24px 18px; margin-bottom: 40px; }
       
       .rack-mobile-dock {
         display: block;
@@ -444,9 +447,9 @@
         right: 0;
         background: var(--card-bg);
         border-top: 1px solid var(--card-border);
-        padding: 8px 12px;
+        padding: 10px 14px;
         z-index: 100;
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 -4px 25px rgba(0,0,0,0.4);
       }
       .mobile-dock__compact {
         display: flex;
@@ -464,7 +467,7 @@
         cursor: pointer;
       }
       .mobile-dock__item--active { color: var(--accent-blue); }
-      .app-layout { padding: 15px 12px 110px; }
+      .app-layout { padding: 15px 12px 120px; }
     }
   </style>
 </head>
