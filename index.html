@@ -12,7 +12,7 @@
 
   <style>
     :root {
-      --bg-color: #0d0e12;
+      --bg-color: #07090e;
       --card-bg: #14171f;
       --card-border: #1e232e;
       --accent-blue: #2f68ee;
@@ -76,8 +76,16 @@
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    .bg-poly-left { position: fixed; left: 0; top: 15%; width: 140px; height: 380px; pointer-events: none; z-index: 0; opacity: 0.9; }
-    .bg-poly-right { position: fixed; right: 0; bottom: 0; width: 160px; height: 420px; pointer-events: none; z-index: 0; opacity: 0.9; }
+    /* Interactive Animated Constellation Background Canvas */
+    #constellationCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .app-layout { position: relative; z-index: 1; width: 100%; max-width: 1220px; padding: 30px 20px 140px; display: flex; flex-direction: column; gap: 24px; }
 
     /* Header */
@@ -251,7 +259,7 @@
     .port-card__footer { padding: 16px 20px; background: var(--card-bg); border-top: 1px solid var(--card-border); }
     .port-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
 
-    /* Resume Section with Scroll Spy */
+    /* Resume Section */
     .resume-seg-nav { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 4px; display: flex; width: 100%; margin: 24px 0 32px; position: sticky; top: 14px; z-index: 30; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
     .resume-seg-btn { flex: 1; padding: 8px 12px; font-size: 0.8rem; font-weight: 700; color: var(--text-dim); background: none; border: none; border-radius: 7px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.2s ease; }
     .resume-seg-btn:hover { color: var(--text-main); }
@@ -436,20 +444,8 @@
 </head>
 <body>
 
-  <svg class="bg-poly-left" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="0,0 80,40 10,120" fill="#e11d48"/>
-    <polygon points="10,120 90,80 140,160 30,190" fill="#f59e0b"/>
-    <polygon points="30,190 140,160 110,250 10,230" fill="#059669"/>
-    <polygon points="10,230 110,250 50,330 0,300" fill="#0284c7"/>
-    <polygon points="50,330 110,250 80,390" fill="#0ea5e9"/>
-  </svg>
-
-  <svg class="bg-poly-right" viewBox="0 0 150 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="150,400 70,360 140,280" fill="#059669"/>
-    <polygon points="140,280 60,320 10,240 120,210" fill="#0284c7"/>
-    <polygon points="120,210 10,240 40,150 140,170" fill="#f59e0b"/>
-    <polygon points="140,170 40,150 100,70 150,100" fill="#e11d48"/>
-  </svg>
+  <!-- Interactive Constellation Network Canvas Background -->
+  <canvas id="constellationCanvas"></canvas>
 
   <div class="app-layout">
     
@@ -539,7 +535,7 @@
     </header>
 
     <div class="main-grid">
-      <!-- SIDEBAR (Fixed Sticky Rack Sidebar) -->
+      <!-- SIDEBAR (Fixed Sticky) -->
       <aside class="sidebar-rack-container">
         <nav class="sidebar box sticky-column rack-desktop" aria-label="Main navigation">
           <div class="patch-panel" aria-hidden="true">
@@ -603,7 +599,7 @@
           </div>
 
           <div class="rack-utils">
-            <!-- Exact 3rd Pic Search Trigger -->
+            <!-- Search Trigger -->
             <button class="search-trigger" id="openSearchBtn" aria-label="Search">
               <span style="display:flex; align-items:center; gap:6px;">
                 <i data-lucide="search" style="width:13px;height:13px;"></i>
@@ -1237,6 +1233,81 @@
     lucide.createIcons();
 
     // =========================================================
+    // INTERACTIVE CONSTELLATION NETWORK BACKGROUND ANIMATION
+    // =========================================================
+    const canvas = document.getElementById('constellationCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let particlesArray = [];
+    const numberOfParticles = 65;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.radius = Math.random() * 1.8 + 0.8;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        ctx.fillStyle = isLight ? 'rgba(47, 104, 238, 0.4)' : 'rgba(96, 165, 250, 0.5)';
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+    initParticles();
+
+    function animateConstellation() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+
+        for (let j = i + 1; j < particlesArray.length; j++) {
+          const dx = particlesArray[i].x - particlesArray[j].x;
+          const dy = particlesArray[i].y - particlesArray[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+            const alpha = (1 - (dist / 130)) * (isLight ? 0.22 : 0.18);
+            ctx.strokeStyle = isLight ? `rgba(47, 104, 238, ${alpha})` : `rgba(148, 163, 184, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateConstellation);
+    }
+    animateConstellation();
+
+    // =========================================================
     // I18N DICTIONARY (ENGLISH / GERMAN FULL TRANSLATION)
     // =========================================================
     let currentLang = 'en';
@@ -1512,7 +1583,7 @@
     }
 
     // =========================================================
-    // EXACT 3RD PIC SEARCH MODAL LOGIC (CTRL+K)
+    // SEARCH MODAL LOGIC (CTRL+K)
     // =========================================================
     const searchModal = document.getElementById('searchModal');
     const cmdSearchBox = document.getElementById('cmdSearchBox');
@@ -1842,11 +1913,8 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // =========================================================
-    // SCROLL SPY FOR BOTH MAIN STATS/SCOPE & RESUME EXP/EDUC/CORE/TOOL
-    // =========================================================
+    // Scroll spy for About stats/scope & Resume sections
     window.addEventListener('scroll', () => {
-      // 1. About section spy
       const scopeSec = document.getElementById('scope');
       const statsSec = document.getElementById('stats');
       const tabBtnStats = document.getElementById('tabBtnStats');
@@ -1865,7 +1933,6 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
         }
       }
 
-      // 2. Resume sub-section spy (EXP, EDUC, CORE, TOOL)
       const resExp = document.getElementById('res-experience');
       const resEdu = document.getElementById('res-education');
       const resCore = document.getElementById('res-core');
@@ -1878,19 +1945,13 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
 
       if (resExp && resEdu && resCore && resTools && btnExp && btnEdu && btnCore && btnTool) {
         const scrollPos = window.scrollY + 200;
-
-        const topExp = resExp.offsetTop;
-        const topEdu = resEdu.offsetTop;
-        const topCore = resCore.offsetTop;
-        const topTools = resTools.offsetTop;
-
         [btnExp, btnEdu, btnCore, btnTool].forEach(b => b.classList.remove('resume-seg-btn--active'));
 
-        if (scrollPos >= topTools) {
+        if (scrollPos >= resTools.offsetTop) {
           btnTool.classList.add('resume-seg-btn--active');
-        } else if (scrollPos >= topCore) {
+        } else if (scrollPos >= resCore.offsetTop) {
           btnCore.classList.add('resume-seg-btn--active');
-        } else if (scrollPos >= topEdu) {
+        } else if (scrollPos >= resEdu.offsetTop) {
           btnEdu.classList.add('resume-seg-btn--active');
         } else {
           btnExp.classList.add('resume-seg-btn--active');
@@ -1898,9 +1959,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       }
     });
 
-    // =========================================================
-    // THEME & ROLE ROTATOR
-    // =========================================================
+    // Theme Toggle
     const themeBtn = document.getElementById('themeToggleBtn');
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
