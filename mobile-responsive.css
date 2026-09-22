@@ -12,147 +12,141 @@
   }
 
  /* ==========================================================================
-   MOBILE HEADER 1:1 EXACT LAYOUT
+   MOBILE ACCORDION HEADER (EXACT 1:1 REFERENCE)
    ========================================================================== */
+
+/* Desktop par toggle button hide rahega */
+.header-mobile-toggle {
+  display: none;
+}
+
 @media screen and (max-width: 960px) {
 
-  /* Header Box Container */
-  .header.box {
-    border-radius: 14px !important;
-  }
-
-  .header__chrome {
-    padding: 8px 16px !important;
-  }
-
-  /* Body ko vertical stack me convert karein */
   .header__body {
     display: flex !important;
     flex-direction: column !important;
     padding: 16px 18px !important;
-    gap: 12px !important;
+    gap: 0 !important;
   }
 
-  /* 1. Identity Row (Photo + Name + Role) */
+  /* Identity Row: Full width with right-aligned chevron */
   .header-identity {
     display: flex !important;
     align-items: center !important;
-    gap: 14px !important;
-    padding: 0 0 4px 0 !important;
+    justify-content: space-between !important;
     width: 100% !important;
+    padding: 0 !important;
   }
 
-  .header-identity__photo {
-    width: 64px !important;
-    height: 64px !important;
-    border-radius: 16px !important;
-    flex-shrink: 0 !important;
+  .header-identity__info {
+    flex: 1 !important;
+    margin-left: 14px !important;
   }
 
-  .header-identity__name {
-    font-size: 1.15rem !important;
-    margin-bottom: 2px !important;
+  /* Chevron Button (Round gray pill button like screenshot) */
+  .header-mobile-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    background: #171c26 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cbd5e1 !important;
+    cursor: pointer !important;
+    transition: transform 0.3s ease, background 0.2s ease !important;
   }
 
-  /* 2. Status & TZ Single Row */
+  .header-mobile-toggle i {
+    width: 18px !important;
+    height: 18px !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  /* When expanded, rotate chevron */
+  .header-mobile-toggle.open i {
+    transform: rotate(180deg) !important;
+  }
+
+  /* Collapsible wrapper: Mobile par by default hide rahega */
+  .header-mobile-collapsible {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 14px;
+    animation: fadeInHeader 0.3s ease;
+  }
+
+  .header-mobile-collapsible.open {
+    display: flex !important;
+  }
+
+  @keyframes fadeInHeader {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 1. Status & TZ Row */
   .header-signal {
     width: 100% !important;
-    padding: 10px 0 !important;
-    border-left: none !important;
-    border-right: none !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 0 !important;
+    border: none !important;
   }
-
   .header-signal__title {
-    display: none !important; /* Image me title hide hai */
+    display: none !important;
   }
-
   .header-signal__board {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 20px !important;
-    font-size: 0.8rem !important;
+    gap: 18px !important;
+    font-size: 0.82rem !important;
   }
-
-  .header-signal__row {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-  }
-
-  .header-signal__key {
-    width: auto !important;
-    color: var(--text-dim) !important;
-  }
-
-  .header-signal__key::after {
-    content: ":";
-    margin-right: 4px;
-  }
-
-  /* Response item mobile row se hide */
   .header-signal__row:nth-child(3) {
     display: none !important;
   }
 
-  /* 3. Action Section: Email & Bottom Row */
+  /* 2. Email Row (Upar) */
   .header-action {
-    width: 100% !important;
-    padding: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 12px !important;
+    gap: 14px !important;
+    width: 100% !important;
+    padding: 0 !important;
   }
 
-  /* Email line */
   .header-action__email {
-    font-size: 0.82rem !important;
+    font-size: 0.85rem !important;
     color: var(--text-main) !important;
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    width: 100% !important;
-    padding-bottom: 4px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding-top: 12px !important;
   }
 
-  /* 4. Bottom Row: Download button left par, Social icons right par */
+  /* 3. Bottom Row: Download Left, Socials Right */
+  .header-action__bottom-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
   .cv-btn--single {
-    width: auto !important;
-    display: inline-flex !important;
-    padding: 8px 14px !important;
-    font-size: 0.8rem !important;
+    padding: 7px 14px !important;
+    font-size: 0.78rem !important;
   }
 
   .header-action__social {
     display: flex !important;
     align-items: center !important;
-    gap: 14px !important;
+    gap: 12px !important;
     margin: 0 !important;
-  }
-
-  /* Ek hi horizontal row me rakhne ke liye wrapper behavior */
-  .header-action {
-    display: grid !important;
-    grid-template-columns: 1fr auto !important;
-    grid-template-rows: auto auto !important;
-    align-items: center !important;
-  }
-
-  .header-action__email {
-    grid-column: 1 / -1 !important;
-  }
-
-  .cv-btn--single {
-    grid-column: 1 !important;
-    justify-self: start !important;
-  }
-
-  .header-action__social {
-    grid-column: 2 !important;
-    justify-self: end !important;
   }
 }
 
