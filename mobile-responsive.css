@@ -1,19 +1,23 @@
 /* ==========================================================================
-   MOBILE & TABLET RESPONSIVE STYLESHEET (mobile-responsive.css)
-   Targets: Android, iPhones, Samsung Fold / Surface Duo, Tablets
+   FILE: mobile-responsive.css
+   AUTHOR: Hunain Haider Portfolio
+   PURPOSE: Responsive Layout for Mobile, Tablets, and Foldables
    ========================================================================== */
 
-/* Desktop par mobile collapse button hide rahega */
+/* --------------------------------------------------------------------------
+   0. DESKTOP SAFEGUARDS (Screen width > 960px)
+   Desktop layout bilkul untouched rahega
+   -------------------------------------------------------------------------- */
 .header-collapse-btn {
   display: none;
 }
 
 /* --------------------------------------------------------------------------
-   TABLETS & SMALL LAPTOPS (max-width: 960px)
+   1. TABLETS, MINI LAPTOPS & IPADS (max-width: 960px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 960px) {
   .app-layout {
-    padding: 16px 14px 115px !important;
+    padding: 18px 14px 115px !important;
     gap: 16px !important;
   }
 
@@ -27,6 +31,7 @@
     display: none !important;
   }
 
+  /* Grid Conversions */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
@@ -44,11 +49,11 @@
   }
 
   .content-box {
-    padding: 22px 18px !important;
+    padding: 24px 18px !important;
     min-height: auto !important;
   }
 
-  /* Fixed Bottom Dock Navigation */
+  /* Bottom Navigation Mobile Dock */
   .rack-mobile-dock {
     display: block !important;
     position: fixed !important;
@@ -81,8 +86,9 @@
     text-decoration: none !important;
     font-size: 0.68rem !important;
     cursor: pointer !important;
-    padding: 4px 8px !important;
+    padding: 5px 8px !important;
     border-radius: 8px !important;
+    transition: all 0.2s ease !important;
   }
 
   .mobile-dock__item--active {
@@ -92,7 +98,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   SMARTPHONES (max-width: 580px) - EXACT ADITYA REFERENCE HEADER LOOK
+   2. SMARTPHONES & MOBILE SCREENS (max-width: 580px)
+   Exact Collapsible Header (Reference Design match)
    -------------------------------------------------------------------------- */
 @media only screen and (max-width: 580px) {
   .header.box {
@@ -101,7 +108,7 @@
     border-radius: 1.25rem !important;
     overflow: hidden !important;
     margin-bottom: 0.75rem !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
   .header__chrome {
@@ -121,7 +128,7 @@
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
-    padding-right: 42px !important; /* Button ki jagah chhodne ke liye */
+    padding-right: 44px !important; /* Arrow button ki space */
     width: 100% !important;
   }
 
@@ -158,7 +165,7 @@
     color: #60a5fa !important;
   }
 
-  /* Round Collapse / Expand Arrow Button */
+  /* Round Collapse Arrow Button */
   .header-collapse-btn {
     display: flex !important;
     align-items: center !important;
@@ -184,7 +191,7 @@
     transition: transform 0.25s ease !important;
   }
 
-  /* 1. DEFAULT STATE: Collapsed / Band */
+  /* 2.1 COLLAPSED STATE (Default compact view) */
   .header--collapsed .header-signal,
   .header--collapsed .header-action {
     display: none !important;
@@ -198,7 +205,7 @@
     transform: rotate(0deg) !important;
   }
 
-  /* 2. EXPANDED STATE: Open / Khula Hua */
+  /* 2.2 EXPANDED STATE (Open view on click) */
   .header--expanded .header-signal {
     display: flex !important;
     border: none !important;
@@ -245,22 +252,28 @@
     width: 100% !important;
   }
 
+  /* Mobile par Email address upar */
   .header--expanded .header-action__email {
+    order: 1 !important;
     font-size: 0.78rem !important;
     color: var(--text-muted) !important;
+    width: 100% !important;
+    word-break: break-all !important;
   }
 
-  .header--expanded .header-action-bottom-row {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    padding-right: 42px !important;
+  /* Mobile par CV Button aur Social icons bottom line me */
+  .header--expanded .cv-btn--single {
+    order: 2 !important;
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 6px 14px !important;
+    font-size: 0.78rem !important;
   }
 
   .header--expanded .header-action__social {
+    order: 3 !important;
     display: flex !important;
-    gap: 12px !important;
+    gap: 14px !important;
     margin: 0 !important;
     list-style: none !important;
   }
@@ -269,36 +282,23 @@
     transform: rotate(180deg) !important;
   }
 
-  /* Segmented Nav Buttons Scrollable */
+  /* Horizontal scrolling controls for small screens */
   .seg-control-nav,
-  .resume-seg-nav {
+  .resume-seg-nav,
+  .port-filters {
     overflow-x: auto !important;
     justify-content: flex-start !important;
     scrollbar-width: none !important;
   }
+
   .seg-control-nav::-webkit-scrollbar,
-  .resume-seg-nav::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  .seg-btn,
-  .resume-seg-btn {
-    font-size: 0.72rem !important;
-    padding: 7px 12px !important;
-    white-space: nowrap !important;
-  }
-
-  /* Filters */
-  .port-filters {
-    overflow-x: auto !important;
-    flex-wrap: nowrap !important;
-    padding-bottom: 6px !important;
-    scrollbar-width: none !important;
-  }
+  .resume-seg-nav::-webkit-scrollbar,
   .port-filters::-webkit-scrollbar {
     display: none !important;
   }
 
+  .seg-btn,
+  .resume-seg-btn,
   .port-filter-btn {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
@@ -310,19 +310,20 @@
 }
 
 /* --------------------------------------------------------------------------
-   FOLDABLES & EXTRA SMALL SCREENS (max-width: 360px)
+   3. FOLDABLES & EXTRA NARROW SCREENS (max-width: 360px)
+   Galaxy Fold Outer screen, etc.
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 360px) {
   .header-identity__name {
     font-size: 1rem !important;
   }
+
   .header-identity__photo {
     width: 52px !important;
     height: 52px !important;
   }
-  .header--expanded .header-action-bottom-row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
+
+  .header--expanded .header-action {
     gap: 10px !important;
   }
 }
