@@ -311,6 +311,7 @@
     color: var(--text-dim) !important;
   }
 
+  /* Header Expanded Layout: Email upar, Button + Social neeche */
   .header--expanded .header-action {
     display: flex !important;
     flex-direction: column !important;
@@ -322,21 +323,27 @@
     width: 100% !important;
   }
 
+  /* 1. Email address row */
   .header--expanded .header-action__email {
     order: 1 !important;
     font-size: 0.78rem !important;
     color: var(--text-muted) !important;
     width: 100% !important;
     word-break: break-all !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
   }
 
+  /* 2. Download CV Button (Left) aur Social Icons (Right) same row mein */
   .header--expanded .header-action-bottom-row {
     order: 2 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    padding-right: 42px !important;
+    padding-right: 46px !important; /* Collapse arrow button ki space */
+    margin-top: 2px !important;
   }
 
   .header--expanded .cv-btn--single {
@@ -344,11 +351,13 @@
     width: auto !important;
     padding: 6px 14px !important;
     font-size: 0.78rem !important;
+    flex-shrink: 0 !important;
   }
 
   .header--expanded .header-action__social {
     display: flex !important;
-    gap: 14px !important;
+    align-items: center !important;
+    gap: 12px !important;
     margin: 0 !important;
     list-style: none !important;
   }
@@ -383,7 +392,7 @@
     font-size: 1.45rem !important;
   }
 
-  /* ===== EXACT REFERENCE MOBILE FOOTER STYLING (Image 2 Match) ===== */
+  /* Footer Styling */
   .footer {
     display: flex !important;
     flex-direction: column !important;
@@ -395,7 +404,6 @@
     margin-top: 30px !important;
   }
 
-  /* Beech ke separating dots (·) ko mobile par hide kar diya */
   .footer__sep {
     display: none !important;
   }
