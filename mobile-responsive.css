@@ -18,9 +18,9 @@
 .sub-tagline {
   display: block !important;
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.76rem !important;
+  font-size: 0.94rem !important;
   line-height: 1.6 !important;
-  color: var(--text-dim) !important;
+  color: #3f58d5 !important;
   margin-bottom: 22px !important;
   word-break: normal !important;
 }
