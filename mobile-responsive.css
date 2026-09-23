@@ -6,7 +6,6 @@
 
 /* --------------------------------------------------------------------------
    0. DESKTOP SAFEGUARDS (Screen width > 960px)
-   Laptop / PC view par koi bhi button ya layout disturb nahi hoga
    -------------------------------------------------------------------------- */
 .header-collapse-btn {
   display: none;
@@ -26,7 +25,6 @@
     gap: 0 !important;
   }
 
-  /* Desktop side rack bar hide */
   .sidebar-rack-container {
     display: none !important;
   }
@@ -98,51 +96,56 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. SMARTPHONES & MOBILE SCREENS (max-width: 600px)
+   2. SMARTPHONES & MOBILE SCREENS (max-width: 650px)
    -------------------------------------------------------------------------- */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
 
-  /* ===== FIX: SCOPE CARD TITLE & BADGE ZERO COLLISION ===== */
+  /* ===== EXACT REFERENCE SCOPE CARD LAYOUT ===== */
   .about-scope-card {
-    position: relative !important;
-    padding: 18px 16px !important;
-    gap: 14px !important;
-    align-items: flex-start !important;
-  }
-
-  .about-scope-card__body {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    width: 100% !important;
+    padding: 22px 20px !important;
+    position: relative !important;
+    gap: 16px !important;
   }
 
-  /* Badge ko heading ke upar clean category tag bana diya */
+  /* Icon upar left corner mein */
+  .about-scope-card__icon-wrap {
+    width: 48px !important;
+    height: 48px !important;
+    margin: 0 !important;
+  }
+
+  /* Badge top right corner mein */
   .about-scope-card__type {
-    position: static !important;
-    align-self: flex-start !important;
-    display: inline-flex !important;
-    align-items: center !important;
+    position: absolute !important;
+    top: 22px !important;
+    right: 20px !important;
     font-size: 0.62rem !important;
-    padding: 2.5px 8px !important;
-    margin-bottom: 6px !important;
+    padding: 3px 9px !important;
     border-radius: 6px !important;
     letter-spacing: 0.6px !important;
   }
 
-  /* Heading ko poori width mil gayi (No Overlap) */
+  /* Content body icon ke neeche full width */
+  .about-scope-card__body {
+    width: 100% !important;
+  }
+
   .about-scope-card__title {
-    padding-right: 0 !important;
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    line-height: 1.35 !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
     margin-bottom: 8px !important;
+    padding-right: 0 !important;
     width: 100% !important;
   }
 
   .about-scope-card__desc {
-    font-size: 0.84rem !important;
-    line-height: 1.6 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    color: var(--text-muted) !important;
   }
 
   /* ===== HEADER COLLAPSIBLE SETUP ===== */
@@ -233,7 +236,7 @@
     transition: transform 0.25s ease !important;
   }
 
-  /* 2.1 Collapsed State (Default) */
+  /* Collapsed State (Default) */
   .header--collapsed .header-signal,
   .header--collapsed .header-action {
     display: none !important;
@@ -247,7 +250,7 @@
     transform: rotate(0deg) !important;
   }
 
-  /* 2.2 Expanded State (Open) */
+  /* Expanded State (Open) */
   .header--expanded .header-signal {
     display: flex !important;
     border: none !important;
