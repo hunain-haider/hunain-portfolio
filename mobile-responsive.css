@@ -20,7 +20,6 @@
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 0.94rem !important;
   line-height: 1.6 !important;
-  color: #3f58d5 !important;
   margin-bottom: 22px !important;
   word-break: normal !important;
 }
@@ -34,7 +33,7 @@
 }
 
 .sub-tagline span[data-i18n="about_subtitle"] {
-  color: var(--text-dim) !important;
+  color: #3f58d5 !important;
 }
 
 /* --------------------------------------------------------------------------
