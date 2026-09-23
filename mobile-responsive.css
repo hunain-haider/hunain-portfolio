@@ -12,15 +12,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. GLOBAL FIX: SUB-TAGLINE DIAMOND & TEXT ALIGNMENT (Desktop & Mobile)
-   Diamond bullet aur text hamesha ek sath start honge
+   1. GLOBAL FIX: SUB-TAGLINE & SUBTLE DIVIDER LINE (PC, Laptop & Mobile)
+   Tagline ke neeche exact original divider border line
    -------------------------------------------------------------------------- */
 .sub-tagline {
   display: block !important;
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 0.94rem !important;
+  font-size: 0.76rem !important;
   line-height: 1.6 !important;
-  margin-bottom: 22px !important;
+  color: var(--text-dim) !important;
+  margin-bottom: 24px !important;
+  padding-bottom: 18px !important;
+  border-bottom: 1px solid var(--card-border) !important;
   word-break: normal !important;
 }
 
@@ -33,7 +36,7 @@
 }
 
 .sub-tagline span[data-i18n="about_subtitle"] {
-  color: #60a5fa !important;
+  color: var(--text-dim) !important;
 }
 
 /* --------------------------------------------------------------------------
