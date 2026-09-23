@@ -13,7 +13,6 @@
 
 /* --------------------------------------------------------------------------
    1. GLOBAL FIX: SUB-TAGLINE & SUBTLE DIVIDER LINE (PC, Laptop & Mobile)
-   Tagline ke neeche exact original divider border line
    -------------------------------------------------------------------------- */
 .sub-tagline {
   display: block !important;
@@ -382,6 +381,38 @@
 
   .content-title {
     font-size: 1.45rem !important;
+  }
+
+  /* ===== EXACT REFERENCE MOBILE FOOTER STYLING (Image 2 Match) ===== */
+  .footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+    margin-top: 30px !important;
+  }
+
+  /* Beech ke separating dots (·) ko mobile par hide kar diya */
+  .footer__sep {
+    display: none !important;
+  }
+
+  .footer__copyright {
+    font-size: 0.76rem !important;
+    color: var(--text-dim) !important;
+  }
+
+  .footer__contact {
+    font-size: 0.76rem !important;
+    color: var(--text-dim) !important;
+  }
+
+  .status-badge {
+    margin-top: 2px !important;
+    font-size: 0.75rem !important;
   }
 }
 
