@@ -6,7 +6,6 @@
 
 /* --------------------------------------------------------------------------
    0. DESKTOP SAFEGUARDS (Screen width > 960px)
-   Laptop / PC view par koi bhi button ya layout disturb nahi hoga
    -------------------------------------------------------------------------- */
 .header-collapse-btn {
   display: none;
@@ -53,12 +52,10 @@
     gap: 0 !important;
   }
 
-  /* Desktop side rack bar hide */
   .sidebar-rack-container {
     display: none !important;
   }
 
-  /* Grid Layouts */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
@@ -80,7 +77,6 @@
     min-height: auto !important;
   }
 
-  /* Bottom Navigation Mobile Dock */
   .rack-mobile-dock {
     display: block !important;
     position: fixed !important;
@@ -262,7 +258,7 @@
     transition: transform 0.25s ease !important;
   }
 
-  /* Collapsed State (Default) */
+  /* Collapsed State */
   .header--collapsed .header-signal,
   .header--collapsed .header-action {
     display: none !important;
@@ -276,7 +272,7 @@
     transform: rotate(0deg) !important;
   }
 
-  /* Expanded State (Open) */
+  /* Expanded State */
   .header--expanded .header-signal {
     display: flex !important;
     border: none !important;
@@ -312,21 +308,22 @@
     color: var(--text-dim) !important;
   }
 
-  /* ===== MAGIC GRID FOR HEADER ACTION (Zero HTML Change Needed) ===== */
+  /* ===== HEADER ACTION: EXACT SPACING & ALIGNMENT ===== */
   .header--expanded .header-action {
     display: grid !important;
-    grid-template-columns: auto auto !important;
+    grid-template-columns: 1fr auto !important; /* Button left, icons right */
     grid-template-rows: auto auto !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 12px 18px !important;
+    row-gap: 12px !important;
     border-top: 1px solid var(--card-border) !important;
     padding-top: 0.75rem !important;
     padding-left: 0 !important;
+    padding-right: 42px !important; /* Arrow button ke liye proper space */
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* 1. Email pura pehla row cover karega */
+  /* Line 1: Email Full Width */
   .header--expanded .header-action__email {
     grid-column: 1 / -1 !important;
     grid-row: 1 !important;
@@ -339,20 +336,22 @@
     word-break: break-all !important;
   }
 
-  /* 2. Download CV button row 2 ke pehle column me */
+  /* Line 2 (Left): Download CV Button */
   .header--expanded .cv-btn--single {
     grid-column: 1 !important;
     grid-row: 2 !important;
+    justify-self: start !important; /* Force left align */
     display: inline-flex !important;
     width: auto !important;
     padding: 6px 14px !important;
     font-size: 0.78rem !important;
   }
 
-  /* 3. Social icons row 2 ke dusre column me, theek button ke barabar me */
+  /* Line 2 (Right): Social Icons - Right side par shuru honge */
   .header--expanded .header-action__social {
     grid-column: 2 !important;
     grid-row: 2 !important;
+    justify-self: end !important; /* Force right align */
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
@@ -436,6 +435,6 @@
   }
 
   .header--expanded .header-action {
-    gap: 10px 12px !important;
+    padding-right: 38px !important;
   }
 }
