@@ -12,7 +12,30 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. GLOBAL FIX: SUB-TAGLINE & SUBTLE DIVIDER LINE (PC, Laptop & Mobile)
+   1. GLOBAL FIX: HEADER EMAIL COLOR & HOVER (PC, Laptop, Mobile, iPhone, Tab)
+   Normal state: Pure White (#ffffff)
+   Hover state: #5b8def
+   -------------------------------------------------------------------------- */
+.header-action__email {
+  color: #ffffff !important;
+  transition: color 0.2s ease !important;
+}
+
+.header-action__email svg {
+  stroke: #ffffff !important;
+  transition: stroke 0.2s ease !important;
+}
+
+.header-action__email:hover {
+  color: #5b8def !important;
+}
+
+.header-action__email:hover svg {
+  stroke: #5b8def !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL FIX: SUB-TAGLINE & SUBTLE DIVIDER LINE (PC, Laptop & Mobile)
    -------------------------------------------------------------------------- */
 .sub-tagline {
   display: block !important;
@@ -39,8 +62,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. FIX: IPAD MINI / TABLETS ROTATE & 2-COL CARDS (max-width: 1100px)
-   Jab card 2-column mein ho aur width narrow ho, tab heading aur badge na takrayein
+   3. FIX: IPAD MINI / TABLETS ROTATE & 2-COL CARDS (max-width: 1100px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 1100px) {
   .about-scope-card {
@@ -89,7 +111,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. TABLETS, MINI LAPTOPS & IPADS (max-width: 960px)
+   4. TABLETS, MINI LAPTOPS & IPADS (max-width: 960px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 960px) {
   .app-layout {
@@ -106,7 +128,6 @@
     display: none !important;
   }
 
-  /* Grid Layouts */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
@@ -172,7 +193,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. SMARTPHONES & MOBILE SCREENS (max-width: 650px)
+   5. SMARTPHONES & MOBILE SCREENS (max-width: 650px)
    -------------------------------------------------------------------------- */
 @media only screen and (max-width: 650px) {
 
@@ -314,17 +335,17 @@
     color: var(--text-dim) !important;
   }
 
-  /* ===== HEADER ACTION: EXACT SPACING & ALIGNMENT ===== */
+  /* Header Action Alignment */
   .header--expanded .header-action {
     display: grid !important;
-    grid-template-columns: 1fr auto !important; /* Button left, icons right */
+    grid-template-columns: 1fr auto !important;
     grid-template-rows: auto auto !important;
     align-items: center !important;
     row-gap: 12px !important;
     border-top: 1px solid var(--card-border) !important;
     padding-top: 0.75rem !important;
     padding-left: 0 !important;
-    padding-right: 42px !important; /* Arrow button ke liye proper space */
+    padding-right: 42px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -337,7 +358,6 @@
     align-items: center !important;
     gap: 6px !important;
     font-size: 0.78rem !important;
-    color: var(--text-muted) !important;
     width: 100% !important;
     word-break: break-all !important;
   }
@@ -353,7 +373,7 @@
     font-size: 0.78rem !important;
   }
 
-  /* Line 2 (Right): Social Icons - Right side par shuru honge */
+  /* Line 2 (Right): Social Icons */
   .header--expanded .header-action__social {
     grid-column: 2 !important;
     grid-row: 2 !important;
@@ -428,7 +448,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   5. FOLDABLES & EXTRA SMALL SCREENS (max-width: 380px)
+   6. FOLDABLES & EXTRA SMALL SCREENS (max-width: 380px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 380px) {
   .header-identity__name {
