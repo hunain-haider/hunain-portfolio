@@ -4,11 +4,48 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hunain Portfolio - Content Manager</title>
-    <!-- Explicit Path for Config -->
-    <link href="config.yml" type="text/yaml" rel="cms-config-url">
   </head>
   <body>
     <!-- Decap CMS Script -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      CMS.init({
+        config: {
+          backend: {
+            name: "git-gateway",
+            repo: "hunain-haider/hunain-portfolio",
+            branch: "main",
+            auth_type: "pkce",
+            base_url: "https://auth.decapbridge.com",
+            auth_endpoint: "/sites/2c842de6-2d06-4ed8-815f-7783293aaf3c/pkce",
+            auth_token_endpoint: "/sites/2c842de6-2d06-4ed8-815f-7783293aaf3c/token",
+            gateway_url: "https://gateway.decapbridge.com"
+          },
+          site_url: "https://hunainhaider.com",
+          logo_url: "https://decapbridge.com/decapcms-with-bridge.svg",
+          media_folder: "assets/blog",
+          public_folder: "/assets/blog",
+          collections: [
+            {
+              name: "blog",
+              label: "Blog Posts",
+              folder: "content/blogs",
+              create: true,
+              slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+              fields: [
+                { label: "Title", name: "title", widget: "string" },
+                { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
+                { label: "Read Time", name: "readTime", widget: "string", default: "4 min read" },
+                { label: "Year", name: "year", widget: "string", default: "2026" },
+                { label: "Topics / Tags", name: "topics", widget: "string", hint: "Comma separated e.g. Linux, Security, DevOps" },
+                { label: "Summary / Snippet", name: "snippet", widget: "text" },
+                { label: "Featured Image", name: "image", widget: "image", required: false },
+                { label: "Body Content", name: "body", widget: "markdown" }
+              ]
+            }
+          ]
+        }
+      });
+    </script>
   </body>
 </html>
