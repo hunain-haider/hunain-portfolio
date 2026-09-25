@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Markdown & Frontmatter Parsers -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
 
   <style>
     :root {
@@ -113,8 +110,6 @@
     .header-identity__role { font-size: 0.82rem; color: var(--text-muted); display: none; }
     .header-identity__role.active { display: block; animation: fadeInRole 0.4s ease; }
     @keyframes fadeInRole { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-    .header-identity__operator { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #60a5fa; }
 
     .header-signal { padding: 0 28px; border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border); font-family: 'JetBrains Mono', monospace; }
     .header-signal__title { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
@@ -329,7 +324,7 @@
     .tool-tag--adv { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
     .tool-tag--int { background: rgba(128, 128, 128, 0.15); color: var(--text-muted); }
 
-    /* Blog List Section */
+    /* Blog List View */
     .blog-search-bar { position: relative; margin: 20px 0 24px; width: 100%; }
     .blog-search-bar input { width: 100%; background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px 14px 44px; color: var(--text-main); font-size: 0.88rem; outline: none; }
     .blog-search-bar input:focus { border-color: #2f68ee; }
@@ -357,56 +352,31 @@
     .blog-card__tags { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--card-border); padding-top: 12px; }
     .blog-tag-pill { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
-    /* SINGLE IN-PAGE BLOG POST VIEW (Exact Original Style) */
-    .blog-post-article { width: 100%; }
-    .back-blog-btn {
+    /* IN-PAGE BLOG VIEWER (Seamless In-Container Loading) */
+    .back-blog-nav {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       color: #60a5fa;
       text-decoration: none;
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       font-weight: 600;
       cursor: pointer;
-      margin-bottom: 22px;
-      transition: gap 0.2s ease;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
     }
-    .back-blog-btn:hover { gap: 12px; color: #93c5fd; }
-    .post-detail__title { font-size: 2.1rem; font-weight: 700; color: var(--text-main); line-height: 1.3; margin-bottom: 10px; }
-    .post-detail__meta { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-dim); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
-    .post-detail__cover-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: 30px; background: #0b0f19; border: 1px solid var(--card-border); }
-    .post-detail__cover-img { width: 100%; max-height: 480px; object-fit: cover; display: block; }
-    
-    /* Post Content Markdown Styling */
-    .post-detail__content { font-size: 0.95rem; line-height: 1.85; color: var(--text-muted); }
-    .post-detail__content h1, .post-detail__content h2, .post-detail__content h3, .post-detail__content h4 {
-      color: var(--text-main); font-weight: 700; margin: 32px 0 14px;
+    .back-blog-nav:hover {
+      gap: 12px;
+      color: #93c5fd;
     }
-    .post-detail__content h2 { font-size: 1.4rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; }
-    .post-detail__content h3 { font-size: 1.15rem; }
-    .post-detail__content p { margin-bottom: 18px; }
-    .post-detail__content ul, .post-detail__content ol { margin: 0 0 20px 24px; }
-    .post-detail__content li { margin-bottom: 8px; }
-    .post-detail__content blockquote {
-      border-left: 3px solid #2f68ee; padding: 12px 18px; background: var(--bg-color); border-radius: 0 8px 8px 0; margin-bottom: 20px; font-style: italic; color: #cbd5e1;
+    .inpage-blog-frame {
+      width: 100%;
+      height: 82vh;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: #0b0f17;
+      display: block;
     }
-    .post-detail__content code {
-      font-family: 'JetBrains Mono', monospace; background: var(--bg-color); padding: 3px 7px; border-radius: 5px; font-size: 0.85rem; color: #60a5fa; border: 1px solid var(--card-border);
-    }
-    .post-detail__content pre {
-      background: #090c13 !important; border: 1px solid var(--card-border); border-radius: 10px; padding: 18px 20px; overflow-x: auto; margin-bottom: 22px;
-    }
-    .post-detail__content pre code {
-      background: transparent !important; padding: 0 !important; border: none !important; color: #e2e8f0; font-size: 0.88rem;
-    }
-    .post-detail__content img { max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0; border: 1px solid var(--card-border); }
-    .post-detail__content table {
-      width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 0.88rem;
-    }
-    .post-detail__content th, .post-detail__content td {
-      border: 1px solid var(--card-border); padding: 10px 14px; text-align: left;
-    }
-    .post-detail__content th { background: var(--bg-color); color: var(--text-main); font-weight: 600; }
 
     /* Contact Section */
     .contact-availability-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.6px; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; }
@@ -1026,7 +996,6 @@
                 <button class="b-pill b-pill--active" onclick="filterBlogYear('all')">All</button>
                 <button class="b-pill" onclick="filterBlogYear('2026')">2026</button>
                 <button class="b-pill" onclick="filterBlogYear('2024')">2024</button>
-                <button class="b-pill" onclick="filterBlogYear('2022')">2022</button>
               </div>
             </div>
 
@@ -1037,55 +1006,52 @@
                 <button class="b-pill" onclick="filterBlogTopic('linux')">Linux</button>
                 <button class="b-pill" onclick="filterBlogTopic('security')">Security</button>
                 <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps</button>
-                <button class="b-pill" onclick="filterBlogTopic('automation')">Automation</button>
               </div>
             </div>
           </div>
 
-          <!-- DYNAMIC GRID CONTAINER -->
+          <!-- BLOG CARDS GRID -->
           <div class="blog-grid" id="blogCardsGrid">
-            <!-- Loading placeholder -->
-            <div id="blogLoadingNotice" style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">
-              Loading articles...
-            </div>
+            
+            <!-- Article 1: Custom Designed Linux Security HTML Page -->
+            <article class="blog-card" data-year="2026" data-topic="linux security devops" onclick="openBlogArticle('linux_server_security_guide.html')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge"><div class="blog-card__date-day">03</div><div class="blog-card__date-mo">AUG</div></div>
+                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:1.05rem; font-weight:800; color:#38bdf8; text-transform:uppercase;">SERVER SECURITY</div>
+                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">Ubuntu 24.04 LTS Hardening</div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS</h2>
+                <p class="blog-card__snippet">Essential first steps to secure a new Linux server on Ubuntu 24.04 — create a sudo user, harden SSH with Ed25519 keys, configure UFW firewall, and install Fail2ban.</p>
+                <div class="blog-card__meta-bar">
+                  <span>5 min read</span>
+                  <span class="blog-card__lang-tag">EN</span>
+                  <span>·</span>
+                  <span style="color:#60a5fa; font-weight:600;">Read Article &rarr;</span>
+                </div>
+                <div class="blog-card__tags">
+                  <span class="blog-tag-pill">#Linux</span><span class="blog-tag-pill">#Security</span><span class="blog-tag-pill">#DevOps</span>
+                </div>
+              </div>
+            </article>
+
           </div>
         </section>
 
-        <!-- 4B. SINGLE ARTICLE DETAIL VIEW (Original Aditya Pratama Style) -->
+        <!-- 4B. IN-PAGE ARTICLE VIEWER (Same Area, No Popup, No New Tab) -->
         <section id="view-blog-detail" class="view-panel">
-          <article class="blog-post-article">
-            <!-- Return to blog button -->
-            <a onclick="closeBlogArticle()" class="back-blog-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              <span>Return to Blog</span>
-            </a>
+          <a onclick="closeBlogArticle()" class="back-blog-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Return to Blog</span>
+          </a>
 
-            <header>
-              <h1 class="post-detail__title" id="articleDetailTitle"></h1>
-              <p class="post-detail__meta">
-                <span id="articleDetailDate"></span>
-                <span>·</span>
-                <span id="articleDetailReadTime"></span>
-              </p>
-
-              <div class="post-detail__cover-wrap" id="articleCoverWrap" style="display:none;">
-                <img id="articleCoverImg" class="post-detail__cover-img" src="" alt="Post cover">
-              </div>
-            </header>
-
-            <div class="post-detail__content" id="articleDetailBody">
-              <!-- Content injected dynamically via Markdown parser -->
-            </div>
-
-            <!-- Tags footer -->
-            <div style="margin-top:36px; padding-top:20px; border-top:1px solid var(--card-border);">
-              <span style="font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; margin-right:12px;">Tags:</span>
-              <span id="articleDetailTags" style="display:inline-flex; gap:8px; flex-wrap:wrap;"></span>
-            </div>
-          </article>
+          <!-- Embedded Seamless HTML Frame -->
+          <iframe id="blogArticleFrame" class="inpage-blog-frame" src=""></iframe>
         </section>
 
         <!-- 5. CONTACT VIEW -->
@@ -1212,7 +1178,7 @@
     </div>
   </div>
 
-  <!-- EXACT 3rd PIC SEARCH COMMAND MODAL (CTRL+K) -->
+  <!-- SEARCH MODAL (CTRL+K) -->
   <div class="search-modal" id="searchModal">
     <div class="search-command-box" onclick="event.stopPropagation()">
       <div class="search-input-header">
@@ -1257,9 +1223,7 @@
       el.classList.add('mobile-dock__item--active');
     }
 
-    // =========================================================
-    // CONSTELLATION NETWORK BACKGROUND
-    // =========================================================
+    // Canvas Background
     const canvas = document.getElementById('constellationCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -1332,9 +1296,7 @@
     }
     animateConstellation();
 
-    // =========================================================
-    // I18N DICTIONARY (FULL EN / DE)
-    // =========================================================
+    // I18N
     let currentLang = 'en';
     const translations = {
       en: {
@@ -1607,9 +1569,7 @@
       lucide.createIcons();
     }
 
-    // =========================================================
-    // SEARCH MODAL LOGIC (CTRL+K)
-    // =========================================================
+    // Search Logic
     const searchModal = document.getElementById('searchModal');
     const cmdSearchBox = document.getElementById('cmdSearchBox');
     const cmdSearchResults = document.getElementById('cmdSearchResults');
@@ -1684,9 +1644,7 @@
       switchView(viewName);
     }
 
-    // =========================================================
-    // NAVIGATION ROUTING
-    // =========================================================
+    // Navigation Switcher
     function switchView(viewName) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active-panel'));
       const activeP = document.getElementById('view-' + viewName);
@@ -1710,206 +1668,12 @@
     }
 
     // =========================================================
-    // DYNAMIC BLOG LOADER (Decap CMS / GitHub Content Sync)
+    // IN-PAGE BLOG ARTICLE OPENER (Load HTML Directly in Container)
     // =========================================================
-    let allBlogPosts = [];
+    function openBlogArticle(htmlFilePath) {
+      const frame = document.getElementById('blogArticleFrame');
+      frame.src = htmlFilePath;
 
-    // Fallback seed articles agar content/blogs folder abhi create na hua ho
-    const initialSeedPosts = [
-      {
-        id: "linux-server-security",
-        title: "Linux Server Security: Initial Setup Steps for Ubuntu 24.04",
-        date: "2026-08-03",
-        year: "2026",
-        readTime: "4 min read",
-        topics: "Linux, Security, DevOps",
-        snippet: "Essential first steps to secure a new Linux server on Ubuntu 24.04 — create a sudo user, harden SSH with Ed25519 keys, configure UFW firewall, and install Fail2ban.",
-        image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80",
-        body: `Every new cloud server starts with the same risk: default root access, password-based SSH, and an open attack surface. The first 10 minutes after provisioning are critical — bots scan for new servers within minutes of going online.
-
-### 1. Create a Dedicated Sudo User
-Log in as root, then create a non-root user with sudo privileges:
-\`\`\`bash
-adduser hunain
-usermod -aG sudo hunain
-\`\`\`
-
-Why a sudo user? Root login is predictable and dangerous — every bot on the internet tries \`root:password\`. A named sudo user adds a layer of obscurity and accountability.
-
-### 2. Set Up Ed25519 SSH Key Authentication
-Password-based SSH is the most common attack vector. Replace it with Ed25519 key pairs:
-\`\`\`bash
-ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519_myserver
-\`\`\`
-
-On the server (as the sudo user):
-\`\`\`bash
-mkdir -p ~/.ssh && chmod 700 ~/.ssh
-vim ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-\`\`\`
-
-### 3. Harden the SSH Daemon
-Edit \`/etc/ssh/sshd_config\` and apply these settings:
-\`\`\`bash
-PermitRootLogin no
-PasswordAuthentication no
-AllowUsers hunain
-\`\`\`
-
-Restart SSH:
-\`\`\`bash
-sudo systemctl restart ssh
-\`\`\`
-
-### 4. Configure UFW Firewall
-\`\`\`bash
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw enable
-\`\`\``
-      },
-      {
-        id: "static-assets-cdn",
-        title: "Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN",
-        date: "2026-04-30",
-        year: "2026",
-        readTime: "10 min read",
-        topics: "AWS, Cloudflare, CDN",
-        snippet: "Kelola static assets dengan AWS S3, Cloudflare CDN, dan GitHub Actions — lengkap dengan integrasi Vue, Nuxt, React, dan Next.js.",
-        image: "",
-        body: `Bundling static assets directly into Docker images bloats container size and slows CI/CD deployments. Decoupling assets into AWS S3 fronted by Cloudflare CDN drastically improves caching performance.`
-      }
-    ];
-
-    async function loadBlogPosts() {
-      const grid = document.getElementById('blogCardsGrid');
-      allBlogPosts = [];
-
-      try {
-        // GitHub Repository se contents fetch karne ki koshish
-        const response = await fetch('https://api.github.com/repos/hunain-haider/hunain-portfolio/contents/content/blogs');
-        if (response.ok) {
-          const files = await response.json();
-          for (const file of files) {
-            if (file.name.endsWith('.md')) {
-              const fileRes = await fetch(file.download_url);
-              const text = await fileRes.text();
-              const parsed = parseMarkdownFrontmatter(text);
-              allBlogPosts.push({
-                id: file.name.replace('.md', ''),
-                ...parsed
-              });
-            }
-          }
-        }
-      } catch (err) {
-        console.warn("Could not fetch remote files, using initial posts.", err);
-      }
-
-      if (allBlogPosts.length === 0) {
-        allBlogPosts = initialSeedPosts;
-      }
-
-      renderBlogCards(allBlogPosts);
-    }
-
-    function parseMarkdownFrontmatter(content) {
-      if (!content.startsWith('---')) {
-        return { title: 'Untitled', body: content, year: '2026', topics: '' };
-      }
-      const parts = content.split('---');
-      try {
-        const metadata = jsyaml.load(parts[1]);
-        const body = parts.slice(2).join('---').trim();
-        return { ...metadata, body };
-      } catch (e) {
-        return { title: 'Error parsing post', body: content, year: '2026', topics: '' };
-      }
-    }
-
-    function renderBlogCards(posts) {
-      const grid = document.getElementById('blogCardsGrid');
-      grid.innerHTML = '';
-
-      if (posts.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-dim);">No articles found.</div>`;
-        return;
-      }
-
-      posts.forEach(post => {
-        const tags = (post.topics || '').split(',').map(t => t.trim()).filter(Boolean);
-        const dateObj = new Date(post.date || '2026-01-01');
-        const day = dateObj.getDate() || '15';
-        const month = dateObj.toLocaleString('en-US', { month: 'short' }).toUpperCase() || 'AUG';
-
-        const card = document.createElement('article');
-        card.className = 'blog-card';
-        card.setAttribute('data-year', post.year || '2026');
-        card.setAttribute('data-topic', (post.topics || '').toLowerCase());
-        card.onclick = () => openBlogArticle(post.id);
-
-        card.innerHTML = `
-          <div class="blog-card__media">
-            <div class="blog-card__date-badge">
-              <div class="blog-card__date-day">${day}</div>
-              <div class="blog-card__date-mo">${month}</div>
-            </div>
-            ${post.image ? `<img src="${post.image}" style="width:100%;height:100%;object-fit:cover;">` : `
-              <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
-                <div style="font-family:'JetBrains Mono', monospace; font-size:1rem; font-weight:800; color:#38bdf8; text-transform:uppercase;">TECHNICAL GUIDE</div>
-                <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">Hunain Systems & Devops</div>
-              </div>
-            `}
-          </div>
-          <div class="blog-card__body">
-            <h2 class="blog-card__title">${post.title}</h2>
-            <p class="blog-card__snippet">${post.snippet || ''}</p>
-            <div class="blog-card__meta-bar">
-              <span>${post.readTime || '4 min read'}</span>
-              <span class="blog-card__lang-tag">EN</span>
-              <span>·</span>
-              <span style="color:#60a5fa; font-weight:600;">Read Article &rarr;</span>
-            </div>
-            <div class="blog-card__tags">
-              ${tags.map(t => `<span class="blog-tag-pill">#${t}</span>`).join('')}
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-      lucide.createIcons();
-    }
-
-    // =========================================================
-    // IN-PAGE ARTICLE OPEN & CLOSE (ADITYA STYLE)
-    // =========================================================
-    function openBlogArticle(postId) {
-      const post = allBlogPosts.find(p => p.id === postId);
-      if (!post) return;
-
-      document.getElementById('articleDetailTitle').innerText = post.title;
-      document.getElementById('articleDetailDate').innerText = post.date || 'August 2026';
-      document.getElementById('articleDetailReadTime').innerText = post.readTime || '4 min read';
-      
-      const coverWrap = document.getElementById('articleCoverWrap');
-      const coverImg = document.getElementById('articleCoverImg');
-      if (post.image) {
-        coverImg.src = post.image;
-        coverWrap.style.display = 'block';
-      } else {
-        coverWrap.style.display = 'none';
-      }
-
-      // Parse markdown to HTML
-      document.getElementById('articleDetailBody').innerHTML = marked.parse(post.body || '');
-
-      const tagsContainer = document.getElementById('articleDetailTags');
-      const tags = (post.topics || '').split(',').map(t => t.trim()).filter(Boolean);
-      tagsContainer.innerHTML = tags.map(t => `<span class="blog-tag-pill">#${t}</span>`).join('');
-
-      // Show detail view inside content-box
       document.getElementById('view-blog').classList.remove('active-panel');
       document.getElementById('view-blog-detail').classList.add('active-panel');
 
@@ -1917,12 +1681,16 @@ sudo ufw enable
     }
 
     function closeBlogArticle() {
+      const frame = document.getElementById('blogArticleFrame');
+      frame.src = '';
+
       document.getElementById('view-blog-detail').classList.remove('active-panel');
       document.getElementById('view-blog').classList.add('active-panel');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Filter Blog Posts
+    // Blog Filters
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
 
@@ -1946,16 +1714,23 @@ sudo ufw enable
 
     function applyBlogFilters() {
       const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
-      const filtered = allBlogPosts.filter(post => {
-        const matchesYear = (currentYearFilter === 'all' || (post.year && post.year.toString() === currentYearFilter));
-        const matchesTopic = (currentTopicFilter === 'all' || (post.topics && post.topics.toLowerCase().includes(currentTopicFilter)));
-        const matchesQuery = (!query || post.title.toLowerCase().includes(query) || (post.snippet && post.snippet.toLowerCase().includes(query)));
-        return matchesYear && matchesTopic && matchesQuery;
+      const cards = document.querySelectorAll('.blog-card');
+
+      cards.forEach(card => {
+        const year = card.getAttribute('data-year');
+        const topics = card.getAttribute('data-topic').toLowerCase();
+        const text = card.innerText.toLowerCase();
+
+        const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
+        const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
+        const matchesSearch = (!query || text.includes(query));
+
+        if (matchesYear && matchesTopic && matchesSearch) card.style.display = 'flex';
+        else card.style.display = 'none';
       });
-      renderBlogCards(filtered);
     }
 
-    // Portfolio & Resume Filters
+    // Portfolio & Education Filters
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll('.port-filter-btn');
       buttons.forEach(btn => btn.classList.remove('port-filter-btn--active'));
@@ -2138,7 +1913,7 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
       });
     }
 
-    // Contact Form Submit
+    // Contact Form
     function updateMsgCount(textarea) {
       document.getElementById('msgCharCount').innerText = `${textarea.value.length}/500`;
     }
@@ -2175,11 +1950,6 @@ telemetry    : 0 packet drops detected across core enterprise tunnels`;
         lucide.createIcons();
       }
     }
-
-    // Initial Blog Load
-    window.addEventListener('DOMContentLoaded', () => {
-      loadBlogPosts();
-    });
   </script>
   <script src="mobile-script.js"></script>
 </body>
