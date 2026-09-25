@@ -352,7 +352,7 @@
     .blog-card__tags { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--card-border); padding-top: 12px; }
     .blog-tag-pill { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
-    /* IN-PAGE BLOG VIEWER (Seamless In-Container Loading) */
+    /* IN-PAGE BLOG CONTAINER (No Inner Scroll Roller) */
     .back-blog-nav {
       display: inline-flex;
       align-items: center;
@@ -362,21 +362,118 @@
       font-size: 0.86rem;
       font-weight: 600;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       transition: all 0.2s ease;
     }
-    .back-blog-nav:hover {
-      gap: 12px;
-      color: #93c5fd;
-    }
+    .back-blog-nav:hover { gap: 12px; color: #93c5fd; }
+    
     .inpage-blog-frame {
       width: 100%;
-      height: 82vh;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      background: #0b0f17;
+      min-height: 1000px;
+      border: none;
+      background: transparent;
       display: block;
+      overflow: hidden;
     }
+
+    /* GLOBAL ARTICLE FOOTER SECTIONS (Pic 2 Match) */
+    .global-blog-footer {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .g-sec-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+    .g-topics-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .g-topic-pill {
+      background: var(--bg-color);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+    }
+    .g-share-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .g-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--bg-color);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .g-share-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-main);
+      background: var(--card-bg);
+    }
+
+    .g-comments-card {
+      background: var(--bg-color);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .g-comments-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .g-comments-header-line { flex: 1; height: 1px; background: var(--card-border); }
+    .g-reactions-area { text-align: center; padding-bottom: 18px; border-bottom: 1px solid var(--card-border); margin-bottom: 18px; }
+    .g-reactions-count { font-size: 0.75rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+    .g-comments-box { display: flex; flex-direction: column; gap: 12px; }
+    .g-comments-tabs { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; }
+    .g-textarea-comment {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      min-height: 110px;
+      outline: none;
+      resize: vertical;
+    }
+    .g-github-sign-btn {
+      align-self: flex-end;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #238636;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .g-github-sign-btn:hover { background: #2ea043; }
 
     /* Contact Section */
     .contact-availability-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.6px; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; }
@@ -1014,7 +1111,7 @@
           <div class="blog-grid" id="blogCardsGrid">
             
             <!-- Article 1: Custom Designed Linux Security HTML Page -->
-            <article class="blog-card" data-year="2026" data-topic="linux security devops" onclick="openBlogArticle('linux_server_security_guide.html')">
+            <article class="blog-card" data-year="2026" data-topic="linux security devops" onclick="openBlogArticle('linux_server_security_guide.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Linux', 'Security', 'Ubuntu', 'DevOps'])">
               <div class="blog-card__media">
                 <div class="blog-card__date-badge"><div class="blog-card__date-day">03</div><div class="blog-card__date-mo">AUG</div></div>
                 <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
@@ -1040,7 +1137,7 @@
           </div>
         </section>
 
-        <!-- 4B. IN-PAGE ARTICLE VIEWER (Same Area, No Popup, No New Tab) -->
+        <!-- 4B. IN-PAGE ARTICLE VIEWER (Auto Full Height, No Inner Roller + Pic 2 Footer) -->
         <section id="view-blog-detail" class="view-panel">
           <a onclick="closeBlogArticle()" class="back-blog-nav">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1050,8 +1147,75 @@
             <span>Return to Blog</span>
           </a>
 
-          <!-- Embedded Seamless HTML Frame -->
-          <iframe id="blogArticleFrame" class="inpage-blog-frame" src=""></iframe>
+          <!-- Embedded Seamless HTML Frame (Height dynamically resized) -->
+          <iframe id="blogArticleFrame" class="inpage-blog-frame" src="" scrolling="no" frameborder="0"></iframe>
+
+          <!-- GLOBAL BOTTOM FOOTER (Exact Pic 2 Layout - Automatically rendered for any blog) -->
+          <div class="global-blog-footer">
+            
+            <!-- Topics Section -->
+            <div>
+              <h3 class="g-sec-title">Topics</h3>
+              <div class="g-topics-wrap" id="globalBlogTopicsList">
+                <!-- Dynamically populated tags -->
+              </div>
+            </div>
+
+            <!-- Share this article -->
+            <div>
+              <h3 class="g-sec-title">Share this article</h3>
+              <div class="g-share-actions">
+                <a id="shareTwitterBtn" href="#" target="_blank" rel="noopener" class="g-share-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+                  <span>X</span>
+                </a>
+                <a id="shareLinkedInBtn" href="#" target="_blank" rel="noopener" class="g-share-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a id="shareFacebookBtn" href="#" target="_blank" rel="noopener" class="g-share-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  <span>Facebook</span>
+                </a>
+                <button onclick="copyCurrentBlogLink()" class="g-share-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <span id="copyLinkText">Copy Link</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Comments Box (Pic 2 Match) -->
+            <div class="g-comments-card">
+              <div class="g-comments-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>Comments</span>
+                <div class="g-comments-header-line"></div>
+              </div>
+
+              <div class="g-reactions-area">
+                <div class="g-reactions-count">0 reactions</div>
+                <div style="font-size: 1.3rem;">😊</div>
+              </div>
+
+              <div class="g-comments-box">
+                <div class="g-comments-tabs">
+                  <div style="display: flex; gap: 14px;">
+                    <span style="color: var(--text-main); font-weight: 700; border-bottom: 2px solid var(--accent-blue); padding-bottom: 2px; cursor: pointer;">Write</span>
+                    <span style="color: var(--text-dim); cursor: pointer;">Preview</span>
+                  </div>
+                  <span style="color: var(--text-dim); font-size: 0.72rem;">Markdown supported</span>
+                </div>
+
+                <textarea class="g-textarea-comment" placeholder="Sign in to comment..."></textarea>
+
+                <a href="https://github.com/login" target="_blank" rel="noopener" class="g-github-sign-btn">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Sign in with GitHub</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
         </section>
 
         <!-- 5. CONTACT VIEW -->
@@ -1668,12 +1832,53 @@
     }
 
     // =========================================================
-    // IN-PAGE BLOG ARTICLE OPENER (Load HTML Directly in Container)
+    // SEAMLESS IN-PAGE BLOG OPENER & DYNAMIC SOCIAL SHARING
     // =========================================================
-    function openBlogArticle(htmlFilePath) {
+    let currentBlogShareUrl = window.location.href;
+
+    function openBlogArticle(htmlFilePath, articleTitle, tagsArray) {
       const frame = document.getElementById('blogArticleFrame');
+      
+      // Auto-height adjustment: Frame expands to 100% of internal HTML size
+      frame.onload = function() {
+        try {
+          const doc = frame.contentWindow.document;
+          const bodyHeight = Math.max(
+            doc.body.scrollHeight, 
+            doc.documentElement.scrollHeight,
+            doc.body.offsetHeight
+          );
+          frame.style.height = (bodyHeight + 60) + 'px';
+        } catch(e) {
+          frame.style.height = '2800px';
+        }
+      };
+
       frame.src = htmlFilePath;
 
+      // 1. Populate Dynamic Tags (Pic 2 Match)
+      const tagsContainer = document.getElementById('globalBlogTopicsList');
+      tagsContainer.innerHTML = '';
+      if (tagsArray && tagsArray.length > 0) {
+        tagsArray.forEach(tag => {
+          const pill = document.createElement('span');
+          pill.className = 'g-topic-pill';
+          pill.innerText = '#' + tag;
+          tagsContainer.appendChild(pill);
+        });
+      }
+
+      // 2. Set Up Dynamic Share Links
+      const currentFullUrl = window.location.origin + '/' + htmlFilePath;
+      currentBlogShareUrl = currentFullUrl;
+      const encodedUrl = encodeURIComponent(currentFullUrl);
+      const encodedTitle = encodeURIComponent(articleTitle || "Engineering Article — Hunain Haider");
+
+      document.getElementById('shareTwitterBtn').href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+      document.getElementById('shareLinkedInBtn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+      document.getElementById('shareFacebookBtn').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+
+      // Switch Panels
       document.getElementById('view-blog').classList.remove('active-panel');
       document.getElementById('view-blog-detail').classList.add('active-panel');
 
@@ -1688,6 +1893,14 @@
       document.getElementById('view-blog').classList.add('active-panel');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyCurrentBlogLink() {
+      navigator.clipboard.writeText(currentBlogShareUrl).then(() => {
+        const txt = document.getElementById('copyLinkText');
+        txt.innerText = 'Copied!';
+        setTimeout(() => { txt.innerText = 'Copy Link'; }, 2000);
+      });
     }
 
     // Blog Filters
