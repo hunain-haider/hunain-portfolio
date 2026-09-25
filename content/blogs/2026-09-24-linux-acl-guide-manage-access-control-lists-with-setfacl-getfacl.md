@@ -17,7 +17,7 @@ There are many challenges in managing Linux in a modern business environment, in
 
 ### What You’ll Learn
 
-![](/assets/blog/screenshot_5.png)
+![](/assets/blog/ss.png)
 
 * How ACLs differ from basic Linux permissions
 * Setting per-user and per-group permissions with 
