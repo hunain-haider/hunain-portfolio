@@ -6,8 +6,15 @@
     <title>Hunain Portfolio - Content Manager</title>
   </head>
   <body>
-    <!-- Decap CMS Script -->
+    <!-- 1. Prevent Auto-Init Conflict -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
+    <!-- 2. Decap CMS Script -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- 3. Clean Single Config -->
     <script>
       CMS.init({
         config: {
@@ -27,7 +34,7 @@
           public_folder: "/assets/blog",
           collections: [
             {
-              name: "blog",
+              name: "blogs",
               label: "Blog Posts",
               folder: "content/blogs",
               create: true,
