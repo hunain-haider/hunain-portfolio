@@ -9,7 +9,7 @@ snippet: >+
   getfacl to manage file permissions beyond chmod. Practical examples and
   commands.
 
-image: /assets/blog/screenshot_5.png
+image: /assets/blog/screenshot_2.png
 ---
 There are many challenges in managing Linux in a modern business environment, including that we must be able to manage who has access to information or what is commonly called the Access Control List. To do that, you can use *basic linux filesystem permissions*.
 
