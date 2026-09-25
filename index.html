@@ -1033,122 +1033,21 @@
             </div>
           </div>
 
-         <div id="main-content" class="box box-content box-entrance box-entrance--content" bis_skin_checked="1"><div data-v-5d67c591="" class="" bis_skin_checked="1"><div data-v-5d67c591="" class="content" bis_skin_checked="1"><a data-v-5d67c591="" href="/blog" class="back-link"><span data-v-5d67c591="" class="back-link__icon"><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></span><span data-v-5d67c591="" class="back-link__text">Return to Blog</span></a><div data-v-5d67c591="" bis_skin_checked="1"><header data-v-5d67c591="" class="header-post"><h1 data-v-5d67c591="" class="title title--h1">Linux Server Security: Initial Setup Steps for Ubuntu 24.04</h1><p data-v-5d67c591="" class="blog-post__meta">August 3, 2022 <span data-v-5d67c591="" class="blog-header-meta">· 4 min read</span></p><div data-v-5d67c591="" class="blog-post__lead" bis_skin_checked="1"><p data-v-5d67c591="">Essential first steps to secure a new Linux server on Ubuntu 24.04 — create a sudo user, harden SSH with Ed25519 keys, configure UFW firewall, and install Fail2ban.</p></div><div data-v-5d67c591="" class="header-post__image-wrap" bis_skin_checked="1"><div data-v-5d67c591="" class="img-blur-wrap" bis_skin_checked="1"><img data-v-5d67c591="" class="cover img-blur-up is-loaded" fetchpriority="high" src="https://adityacprtm.dev/cdn-cgi/image/width=640,format=auto,quality=85/https://r2.adityacprtm.dev/production/konfigurasi_awal_untuk_mengamankan_server_baru_b1c4d92190.jpg" data-src="https://adityacprtm.dev/cdn-cgi/image/width=640,format=auto,quality=85/https://r2.adityacprtm.dev/production/konfigurasi_awal_untuk_mengamankan_server_baru_b1c4d92190.jpg" alt="Adityacprtm" width="750" height="422"></div></div><!----></header><aside data-v-5d67c591="" class="toc"><button data-v-5d67c591="" type="button" class="toc__toggle" aria-expanded="false" aria-controls="toc-list"><span data-v-5d67c591="">CONTENTS (7)</span><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon toc__toggle-icon"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div data-v-5d67c591="" class="toc__divider" bis_skin_checked="1"></div><ul data-v-5d67c591="" id="toc-list" class="toc__list"><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#1-create-a-sudo-user">1. Create a Sudo User</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#2-set-up-ed25519-ssh-key-authentication">2. Set Up Ed25519 SSH Key Authentication</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#3-harden-the-ssh-daemon">3. Harden the SSH Daemon</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#4-configure-ufw-firewall">4. Configure UFW Firewall</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#5-install-and-configure-fail2ban">5. Install and Configure Fail2ban</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#what-these-steps-protect-against">What These Steps Protect Against</a></li><li data-v-5d67c591="" class="toc__item toc__item-indent"><a data-v-5d67c591="" href="#next-steps">Next Steps</a></li></ul></aside><div data-v-5d67c591="" class="caption-post" data-zoom-container="" bis_skin_checked="1"><p>Every new cloud server starts with the same risk: default root access, password-based SSH, and an open attack surface. The first 10 minutes after provisioning are critical — bots scan for new servers within minutes of going online.</p>
-<p>This guide covers the four essential hardening steps for an Ubuntu 24.04 LTS server: user setup, Ed25519 SSH key authentication, UFW firewall, and Fail2ban intrusion prevention.</p>
-<h3 id="1-create-a-sudo-user">1. Create a Sudo User</h3>
-<p>Log in as root, then create a non-root user with sudo privileges:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code>adduser aditya
-usermod -aG <span class="hljs-built_in">sudo</span> aditya
-</code></pre></div></code></pre>
-<p>Why a sudo user? Root login is predictable and dangerous — every bot on the internet tries <code>root:password</code>. A named sudo user adds a layer of obscurity and accountability (every command is logged to <code>/var/log/auth.log</code> with the real username).</p>
-<h3 id="2-set-up-ed25519-ssh-key-authentication">2. Set Up Ed25519 SSH Key Authentication</h3>
-<p>Password-based SSH is the most common attack vector. Replace it with Ed25519 key pairs — the current gold standard for SSH keys, offering better security and performance than RSA 2048/4096.</p>
-<p><strong>On your local machine</strong>, generate a key pair:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code>ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519_myserver
-</code></pre></div></code></pre>
-<p>The <code>-a 100</code> flag increases KDF rounds for the private key passphrase, making brute-force decryption harder if your local machine is compromised.</p>
-<p><strong>On the server</strong> (as the sudo user):</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">mkdir</span> -p ~/.ssh &amp;&amp; <span class="hljs-built_in">chmod</span> 700 ~/.ssh
-vim ~/.ssh/authorized_keys   <span class="hljs-comment"># paste the public key content</span>
-<span class="hljs-built_in">chmod</span> 600 ~/.ssh/authorized_keys
-</code></pre></div></code></pre>
-<p>Test the key-based login from your local machine before disabling passwords:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code>ssh -i ~/.ssh/id_ed25519_myserver aditya@&lt;SERVER_IP&gt;
-</code></pre></div></code></pre>
-<h3 id="3-harden-the-ssh-daemon">3. Harden the SSH Daemon</h3>
-<p>Edit <code>/etc/ssh/sshd_config</code> and apply these settings:</p>
-<pre><code><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">code</span><span>Copy</span></div><pre class="hljs"><code># Disable root SSH login
-PermitRootLogin no
-
-# Disable password authentication (key-only)
-PasswordAuthentication no
-
-# Explicitly allow only your user
-AllowUsers aditya
-
-# Optional: restrict to a specific group
-AllowGroups sudo
-
-# Use modern key exchange algorithms
-KexAlgorithms curve25519-sha256,diffie-hellman-group-exchange-sha256
-</code></pre></div></code></pre>
-<p>Restart SSH:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">sudo</span> systemctl restart ssh
-</code></pre></div></code></pre>
-<blockquote>
-<p><strong>Keep your first terminal session open</strong> until you confirm the new connection works. If something breaks, you still have root access to fix it.</p>
-</blockquote>
-<h3 id="4-configure-ufw-firewall">4. Configure UFW Firewall</h3>
-<p>Ubuntu 24.04 ships with <code>ufw</code> (Uncomplicated Firewall). It replaces the older raw <code>iptables</code> approach with a simpler syntax:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-comment"># Default deny incoming, allow outgoing</span>
-<span class="hljs-built_in">sudo</span> ufw default deny incoming
-<span class="hljs-built_in">sudo</span> ufw default allow outgoing
-
-<span class="hljs-comment"># Allow SSH (change port if you moved SSH)</span>
-<span class="hljs-built_in">sudo</span> ufw allow ssh
-
-<span class="hljs-comment"># Allow HTTP/HTTPS if running a web server</span>
-<span class="hljs-built_in">sudo</span> ufw allow 80/tcp
-<span class="hljs-built_in">sudo</span> ufw allow 443/tcp
-
-<span class="hljs-comment"># Enable the firewall</span>
-<span class="hljs-built_in">sudo</span> ufw <span class="hljs-built_in">enable</span>
-</code></pre></div></code></pre>
-<p>Check the status:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">sudo</span> ufw status verbose
-</code></pre></div></code></pre>
-<p>If you’re on AWS or another cloud provider, also configure the <strong>security group / firewall rules</strong> at the cloud level as a defense-in-depth layer — never rely solely on the OS firewall.</p>
-<h3 id="5-install-and-configure-fail2ban">5. Install and Configure Fail2ban</h3>
-<p>Fail2ban monitors <code>/var/log/auth.log</code> for repeated failed login attempts and temporarily bans the source IP via iptables/nftables.</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">sudo</span> apt update
-<span class="hljs-built_in">sudo</span> apt install -y fail2ban
-</code></pre></div></code></pre>
-<p>Create a local jail configuration:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/fail2ban/jail.local &gt; /dev/null &lt;&lt; <span class="hljs-string">'EOF'</span>
-[sshd]
-enabled = <span class="hljs-literal">true</span>
-port = ssh
-maxretry = 3
-bantime = 3600
-findtime = 600
-EOF
-</code></pre></div></code></pre>
-<p>This bans an IP after 3 failed SSH attempts within 10 minutes, for 1 hour. Restart to apply:</p>
-<pre><code class="language-bash"><div class="code-block" bis_skin_checked="1"><div class="code-block__header" bis_skin_checked="1"><span class="code-block__lang">bash</span><span>Copy</span></div><pre class="hljs"><code><span class="hljs-built_in">sudo</span> systemctl restart fail2ban
-<span class="hljs-built_in">sudo</span> fail2ban-client status sshd
-</code></pre></div></code></pre>
-<h3 id="what-these-steps-protect-against">What These Steps Protect Against</h3>
-<table>
-<thead>
-<tr>
-<th>Threat</th>
-<th>Mitigation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Brute-force SSH login</td>
-<td>Ed25519 keys + Fail2ban + password auth disabled</td>
-</tr>
-<tr>
-<td>Root compromise via SSH</td>
-<td><code>PermitRootLogin no</code></td>
-</tr>
-<tr>
-<td>Port scanning / unauthorized access</td>
-<td>UFW firewall (cloud + OS level)</td>
-</tr>
-<tr>
-<td>Credential stuffing</td>
-<td>Named sudo user + auth logging</td>
-</tr>
-</tbody>
-</table>
-<h3 id="next-steps">Next Steps</h3>
-<p>With your server secured, you can now safely set up services. See the guide on <a href="/blog/create-an-open-vpn-server-in-seconds">setting up a self-hosted OpenVPN server</a> for secure remote access, or check out the <a href="/portfolio">portfolio</a> for a full-stack serverless project deployment example.</p>
-<hr>
-<p><em>First published August 2022. Updated July 2026 for Ubuntu 24.04 LTS, UFW, and Ed25519 best practices.</em></p>
-</div><!----><section data-v-5d67c591="" class="post-tags"><h2 data-v-5d67c591="" class="post-tags__title">Topics</h2><div data-v-5d67c591="" class="post-tags__list" bis_skin_checked="1"><a data-v-5d67c591="" href="/blog/tags/linux" class="pill pill--mono"> #Linux<!----></a><a data-v-5d67c591="" href="/blog/tags/security" class="pill pill--mono"> #Security<!----></a><a data-v-5d67c591="" href="/blog/tags/devops" class="pill pill--mono"> #DevOps<!----></a></div></section><section data-v-70521c7e="" data-v-5d67c591="" class="share"><h2 data-v-70521c7e="" class="share__title">Share this article</h2><div data-v-70521c7e="" class="share__actions" bis_skin_checked="1"><button data-v-70521c7e="" class="share__btn" aria-label="Share on X"><svg data-v-227bdf73="" data-v-70521c7e="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg><span data-v-70521c7e="" class="share__label">X</span></button><button data-v-70521c7e="" class="share__btn" aria-label="Share on LinkedIn"><svg data-v-227bdf73="" data-v-70521c7e="" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg><span data-v-70521c7e="" class="share__label">LinkedIn</span></button><button data-v-70521c7e="" class="share__btn" aria-label="Share on Facebook"><svg data-v-227bdf73="" data-v-70521c7e="" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg><span data-v-70521c7e="" class="share__label">Facebook</span></button><button data-v-70521c7e="" class="share__btn share__btn-copy" aria-label="Copy link to clipboard"><svg data-v-227bdf73="" data-v-70521c7e="" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span data-v-70521c7e="" class="share__label">Copy Link</span></button></div></section><div data-v-a6924921="" data-v-5d67c591="" class="giscus-container" bis_skin_checked="1"><div data-v-a6924921="" class="giscus-header" bis_skin_checked="1"><svg data-v-227bdf73="" data-v-a6924921="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span data-v-a6924921="" class="giscus-header__title">Comments</span><div data-v-a6924921="" class="giscus-header__line" bis_skin_checked="1"></div></div><div data-v-a6924921="" class="giscus-card" bis_skin_checked="1"><div data-v-a6924921="" id="giscus-comments" class="giscus" bis_skin_checked="1"><iframe class="giscus-frame" title="Comments" scrolling="no" allow="clipboard-write" src="https://giscus.app/en/widget?origin=https%3A%2F%2Fadityacprtm.dev%2Fblog%2Finitial-configuration-to-secure-new-server%23giscus-comments&amp;session=&amp;theme=dark&amp;reactionsEnabled=1&amp;emitMetadata=0&amp;inputPosition=top&amp;repo=Adityacprtm%2Fportfolio-comments&amp;repoId=R_kgDOUqU8HA&amp;category=General&amp;categoryId=DIC_kwDOUqU8HM4DGVsy&amp;strict=0&amp;description=Essential+first+steps+to+secure+a+new+Linux+server+on+Ubuntu+24.04+%E2%80%94+create+a+sudo+user%2C+harden+SSH+with+Ed25519+keys%2C+configure+UFW+firewall%2C+and+install+Fail2ban.&amp;backLink=https%3A%2F%2Fadityacprtm.dev%2Fblog%2Finitial-configuration-to-secure-new-server&amp;term=blog%2Finitial-configuration-to-secure-new-server" loading="lazy" style="height: 372px;" bis_size="{&quot;x&quot;:693,&quot;y&quot;:5597,&quot;w&quot;:748,&quot;h&quot;:150,&quot;abs_x&quot;:693,&quot;abs_y&quot;:5597}"></iframe></div></div></div><section data-v-5d67c591="" class="related"><h2 data-v-5d67c591="" class="related__title">Related posts</h2><ul data-v-5d67c591="" class="related__list"><li data-v-5d67c591=""><a data-v-5d67c591="" href="/blog/easy-ways-to-manage-access-control-list-acl-on-linux" class="related__item"><span data-v-5d67c591="" class="related__index">01</span><span data-v-5d67c591="" class="related__name">Linux ACL Guide: Manage Access Control Lists with setfacl &amp; getfacl</span><span data-v-5d67c591="" class="related__meta">Aug 2022</span><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon related__arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></li><li data-v-5d67c591=""><a data-v-5d67c591="" href="/blog/create-an-open-vpn-server-in-seconds" class="related__item"><span data-v-5d67c591="" class="related__index">02</span><span data-v-5d67c591="" class="related__name">How to Set Up a Self-Hosted OpenVPN Server on Ubuntu 24.04</span><span data-v-5d67c591="" class="related__meta">Aug 2022</span><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon related__arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></li><li data-v-5d67c591=""><a data-v-5d67c591="" href="/blog/little-background" class="related__item"><span data-v-5d67c591="" class="related__index">03</span><span data-v-5d67c591="" class="related__name">Little Background</span><span data-v-5d67c591="" class="related__meta">Aug 2022</span><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon related__arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></li></ul></section><nav data-v-5d67c591="" class="post-nav"><a data-v-5d67c591="" href="/blog/create-an-open-vpn-server-in-seconds" class="post-nav__item post-nav__prev"><span data-v-5d67c591="" class="post-nav__label"><svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Previous</span><span data-v-5d67c591="" class="post-nav__title">How to Set Up a Self-Hosted OpenVPN Server on Ubuntu 24.04</span></a><a data-v-5d67c591="" href="/blog/how-to-build-a-serverless-website-with-re-captcha-on-aws" class="post-nav__item post-nav__next"><span data-v-5d67c591="" class="post-nav__label">Next <svg data-v-227bdf73="" data-v-5d67c591="" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><span data-v-5d67c591="" class="post-nav__title">How to Build a Serverless Website with reCAPTCHA on AWS</span></a></nav></div></div></div><footer class="footer"><span class="footer__copyright"> © 2026 Aditya Chamim Pratama</span><span class="footer__sep" aria-hidden="true">·</span><a href="/contact" class="footer__contact" bis_skin_checked="1">Contact</a></footer></div>
+          <div class="blog-grid" id="blogCardsGrid">
+            <article class="blog-card" data-year="2026" data-topic="aws cloudflare cdn" onclick="openBlogPDF('Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN', 'Hunain.pdf')">
+              <div class="blog-card__media">
+                <div class="blog-card__date-badge"><div class="blog-card__date-day">30</div><div class="blog-card__date-mo">APR</div></div>
+                <div style="width:100%; height:100%; background: radial-gradient(circle at center, #1b283d 0%, #0c121e 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; font-weight:800; color:#38bdf8; text-transform:uppercase;">STATIC ASSET MGMT</div>
+                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">S3 + Cloudflare CDN Architecture</div>
+                </div>
+              </div>
+              <div class="blog-card__body">
+                <h2 class="blog-card__title">Stop Bundling Assets di Docker Image: Static Assets dengan S3 + Cloudflare CDN</h2>
+                <p class="blog-card__snippet">Kelola static assets dengan AWS S3, Cloudflare CDN, dan GitHub Actions — lengkap dengan integrasi Vue, Nuxt, React, dan Next.js.</p>
+                <div class="blog-card__meta-bar"><span>10 min read</span><span class="blog-card__lang-tag">ID</span><span>·</span><span style="color:#60a5fa;">Read PDF</span></div>
+                <div class="blog-card__tags"><span class="blog-tag-pill">AWS</span><span class="blog-tag-pill">Cloudflare</span><span class="blog-tag-pill">CDN</span></div>
+              </div>
             </article>
 
             <article class="blog-card" data-year="2026" data-topic="devops cicd docker" onclick="openBlogPDF('GitHub Actions Docker Cache: gha vs registry vs inline', 'Hunain.pdf')">
