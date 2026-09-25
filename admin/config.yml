@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: hunain-haider/hunain-portfolio
+  branch: main
+
+media_folder: "assets/blog"
+public_folder: "/assets/blog"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blogs"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "YYYY-MM-DD", timeFormat: false }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Year", name: "year", widget: "string", default: "2026" }
+      - { label: "Topics / Tags", name: "topics", widget: "string", hint: "Comma separated e.g. Linux, Security, DevOps" }
+      - { label: "Summary / Snippet", name: "snippet", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body Content", name: "body", widget: "markdown" }
