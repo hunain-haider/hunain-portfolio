@@ -2022,40 +2022,46 @@
     }
 
     function filterBlogTopic(topic) {
-      currentTopicFilter = topic;
-      document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => {
-        btn.classList.remove('b-pill--active');
-        if (btn.innerText.toLowerCase().trim() === topic) {
-          btn.classList.add('b-pill--active');
-        }
-      });
-      if (event && event.currentTarget && event.currentTarget.classList) {
-        event.currentTarget.classList.add('b-pill--active');
-      }
-      applyBlogFilters();
+  // Topic ko hamesha lowercase banayein taake casing ka issue na aaye
+  currentTopicFilter = topic.toLowerCase().trim();
+
+  document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => {
+    btn.classList.remove('b-pill--active');
+    // Button ke text ko bhi lowercase se match karein
+    if (btn.innerText.toLowerCase().trim() === currentTopicFilter) {
+      btn.classList.add('b-pill--active');
     }
+  });
 
-    function handleBlogSearch() {
-      applyBlogFilters();
+  if (window.event && window.event.currentTarget && window.event.currentTarget.classList) {
+    window.event.currentTarget.classList.add('b-pill--active');
+  }
+
+  applyBlogFilters();
+}
+
+function applyBlogFilters() {
+  const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.blog-card');
+
+  cards.forEach(card => {
+    const year = card.getAttribute('data-year');
+    // Card ke data-topic ko lowercase karein
+    const topics = (card.getAttribute('data-topic') || '').toLowerCase();
+    const text = card.innerText.toLowerCase();
+
+    const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
+    // Yahan dono lowercase compare honge:
+    const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
+    const matchesSearch = (!query || text.includes(query));
+
+    if (matchesYear && matchesTopic && matchesSearch) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
     }
-
-    function applyBlogFilters() {
-      const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.blog-card');
-
-      cards.forEach(card => {
-        const year = card.getAttribute('data-year');
-        const topics = card.getAttribute('data-topic').toLowerCase();
-        const text = card.innerText.toLowerCase();
-
-        const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
-        const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
-        const matchesSearch = (!query || text.includes(query));
-
-        if (matchesYear && matchesTopic && matchesSearch) card.style.display = 'flex';
-        else card.style.display = 'none';
-      });
-    }
+  });
+}
 
     // Portfolio & Education Filters
     function filterPortfolio(category) {
