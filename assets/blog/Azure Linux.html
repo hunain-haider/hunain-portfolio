@@ -46,7 +46,6 @@
       margin: 0 auto;
     }
 
-    /* Top Article Header Elements */
     .post-badge {
       display: inline-block;
       font-size: 11.5px;
@@ -77,7 +76,6 @@
       margin-bottom: 24px;
     }
 
-    /* Interactive Meta Bar */
     .meta-bar {
       display: flex;
       flex-wrap: wrap;
@@ -124,7 +122,6 @@
       box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
     }
 
-    /* Hero Banner Card */
     .hero-banner-card {
       width: 100%;
       max-height: 400px;
@@ -152,7 +149,6 @@
       transform: scale(1.015);
     }
 
-    /* Lead Hook / Punch Line Container */
     .lead-box {
       margin: 28px 0 36px 0;
       background: linear-gradient(180deg, rgba(17, 23, 38, 0.9) 0%, rgba(15, 23, 42, 0.5) 100%);
@@ -174,7 +170,7 @@
       color: #94a3b8;
     }
 
-    /* Accordion Table of Contents */
+    /* Accordion Table of Contents (Closed By Default) */
     .toc-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -246,7 +242,6 @@
       transform: translateX(4px);
     }
 
-    /* Typography */
     h2 {
       font-size: 23px;
       color: var(--text-heading);
@@ -279,7 +274,6 @@
       margin-bottom: 10px;
     }
 
-    /* Code Container / Architecture Diagrams */
     .code-container {
       background: var(--bg-code);
       border: 1px solid var(--border-color);
@@ -341,7 +335,6 @@
       color: #79c0ff;
     }
 
-    /* Highlight Badges */
     .badge {
       display: inline-block;
       font-family: 'Fira Code', monospace;
@@ -353,7 +346,6 @@
       border: 1px solid rgba(121, 192, 255, 0.15);
     }
 
-    /* Comparison Table */
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
@@ -391,7 +383,6 @@
       color: #f1f5f9;
     }
 
-    /* Feature Cards */
     .feature-card {
       background: linear-gradient(180deg, #111a2e 0%, #0d1424 100%);
       border: 1px solid #1e3a5f;
@@ -423,13 +414,11 @@
 
   <div class="container">
 
-    <!-- 1. Header Metadata Section -->
     <header>
       <span class="post-badge">Cloud Native Architecture</span>
       <h1>Next-Gen Container Security: Deep Dive into Azure Linux OS Guard and Pod Sandboxing</h1>
-      <p class="subtitle"></p>
+      <p class="subtitle">An architectural breakdown of immutable host OS engineering, hardware-rooted verification, and Kata micro-VM isolation in modern Kubernetes and AI infrastructures.</p>
       
-      <!-- Interactive Styled Meta Bar -->
       <div class="meta-bar">
         <span class="meta-chip author">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -450,21 +439,19 @@
       </div>
     </header>
 
-    <!-- 2. Hero Visual Banner (Updated with your direct Drive link) -->
     <div class="hero-banner-card">
       <img src="https://lh3.googleusercontent.com/d/1ox7hqZJL9u1dum3VJSLynMpah26SPEAc" 
            alt="Azure Linux OS Guard and Pod Sandboxing Architecture Banner" 
            loading="eager">
     </div>
 
-    <!-- 3. Requested Punch Line Hook Section (In English) -->
     <div class="lead-box">
       <p><strong>The Cloud Native Security Shift:</strong> In the era of cloud-native computing and AI workloads, infrastructure security has become paramount. Minimizing attack surfaces across Kubernetes clusters and ensuring strict isolation in multi-tenant environments has always posed a complex engineering challenge.</p>
       <p>At Ignite, Microsoft introduced two breakthrough advancements in container host and runtime security: <strong>Azure Linux with OS Guard (Public Preview)</strong> and <strong>AKS Pod Sandboxing (General Availability)</strong>. This article delivers an in-depth technical evaluation of their architectural mechanics, working principles, and production advantages.</p>
     </div>
 
-    <!-- 4. Accordion Table of Contents -->
-    <details class="toc-card" open>
+    <!-- ON THIS PAGE: Band (closed) by default -->
+    <details class="toc-card">
       <summary class="toc-summary">
         <span>ON THIS PAGE</span>
         <span class="toc-chevron">▼</span>
@@ -479,7 +466,6 @@
       </ul>
     </details>
 
-    <!-- 5. Main Technical Content -->
     <section id="problem">
       <h2>1. The Root Problem of Container Security</h2>
       <p>In standard Docker or default containerd runtime environments, containers execute by sharing the host operating system's kernel. While lightweight and performant, this architectural paradigm introduces two catastrophic attack surfaces:</p>
@@ -520,7 +506,6 @@
       <h2>3. Pod Sandboxing: Kernel-Level Isolation via Kata Containers</h2>
       <p>While OS Guard hardens the physical and virtual host node, AKS Pod Sandboxing constructs an impenetrable boundary between co-located workloads.</p>
 
-      <!-- Architecture Comparison ASCII Diagram -->
       <div class="code-container">
         <div class="code-header">
           <span class="code-tag">ARCHITECTURE: SHARED RUNTIME VS KATA SANDBOXING</span>
@@ -605,13 +590,12 @@
     </section>
 
     <footer class="footer">
-      Written and compiled by <strong>Hunain Haider</strong> 
+      Written and compiled by <strong>Hunain Haider</strong>
     </footer>
 
   </div>
 
   <script>
-    // Copy button implementation
     function copyCode(btn) {
       const container = btn.closest('.code-container');
       const code = container.querySelector('code').innerText;
@@ -630,7 +614,6 @@
       });
     }
 
-    // Smooth navigation jump
     document.querySelectorAll('.toc-list a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
