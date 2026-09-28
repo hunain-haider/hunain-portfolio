@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Server Security: Initial Hardening for Ubuntu 24.04 — Hunain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0b0f17',
+            brandCard: '#111622',
+            brandCode: '#0f141f',
+            brandBorder: '#1f293d',
+            brandBorderLight: '#2c3a54',
+            brandBlue: '#58a6ff',
+            brandBlueBg: '#172338',
+            brandText: '#c9d1d9',
+            brandHeading: '#f0f6fc',
+            brandMuted: '#8b949e',
+            brandSuccess: '#3fb950',
+            brandDanger: '#f85149'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0b0f17;
+      color: #c9d1d9;
+      font-family: 'Inter', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Accordion animation transition */
+    .toc-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    }
+    .toc-content.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .rotate-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Code styling scrollbars */
+    pre::-webkit-scrollbar {
+      height: 6px;
+    }
+    pre::-webkit-scrollbar-thumb {
+      background: #25334d;
+      border-radius: 4px;
+    }
+    pre::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brandBlue selection:text-white">
+
+  <header class="w-full border-b border-brandBorder/80 bg-brandDark/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-blue-500/20">
+          H
+        </div>
+        <span class="text-sm font-semibold tracking-wide text-brandHeading">Hunain <span class="text-brandMuted font-normal">/ Blog</span></span>
+      </div>
+      <div class="flex items-center space-x-4 text-xs font-medium text-brandMuted">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Ubuntu 24.04 LTS
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 w-full flex-1">
+
+    <!-- Article Header -->
+    <article class="space-y-6">
+      <div>
+        <div class="inline-block bg-brandBlueBg text-brandBlue border border-brandBorder text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-md mb-4 font-mono">
+          Infrastructure Security
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-brandHeading tracking-tight leading-snug">
+          Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS
+        </h1>
+        
+        <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-brandMuted mt-4 pb-6 border-b border-brandBorder">
+          <div class="flex items-center gap-2">
+            <span class="font-medium text-brandHeading">Hunain</span>
+          </div>
+          <span>•</span>
+          <time datetime="2024-05-15">Updated Guide</time>
+          <span>•</span>
+          <span>5 min read</span>
+          <span>•</span>
+          <span class="text-emerald-400 font-medium">Production Tested</span>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-5 rounded-xl bg-brandCard border border-brandBorder text-sm leading-relaxed space-y-2.5">
+        <div class="flex items-center gap-2 text-brandDanger font-semibold text-base">
+          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+          The 10-Minute Exposure Window
+        </div>
+        <p class="text-brandMuted">
+          The moment a new public cloud VPS goes online, automated scanners and crawler bots start probing its IP address within minutes. These bots run automated password dictionaries against <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">root</code>. 
+        </p>
+        <p class="text-brandText">
+          <span class="text-brandSuccess font-semibold">The Solution:</span> In this quick walkthrough, we will establish baseline protection: creating an isolated sudo user, disabling password attacks with Ed25519 SSH keys, configuring the UFW firewall, and setting up Fail2ban intrusion blocking.
+        </p>
+      </div>
+
+      <section class="rounded-xl border border-brandBorder bg-brandCard/90 overflow-hidden shadow-sm transition-all duration-200">
+        <button 
+          id="tocToggleBtn" 
+          type="button" 
+          class="w-full px-5 py-3.5 flex items-center justify-between text-left hover:bg-brandBorder/20 transition-colors focus:outline-none"
+          aria-expanded="false"
+        >
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-brandHeading">
+            CONTENTS (7)
+          </span>
+          <svg id="tocChevron" class="w-4 h-4 text-brandMuted transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <div id="tocDropdown" class="toc-content border-t border-brandBorder/60">
+          <nav class="p-4 space-y-1 text-sm font-normal">
+            <a href="#step-1" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">01.</span>
+                Create a Dedicated Sudo User
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Setup</span>
+            </a>
+            <a href="#step-2" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">02.</span>
+                Set Up Ed25519 SSH Key Authentication
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Crypto</span>
+            </a>
+            <a href="#step-3" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">03.</span>
+                Harden the SSH Daemon
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Config</span>
+            </a>
+            <a href="#step-4" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">04.</span>
+                Configure UFW Firewall
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Network</span>
+            </a>
+            <a href="#step-5" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">05.</span>
+                Install and Configure Fail2ban
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Defense</span>
+            </a>
+            <a href="#threat-matrix" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">06.</span>
+                What These Steps Protect Against
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Matrix</span>
+            </a>
+            <a href="#next-steps" class="toc-link flex items-center justify-between p-2 rounded-lg text-brandText hover:text-brandBlue hover:bg-brandBlueBg/40 transition">
+              <span class="flex items-center gap-2">
+                <span class="text-xs font-mono text-brandMuted">07.</span>
+                Next Steps & Recommendations
+              </span>
+              <span class="text-xs text-brandMuted font-mono">Finish</span>
+            </a>
+          </nav>
+        </div>
+      </section>
+
+      <section id="step-1" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">1</span>
+          Create a Sudo User
+        </h2>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-brandMuted">
+          Direct <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">root</code> access is an open liability because every automated scanner defaults to guessing its credentials. Adding an administrative user keeps all operations audited under an explicit identity in <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">/var/log/auth.log</code>.
+        </p>
+
+        <!-- Code Block 1 -->
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code><span class="text-slate-500"># Log in as root, then create user Hunain with sudo privileges</span>
+adduser Hunain
+usermod -aG sudo Hunain</code></pre>
+        </div>
+      </section>
+
+      <section id="step-2" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">2</span>
+          Set Up Ed25519 SSH Key Authentication
+        </h2>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-brandMuted">
+          Password-based logins are inherently prone to brute-force dictionaries. Modern <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">Ed25519</code> elliptic-curve cryptography offers robust collision resistance, small key footprints, and faster signature verification than legacy RSA keys.
+        </p>
+
+        <!-- Code Block 2 (Local Keygen) -->
+        <p class="text-sm text-brandText font-semibold">1. Generate the key pair on your personal machine:</p>
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code><span class="text-slate-500"># -a 100 increases Key Derivation Function (KDF) rounds against offline decryption</span>
+ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519_myserver</code></pre>
+        </div>
+
+        <!-- Code Block 3 (Remote Install) -->
+        <p class="text-sm text-brandText font-semibold">2. Install the public key on the server (as user Hunain):</p>
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code>mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys   <span class="text-slate-500"># Paste your public key file contents here</span>
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+        </div>
+
+        <!-- Code Block 4 (Verification) -->
+        <p class="text-sm text-brandText font-semibold">3. Verify the key login works from your local terminal:</p>
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code>ssh -i ~/.ssh/id_ed25519_myserver Hunain@&lt;SERVER_IP&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="step-3" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">3</span>
+          Harden the SSH Daemon
+        </h2>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-brandMuted">
+          Now that key authentication is verified, configure <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">/etc/ssh/sshd_config</code> to disable password fallback entirely and reject remote root requests.
+        </p>
+
+        <!-- Code Block 5 -->
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code><span class="text-slate-500"># Disable root SSH access</span>
+PermitRootLogin no
+
+<span class="text-slate-500"># Force key-only login (disable password prompts)</span>
+PasswordAuthentication no
+
+<span class="text-slate-500"># Restrict login specifically to Hunain</span>
+AllowUsers Hunain
+AllowGroups sudo
+
+<span class="text-slate-500"># Modern Key Exchange Algorithms</span>
+KexAlgorithms curve25519-sha256,diffie-hellman-group-exchange-sha256</code></pre>
+        </div>
+
+        <p class="text-sm text-brandMuted">Restart the daemon to apply settings:</p>
+        
+        <!-- Code Block 6 -->
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code>sudo systemctl restart ssh</code></pre>
+        </div>
+
+        <div class="p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+          <strong>Tip:</strong> Keep your current terminal session open until you confirm a new login succeeds in another tab.
+        </div>
+      </section>
+
+      <section id="step-4" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">4</span>
+          Configure UFW Firewall
+        </h2>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-brandMuted">
+          Ubuntu includes <code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">ufw</code> (Uncomplicated Firewall) to manage iptables/nftables packet filtering. Deny all unsolicited incoming connections while keeping designated application ports reachable:
+        </p>
+
+        <!-- Code Block 7 -->
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code><span class="text-slate-500"># Set baseline traffic rules</span>
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+<span class="text-slate-500"># Permit SSH (port 22 or your custom port)</span>
+sudo ufw allow ssh
+
+<span class="text-slate-500"># Allow standard web traffic</span>
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+<span class="text-slate-500"># Enable firewall rules and check status</span>
+sudo ufw enable
+sudo ufw status verbose</code></pre>
+        </div>
+      </section>
+
+      <section id="step-5" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">5</span>
+          Install and Configure Fail2ban
+        </h2>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-brandMuted">
+          Fail2ban dynamically monitors server authentication logs. If an IP triggers repeated authentication failures, it gets dropped by the firewall for an hour.
+        </p>
+
+        <!-- Code Block 8 -->
+        <div class="rounded-xl border border-brandBorder bg-brandCode overflow-hidden shadow-md">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-brandBorder/80 bg-brandCard/60">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brandMuted">CODE</span>
+            <button class="copy-btn text-xs font-semibold text-brandText hover:text-white px-2.5 py-1 rounded border border-transparent hover:border-brandBorder hover:bg-brandBorder/40 transition flex items-center gap-1.5" data-clipboard>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-4 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto text-emerald-400"><code><span class="text-slate-500"># Install Fail2ban package</span>
+sudo apt update &amp;&amp; sudo apt install -y fail2ban
+
+<span class="text-slate-500"># Configure custom SSH jail override</span>
+sudo tee /etc/fail2ban/jail.local &gt; /dev/null &lt;&lt; 'EOF'
+[sshd]
+enabled = true
+port = ssh
+maxretry = 3
+bantime = 3600
+findtime = 600
+EOF
+
+<span class="text-slate-500"># Restart and inspect status</span>
+sudo systemctl restart fail2ban
+sudo fail2ban-client status sshd</code></pre>
+        </div>
+      </section>
+
+      <section id="threat-matrix" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-sm font-mono font-bold">✓</span>
+          What These Steps Protect Against
+        </h2>
+
+        <p class="text-sm sm:text-base text-brandMuted">
+          Here is a breakdown of common attack vectors and the defensive layers you just configured:
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border border-brandBorder bg-brandCard">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-brandBorder bg-brandCard/90 text-brandHeading font-semibold">
+                <th class="p-3.5 sm:p-4">Threat Vector</th>
+                <th class="p-3.5 sm:p-4">Applied Defense</th>
+                <th class="p-3.5 sm:p-4">Security Impact</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brandBorder/60 text-brandText">
+              <tr class="hover:bg-brandBorder/10 transition">
+                <td class="p-3.5 sm:p-4 font-medium text-brandHeading">Brute-Force SSH Logins</td>
+                <td class="p-3.5 sm:p-4 text-brandBlue font-mono text-xs">Ed25519 Keys + Fail2ban</td>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-medium">Bans attacking IPs after 3 attempts</td>
+              </tr>
+              <tr class="hover:bg-brandBorder/10 transition">
+                <td class="p-3.5 sm:p-4 font-medium text-brandHeading">Root Compromise via SSH</td>
+                <td class="p-3.5 sm:p-4 text-brandBlue font-mono text-xs">PermitRootLogin no</td>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-medium">Shuts off default target accounts</td>
+              </tr>
+              <tr class="hover:bg-brandBorder/10 transition">
+                <td class="p-3.5 sm:p-4 font-medium text-brandHeading">Port Probing &amp; Discovery</td>
+                <td class="p-3.5 sm:p-4 text-brandBlue font-mono text-xs">UFW Firewall (deny incoming)</td>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-medium">Blocks unmapped port exposure</td>
+              </tr>
+              <tr class="hover:bg-brandBorder/10 transition">
+                <td class="p-3.5 sm:p-4 font-medium text-brandHeading">Credential Stuffing</td>
+                <td class="p-3.5 sm:p-4 text-brandBlue font-mono text-xs">User Hunain + Key Auth</td>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-medium">Passwords are never evaluated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="next-steps" class="pt-6 space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-brandHeading flex items-center gap-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-brandBlueBg text-brandBlue border border-brandBorder text-sm font-mono font-bold">7</span>
+          Next Steps
+        </h2>
+        
+        <div class="p-5 rounded-xl border border-brandBorder bg-gradient-to-b from-brandCard to-brandDark space-y-3">
+          <p class="text-sm sm:text-base text-brandText leading-relaxed">
+            With baseline security established, your server is ready for applications. Consider implementing these next layers:
+          </p>
+          <ul class="space-y-2 text-sm text-brandMuted list-disc list-inside">
+            <li>Enable automatic security updates (<code class="text-brandBlue font-mono bg-brandBlueBg px-1.5 py-0.5 rounded text-xs">sudo apt install unattended-upgrades</code>)</li>
+            <li>Configure Cloud Provider Security Groups as an outer perimeter layer</li>
+            <li>Set up private VPN access (WireGuard or OpenVPN) for internal tools</li>
+            <li>Automate periodic off-site encrypted backups</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="w-full border-t border-brandBorder bg-brandDark/80 py-8 mt-16 text-center text-xs text-brandMuted">
+    <div class="max-w-4xl mx-auto px-4 space-y-2">
+      <p>© 2026 Hunain. Built with modern Linux system administration practices.</p>
+      <p>Ubuntu is a registered trademark of Canonical Ltd.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button 
+    id="backToTop" 
+    class="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-brandCard border border-brandBorderLight text-brandText hover:text-white flex items-center justify-center shadow-lg transition-all opacity-0 pointer-events-none hover:scale-105 active:scale-95"
+    title="Back to Top"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+  <script>
+    // 1. Accordion Toggle for Contents (7)
+    const tocBtn = document.getElementById('tocToggleBtn');
+    const tocDropdown = document.getElementById('tocDropdown');
+    const tocChevron = document.getElementById('tocChevron');
+
+    let isTocOpen = false;
+
+    tocBtn.addEventListener('click', () => {
+      isTocOpen = !isTocOpen;
+      if (isTocOpen) {
+        tocDropdown.classList.add('open');
+        tocChevron.classList.add('rotate-chevron');
+        tocBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        tocDropdown.classList.remove('open');
+        tocChevron.classList.remove('rotate-chevron');
+        tocBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close accordion when clicking an internal link
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', () => {
+        // Keep smooth scroll experience
+        tocDropdown.classList.remove('open');
+        tocChevron.classList.remove('rotate-chevron');
+        isTocOpen = false;
+        tocBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 2. Reliable Clipboard Copy Functionality
+    document.querySelectorAll('[data-clipboard]').forEach(button => {
+      button.addEventListener('click', () => {
+        const codeElement = button.closest('.rounded-xl').querySelector('pre code');
+        if (!codeElement) return;
+
+        // Clean comments or extract full text
+        const codeText = codeElement.innerText;
+
+        // Perform clipboard write
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(codeText).then(() => showCopiedFeedback(button));
+        } else {
+          // Fallback for sandboxed or older frames
+          const textArea = document.createElement('textarea');
+          textArea.value = codeText;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-9999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            showCopiedFeedback(button);
+          } catch (err) {
+            console.error('Fallback copy error:', err);
+          }
+          document.body.removeChild(textArea);
+        }
+      });
+    });
+
+    function showCopiedFeedback(button) {
+      const originalHTML = button.innerHTML;
+      button.innerHTML = `
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span class="text-emerald-400 font-semibold">Copied!</span>
+      `;
+      button.classList.add('bg-emerald-500/10', 'border-emerald-500/30');
+
+      setTimeout(() => {
+        button.innerHTML = originalHTML;
+        button.classList.remove('bg-emerald-500/10', 'border-emerald-500/30');
+      }, 2000);
+    }
+
+    // 3. Floating Back to Top Button Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+        backToTopBtn.classList.add('opacity-100');
+      } else {
+        backToTopBtn.classList.remove('opacity-100');
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
