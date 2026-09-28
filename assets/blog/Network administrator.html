@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Evolution of Network Administration | Hunain Haider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-canvas: #0b0f19;
+      --bg-card: #111726;
+      --bg-code: #090d16;
+      --border-color: #1e293b;
+      --border-focus: #38bdf8;
+      --text-main: #cbd5e1;
+      --text-heading: #f8fafc;
+      --text-muted: #64748b;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #818cf8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.85;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 16px 90px 16px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .post-badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.3;
+      color: var(--text-heading);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 17.5px;
+      line-height: 1.65;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+      font-size: 13.5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .meta-chip:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #f1f5f9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.15);
+    }
+
+    .meta-chip.author {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(99, 102, 241, 0.25);
+      color: #c7d2fe;
+      font-weight: 600;
+    }
+
+    .meta-chip.author:hover {
+      background: rgba(99, 102, 241, 0.22);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Hero Banner Placeholder */
+    .hero-banner-card {
+      width: 100%;
+      max-height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-bottom: 36px;
+      background: #060b14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-banner-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .lead-box {
+      margin: 28px 0 36px 0;
+      background: linear-gradient(180deg, rgba(17, 23, 38, 0.9) 0%, rgba(15, 23, 42, 0.5) 100%);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      font-size: 16px;
+      color: #e2e8f0;
+      line-height: 1.8;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Accordion Table of Contents (Closed by default) */
+    .toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .toc-card:hover {
+      border-color: var(--border-focus);
+    }
+
+    .toc-summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: 0.05em;
+    }
+
+    .toc-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .toc-chevron {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+    }
+
+    details[open] .toc-chevron {
+      transform: rotate(180deg);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 0 20px;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 14px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toc-list a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-list a:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    /* Headings and Typography */
+    h2 {
+      font-size: 23px;
+      color: var(--text-heading);
+      margin: 48px 0 18px 0;
+      padding-top: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #f1f5f9;
+      margin: 28px 0 12px 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 22px;
+      color: var(--text-main);
+      font-size: 16px;
+    }
+
+    ul, ol {
+      margin: 0 0 24px 24px;
+      color: var(--text-main);
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      background: linear-gradient(180deg, #111a2e 0%, #0d1424 100%);
+      border: 1px solid #1e3a5f;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin: 30px 0;
+      background: var(--bg-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+      text-align: left;
+    }
+
+    thead {
+      background: #162035;
+      color: var(--text-heading);
+      font-family: 'Fira Code', monospace;
+      font-size: 12.5px;
+    }
+
+    th, td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td strong {
+      color: #f1f5f9;
+    }
+
+    /* Interactive Dropdown / Accordion FAQ Styles */
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 28px 0 40px 0;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-focus);
+    }
+
+    .faq-item[open] {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: #131b2e;
+    }
+
+    .faq-question {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .faq-question::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-chevron {
+      font-size: 13px;
+      color: var(--primary);
+      transition: transform 0.25s ease;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 22px 20px 22px;
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.75;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 14px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <span class="post-badge">Infrastructure & Networks</span>
+      <h1>The Evolution of Network Administration: Skills, Technologies, and Career Opportunities in the Modern IT Era</h1>
+           
+      <div class="meta-bar">
+        <span class="meta-chip author">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Written by Hunain Haider
+        </span>
+        <span class="meta-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Network Engineering Notes
+        </span>
+        <span class="meta-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          September 2026
+        </span>
+        <span class="meta-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          11 min read
+        </span>
+      </div>
+    </header>
+
+    <!-- Top Banner Card (Aap apna image link yahan add kar sakte hain) -->
+    <div class="hero-banner-card">
+      <img src="https://lh3.googleusercontent.com/d/1zXJ6YZ9hvT-v_MjmBgrhis5x8Zvj8ZGe" 
+           alt="Network Administration Evolution Banner" 
+           loading="eager">
+    </div>
+<div class="lead-box">
+      <strong>The Modern Infrastructure Paradigm:</strong> Network administration has changed significantly over the past few decades. In the early days of enterprise IT, network administrators primarily focused on maintaining physical infrastructure, configuring routers and switches, managing local-area networks, and keeping employees connected to internal systems. Modern organizations operate across distributed hybrid clouds, remote workforces, and SaaS platforms — transforming the administrator's role from purely hardware cabling to automated, identity-based infrastructure engineering.
+    </div>
+
+    
+    <!-- Collapsible Table of Contents (Closed by default) -->
+    <details class="toc-card">
+      <summary class="toc-summary">
+        <span>ON THIS PAGE</span>
+        <span class="toc-chevron">▼</span>
+      </summary>
+      <div class="toc-divider"></div>
+      <ul class="toc-list">
+        <li><a href="#what-is">1. What Is Network Administration?</a></li>
+        <li><a href="#how-evolved">2. How Network Administration Has Evolved</a></li>
+        <li><a href="#remote-hybrid">3. Remote and Hybrid Work Impacts</a></li>
+        <li><a href="#cybersecurity">4. Cybersecurity as Part of Network Administration</a></li>
+        <li><a href="#automation">5. The Rise of Network Automation</a></li>
+        <li><a href="#cloud-skills">6. Cloud Networking Skills</a></li>
+        <li><a href="#comparison">7. Yesterday vs. Modern Network Administration</a></li>
+        <li><a href="#day-in-life">8. What Does a Network Administrator Do Today?</a></li>
+        <li><a href="#future">9. The Future of Network Administration</a></li>
+        <li><a href="#faqs">10. Frequently Asked Questions (FAQ)</a></li>
+        <li><a href="#conclusion">11. Conclusion</a></li>
+      </ul>
+    </details>
+
+    <section id="what-is">
+      <h2>1. What Is Network Administration?</h2>
+      <p>Network administration is the process of managing, maintaining, monitoring, securing, and troubleshooting an organization's network infrastructure.</p>
+      <p>A network administrator helps ensure that users, applications, devices, servers, and services can communicate reliably and securely. Depending on the organization, the role involves:</p>
+      <ul>
+        <li>Routers and switches</li>
+        <li>Wireless networks</li>
+        <li>Firewalls and VPNs</li>
+        <li>DNS and DHCP</li>
+        <li>Network monitoring platforms</li>
+        <li>Cloud networking and virtual networks</li>
+        <li>Identity and access systems</li>
+        <li>Automation and scripting</li>
+      </ul>
+    </section>
+
+    <section id="how-evolved">
+      <h2>2. How Network Administration Has Evolved</h2>
+      
+      <div class="feature-card">
+        <div class="feature-title">Stage 1: The Traditional On-Premises Era</div>
+        <p>In traditional IT environments, most resources were on-site. Administrators focused on physical switches, Ethernet cabling, local DNS/DHCP, on-prem servers, and manual hardware setups. The perimeter was centralized within company facilities.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Stage 2: The Internet and Enterprise Expansion</div>
+        <p>As multi-branch operations grew, networking expanded to WAN connectivity, NAT, TCP/IP fundamentals, IPsec VPNs, site-to-site connectivity, and internet gateway firewall management.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Stage 3: The Cloud and Virtualization Era</div>
+        <p>With AWS, Azure, and GCP adoption, administrators operate across Virtual Private Clouds (VPCs), subnets, cloud routing, Security Groups, Transit Gateways, and hybrid interconnects (DirectConnect / ExpressRoute).</p>
+      </div>
+    </section>
+
+    <section id="remote-hybrid">
+      <h2>3. Remote and Hybrid Work Changed Network Management</h2>
+      <p>Rather than walking over to a local workstation, administrators now manage connections from home offices, coworking hubs, and mobile environments worldwide. Secure Remote Access, Zero Trust Network Access (ZTNA), centralized endpoint management, and split-tunnel VPN policies have become essential.</p>
+    </section>
+
+    <section id="cybersecurity">
+      <h2>4. Cybersecurity Has Become Part of Network Administration</h2>
+      <p>Performance without security creates vulnerability. Network teams actively partner with security analysts to enforce:</p>
+      <ul>
+        <li>Network segmentation and micro-segmentation</li>
+        <li>Multi-factor authentication (MFA) on management planes</li>
+        <li>Firmware and CVE patch management</li>
+        <li>Monitoring anomalous outbound traffic and exfiltration signals</li>
+      </ul>
+    </section>
+
+    <section id="automation">
+      <h2>5. The Rise of Network Automation</h2>
+      <p>Manual device-by-device CLI configuration has shifted toward infrastructure-as-code and automation frameworks:</p>
+      <ul>
+        <li><strong>Python:</strong> Scripting for netmiko, scrapli, REST APIs, and structured data analysis.</li>
+        <li><strong>Ansible:</strong> Agentless configuration playbooks across switches and cloud virtual appliances.</li>
+        <li><strong>RESTCONF & NETCONF:</strong> Programmatic device control and state telemetry.</li>
+      </ul>
+    </section>
+
+    <section id="cloud-skills">
+      <h2>6. Cloud Networking Skills Are Increasingly Valuable</h2>
+      <p>Traditional networking knowledge maps directly into cloud platforms:</p>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Traditional Networking</th>
+              <th>Cloud Networking Concept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>VLANs</strong></td><td>Virtual Private Clouds (VPC / VNet) & Subnets</td></tr>
+            <tr><td><strong>Physical Routers</strong></td><td>Cloud Virtual Routers & Route Tables</td></tr>
+            <tr><td><strong>Hardware Firewalls</strong></td><td>Cloud Security Groups & Network Security Groups (NSGs)</td></tr>
+            <tr><td><strong>Site-to-Site VPN</strong></td><td>Cloud VPN Gateways & Transit Hubs</td></tr>
+            <tr><td><strong>Physical Servers</strong></td><td>Virtual Machines & Compute Instances</td></tr>
+            <tr><td><strong>Local DNS Server</strong></td><td>Managed Cloud DNS (Route 53, Azure DNS)</td></tr>
+            <tr><td><strong>On-Premises Data Center</strong></td><td>Cloud Regions & Availability Zones</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <h2>7. Yesterday vs. Modern Network Administration</h2>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Operational Area</th>
+              <th>Traditional Environment</th>
+              <th>Modern Environment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Infrastructure</strong></td><td>Primarily physical</td><td>Physical + virtual + multi-cloud</td></tr>
+            <tr><td><strong>User Access</strong></td><td>Mostly office-based</td><td>Office, remote, mobile, and roaming</td></tr>
+            <tr><td><strong>Management</strong></td><td>Manual CLI configuration</td><td>Automation scripts, APIs, central dashboards</td></tr>
+            <tr><td><strong>Security</strong></td><td>Perimeter-focused</td><td>Identity, endpoint, Zero Trust, cloud posture</td></tr>
+            <tr><td><strong>Applications</strong></td><td>Local on-prem servers</td><td>SaaS, hybrid architectures, microservices</td></tr>
+            <tr><td><strong>Troubleshooting</strong></td><td>Local physical testing</td><td>Distributed tracing & remote telemetry</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="day-in-life">
+      <h2>8. What Does a Network Administrator Do Today?</h2>
+      <ol>
+        <li>Review real-time observability telemetry and alerts.</li>
+        <li>Investigate latency, packet loss, or routing bottlenecks.</li>
+        <li>Deploy updates to switches, firewalls, and cloud network gateways.</li>
+        <li>Troubleshoot remote-access VPN handshakes and user identity policies.</li>
+        <li>Write and run automation playbooks for routine maintenance.</li>
+        <li>Maintain detailed topology and configuration documentation.</li>
+      </ol>
+    </section>
+
+    <section id="future">
+      <h2>9. The Future of Network Administration</h2>
+      <p>The industry continues to advance toward software-defined infrastructure (SD-WAN, SASE), AI-assisted operations (AIOps), and granular telemetry observability. While automated tools assist in identifying anomalies, human engineers with deep fundamental knowledge are required to architect, validate, and secure the network.</p>
+    </section>
+
+    <!-- 10. FREQUENTLY ASKED QUESTIONS (Interactive Dropdown Style) -->
+    <section id="faqs">
+      <h2>10. Frequently Asked Questions</h2>
+      <div class="faq-container">
+        
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is network administration still a good IT career?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            Yes. Network administration remains a vital IT foundation because enterprises depend entirely on reliable, secure connectivity to operate. Career growth is strongest for professionals who complement traditional networking skills with cloud networking, cybersecurity, and automation abilities.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do I need CCNA to become a network administrator?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            No single certification is universally required. Cisco's CCNA provides a structured path for networking fundamentals and routing/switching, while CompTIA Network+ offers a vendor-neutral baseline. Requirements vary across organizations and job roles.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Should I learn AWS or Cisco first?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            If your goal is to build strong foundational networking knowledge (IP addressing, subnets, routing protocols), starting with Cisco principles is ideal. Once these basics are clear, learning how they translate into AWS (VPCs, route tables, peering) or Azure becomes straightforward.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is Python useful for network administrators?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            Yes, highly useful. Python allows you to automate device inventory collection, push bulk configuration changes across dozens of devices simultaneously, interact with REST APIs, and parse syslog files quickly.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is cybersecurity knowledge necessary for network administrators?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            Modern network engineers must understand security principles. Concepts like access control lists (ACLs), Zero Trust, firewall segmentation, and secure remote handshakes are now integrated into everyday network operations.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Which certifications are internationally recognized?</span>
+            <span class="faq-chevron">▼</span>
+          </summary>
+          <div class="faq-answer">
+            Credentials from Cisco (CCNA, CCNP), CompTIA (Network+, Security+), Microsoft Azure (AZ-700 Network Engineer), and AWS (Advanced Networking Specialty) are recognized globally across IT and cloud engineering domains.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="conclusion">
+      <h2>11. Conclusion</h2>
+      <p>Network administration has transformed from physical cable maintenance into a comprehensive discipline spanning cloud architectures, cybersecurity, automated workflows, and distributed infrastructure management.</p>
+      <p>The core fundamentals — routing, switching, IP architecture, DNS, and systematic troubleshooting — remain irreplaceable. Mastering these core principles and expanding into cloud and automation builds a versatile, future-proof career in enterprise IT.</p>
+    </section>
+
+    <footer class="footer">
+      Written and compiled by <strong>Hunain Haider</strong> • Practical Infrastructure & Network Engineering Series.<br>
+      Published September 2026.
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll for Table of Contents links
+    document.querySelectorAll('.toc-list a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, null, '#' + targetId);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
