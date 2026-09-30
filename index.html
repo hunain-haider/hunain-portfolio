@@ -158,7 +158,7 @@
     .cv-btn--single:hover { 
       background: #8eaef5 !important; 
       border-color: #8eaef5 !important; 
-      color: #000000 !important;
+      color: #000000 !important; 
     }
 
     .cv-btn--single:hover svg { 
@@ -386,6 +386,39 @@
     .blog-card__lang-tag { background: rgba(128, 128, 128, 0.15); padding: 2px 6px; border-radius: 4px; color: var(--text-main); }
     .blog-card__tags { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--card-border); padding-top: 12px; }
     .blog-tag-pill { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    /* Blog Show More Container */
+    .blog-pagination-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+      width: 100%;
+    }
+    .blog-show-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-color);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 10px 24px;
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      transition: all 0.25s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+    .blog-show-more-btn:hover {
+      border-color: var(--accent-blue);
+      color: #60a5fa;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(47, 104, 238, 0.2);
+    }
+    .blog-show-more-btn svg {
+      transition: transform 0.25s ease;
+    }
 
     /* In-page Blog Container */
     .back-blog-nav {
@@ -1194,7 +1227,7 @@
             </article>
             
             <!-- BLOG 3: Network Administrator -->
-            <article class="blog-card" data-year="2026" data-topic="Network Administration security Troubleshooting Cloud Networking" onclick="openBlogArticle('assets/blog/Network administrator.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Network Administration', 'Security', 'Troubleshooting', 'Cloud Networking'])">
+            <article class="blog-card" data-year="2026" data-topic="Network Administration security Troubleshooting Cloud Networking" onclick="openBlogArticle('assets/blog/Network administrator.html', 'The Evolution of Network Administration: Skills, Technologies, and Career Opportunities in the Modern IT Era', ['Network Administration', 'Security', 'Troubleshooting', 'Cloud Networking'])">
               <div class="blog-card__media">
                 <div class="blog-card__date-badge">
                   <div class="blog-card__date-day">05</div>
@@ -1246,13 +1279,9 @@
                 </div>
               </div>
             </article>
-            
-   
-              <button class="b-pill b-pill-toggle" id="topicToggleBtn" onclick="toggleTopicsVisibility()">+ More</button>
-   
-
-         <!-- BLOG 5: Home Networks -->
-            <article class="blog-card" data-year="2026" data-topic="Malware Cybersecurity " onclick="openBlogArticle('assets/blog/superbox-residential-proxy-malware.html', 'Connected Cars Are Sharing Your Data: What a New Study Reveals', ['Malware', 'Cybersecurity'])">
+        
+            <!-- BLOG 5: Home Networks -->
+            <article class="blog-card" data-year="2026" data-topic="Malware Cybersecurity " onclick="openBlogArticle('assets/blog/superbox-residential-proxy-malware.html', 'Don\'t rush to install that free movie device think twice!', ['Malware', 'Cybersecurity'])">
               <div class="blog-card__media">
                 <div class="blog-card__date-badge">
                   <div class="blog-card__date-day">29</div>
@@ -1265,7 +1294,6 @@
               </div>
               <div class="blog-card__body">
                 <h2 class="blog-card__title">Don't rush to install that "free movie" device think twice!</h2>
-                 <p class="blog-card__snippet">WHEN FREE ISN’T FREE</p>
                 <p class="blog-card__snippet">Trading freebies for your privacy? These devices use your home internet as a proxy network.....</p>
                 <div class="blog-card__meta-bar">
                   <span>07 min read</span>
@@ -1279,6 +1307,16 @@
               </div>
             </article>
             
+          </div>
+
+          <!-- SHOW MORE / SHOW LESS BUTTON -->
+          <div class="blog-pagination-wrap" id="blogPaginationWrap">
+            <button class="blog-show-more-btn" id="blogShowMoreBtn" onclick="toggleBlogShowMore()">
+              <span id="blogShowMoreText">Show More</span>
+              <svg id="blogShowMoreIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
           </div>
         </section>
 
@@ -2094,9 +2132,11 @@
       }
     });
 
-    // Blog Filters
+    // Blog Filters & Show More State
     let currentYearFilter = 'all';
     let currentTopicFilter = 'all';
+    let isBlogExpanded = false;
+    const BLOG_INITIAL_LIMIT = 4;
 
     function filterBlogYear(year) {
       currentYearFilter = year;
@@ -2122,6 +2162,10 @@
       applyBlogFilters();
     }
 
+    function handleBlogSearch() {
+      applyBlogFilters();
+    }
+
     function toggleTopicsVisibility() {
       const group = document.getElementById('topicFilterGroup');
       const btn = document.getElementById('topicToggleBtn');
@@ -2135,9 +2179,27 @@
       }
     }
 
+    function toggleBlogShowMore() {
+      isBlogExpanded = !isBlogExpanded;
+      const btnText = document.getElementById('blogShowMoreText');
+      const btnIcon = document.getElementById('blogShowMoreIcon');
+      
+      if (isBlogExpanded) {
+        btnText.innerText = 'Show Less';
+        btnIcon.style.transform = 'rotate(180deg)';
+      } else {
+        btnText.innerText = 'Show More';
+        btnIcon.style.transform = 'rotate(0deg)';
+      }
+      applyBlogFilters();
+    }
+
     function applyBlogFilters() {
-      const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
+      const query = (document.getElementById('blogSearchInput').value || '').toLowerCase().trim();
       const cards = document.querySelectorAll('.blog-card');
+      const paginationWrap = document.getElementById('blogPaginationWrap');
+      
+      let matchedCards = [];
 
       cards.forEach(card => {
         const year = card.getAttribute('data-year');
@@ -2149,12 +2211,31 @@
         const matchesSearch = (!query || text.includes(query));
 
         if (matchesYear && matchesTopic && matchesSearch) {
-          card.style.display = 'flex';
+          matchedCards.push(card);
         } else {
           card.style.display = 'none';
         }
       });
+
+      // Pagination / Show More Logic
+      if (matchedCards.length > BLOG_INITIAL_LIMIT) {
+        paginationWrap.style.display = 'flex';
+        matchedCards.forEach((card, index) => {
+          if (isBlogExpanded || index < BLOG_INITIAL_LIMIT) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      } else {
+        // Agar 4 ya 4 se kam matched cards hon to pagination hide hogi
+        paginationWrap.style.display = 'none';
+        matchedCards.forEach(card => card.style.display = 'flex');
+      }
     }
+
+    // Run on initial load
+    applyBlogFilters();
 
     // Portfolio & Education Filters
     function filterPortfolio(category) {
