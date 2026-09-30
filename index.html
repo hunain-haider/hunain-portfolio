@@ -157,7 +157,7 @@
 
     .cv-btn--single:hover { 
       background: #8eaef5 !important; 
-      border-color: #8eaef5 !important;
+      border-color: #8eaef5 !important; 
       color: #000000 !important;
     }
 
@@ -345,6 +345,26 @@
     .blog-filter-row { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
     .blog-filter-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding-top: 6px; width: 75px; flex-shrink: 0; }
     .blog-filter-pills { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+    
+    /* Topics single-line limit and expansion */
+    .blog-filter-pills--collapsed {
+      max-height: 38px;
+      overflow: hidden;
+    }
+    .b-pill-toggle {
+      background: transparent !important;
+      border: 1px dashed var(--card-border) !important;
+      color: #60a5fa !important;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .b-pill-toggle:hover {
+      border-color: #2f68ee !important;
+      color: #ffffff !important;
+    }
+
     .b-pill { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
     .b-pill:hover { border-color: var(--text-dim); color: var(--text-main); }
     .b-pill--active { background: #2f68ee !important; border-color: #2f68ee !important; color: #fff !important; box-shadow: 0 2px 10px rgba(47, 104, 238, 0.35); }
@@ -352,9 +372,9 @@
     .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
     .blog-card { background: var(--bg-color); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.25s ease, border-color 0.25s ease; }
     .blog-card:hover { transform: translateY(-4px); border-color: rgba(47, 104, 238, 0.5); }
- .blog-card__media { position: relative; width: 100%; height: 210px; background: rgba(47, 104, 238, 0.3); overflow: hidden; }
-.blog-card__media::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); transition: background 0.3s ease; pointer-events: none; }
-.blog-card__media:hover::after { background: rgba(0, 0, 0, 0); }
+    .blog-card__media { position: relative; width: 100%; height: 210px; background: rgba(47, 104, 238, 0.3); overflow: hidden; }
+    .blog-card__media::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); transition: background 0.3s ease; pointer-events: none; }
+    .blog-card__media:hover::after { background: rgba(0, 0, 0, 0); }
 
     .blog-card__date-badge { position: absolute; top: 14px; left: 14px; background: rgba(13, 16, 24, 0.88); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 4px 8px; text-align: center; z-index: 2; backdrop-filter: blur(4px); }
     .blog-card__date-day { font-size: 1rem; font-weight: 800; color: #fff; line-height: 1; }
@@ -1097,20 +1117,21 @@
 
             <div class="blog-filter-row">
               <span class="blog-filter-label" data-i18n="blog_topics">TOPICS</span>
-              <div class="blog-filter-pills" id="topicFilterGroup">
-  <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All</button>
-  <button class="b-pill" onclick="filterBlogTopic('linux')">Linux</button>
-  <button class="b-pill" onclick="filterBlogTopic('security')">Security</button>
-  <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps</button>
-  <button class="b-pill" onclick="filterBlogTopic('ubuntu')">Ubuntu</button>
-  <button class="b-pill" onclick="filterBlogTopic('azure')">Azure</button>
-  <button class="b-pill" onclick="filterBlogTopic('kubernetes')">Kubernetes</button>
-  <button class="b-pill" onclick="filterBlogTopic('Network Administration')">Network Administration</button>
-  <button class="b-pill" onclick="filterBlogTopic('Troubleshooting')">Troubleshooting</button>
-  <button class="b-pill" onclick="filterBlogTopic('Data Tracking')">Data Tracking</button>
-  <button class="b-pill" onclick="filterBlogTopic('Cybersecurity')">Cybersecurity</button>
-  <button class="b-pill" onclick="filterBlogTopic('Automotive Technology')">Automotive Technology</button>
-</div>
+              <div class="blog-filter-pills blog-filter-pills--collapsed" id="topicFilterGroup">
+                <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All</button>
+                <button class="b-pill" onclick="filterBlogTopic('linux')">Linux</button>
+                <button class="b-pill" onclick="filterBlogTopic('security')">Security</button>
+                <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps</button>
+                <button class="b-pill" onclick="filterBlogTopic('ubuntu')">Ubuntu</button>
+                <button class="b-pill" onclick="filterBlogTopic('azure')">Azure</button>
+                <button class="b-pill" onclick="filterBlogTopic('kubernetes')">Kubernetes</button>
+                <button class="b-pill" onclick="filterBlogTopic('Network Administration')">Network Administration</button>
+                <button class="b-pill" onclick="filterBlogTopic('Troubleshooting')">Troubleshooting</button>
+                <button class="b-pill" onclick="filterBlogTopic('Data Tracking')">Data Tracking</button>
+                <button class="b-pill" onclick="filterBlogTopic('Cybersecurity')">Cybersecurity</button>
+                <button class="b-pill" onclick="filterBlogTopic('Automotive Technology')">Automotive Technology</button>
+              </div>
+              <button class="b-pill b-pill-toggle" id="topicToggleBtn" onclick="toggleTopicsVisibility()">+ More</button>
             </div>
           </div>
 
@@ -1144,8 +1165,9 @@
               </div>
             </article>
 
-                   <!-- BLOG 2: Linux Server Security -->
- <article class="blog-card" data-year="2026" data-topic="linux security devops ubuntu" onclick="openBlogArticle('assets/blog/linux_server_security_guide.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Linux', 'Security', 'Ubuntu', 'DevOps'])">              <div class="blog-card__media">
+            <!-- BLOG 2: Linux Server Security -->
+            <article class="blog-card" data-year="2026" data-topic="linux security devops ubuntu" onclick="openBlogArticle('assets/blog/linux_server_security_guide.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Linux', 'Security', 'Ubuntu', 'DevOps'])">
+              <div class="blog-card__media">
                 <div class="blog-card__date-badge">
                   <div class="blog-card__date-day">05</div>
                   <div class="blog-card__date-mo">AUG</div>
@@ -1165,13 +1187,14 @@
                   <span style="color:#60a5fa; font-weight:600;">Read Article &rarr;</span>
                 </div>
                 <div class="blog-card__tags">
-                 <span class="blog-tag-pill">#Linux</span><span class="blog-tag-pill">#Security</span><span class="blog-tag-pill">#DevOps</span>
+                  <span class="blog-tag-pill">#Linux</span><span class="blog-tag-pill">#Security</span><span class="blog-tag-pill">#DevOps</span>
                 </div>
               </div>
             </article>
             
- <!-- BLOG 3: Network Administrator -->
- <article class="blog-card" data-year="2026" data-topic="Network Administration security Troubleshooting Cloud Networking" onclick="openBlogArticle('assets/blog/Network administrator.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Network Administration', 'Security', 'Troubleshooting', 'Cloud Networking'])">              <div class="blog-card__media">
+            <!-- BLOG 3: Network Administrator -->
+            <article class="blog-card" data-year="2026" data-topic="Network Administration security Troubleshooting Cloud Networking" onclick="openBlogArticle('assets/blog/Network administrator.html', 'Linux Server Security: Initial Hardening for Ubuntu 24.04 LTS', ['Network Administration', 'Security', 'Troubleshooting', 'Cloud Networking'])">
+              <div class="blog-card__media">
                 <div class="blog-card__date-badge">
                   <div class="blog-card__date-day">05</div>
                   <div class="blog-card__date-mo">AUG</div>
@@ -1191,15 +1214,14 @@
                   <span style="color:#60a5fa; font-weight:600;">Read Article &rarr;</span>
                 </div>
                 <div class="blog-card__tags">
-                 <span class="blog-tag-pill">#Network Administration</span><span class="blog-tag-pill">#Troubleshooting</span><span class="blog-tag-pill">#Cloud Networking</span>
+                  <span class="blog-tag-pill">#Network Administration</span><span class="blog-tag-pill">#Troubleshooting</span><span class="blog-tag-pill">#Cloud Networking</span>
                 </div>
               </div>
             </article>
             
-          
-
-        <!-- BLOG 4: Connected Car -->
-        <article class="blog-card" data-year="2026" data-topic="Automotive Technology Cybersecurity Data Tracking" onclick="openBlogArticle('assets/blog/connected-cars-data-privacy.html', 'Connected Cars Are Sharing Your Data: What a New Study Reveals', ['Automotive Technology', 'Cybersecurity', 'Data Tracking'])">   <div class="blog-card__media">
+            <!-- BLOG 4: Connected Car -->
+            <article class="blog-card" data-year="2026" data-topic="Automotive Technology Cybersecurity Data Tracking" onclick="openBlogArticle('assets/blog/connected-cars-data-privacy.html', 'Connected Cars Are Sharing Your Data: What a New Study Reveals', ['Automotive Technology', 'Cybersecurity', 'Data Tracking'])">
+              <div class="blog-card__media">
                 <div class="blog-card__date-badge">
                   <div class="blog-card__date-day">05</div>
                   <div class="blog-card__date-mo">AUG</div>
@@ -1219,7 +1241,7 @@
                   <span style="color:#60a5fa; font-weight:600;">Read Article &rarr;</span>
                 </div>
                 <div class="blog-card__tags">
-                 <span class="blog-tag-pill">#Automotive Technology</span><span class="blog-tag-pill">#Cybersecurity</span><span class="blog-tag-pill">#Data Tracking</span>
+                  <span class="blog-tag-pill">#Automotive Technology</span><span class="blog-tag-pill">#Cybersecurity</span><span class="blog-tag-pill">#Data Tracking</span>
                 </div>
               </div>
             </article>
@@ -1918,7 +1940,6 @@
         if (!doc) return;
         const body = doc.body;
         const html = doc.documentElement;
-        // Accurate real height calculation without padding inflation
         const height = Math.max(
           body ? body.scrollHeight : 0,
           body ? body.offsetHeight : 0,
@@ -1938,7 +1959,6 @@
       
       frame.onload = function() {
         resizeBlogIframe();
-        // Dynamic recheck jab content fonts/images fully render ho jayein
         setTimeout(resizeBlogIframe, 300);
         setTimeout(resizeBlogIframe, 1000);
       };
@@ -2053,46 +2073,55 @@
     }
 
     function filterBlogTopic(topic) {
-  // Topic ko hamesha lowercase banayein taake casing ka issue na aaye
-  currentTopicFilter = topic.toLowerCase().trim();
+      currentTopicFilter = topic.toLowerCase().trim();
 
-  document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => {
-    btn.classList.remove('b-pill--active');
-    // Button ke text ko bhi lowercase se match karein
-    if (btn.innerText.toLowerCase().trim() === currentTopicFilter) {
-      btn.classList.add('b-pill--active');
+      document.querySelectorAll('#topicFilterGroup .b-pill').forEach(btn => {
+        btn.classList.remove('b-pill--active');
+        if (btn.innerText.toLowerCase().trim() === currentTopicFilter) {
+          btn.classList.add('b-pill--active');
+        }
+      });
+
+      if (window.event && window.event.currentTarget && window.event.currentTarget.classList) {
+        window.event.currentTarget.classList.add('b-pill--active');
+      }
+
+      applyBlogFilters();
     }
-  });
 
-  if (window.event && window.event.currentTarget && window.event.currentTarget.classList) {
-    window.event.currentTarget.classList.add('b-pill--active');
-  }
-
-  applyBlogFilters();
-}
-
-function applyBlogFilters() {
-  const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.blog-card');
-
-  cards.forEach(card => {
-    const year = card.getAttribute('data-year');
-    // Card ke data-topic ko lowercase karein
-    const topics = (card.getAttribute('data-topic') || '').toLowerCase();
-    const text = card.innerText.toLowerCase();
-
-    const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
-    // Yahan dono lowercase compare honge:
-    const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
-    const matchesSearch = (!query || text.includes(query));
-
-    if (matchesYear && matchesTopic && matchesSearch) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
+    function toggleTopicsVisibility() {
+      const group = document.getElementById('topicFilterGroup');
+      const btn = document.getElementById('topicToggleBtn');
+      
+      if (group.classList.contains('blog-filter-pills--collapsed')) {
+        group.classList.remove('blog-filter-pills--collapsed');
+        btn.innerText = '- Less';
+      } else {
+        group.classList.add('blog-filter-pills--collapsed');
+        btn.innerText = '+ More';
+      }
     }
-  });
-}
+
+    function applyBlogFilters() {
+      const query = document.getElementById('blogSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.blog-card');
+
+      cards.forEach(card => {
+        const year = card.getAttribute('data-year');
+        const topics = (card.getAttribute('data-topic') || '').toLowerCase();
+        const text = card.innerText.toLowerCase();
+
+        const matchesYear = (currentYearFilter === 'all' || year === currentYearFilter);
+        const matchesTopic = (currentTopicFilter === 'all' || topics.includes(currentTopicFilter));
+        const matchesSearch = (!query || text.includes(query));
+
+        if (matchesYear && matchesTopic && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
 
     // Portfolio & Education Filters
     function filterPortfolio(category) {
