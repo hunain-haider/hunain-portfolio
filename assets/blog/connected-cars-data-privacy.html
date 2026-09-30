@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connected Cars Are Sharing Your Data: What a New Study Reveals | Hunain Haider</title>
+  <meta name="description" content="A new study finds that connected cars and their companion apps can communicate with advertisers, analytics companies and other third parties. Here's what drivers should know.">
+  <meta name="keywords" content="connected cars, car privacy, vehicle data, data privacy, car tracking, automotive technology, cybersecurity, Honda, connected car apps">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-canvas: #0b0f19;
+      --bg-card: #111726;
+      --bg-code: #090d16;
+      --border-color: #1e293b;
+      --border-focus: #38bdf8;
+      --text-main: #cbd5e1;
+      --text-heading: #f8fafc;
+      --text-muted: #64748b;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #818cf8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.85;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 16px 90px;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .post-badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--primary);
+      background: rgba(56,189,248,.12);
+      border: 1px solid rgba(56,189,248,.25);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.3;
+      color: var(--text-heading);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 17.5px;
+      line-height: 1.65;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(30,41,59,.5);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #94a3b8;
+      font-size: 13.5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    .meta-chip.author {
+      background: rgba(99,102,241,.12);
+      border-color: rgba(99,102,241,.25);
+      color: #c7d2fe;
+      font-weight: 600;
+    }
+
+    .hero-banner-card {
+      width: 100%;
+      min-height: 330px;
+      max-height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-bottom: 36px;
+      background:
+        radial-gradient(circle at 25% 35%, rgba(56,189,248,.20), transparent 30%),
+        radial-gradient(circle at 75% 65%, rgba(129,140,248,.18), transparent 30%),
+        #060b14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 36px -12px rgba(0,0,0,.7);
+      position: relative;
+    }
+
+    .hero-placeholder {
+      text-align: center;
+      padding: 40px;
+      color: #94a3b8;
+    }
+
+    .hero-placeholder .icon {
+      font-size: 54px;
+      margin-bottom: 12px;
+    }
+
+    .hero-placeholder strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+
+    .hero-banner-card img {
+      display: block;
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: inherit;
+    }
+
+    .lead-box {
+      margin: 28px 0 36px;
+      background: linear-gradient(180deg, rgba(17,23,38,.9) 0%, rgba(15,23,42,.5) 100%);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      font-size: 16px;
+      color: #e2e8f0;
+      line-height: 1.8;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .toc-card:hover { border-color: var(--border-focus); }
+
+    .toc-summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: .05em;
+    }
+
+    .toc-summary::-webkit-details-marker,
+    .faq-question::-webkit-details-marker { display: none; }
+
+    .toc-chevron, .faq-chevron {
+      color: var(--primary);
+      transition: transform .25s ease;
+    }
+
+    details[open] .toc-chevron,
+    .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 0 20px;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 14px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toc-list a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .15s ease;
+    }
+
+    .toc-list a:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    h2 {
+      font-size: 23px;
+      color: var(--text-heading);
+      margin: 48px 0 18px;
+      padding-top: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #f1f5f9;
+      margin: 28px 0 12px;
+      font-weight: 600;
+    }
+
+    p { margin-bottom: 22px; color: var(--text-main); font-size: 16px; }
+
+    ul, ol {
+      margin: 0 0 24px 24px;
+      color: var(--text-main);
+    }
+
+    li { margin-bottom: 10px; }
+
+    strong { color: #f1f5f9; }
+
+    .feature-card {
+      background: linear-gradient(180deg, #111a2e 0%, #0d1424 100%);
+      border: 1px solid #1e3a5f;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p { margin-bottom: 0; }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin: 30px 0;
+      background: var(--bg-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+      text-align: left;
+    }
+
+    thead {
+      background: #162035;
+      color: var(--text-heading);
+      font-family: 'Fira Code', monospace;
+      font-size: 12.5px;
+    }
+
+    th, td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 28px 0 40px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all .25s ease;
+    }
+
+    .faq-item:hover { border-color: var(--border-focus); }
+
+    .faq-item[open] {
+      border-color: rgba(56,189,248,.4);
+      background: #131b2e;
+    }
+
+    .faq-question {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .faq-answer {
+      padding: 14px 22px 20px;
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.75;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+
+    .source-box {
+      background: linear-gradient(180deg, #111a2e 0%, #0d1424 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 22px;
+      margin: 28px 0;
+    }
+
+    .source-box a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .source-box a:hover { text-decoration: underline; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 10px;
+    }
+
+    .tag {
+      color: #bae6fd;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.18);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 12px 60px; }
+      h1 { font-size: 29px; }
+      h2 { font-size: 22px; }
+      .hero-banner-card { min-height: 250px; }
+      p, ul, ol { font-size: 15.5px; }
+      th, td { padding: 12px 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <span class="post-badge">Automotive Technology & Privacy</span>
+
+      <h1>Connected Cars Are Sharing Your Data: What a New Study Reveals</h1>
+
+      <p class="subtitle">
+        Modern connected vehicles can communicate with manufacturers, analytics
+        platforms, advertisers and other third-party services. New research
+        offers a closer look at how that digital ecosystem works.
+      </p>
+
+      <div class="meta-bar">
+        <span class="meta-chip author">✦ Written by Hunain Haider</span>
+        <span class="meta-chip">Automotive Technology</span>
+        <span class="meta-chip">September 2026</span>
+        <span class="meta-chip">10 min read</span>
+      </div>
+    </header>
+    <div class="hero-banner-card">
+      <img src="https://lh3.googleusercontent.com/d/1_zo_ebtF1KSrJuoe-H931Hh12lPJTmRY" alt="Connected cars and data privacy" loading="eager">
+    </div>
+
+    <div class="lead-box">
+      <strong>The Connected-Car Privacy Problem:</strong>
+      Modern vehicles are increasingly becoming internet-connected computing
+      platforms. A study by Northeastern University researchers, conducted with
+      Consumer Reports, examined 21 vehicles from 19 brands and 30 companion
+      apps to understand where connected-car data travels.
+    </div>
+
+    <details class="toc-card">
+      <summary class="toc-summary">
+        <span>ON THIS PAGE</span>
+        <span class="toc-chevron">▼</span>
+      </summary>
+      <div class="toc-divider"></div>
+      <ul class="toc-list">
+        <li><a href="#study">1. What Did the Study Examine?</a></li>
+        <li><a href="#traffic">2. Cars Were Contacting Third-Party Domains</a></li>
+        <li><a href="#infotainment">3. Infotainment Systems Add More Connections</a></li>
+        <li><a href="#apps">4. Companion Apps Add Another Tracking Layer</a></li>
+        <li><a href="#location">5. Why Location Data Matters</a></li>
+        <li><a href="#honda">6. What Happened With Honda?</a></li>
+        <li><a href="#automakers">7. How Automakers Responded</a></li>
+        <li><a href="#ecosystem">8. Cars Are Becoming Data Platforms</a></li>
+        <li><a href="#owners">9. What Can Car Owners Do?</a></li>
+        <li><a href="#conclusion">11. Conclusion</a></li>
+        <li><a href="#sources">12. Sources & References</a></li>
+      </ul>
+    </details>
+
+    <section id="study">
+      <h2>1. What Did the Study Examine?</h2>
+
+      <p>
+        Researchers from Northeastern University, working with Consumer
+        Reports, investigated the network behavior of connected vehicles rather
+        than relying only on what manufacturers describe in privacy policies.
+      </p>
+
+      <p>
+        The team tested <strong>21 vehicles from 19 different brands</strong>
+        under several conditions, including when vehicles were stationary,
+        while they were being driven, and while their infotainment systems were
+        being used.
+      </p>
+
+      <p>
+        The researchers also examined <strong>30 companion smartphone
+        applications</strong> used by connected-car owners. The goal was to
+        understand the wider digital ecosystem surrounding modern vehicles.
+      </p>
+
+      <div class="feature-card">
+        <div class="feature-title">Why Network Traffic Matters</div>
+        <p>
+          Much of the traffic was encrypted, so the researchers could not read
+          every individual data packet. However, network traces still revealed
+          domains contacted through DNS and TLS information, transmission
+          timing, traffic volume and differences between testing scenarios.
+        </p>
+      </div>
+
+      <p>
+        For electric vehicles, the researchers also used a Faraday enclosure
+        to block cellular signals and observe whether some vehicles redirected
+        their traffic through Wi-Fi.
+      </p>
+    </section>
+
+    <section id="traffic">
+      <h2>2. Cars Were Contacting Third-Party Domains</h2>
+
+      <p>
+        Every connected vehicle in the study contacted a domain belonging to
+        its automaker. That is expected because connected services need to
+        communicate with manufacturer-controlled infrastructure.
+      </p>
+
+      <p>
+        The more notable finding was that some vehicles also contacted
+        numerous third-party domains associated with advertising, analytics,
+        tracking, entertainment and mapping services.
+      </p>
+
+      <p>
+        Alphabet/Google domains appeared frequently in the observed traffic.
+        The researchers linked this in part to the growing presence of Google's
+        automotive software and services in connected vehicles.
+      </p>
+
+      <div class="feature-card">
+        <div class="feature-title">A Large Digital Footprint</div>
+        <p>
+          Reporting on the study found that the Tesla Model 3 contacted
+          34 advertising, tracking and analytics domains, along with 37
+          domains associated with applications integrated into its infotainment
+          system.
+        </p>
+      </div>
+
+      <p>
+        A third-party connection does not automatically prove that personal
+        information is being misused. Some external services are necessary for
+        legitimate vehicle functions. The research instead demonstrates how
+        many external services can become part of a connected vehicle's
+        network ecosystem.
+      </p>
+    </section>
+
+    <section id="infotainment">
+      <h2>3. Infotainment Systems Add More Connections</h2>
+
+      <p>
+        Interacting with a vehicle's infotainment system generally resulted in
+        more domain contacts than simply leaving a vehicle idle or driving it
+        without using the infotainment features.
+      </p>
+
+      <p>
+        Modern infotainment platforms can combine navigation, music streaming,
+        mapping, voice services, software platforms and other online features.
+        Each service can introduce additional network communications.
+      </p>
+
+      <p>
+        This means the privacy profile of a connected vehicle can change
+        depending on how the driver uses its digital features.
+      </p>
+    </section>
+
+    <section id="apps">
+      <h2>4. Companion Apps Add Another Tracking Layer</h2>
+
+      <p>
+        The vehicle itself is only one part of the connected-car ecosystem.
+        Smartphone applications can provide remote controls, vehicle status,
+        location features and other services.
+      </p>
+
+      <p>
+        The researchers found that some of the tested apps also communicated
+        with advertising and analytics companies.
+      </p>
+
+      <p>
+        Northeastern University reported that the observed data flows included
+        information such as <strong>vehicle identification numbers (VINs),
+        email addresses and location information</strong> in some cases.
+      </p>
+
+      <p>
+        Companies identified in the research included Adobe Analytics, Axiom
+        and ContentSquare among other third-party services.
+      </p>
+
+      <div class="feature-card">
+        <div class="feature-title">Why App Permissions Matter</div>
+        <p>
+          A connected-car app can provide useful remote features, but the app
+          may also have access to information that is more directly associated
+          with a driver's account or smartphone. Reviewing app permissions is
+          therefore an important part of understanding vehicle privacy.
+        </p>
+      </div>
+    </section>
+
+    <section id="location">
+      <h2>5. Why Location Data Matters</h2>
+
+      <p>
+        Location information can reveal patterns over time. Repeated location
+        records can potentially indicate where someone lives, works, shops or
+        regularly travels.
+      </p>
+
+      <p>
+        When location information is combined with identifiers such as an
+        email address or vehicle identification number, it can create a more
+        detailed digital profile.
+      </p>
+
+      <p>
+        Honda's published connected-product privacy documentation describes
+        categories of information that can include VINs, vehicle operation
+        information, trip information, geolocation and other usage-related
+        information.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Data Category</th>
+              <th>Why It Can Matter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Location</strong></td>
+              <td>Can reveal travel patterns and frequently visited places.</td>
+            </tr>
+            <tr>
+              <td><strong>VIN</strong></td>
+              <td>Provides a persistent identifier associated with a vehicle.</td>
+            </tr>
+            <tr>
+              <td><strong>Email / Account Data</strong></td>
+              <td>Can connect vehicle-related activity to an account.</td>
+            </tr>
+            <tr>
+              <td><strong>Trip Information</strong></td>
+              <td>Can describe journeys and vehicle usage patterns.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="honda">
+      <h2>6. What Happened With Honda?</h2>
+
+      <p>
+        One of the clearest changes reported after the research involved
+        Honda's connected-car application.
+      </p>
+
+      <p>
+        According to Northeastern University, researchers found that Honda's
+        application was sending location information and VINs to analytics
+        company <strong>Amplitude</strong>.
+      </p>
+
+      <p>
+        After the researchers raised the issue, Honda asked Amplitude to
+        delete the location data it had received and updated the application
+        so that it would stop sending geolocation information to the company.
+      </p>
+
+      <p>
+        Honda spokesperson Andrew Quillin confirmed the researchers'
+        assessment to Northeastern Global News.
+      </p>
+
+      <div class="feature-card">
+        <div class="feature-title">Honda's Explanation</div>
+        <p>
+          Honda said contractual restrictions prevented the shared VIN and
+          location information from being independently used or sold. Honda
+          also stated that use of the connected application is voluntary.
+        </p>
+      </div>
+
+      <p>
+        The Honda example is important because it shows the difference between
+        identifying a network data flow and determining how a company says that
+        information may be used. Both the technical finding and the company's
+        explanation are relevant to understanding the issue.
+      </p>
+    </section>
+
+    <section id="automakers">
+      <h2>7. How Automakers Responded</h2>
+
+      <p>
+        Automakers generally point to privacy policies and contractual
+        restrictions when explaining relationships with third-party service
+        providers.
+      </p>
+
+      <p>
+        Researchers said that privacy policies can disclose third-party
+        sharing without always making it easy for consumers to identify every
+        company receiving information or understand exactly why a particular
+        data flow exists.
+      </p>
+
+      <p>
+        There is also a practical challenge for consumers: declining certain
+        data-sharing permissions can sometimes mean losing access to connected
+        features.
+      </p>
+
+      <p>
+        This creates a difficult choice for drivers who purchased a vehicle
+        partly because of its connected features but do not want to share more
+        information than necessary.
+      </p>
+    </section>
+
+    <section id="ecosystem">
+      <h2>8. Cars Are Becoming Data Platforms</h2>
+
+      <p>
+        Modern vehicles increasingly combine hardware, software, cloud
+        services and smartphone applications. A connected car can include:
+      </p>
+
+      <ul>
+        <li>GPS and navigation systems</li>
+        <li>Cellular connectivity</li>
+        <li>Wi-Fi and Bluetooth</li>
+        <li>Voice assistants</li>
+        <li>Infotainment applications</li>
+        <li>Remote vehicle-control services</li>
+        <li>Cloud-based vehicle services</li>
+        <li>Smartphone companion applications</li>
+        <li>Cameras and other vehicle sensors</li>
+      </ul>
+
+      <p>
+        This makes the vehicle less like a standalone machine and more like a
+        networked computing platform. As a result, understanding car privacy
+        increasingly requires looking at the complete ecosystem rather than
+        only the automaker.
+      </p>
+    </section>
+
+    <section id="owners">
+      <h2>9. What Can Car Owners Do?</h2>
+
+      <p>
+        Completely eliminating data collection may not be possible when using
+        connected services, but owners can take practical steps to reduce
+        unnecessary exposure.
+      </p>
+
+      <div class="feature-card">
+        <div class="feature-title">Review Vehicle Privacy Settings</div>
+        <p>
+          Check the car's privacy and data-sharing controls instead of
+          automatically accepting every option.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Review Companion-App Permissions</div>
+        <p>
+          Check what information the manufacturer's mobile app can access,
+          particularly location and account-related permissions.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Read the Important Parts of the Privacy Policy</div>
+        <p>
+          Look specifically for location data, vehicle information, analytics,
+          advertising and third-party sharing.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Disable Services You Do Not Need</div>
+        <p>
+          If a connected feature is unnecessary, disabling it may reduce the
+          amount of information being transmitted.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-title">Reset the Vehicle Before Selling It</div>
+        <p>
+          Remove personal accounts, paired devices and stored information
+          before transferring ownership. Honda's documentation also describes
+          procedures for removing personal information from connected
+          systems.
+        </p>
+      </div>
+    </section>
+<section id="conclusion">
+      <h2>10. Conclusion</h2>
+
+      <p>
+        Connected-car technology provides useful features such as remote
+        controls, navigation, vehicle status information, entertainment and
+        cloud-based services. But those features also turn the vehicle into a
+        participant in a much larger digital ecosystem.
+      </p>
+
+      <p>
+        The Northeastern University and Consumer Reports research shows that
+        modern vehicles and their companion applications can communicate with
+        a wide range of external domains and services.
+      </p>
+
+      <p>
+        The Honda case also demonstrates that specific data-sharing practices
+        can change after researchers identify a particular data flow. For
+        drivers, the central issue is not simply whether a car is connected,
+        but <strong>what information is being transmitted, who receives it,
+        why it is needed and how much control the owner has over that
+        information.</strong>
+      </p>
+
+      <div class="lead-box">
+        <strong>Bottom line:</strong>
+        A connected car is more than a vehicle with internet access. It is
+        part of a digital ecosystem where information can move between the
+        vehicle, its manufacturer, smartphone applications and third-party
+        services.
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2>12. Sources & References</h2>
+
+      <div class="source-box">
+        <ul>
+          <li>
+            <a href="https://news.northeastern.edu/2026/09/29/connected-car-privacy-violation-research/"
+               target="_blank" rel="noopener noreferrer">
+              Northeastern University — Connected Car Privacy Research
+            </a>
+          </li>
+
+          <li>
+            <a href="https://arstechnica.com/cars/2026/09/connected-car-data-privacy-is-still-abysmal-study-finds/"
+               target="_blank" rel="noopener noreferrer">
+              Ars Technica — Connected Car Data Privacy Study
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.consumerreports.org/electronics/personal-information/how-to-stop-your-car-from-collecting-sharing-driving-data-a1233378612/"
+               target="_blank" rel="noopener noreferrer">
+              Consumer Reports — Vehicle Data Collection and Sharing
+            </a>
+          </li>
+
+          <li>
+            <a href="https://mygarage.honda.com/sfsites/c/resource/AutoLinkLegalTerms/connected-product-privacy-policy.pdf"
+               target="_blank" rel="noopener noreferrer">
+              Honda — Connected Product Privacy Policy
+            </a>
+          </li>
+
+          <li>
+            <a href="https://automobiles.honda.com/information/privacy"
+               target="_blank" rel="noopener noreferrer">
+              Honda — Privacy Information
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag">Connected Cars</span>
+        <span class="tag">Car Privacy</span>
+        <span class="tag">Data Privacy</span>
+        <span class="tag">Vehicle Tracking</span>
+        <span class="tag">Automotive Technology</span>
+        <span class="tag">Cybersecurity</span>
+        <span class="tag">Car Data</span>
+        <span class="tag">Smart Cars</span>
+        <span class="tag">Honda</span>
+        <span class="tag">Data Tracking</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Written and compiled by <strong>Hunain Haider</strong> • Technology & Privacy Series.<br>
+      Published September 2026.
+    </footer>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.toc-list a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, null, '#' + targetId);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
