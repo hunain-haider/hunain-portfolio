@@ -1098,7 +1098,12 @@
             <div class="blog-filter-row">
               <span class="blog-filter-label" data-i18n="blog_topics">TOPICS</span>
               <div class="blog-filter-pills" id="topicFilterGroup">
-                
+                <button class="b-pill b-pill--active" onclick="filterBlogTopic('all')">All</button>
+                <button class="b-pill" onclick="filterBlogTopic('linux')">Linux</button>
+                <button class="b-pill" onclick="filterBlogTopic('security')">Security</button>
+                <button class="b-pill" onclick="filterBlogTopic('devops')">DevOps</button>
+                <button class="b-pill" onclick="filterBlogTopic('ubuntu')">Ubuntu</button>
+                <button class="b-pill" onclick="filterBlogTopic('azure')">Azure</button>
                 <button class="b-pill" onclick="filterBlogTopic('kubernetes')">Kubernetes</button>
                 <button class="b-pill" onclick="filterBlogTopic('Network Administration')">Network Administration</button>
                 <button class="b-pill" onclick="filterBlogTopic('Troubleshooting')">Troubleshooting</button>
